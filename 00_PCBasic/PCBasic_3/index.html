@@ -1,0 +1,4864 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/logo_tab.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>PCBasic 3 - SKILBRIDGE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="SKILBRIDGE" class="md-header__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SKILBRIDGE
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PCBasic 3
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SKILBRIDGE" class="md-nav__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    SKILBRIDGE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コース一覧
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    コース一覧
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00_PC基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00_PC基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC基礎/PCBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC基礎/PCBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC基礎/PCBasic_3.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC基礎/PCBasic_4.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC基礎/PCBasic_5.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01_Web基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01_Web基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02_Java入門
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02_Java入門
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java基礎/JavaBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java基礎/JavaBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java基礎/JavaBasic_3.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java基礎/JavaBasic_4.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java基礎/JavaBasic_5.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java基礎/JavaBasic_6.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java基礎/JavaBasic_7.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java基礎/JavaBasic_8.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java基礎/JavaBasic_9.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java基礎/JavaBasic_10.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03_Java基礎固め
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03_Java基礎固め
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04_OOP基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04_OOP基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05_OOP応用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05_OOP応用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06_Git/GitHub基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06_Git/GitHub基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07_SQL・DB設計
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    07_SQL・DB設計
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08_SpringBoot：表示機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    08_SpringBoot：表示機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09_SpringBoot：登録更新機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    09_SpringBoot：登録更新機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10_SpringBoot：検索削除機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10_SpringBoot：検索削除機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11_実務基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11_実務基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#初級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#初級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#中級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#中級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_15" id="__nav_2_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#上級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#上級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_16" id="__nav_2_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Office全般ツール
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Office全般ツール
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web基礎/WebBasic_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 このレッスンの目標
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-0102" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌟 Week 0.1・0.2の技術を活用します！
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌟 Week 0.1・0.2の技術を活用します！">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 0.1の技術活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 0.2の技術活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 セクション1: インターネットとブラウザって何？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 セクション1: インターネットとブラウザって何？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌍 インターネットとは - 世界最大の情報の海
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 インターネットの仕組み図
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 インターネットの仕組み図">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分かりやすい例え
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏪 ウェブサイト・ホームページとは
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏪 ウェブサイト・ホームページとは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        身近な例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 URL（アドレス）の仕組み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘​ URL構造図
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 ブラウザとは - インターネットを見るためのアプリ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 ブラウザとは - インターネットを見るためのアプリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主要なブラウザ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 体験してみよう: ブラウザを起動してみる
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 体験してみよう: ブラウザを起動してみる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ステップ1: ブラウザを見つけて起動
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 ブラウザアイコン一覧
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 ブラウザアイコン一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ステップ2: ブラウザ画面の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘​ ブラウザのレイアウト図
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 セクション2: ブラウザを使いこなそう
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 セクション2: ブラウザを使いこなそう">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 基本操作をマスターしよう
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 基本操作をマスターしよう">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-1: アドレスバーの使い方
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘​ アドレスバーの操作説明
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘​ アドレスバーの操作説明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-2: 戻る・進む・更新の活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘​ ナビゲーションボタン図
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗂️ タブ機能を使いこなそう
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🗂️ タブ機能を使いこなそう">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-3: タブの基本操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ​📘 タブ操作の図
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="​📘 タブ操作の図">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-4: 右クリックメニューの活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘​ 右クリックメニューの構成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔖 ブックマーク（お気に入り）管理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔖 ブックマーク（お気に入り）管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-5: ブックマークの基本操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 ブックマークダイアログ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘​ ブックマーク追加完了の図
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘​ ブックマーク追加完了の図">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2-6: ブックマークの整理・管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘​ ブックマークマネージャ図
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 セクション3: 情報を上手に検索しよう
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 セクション3: 情報を上手に検索しよう">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 検索エンジンの基本
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 検索エンジンの基本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-1-google" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-1: Google検索の基本操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘​ Google検索画面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘​ Google検索画面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-2: 検索結果の読み方・評価方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘​ 検索結果画面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘​ 検索結果画面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-3: 検索技術の向上
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘​ 詳細検索画面
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 セクション4: 安全で効率的な活用法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 セクション4: 安全で効率的な活用法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛡️ インターネットセキュリティの基本
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛡️ インターネットセキュリティの基本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-1: 安全なサイトと危険なサイトの見分け方
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘​ セキュリティチェックの図
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 セキュリティの基本情報
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 セキュリティの基本情報">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-2: 個人情報保護の基本原則
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-3: パスワード管理の基本
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💾 ダウンロードとファイル管理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💾 ダウンロードとファイル管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-4: ファイルダウンロードの基本
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘​ ダウンロード概念図
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘​ ダウンロード概念図">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4-5: ダウンロードファイルの整理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 セクション5: 学習環境の完成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 セクション5: 学習環境の完成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 プログラミング学習への準備
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 プログラミング学習への準備">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5-1: 学習リソース管理システム
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5-2: 情報収集・問題解決の技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5-3: 学習継続のための環境作り
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 まとめ：インターネット・ブラウザ活用マスター達成！
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎓 まとめ：インターネット・ブラウザ活用マスター達成！">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 習得した技術・知識
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 習得した技術・知識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セクション1で習得したこと
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セクション2で習得したこと
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セクション3で習得したこと
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セクション4で習得したこと
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セクション5で習得したこと
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-010203" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌟 Week 0.1・0.2・0.3の技術統合達成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌟 Week 0.1・0.2・0.3の技術統合達成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        統合技術スタック
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実践的な成果物
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 成果の確認：スキルチェックリスト
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 成果の確認：スキルチェックリスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本操作（5点満点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        情報検索・管理（5点満点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セキュリティ・安全性（5点満点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学習環境構築（5点満点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Week 1「プログラミング基礎」への準備完了！
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Week 1「プログラミング基礎」への準備完了！">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-1-week-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 1で活用する Week 0.3 の技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 0全体での成長の軌跡
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💪 継続学習への動機
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💪 継続学習への動機">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実感できる成長
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 1以降での期待
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        将来への展望
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏆 Week 0.3完了証明書
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 おまけ：復習用練習課題
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 おまけ：復習用練習課題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基礎レベル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        応用レベル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        発展レベル
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌟 最終メッセージ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>PCBasic 3</h1>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<p><lesson>
+  <type>text</type>
+  <description>Week 0.1「PC基本操作」、Week 0.2「ファイル・フォルダ操作」を完了したPC初心者を対象に、インターネット・ブラウザの基本概念から安全で効率的な活用技術までを段階的に習得させる。セキュリティ意識の醸成を重視し、Week 1以降のプログラミング学習に必要な情報収集・リサーチ技術の基盤を構築する。</description>
+  <title>3.インターネット・ブラウザ活用</title>
+  <content># インターネット・ブラウザ活用</p>
+<h2 id="_1">🎯 このレッスンの目標</h2>
+<ul>
+<li><strong>インターネット・ブラウザの基本概念理解</strong>: インターネットとブラウザの仕組み、役割の完全理解</li>
+<li><strong>ブラウザ操作の完全習熟</strong>: Chrome/Edgeの基本操作からタブ・ブックマーク活用まで</li>
+<li><strong>効果的な情報検索技術</strong>: 検索エンジンを使った効率的な情報収集・評価方法</li>
+<li><strong>安全なインターネット活用</strong>: セキュリティ意識とリスク回避の基本技術</li>
+<li><strong>学習環境の整備完了</strong>: Week 1プログラミング学習への完全準備</li>
+</ul>
+<p><strong>前提条件</strong>: Week 0.1「PC基本操作」+ Week 0.2「ファイル・フォルダ操作」完了<br />
+<strong>学習時間</strong>: 約4-6時間</p>
+<hr />
+<h2 id="week-0102">🌟 Week 0.1・0.2の技術を活用します！</h2>
+<p>これまでに習得した技術が、インターネット活用で大活躍します：</p>
+<h3 id="week-01"><strong>Week 0.1の技術活用</strong></h3>
+<ul>
+<li><strong>マウス操作</strong> → リンククリック、ページスクロール、タブの切り替え</li>
+<li><strong>キーボード操作</strong> → 検索キーワード入力、URL入力</li>
+<li><strong>ショートカットキー</strong> → ブラウザ専用ショートカットで効率化</li>
+<li><strong>右クリック</strong> → リンクメニュー、新しいタブで開く操作</li>
+</ul>
+<h3 id="week-02"><strong>Week 0.2の技術活用</strong></h3>
+<ul>
+<li><strong>ファイル・フォルダ操作</strong> → ダウンロードしたファイルの整理・管理</li>
+<li><strong>フォルダ設計思考</strong> → 学習資料の体系的保存、ブックマーク整理</li>
+<li><strong>ファイル移動・コピー</strong> → 参考資料の適切な配置・バックアップ</li>
+</ul>
+<p><strong>安心してください！</strong> これまで学んだ技術があるので、インターネット活用も確実にマスターできます。</p>
+<hr />
+<h2 id="1">📚 セクション1: インターネットとブラウザって何？</h2>
+<h3 id="-">🌍 インターネットとは - 世界最大の情報の海</h3>
+<p><strong>インターネット</strong>とは、世界中のコンピュータがつながった巨大なネットワークです。</p>
+<h3 id="_2">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_internet_concept_image.html">インターネットの仕組み図</a></h3>
+<h4 id="_3"><strong>分かりやすい例え</strong></h4>
+<ul>
+<li><strong>インターネット</strong> = 世界中をつなぐ「道路網」</li>
+<li><strong>ウェブサイト</strong> = 道路沿いにある「お店」</li>
+<li><strong>ブラウザ</strong> = お店を巡るための「車」</li>
+<li><strong>URL（アドレス）</strong> = お店の「住所」</li>
+</ul>
+<h3 id="_4">🏪 ウェブサイト・ホームページとは</h3>
+<p><strong>ウェブサイト</strong>（ホームページ）は、インターネット上の「情報を提供する場所」です。</p>
+<h4 id="_5"><strong>身近な例</strong></h4>
+<ul>
+<li><strong>Googleの検索サイト</strong> → 情報を探すお手伝いをするお店</li>
+<li><strong>Amazonのサイト</strong> → 商品を販売するお店  </li>
+<li><strong>ニュースサイト</strong> → 最新情報を教えてくれるお店</li>
+<li><strong>Wikipedia</strong> → 百科事典を提供する図書館</li>
+</ul>
+<h3 id="url">🔗 URL（アドレス）の仕組み</h3>
+<p><strong>URL</strong>は、ウェブサイトの「住所」です。</p>
+<p><strong>URLの構造例</strong>: <code>https://www.google.com</code></p>
+<h3 id="url_1">📘​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image02_url_structure.html">URL構造図</a></h3>
+<ul>
+<li><strong>https://</strong> → 安全な通信方式（後で詳しく説明）</li>
+<li><strong>www</strong> → インターネット上の場所を示す</li>
+<li><strong>google</strong> → サイトの名前</li>
+<li><strong>com</strong> → サイトの種類</li>
+</ul>
+<h3 id="-_1">🌐 ブラウザとは - インターネットを見るためのアプリ</h3>
+<p><strong>ブラウザ</strong>は、インターネット上のウェブサイトを見るためのアプリケーション（ソフトウェア）です。</p>
+<h4 id="_6"><strong>主要なブラウザ</strong></h4>
+<ul>
+<li><strong>Google Chrome</strong> → 世界で最も使われているブラウザ</li>
+<li><strong>Microsoft Edge</strong> → Windowsに標準でインストールされているブラウザ</li>
+<li><strong>Mozilla Firefox</strong> → プライバシーを重視したブラウザ</li>
+<li><strong>Safari</strong> → Appleのデバイス（Mac、iPhone）で使われるブラウザ</li>
+</ul>
+<p><strong>このレッスンでは</strong>、<strong>Chrome</strong>と<strong>Edge</strong>を中心に学習します。</p>
+<h3 id="_7">🎯 体験してみよう: ブラウザを起動してみる</h3>
+<p>💭 <strong>考えてみましょう</strong>: あなたのパソコンには、どのブラウザがインストールされていますか？</p>
+<h4 id="1_1"><strong>ステップ1: ブラウザを見つけて起動</strong></h4>
+<p><strong>ChromeまたはEdgeを探して起動してください</strong></p>
+<p><strong>見つける方法</strong>:
+1. <strong>デスクトップのアイコン</strong>を探す（Week 0.1のダブルクリック技術）
+2. <strong>タスクバー</strong>（画面下部）のアイコンをクリック
+3. <strong>スタートメニュー</strong>から検索（Week 0.1のスタートメニュー技術）</p>
+<h3 id="_8">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image03_browser_icons.html">ブラウザアイコン一覧</a></h3>
+<p>&lt;details&gt;
+&lt;summary&gt;💡 ヒント: ブラウザが見つからない場合&lt;/summary&gt;</p>
+<p><strong>Windows 11の場合</strong>:
+- <strong>Edge</strong>: デフォルトでインストールされています
+- <strong>タスクバー</strong>に青い「e」のアイコンがあるはずです
+- または<strong>スタートメニュー</strong> → 「Microsoft Edge」と検索</p>
+<p><strong>Chromeをインストールしたい場合</strong>:
+- まずは<strong>Edge</strong>を使って、「Chrome ダウンロード」で検索してインストールできます
+- ただし、<strong>このレッスンではEdgeでも十分学習できます</strong></p>
+<p>&lt;/details&gt;</p>
+<h4 id="2"><strong>ステップ2: ブラウザ画面の確認</strong></h4>
+<p>ブラウザが起動したら、以下の部分を確認してください：</p>
+<h3 id="_9">📘​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image04_browser_layout.html">ブラウザのレイアウト図</a></h3>
+<p><strong>ブラウザ画面の構成</strong>:
+- <strong>アドレスバー</strong> → URLを入力する場所（上部の長い枠）
+- <strong>戻る・進むボタン</strong> → ページを前後に移動
+- <strong>更新ボタン</strong> → ページを再読み込み
+- <strong>タブ</strong> → 複数のサイトを同時に開くため
+- <strong>メニューボタン</strong> → 設定やブックマークへのアクセス</p>
+<hr />
+<h2 id="2_1">📚 セクション2: ブラウザを使いこなそう</h2>
+<h3 id="_10">🎯 基本操作をマスターしよう</h3>
+<h4 id="2-1"><strong>2-1: アドレスバーの使い方</strong></h4>
+<p><strong>アドレスバー</strong>は、ウェブサイトの「住所」を入力する場所です。</p>
+<p>💭 <strong>Week 0.1の技術活用</strong>: キーボードでの文字入力技術がここで活躍します！</p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: Googleのサイトにアクセスしてみる</p>
+<p><strong>手順</strong>:
+1. <strong>アドレスバー</strong>をクリック（Week 0.1のマウス左クリック技術）
+2. <strong>「google.com」</strong>と入力（Week 0.1のキーボード入力技術）
+3. <strong>Enterキー</strong>を押す</p>
+<h3 id="_11">📘​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image05_address_bar_operation.html">アドレスバーの操作説明</a></h3>
+<p>&lt;details&gt;
+&lt;summary&gt;💡 ヒント: アドレスバーがよく分からない場合&lt;/summary&gt;</p>
+<p><strong>アドレスバーの見つけ方</strong>:
+- ブラウザウィンドウの<strong>上部</strong>にある細長い枠
+- 「検索またはWebアドレスを入力」のような文字が薄く表示されている
+- クリックすると<strong>文字カーソル</strong>が表示される場所</p>
+<p><strong>うまくいかない場合</strong>:
+- <strong>Ctrl + L</strong> （Week 0.1のショートカット応用！）を押すとアドレスバーに移動できます</p>
+<p>&lt;/details&gt;</p>
+<h4 id="2-2"><strong>2-2: 戻る・進む・更新の活用</strong></h4>
+<p><strong>ナビゲーション操作</strong>を覚えましょう。</p>
+<h3 id="_12">📘​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image06_navigation_buttons.html">ナビゲーションボタン図</a></h3>
+<p><strong>基本操作</strong>:
+- <strong>戻るボタン</strong>（←）: 前のページに戻る
+- <strong>進むボタン</strong>（→）: 次のページに進む（戻った後で使用）
+- <strong>更新ボタン</strong>（🔄）: ページを再読み込み</p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: ナビゲーション操作に慣れる</p>
+<p><strong>手順</strong>:
+1. <strong>google.com</strong>にアクセス
+2. 何か検索してみる（例：「天気」）
+3. <strong>戻るボタン</strong>でGoogleのトップページに戻る
+4. <strong>進むボタン</strong>で検索結果に戻る</p>
+<p>&lt;details&gt;
+&lt;summary&gt;💡 ヒント: 便利なショートカット&lt;/summary&gt;</p>
+<p><strong>Week 0.1の技術発展</strong>:
+- <strong>Alt + ←</strong> : 戻る
+- <strong>Alt + →</strong> : 進む<br />
+- <strong>F5</strong> または <strong>Ctrl + R</strong> : 更新</p>
+<p>これらのショートカットキーを覚えると、マウスを使わずに素早く操作できます！</p>
+<p>&lt;/details&gt;</p>
+<h3 id="_13">🗂️ タブ機能を使いこなそう</h3>
+<p><strong>タブ機能</strong>は、複数のウェブサイトを同時に開いて切り替える機能です。</p>
+<p>💭 <strong>Week 0.1の技術発展</strong>: ウィンドウ操作技術がタブ操作に発展します！</p>
+<h4 id="2-3"><strong>2-3: タブの基本操作</strong></h4>
+<h3 id="_14">​📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image07_tab_operations.html">タブ操作の図</a></h3>
+<p><strong>タブの操作方法</strong>:</p>
+<p><strong>新しいタブを開く</strong>:
+- <strong>「+」ボタン</strong>をクリック
+- <strong>Ctrl + T</strong>（Week 0.1のショートカット発展！）</p>
+<p><strong>タブを切り替える</strong>:
+- <strong>タブをクリック</strong>
+- <strong>Ctrl + Tab</strong>で次のタブに移動
+- <strong>Ctrl + Shift + Tab</strong>で前のタブに移動</p>
+<p><strong>タブを閉じる</strong>:
+- <strong>タブの「×」ボタン</strong>をクリック
+- <strong>Ctrl + W</strong></p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: 複数のサイトを同時に開いて管理する</p>
+<p><strong>手順</strong>:
+1. <strong>新しいタブ</strong>を開く（Ctrl + T）
+2. <strong>「youtube.com」</strong>にアクセス
+3. <strong>もう1つ新しいタブ</strong>を開く<br />
+4. <strong>「wikipedia.org」</strong>にアクセス
+5. <strong>3つのタブを行き来</strong>してみる
+6. <strong>不要なタブを閉じる</strong>（Ctrl + W）</p>
+<p>&lt;details&gt;
+&lt;summary&gt;💡 ヒント: タブの効率的な使い方&lt;/summary&gt;</p>
+<p><strong>実用的なタブ活用法</strong>:
+- <strong>調べ物をするとき</strong> → 複数の情報源を同時に開く
+- <strong>学習するとき</strong> → 教材と参考資料を分けて表示
+- <strong>比較検討</strong> → 複数のサイトを見比べる</p>
+<p><strong>タブが多くなりすぎた場合</strong>:
+- <strong>Ctrl + Shift + T</strong> で間違って閉じたタブを復活できます</p>
+<p>&lt;/details&gt;</p>
+<h4 id="2-4"><strong>2-4: 右クリックメニューの活用</strong></h4>
+<p>💭 <strong>Week 0.1の技術活用</strong>: 右クリック技術がブラウザでも大活躍！</p>
+<p><strong>リンクを右クリック</strong>すると、便利なメニューが表示されます。</p>
+<h3 id="_15">📘​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image08_right_click_menu.html">右クリックメニューの構成</a></h3>
+<p><strong>よく使う右クリックメニュー</strong>:
+- <strong>新しいタブで開く</strong> → 現在のページを残したまま新しいタブでリンクを開く
+- <strong>新しいウィンドウで開く</strong> → 別ウィンドウでリンクを開く
+- <strong>リンクのURLをコピー</strong> → リンクのアドレスをコピー（Week 0.1のコピー技術！）</p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: 効率的なリンク操作をマスターする</p>
+<p><strong>手順</strong>:
+1. <strong>google.com</strong>で「プログラミング 学習」と検索
+2. 検索結果のリンクを<strong>右クリック</strong>
+3. <strong>「新しいタブで開く」</strong>を選択
+4. 元の検索結果ページと新しいページを<strong>行き来</strong>してみる</p>
+<h3 id="_16">🔖 ブックマーク（お気に入り）管理</h3>
+<p><strong>ブックマーク</strong>は、よく訪れるサイトを「お気に入り」として保存する機能です。</p>
+<p>💭 <strong>Week 0.2の技術発展</strong>: フォルダ整理技術がブックマーク整理に活用できます！</p>
+<h4 id="2-5"><strong>2-5: ブックマークの基本操作</strong></h4>
+<h3 id="_17">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image09_bookmark_dialog.html">ブックマークダイアログ</a></h3>
+<p><strong>ブックマークの追加方法</strong>:
+- <strong>星マーク（★）</strong>をクリック
+- <strong>Ctrl + D</strong>（Week 0.1のショートカット発展！）</p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: よく使うサイトをブックマークに保存する</p>
+<p><strong>手順</strong>:
+1. <strong>google.com</strong>にアクセス
+2. <strong>星マーク</strong>をクリックまたは<strong>Ctrl + D</strong>
+3. 「名前」を<strong>「Google検索」</strong>に変更
+4. <strong>「保存」</strong>をクリック</p>
+<h3 id="_18">📘​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image10_bookmark_added.html">ブックマーク追加完了の図</a></h3>
+<p>&lt;details&gt;
+&lt;summary&gt;💡 ヒント: ブックマークの名前付け&lt;/summary&gt;</p>
+<p><strong>分かりやすい名前の付け方</strong>:
+- ❌ 悪い例: 「ホーム | Google」（長くて分かりにくい）
+- ✅ 良い例: 「Google検索」（短くて目的が明確）</p>
+<p><strong>カテゴリ別の名前例</strong>:
+- <strong>学習系</strong>: 「プログラミング学習サイト」「Java入門」
+- <strong>ツール系</strong>: 「オンライン辞書」「翻訳ツール」
+- <strong>情報系</strong>: 「IT最新ニュース」「技術ブログ」</p>
+<p>&lt;/details&gt;</p>
+<h4 id="2-6"><strong>2-6: ブックマークの整理・管理</strong></h4>
+<p>💭 <strong>Week 0.2の技術活用</strong>: フォルダ設計思考をブックマーク整理に応用！</p>
+<p><strong>ブックマークもフォルダで整理</strong>できます。</p>
+<p><strong>ブックマーク管理画面の開き方</strong>:
+- <strong>Ctrl + Shift + O</strong>
+- または<strong>メニュー</strong> → <strong>ブックマーク</strong> → <strong>ブックマークマネージャー</strong></p>
+<h3 id="_19">📘​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image11_bookmark_manager.html">ブックマークマネージャ図</a></h3>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: 学習用ブックマークフォルダを作成する</p>
+<p><strong>手順</strong>:
+1. <strong>ブックマークマネージャー</strong>を開く
+2. <strong>「新しいフォルダ」</strong>をクリック
+3. フォルダ名を<strong>「プログラミング学習」</strong>に設定
+4. 学習に役立ちそうなサイトをブックマークしてフォルダに整理</p>
+<p>&lt;details&gt;
+&lt;summary&gt;💡 ヒント: 効果的なブックマーク整理方法&lt;/summary&gt;</p>
+<p><strong>Week 0.2のフォルダ設計思考を活用</strong>:</p>
+<div class="highlight"><pre><span></span><code>📁 学習関連
+  ├── 📁 プログラミング学習
+  │   ├── Java入門サイト
+  │   ├── プログラミング練習サイト
+  │   └── 技術ブログ
+  ├── 📁 参考資料
+  │   ├── オンライン辞書
+  │   ├── 翻訳ツール
+  │   └── Wikipedia
+  └── 📁 情報収集
+      ├── IT最新ニュース
+      ├── 技術情報サイト
+      └── 学習コミュニティ
+</code></pre></div>
+<p><strong>整理のコツ</strong>:
+- <strong>目的別</strong>にフォルダ分け
+- <strong>頻度順</strong>に並べ替え
+- <strong>定期的な見直し</strong>（使わないブックマークは削除）</p>
+<p>&lt;/details&gt;</p>
+<hr />
+<h2 id="3">📚 セクション3: 情報を上手に検索しよう</h2>
+<h3 id="_20">🔍 検索エンジンの基本</h3>
+<p><strong>検索エンジン</strong>は、インターネット上の膨大な情報から、あなたが欲しい情報を見つけてくれるサービスです。</p>
+<h4 id="3-1-google"><strong>3-1: Google検索の基本操作</strong></h4>
+<p><strong>Google</strong>は世界最大の検索エンジンです。</p>
+<h3 id="google">📘​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image12_google_search.html">Google検索画面</a></h3>
+<p><strong>基本的な検索の流れ</strong>:
+1. <strong>google.com</strong>にアクセス
+2. <strong>検索ボックス</strong>にキーワードを入力
+3. <strong>Enterキー</strong>を押すまたは<strong>検索ボタン</strong>をクリック
+4. <strong>検索結果</strong>を確認・評価</p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: 効果的なキーワード検索をマスターする</p>
+<p><strong>練習1: 基本検索</strong>
+- <strong>キーワード</strong>: 「プログラミング 初心者」
+- <strong>結果</strong>: どのような情報が出てきましたか？</p>
+<p><strong>練習2: 具体的検索</strong><br />
+- <strong>キーワード</strong>: 「Java プログラミング 学習方法」
+- <strong>結果</strong>: より具体的な情報が見つかりましたか？</p>
+<p>&lt;details&gt;
+&lt;summary&gt;💡 ヒント: 効果的な検索キーワードの選び方&lt;/summary&gt;</p>
+<p><strong>良いキーワードの特徴</strong>:
+- <strong>具体的</strong>: 「プログラミング」より「Java プログラミング 初心者」
+- <strong>複数語</strong>: 1語より2-3語の組み合わせが効果的
+- <strong>目的明確</strong>: 「学習方法」「手順」「やり方」など目的を含める</p>
+<p><strong>キーワード選択の例</strong>:
+- ❌ 悪い例: 「コンピュータ」（あいまいすぎる）
+- ✅ 良い例: 「プログラミング 学習 初心者 おすすめ」（具体的で明確）</p>
+<p>&lt;/details&gt;</p>
+<h4 id="3-2"><strong>3-2: 検索結果の読み方・評価方法</strong></h4>
+<p><strong>検索結果</strong>には、様々な情報が混在しています。<strong>信頼できる情報を見分ける</strong>ことが重要です。</p>
+<h3 id="_21">📘​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image13_search_results.html">検索結果画面</a></h3>
+<p><strong>検索結果の構成</strong>:
+- <strong>タイトル</strong> → ページの題名
+- <strong>URL（アドレス）</strong> → サイトの場所<br />
+- <strong>説明文（スニペット）</strong> → ページ内容の要約
+- <strong>公開日</strong> → 情報の新しさ</p>
+<p><strong>信頼できるサイトの特徴</strong>:
+✅ <strong>公式サイト</strong> → 企業・組織の正式サイト<br />
+✅ <strong>教育機関</strong> → 大学・学校のサイト（.ac.jp, .eduなど）<br />
+✅ <strong>政府機関</strong> → 官公庁のサイト（.go.jpなど）<br />
+✅ <strong>専門サイト</strong> → その分野の専門的なサイト<br />
+✅ <strong>最新情報</strong> → 公開日が新しい情報</p>
+<p><strong>注意が必要なサイト</strong>:
+⚠️ <strong>個人ブログ</strong> → 情報の正確性を他の情報源で確認<br />
+⚠️ <strong>古い情報</strong> → 技術情報は特に最新性が重要<br />
+⚠️ <strong>広告サイト</strong> → 商品販売が目的の情報<br />
+⚠️ <strong>匿名情報</strong> → 出典・作成者が不明な情報</p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: 信頼できる情報源を見分ける練習</p>
+<p><strong>手順</strong>:
+1. <strong>「プログラミング 学習 初心者」</strong>で検索
+2. <strong>上位5つの検索結果</strong>を確認
+3. 各サイトについて以下を判断：
+   - このサイトは信頼できるか？
+   - 情報は新しいか？
+   - 初心者向けの内容か？
+4. <strong>最も参考になりそうなサイト</strong>を選ぶ</p>
+<h4 id="3-3"><strong>3-3: 検索技術の向上</strong></h4>
+<p><strong>より効果的な検索</strong>のためのテクニックを学びましょう。</p>
+<p><strong>高度な検索テクニック</strong>:</p>
+<p><strong>1. 複数キーワード検索</strong>
+- <strong>「Java 学習 方法 初心者」</strong> → 4つのキーワードで絞り込み</p>
+<p><strong>2. 除外検索（-を使用）</strong>
+- <strong>「プログラミング学習 -高額」</strong> → 高額なスクール情報を除外</p>
+<p><strong>3. 期間指定検索</strong>
+- <strong>検索ツール</strong> → <strong>期間指定</strong> → <strong>1年以内</strong></p>
+<h3 id="_22">📘​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image14_advanced_search.html">詳細検索画面</a></h3>
+<p><strong>4. サイト内検索</strong>
+- <strong>「Java基礎 site:wikipedia.org」</strong> → Wikipedia内でのみ検索</p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: 高度な検索テクニックを体験する</p>
+<p><strong>練習1: 除外検索</strong>
+- <strong>「プログラミング学習 -スクール」</strong>で検索
+- スクール情報以外の学習方法が見つかりますか？</p>
+<p><strong>練習2: 期間指定検索</strong>
+- <strong>「JavaScript 最新動向」</strong>で検索
+- <strong>検索ツール</strong> → <strong>1年以内</strong>で絞り込み
+- 最新の技術情報が見つかりますか？</p>
+<p>&lt;details&gt;
+&lt;summary&gt;💡 ヒント: 検索のコツと注意点&lt;/summary&gt;</p>
+<p><strong>効率的な検索のコツ</strong>:
+1. <strong>最初は広く</strong>、徐々に<strong>具体的に</strong>
+2. <strong>複数の検索結果を比較</strong>（1つだけで判断しない）
+3. <strong>異なる表現</strong>で複数回検索（「学習方法」「勉強法」「習得手順」など）
+4. <strong>画像検索・動画検索</strong>も活用</p>
+<p><strong>注意点</strong>:
+- <strong>検索結果の上位 = 正しい</strong>とは限らない
+- <strong>複数の情報源</strong>で内容を確認
+- <strong>情報の日付</strong>を必ずチェック
+- <strong>情報提供者の信頼性</strong>を確認</p>
+<p>&lt;/details&gt;</p>
+<hr />
+<h2 id="4">📚 セクション4: 安全で効率的な活用法</h2>
+<h3 id="_23">🛡️ インターネットセキュリティの基本</h3>
+<p>インターネットは便利ですが、<strong>安全に使う知識</strong>が必要です。</p>
+<h4 id="4-1"><strong>4-1: 安全なサイトと危険なサイトの見分け方</strong></h4>
+<p><strong>安全なサイトの特徴</strong>を覚えましょう。</p>
+<h3 id="_24">📘​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image15_security_check.html">セキュリティチェックの図</a></h3>
+<p><strong>URLで安全性を確認</strong>:
+✅ <strong>「https://」で始まる</strong> → 暗号化された安全な通信<br />
+⚠️ <strong>「http://」（sなし）</strong> → 暗号化されていない通信</p>
+<p><strong>ブラウザの安全表示</strong>:
+✅ <strong>鍵マーク（🔒）</strong> → 安全な接続<br />
+⚠️ <strong>警告マーク（⚠️）</strong> → 安全でない可能性<br />
+❌ <strong>「安全でない」表示</strong> → アクセス注意</p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: サイトの安全性を確認する習慣を身につける</p>
+<p><strong>手順</strong>:
+1. <strong>google.com</strong>にアクセス
+2. <strong>アドレスバーの左側</strong>を確認 → 鍵マーク（🔒）があるか？
+3. <strong>鍵マークをクリック</strong> → 接続情報を確認
+4. 他のサイト（Amazon、Wikipedia等）でも同様に確認</p>
+<h3 id="_25">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_security_details_info.html">セキュリティの基本情報</a></h3>
+<h4 id="4-2"><strong>4-2: 個人情報保護の基本原則</strong></h4>
+<p><strong>個人情報</strong>は大切に守る必要があります。</p>
+<p><strong>保護すべき個人情報</strong>:
+- <strong>名前・住所・電話番号</strong>
+- <strong>メールアドレス</strong>
+- <strong>パスワード</strong>
+- <strong>クレジットカード情報</strong>
+- <strong>マイナンバー</strong></p>
+<p><strong>基本的な保護原則</strong>:
+1. <strong>必要でない限り入力しない</strong>
+2. <strong>信頼できるサイトでのみ入力</strong>
+3. <strong>パスワードは複雑なものを使用</strong>
+4. <strong>同じパスワードを複数サイトで使い回さない</strong></p>
+<p><strong>危険なサイトの特徴（回避すべき）</strong>:
+❌ <strong>「個人情報を入力してください」という突然の表示</strong><br />
+❌ <strong>「おめでとうございます！賞金が当たりました！」などの怪しい表示</strong><br />
+❌ <strong>SSL証明書（鍵マーク）がないサイトでの個人情報入力</strong><br />
+❌ <strong>日本語が不自然なサイト</strong></p>
+<h4 id="4-3"><strong>4-3: パスワード管理の基本</strong></h4>
+<p><strong>強力なパスワード</strong>の作り方と管理方法を学びましょう。</p>
+<p><strong>良いパスワードの特徴</strong>:
+✅ <strong>8文字以上</strong> → 長いほど安全<br />
+✅ <strong>大文字・小文字・数字・記号の組み合わせ</strong><br />
+✅ <strong>辞書にない文字列</strong> → 予測されにくい<br />
+✅ <strong>サイトごとに異なる</strong> → 使い回しを避ける</p>
+<p><strong>悪いパスワードの例</strong>:
+❌ <strong>「12345678」</strong> → 単純すぎる<br />
+❌ <strong>「password」</strong> → よく使われる文字列<br />
+❌ <strong>「tanaka123」</strong> → 名前+数字（予測されやすい）<br />
+❌ <strong>「qwertyui」</strong> → キーボード配列</p>
+<p><strong>パスワード作成のコツ</strong>:
+💡 <strong>「好きな文章の頭文字 + 数字 + 記号」方式</strong></p>
+<p>例：「私は毎日プログラミングを勉強している2025年」
+→ <strong>「WmppWbS2025!」</strong>（Watashi mainichi programming wo benkyou Shiteiru 2025!）</p>
+<p>&lt;details&gt;
+&lt;summary&gt;💡 ヒント: パスワード管理の実用的な方法&lt;/summary&gt;</p>
+<p><strong>初心者におすすめのパスワード管理方法</strong>:</p>
+<p><strong>1. 段階的アプローチ</strong>
+- <strong>重要なサイト</strong>（銀行、メール等）→ 最強パスワード
+- <strong>普通のサイト</strong>（学習サイト等）→ 中程度パスワード
+- <strong>あまり重要でないサイト</strong>→ 簡単なパスワード</p>
+<p><strong>2. 基本パターン + サイト名方式</strong>
+- 基本パターン：<strong>「MyBase123!」</strong>
+- Google用：<strong>「MyBase123!Go」</strong>（Googleの略）
+- Amazon用：<strong>「MyBase123!Am」</strong>（Amazonの略）</p>
+<p><strong>3. 覚え方のコツ</strong>
+- <strong>紙に書いて安全な場所に保管</strong>（デジタルより安全な場合も）
+- <strong>使用頻度の高いパスワードから覚える</strong>
+- <strong>定期的な見直し</strong>（3-6ヶ月に一度）</p>
+<p>&lt;/details&gt;</p>
+<h3 id="_26">💾 ダウンロードとファイル管理</h3>
+<p>💭 <strong>Week 0.2の技術活用</strong>: ファイル・フォルダ操作技術の実践的活用！</p>
+<h4 id="4-4"><strong>4-4: ファイルダウンロードの基本</strong></h4>
+<p><strong>ダウンロード</strong>は、インターネット上のファイルをあなたのパソコンに保存することです。</p>
+<p><strong>ダウンロードの仕組み</strong>:
+インターネット（ウェブサイト）→ あなたのパソコン（ダウンロードフォルダ）</p>
+<h3 id="_27">📘​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/PCBasic_3_week03_image17_download_concept.html">ダウンロード概念図</a></h3>
+<p><strong>安全なダウンロードの原則</strong>:
+✅ <strong>信頼できるサイトからのみダウンロード</strong><br />
+✅ <strong>ファイルの種類を確認</strong>（.txt、.pdf、.jpgなど）<br />
+✅ <strong>ダウンロード前にファイルサイズを確認</strong><br />
+✅ <strong>不明なファイル形式は避ける</strong></p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: 安全にファイルをダウンロードして管理する</p>
+<p><strong>手順</strong>:
+1. <strong>Wikipedia</strong>にアクセス
+2. <strong>「プログラミング」</strong>で検索
+3. ページ内の<strong>画像を右クリック</strong>
+4. <strong>「画像を保存」</strong>を選択
+5. <strong>保存場所を確認</strong> → <strong>Week 0.2の技術活用！</strong></p>
+<p>&lt;details&gt;
+&lt;summary&gt;💡 ヒント: ダウンロードフォルダの確認方法&lt;/summary&gt;</p>
+<p><strong>ダウンロードフォルダの場所</strong>:
+- <strong>通常の場所</strong>: <code>C:\Users\[ユーザー名]\Downloads</code>
+- <strong>エクスプローラー</strong>で「ダウンロード」フォルダをクリック</p>
+<p><strong>Week 0.2の技術活用</strong>:
+- <strong>フォルダ作成</strong> → 種類別にダウンロードファイルを整理
+- <strong>ファイル移動</strong> → 適切なフォルダに移動
+- <strong>ファイル名変更</strong> → 分かりやすい名前に変更</p>
+<p>&lt;/details&gt;</p>
+<h4 id="4-5"><strong>4-5: ダウンロードファイルの整理</strong></h4>
+<p>💭 <strong>Week 0.2のフォルダ設計思考を活用！</strong></p>
+<p><strong>ダウンロードファイルの体系的管理</strong></p>
+<p><strong>推奨フォルダ構造</strong>:
+<div class="highlight"><pre><span></span><code>📁 ダウンロード
+├── 📁 学習資料
+│   ├── 📁 プログラミング
+│   ├── 📁 参考書
+│   └── 📁 練習問題
+├── 📁 画像・写真
+├── 📁 文書・資料
+└── 📁 一時ファイル
+</code></pre></div></p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: 学習資料管理システムを構築する</p>
+<p><strong>手順</strong>:
+1. <strong>ダウンロードフォルダ</strong>を開く
+2. <strong>新しいフォルダ</strong>を作成： <strong>「学習資料」</strong>
+3. <strong>学習資料フォルダ内</strong>に<strong>「プログラミング」</strong>フォルダを作成
+4. さきほどダウンロードした画像を<strong>「プログラミング」フォルダに移動</strong></p>
+<p><strong>Week 0.2技術の復習</strong>:
+- <strong>フォルダ作成</strong> → 右クリック → 新規作成 → フォルダ
+- <strong>ファイル移動</strong> → ドラッグANDドロップまたはCut(Ctrl+X) → Paste(Ctrl+V)
+- <strong>ファイル名変更</strong> → F2キーまたは右クリック → 名前の変更</p>
+<hr />
+<h2 id="5">📚 セクション5: 学習環境の完成</h2>
+<h3 id="_28">🎯 プログラミング学習への準備</h3>
+<p>Week 1以降のプログラミング学習に必要な<strong>情報収集・管理システム</strong>を構築しましょう。</p>
+<h4 id="5-1"><strong>5-1: 学習リソース管理システム</strong></h4>
+<p><strong>ブックマーク</strong>と<strong>フォルダ</strong>を組み合わせた効率的な学習環境を作ります。</p>
+<p>💭 <strong>Week 0.1・0.2の技術統合</strong>: 全ての技術を組み合わせた実践的活用！</p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: プログラミング学習に最適化されたリソース管理システムの構築</p>
+<p><strong>ステップ1: ブックマーク整理システム</strong></p>
+<p><strong>推奨ブックマーク構造</strong>:
+<div class="highlight"><pre><span></span><code>📁 プログラミング学習
+├── 📁 基礎学習
+│   ├── Java入門サイト
+│   ├── プログラミング基礎概念
+│   └── 初心者向け解説サイト
+├── 📁 実践・練習
+│   ├── コーディング練習サイト
+│   ├── 問題集・演習
+│   └── プロジェクト例
+├── 📁 参考・辞書
+│   ├── プログラミング用語辞典
+│   ├── Java API リファレンス
+│   └── エラー対処法集
+└── 📁 コミュニティ・情報
+    ├── プログラマー向けフォーラム
+    ├── 技術ブログ
+    └── 最新技術情報
+</code></pre></div></p>
+<p><strong>手順</strong>:
+1. <strong>ブックマークマネージャー</strong>を開く（Ctrl + Shift + O）
+2. <strong>「プログラミング学習」</strong>フォルダを作成
+3. <strong>サブフォルダ</strong>を作成（基礎学習、実践・練習、参考・辞書、コミュニティ・情報）
+4. 以下のサイトを検索してブックマーク登録</p>
+<p><strong>登録推奨サイト</strong>:
+- <strong>「Java 入門」</strong>で検索 → 信頼できるサイトを「基礎学習」フォルダに
+- <strong>「プログラミング 練習問題」</strong>で検索 → 練習サイトを「実践・練習」フォルダに
+- <strong>「プログラミング 用語集」</strong>で検索 → 辞書サイトを「参考・辞書」フォルダに</p>
+<p><strong>ステップ2: ファイル管理システム</strong></p>
+<p>💭 <strong>Week 0.2の技術発展</strong>: フォルダ設計を学習資料管理に特化</p>
+<p><strong>推奨ファイル管理構造</strong>:
+<div class="highlight"><pre><span></span><code>📁 プログラミング学習
+├── 📁 Week1_基礎
+│   ├── 📁 参考資料
+│   ├── 📁 練習コード
+│   └── 📁 メモ・まとめ
+├── 📁 参考書籍・PDF
+├── 📁 画像・図解資料
+└── 📁 プロジェクト作品
+</code></pre></div></p>
+<p><strong>手順</strong>:
+1. <strong>ドキュメントフォルダ</strong>に<strong>「プログラミング学習」</strong>フォルダを作成
+2. <strong>Week1_基礎</strong>フォルダを作成
+3. <strong>サブフォルダ</strong>を作成（参考資料、練習コード、メモ・まとめ）</p>
+<p><strong>ステップ3: 効率的な情報収集ワークフロー</strong></p>
+<p><strong>日常の学習フロー</strong>:
+1. <strong>新しい概念</strong>に出会う
+2. <strong>ブックマーク済みサイト</strong>で調べる
+3. <strong>参考資料をダウンロード</strong> → 適切なフォルダに保存
+4. <strong>学習メモを作成</strong> → テキストファイルで保存
+5. <strong>ブックマークに新しい情報源を追加</strong></p>
+<h4 id="5-2"><strong>5-2: 情報収集・問題解決の技術</strong></h4>
+<p><strong>プログラミング学習で必要な検索スキル</strong>を身につけましょう。</p>
+<p><strong>プログラミング学習に特化した検索テクニック</strong>:</p>
+<p><strong>1. エラーメッセージ検索</strong>
+- エラーメッセージをそのまま検索
+- <strong>「Java エラーメッセージ 解決方法」</strong></p>
+<p><strong>2. 技術的な概念検索</strong>
+- <strong>「Java 変数 初心者向け 説明」</strong>
+- <strong>「プログラミング 基礎概念 図解」</strong></p>
+<p><strong>3. 実用的な例・サンプル検索</strong>
+- <strong>「Java サンプルコード 初心者」</strong>
+- <strong>「プログラミング 練習問題 解答」</strong></p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: プログラミング学習に特化した情報収集技術の習得</p>
+<p><strong>練習1: 基礎概念の理解</strong>
+- <strong>「プログラミング 変数とは 分かりやすい説明」</strong>で検索
+- <strong>3つ以上の説明サイト</strong>を比較
+- <strong>最も理解しやすい説明</strong>をブックマーク</p>
+<p><strong>練習2: 実践例の収集</strong>
+- <strong>「Java Hello World プログラム 例」</strong>で検索
+- <strong>コードの書き方</strong>を確認
+- <strong>参考になる情報</strong>をブックマーク</p>
+<p><strong>練習3: 問題解決方法</strong>
+- <strong>「プログラミング 学習方法 効率的」</strong>で検索
+- <strong>複数の学習アプローチ</strong>を比較
+- <strong>自分に合いそうな方法</strong>をメモ</p>
+<h4 id="5-3"><strong>5-3: 学習継続のための環境作り</strong></h4>
+<p><strong>習慣化</strong>と<strong>モチベーション維持</strong>の仕組みを作りましょう。</p>
+<p><strong>学習継続のための仕組み</strong>:</p>
+<p><strong>1. 学習記録システム</strong>
+- <strong>テキストファイル</strong>で学習日記を作成
+- <strong>日付 + 学習内容 + 理解度 + 次回の目標</strong></p>
+<p><strong>2. 参考資料収集の習慣化</strong>
+- <strong>毎日1つ以上</strong>の新しい情報源をブックマーク
+- <strong>週1回</strong>のブックマーク整理タイム</p>
+<p><strong>3. 質問・疑問の管理</strong>
+- <strong>「疑問リスト」</strong>テキストファイルを作成
+- わからないことを記録し、検索で解決</p>
+<p><strong>実践してみましょう</strong>:</p>
+<p>🎯 <strong>目標</strong>: 継続学習支援システムの構築</p>
+<p><strong>手順</strong>:
+1. <strong>「プログラミング学習」フォルダ</strong>に<strong>「学習記録.txt」</strong>ファイルを作成
+2. 以下の形式で今日の学習を記録：</p>
+<div class="highlight"><pre><span></span><code>【2025年[学習実施日]】
+■ 学習内容：
+- インターネット・ブラウザ活用の基本操作
+- 検索技術とブックマーク管理
+- ファイル管理システムの構築
+
+■ 理解度：
+- ブラウザ基本操作：★★★★★ (完璧)
+- 検索テクニック：★★★★☆ (ほぼ理解)
+- セキュリティ基礎：★★★☆☆ (復習が必要)
+
+■ 次回の目標：
+- Week 1のプログラミング学習開始
+- 構築したリソース管理システムの活用
+- 継続的な情報収集の実践
+
+■ メモ：
+- ブックマーク整理が思った以上に重要だと実感
+- 検索技術は練習あるのみ
+- セキュリティ意識を持ち続けることが大切
+</code></pre></div>
+<p>&lt;details&gt;
+&lt;summary&gt;💡 ヒント: 学習継続のコツ&lt;/summary&gt;</p>
+<p><strong>習慣化の秘訣</strong>:
+- <strong>小さく始める</strong>: 毎日5分でも継続
+- <strong>記録する</strong>: 成長が実感できるように
+- <strong>環境を整える</strong>: 学習しやすい環境作り
+- <strong>他者との共有</strong>: 学習仲間を見つける</p>
+<p><strong>モチベーション維持の方法</strong>:
+- <strong>進歩の可視化</strong>: 学習記録でスキルの成長を実感
+- <strong>小さな成功の積み重ね</strong>: 毎日できることを達成
+- <strong>実用性の実感</strong>: 学んだスキルが実際に役立つ体験
+- <strong>次のステップへの期待</strong>: Week 1への楽しみを持つ</p>
+<p>&lt;/details&gt;</p>
+<hr />
+<h2 id="_29">🎓 まとめ：インターネット・ブラウザ活用マスター達成！</h2>
+<h3 id="_30">✅ 習得した技術・知識</h3>
+<h4 id="1_2"><strong>セクション1で習得したこと</strong></h4>
+<ul>
+<li>✅ <strong>インターネットの基本概念</strong>: 世界規模の情報ネットワークの理解</li>
+<li>✅ <strong>ブラウザの役割と仕組み</strong>: インターネット閲覧の基本ツール</li>
+<li>✅ <strong>URL構造の理解</strong>: ウェブサイトのアドレス体系</li>
+<li>✅ <strong>セキュリティ意識の基礎</strong>: 安全なインターネット利用の第一歩</li>
+</ul>
+<h4 id="2_2"><strong>セクション2で習得したこと</strong></h4>
+<ul>
+<li>✅ <strong>ブラウザ基本操作の完全習得</strong>: アドレスバー、ナビゲーション、更新</li>
+<li>✅ <strong>タブ機能の効率的活用</strong>: 複数サイト同時閲覧と効率的な切り替え</li>
+<li>✅ <strong>右クリックメニューの活用</strong>: Week 0.1技術の発展的応用</li>
+<li>✅ <strong>ブックマーク管理システム</strong>: Week 0.2フォルダ設計思考の実践</li>
+</ul>
+<h4 id="3_1"><strong>セクション3で習得したこと</strong></h4>
+<ul>
+<li>✅ <strong>Google検索の基本技術</strong>: 効果的なキーワード選択と検索手法</li>
+<li>✅ <strong>検索結果の評価・選別</strong>: 信頼できる情報源の見分け方</li>
+<li>✅ <strong>高度な検索テクニック</strong>: 除外検索、期間指定、サイト内検索</li>
+<li>✅ <strong>情報収集ワークフローの確立</strong>: 効率的な調べ物の進め方</li>
+</ul>
+<h4 id="4_1"><strong>セクション4で習得したこと</strong></h4>
+<ul>
+<li>✅ <strong>インターネットセキュリティ基礎</strong>: 安全なサイトと危険なサイトの判別</li>
+<li>✅ <strong>個人情報保護の実践</strong>: 大切な情報を守る具体的方法</li>
+<li>✅ <strong>パスワード管理技術</strong>: 強力で管理しやすいパスワードの作成・運用</li>
+<li>✅ <strong>安全なファイルダウンロード</strong>: Week 0.2技術と組み合わせた実践管理</li>
+</ul>
+<h4 id="5_1"><strong>セクション5で習得したこと</strong></h4>
+<ul>
+<li>✅ <strong>学習リソース管理システム</strong>: ブックマークとフォルダの統合活用</li>
+<li>✅ <strong>プログラミング学習特化の情報収集技術</strong>: 技術的な問題解決のための検索スキル</li>
+<li>✅ <strong>継続学習支援環境の構築</strong>: 習慣化とモチベーション維持の仕組み</li>
+<li>✅ <strong>Week 1への完全準備</strong>: プログラミング学習に必要な情報基盤</li>
+</ul>
+<h3 id="week-010203">🌟 Week 0.1・0.2・0.3の技術統合達成</h3>
+<p><strong>あなたは今、以下の技術を統合的に活用できます</strong>:</p>
+<h4 id="_31"><strong>統合技術スタック</strong></h4>
+<ul>
+<li><strong>Week 0.1（PC基本操作）</strong> + <strong>Week 0.2（ファイル管理）</strong> + <strong>Week 0.3（インターネット活用）</strong></li>
+<li>= <strong>デジタル環境での自立的な学習・問題解決能力</strong></li>
+</ul>
+<h4 id="_32"><strong>実践的な成果物</strong></h4>
+<ul>
+<li>✅ <strong>体系化されたブックマーク管理システム</strong></li>
+<li>✅ <strong>学習資料の効率的ファイル管理構造</strong></li>
+<li>✅ <strong>情報収集・問題解決のワークフロー</strong></li>
+<li>✅ <strong>セキュリティ意識に基づいた安全な活動習慣</strong></li>
+<li>✅ <strong>継続学習を支援する環境とシステム</strong></li>
+</ul>
+<h3 id="_33">🎯 成果の確認：スキルチェックリスト</h3>
+<p>以下の項目について、自己評価してみてください：</p>
+<h4 id="5_2"><strong>基本操作（5点満点）</strong></h4>
+<ul>
+<li>[ ] ブラウザを起動し、アドレスバーでウェブサイトにアクセスできる</li>
+<li>[ ] タブを使って複数のサイトを効率的に閲覧できる</li>
+<li>[ ] 戻る・進む・更新の操作を適切に使い分けできる</li>
+<li>[ ] 右クリックメニューを活用して効率的にリンクを開ける</li>
+<li>[ ] ブラウザのショートカットキーを使って操作を効率化できる</li>
+</ul>
+<h4 id="5_3"><strong>情報検索・管理（5点満点）</strong></h4>
+<ul>
+<li>[ ] 効果的なキーワードでGoogle検索を行える</li>
+<li>[ ] 検索結果から信頼できる情報源を判別できる</li>
+<li>[ ] 高度な検索テクニック（除外検索、期間指定等）を使える</li>
+<li>[ ] ブックマークを体系的に整理・管理できる</li>
+<li>[ ] 学習に必要な情報を効率的に収集できる</li>
+</ul>
+<h4 id="5_4"><strong>セキュリティ・安全性（5点満点）</strong></h4>
+<ul>
+<li>[ ] 安全なサイト（https）と危険なサイトを区別できる</li>
+<li>[ ] 個人情報を適切に保護する判断ができる</li>
+<li>[ ] 強力で管理しやすいパスワードを作成できる</li>
+<li>[ ] 安全なファイルダウンロードを実行できる</li>
+<li>[ ] セキュリティリスクを意識したインターネット活用ができる</li>
+</ul>
+<h4 id="5_5"><strong>学習環境構築（5点満点）</strong></h4>
+<ul>
+<li>[ ] プログラミング学習に特化したブックマーク構造を構築できている</li>
+<li>[ ] ダウンロード資料を体系的にファイル管理できている</li>
+<li>[ ] 学習記録・進捗管理のシステムを活用できている</li>
+<li>[ ] 技術的問題の解決のための検索を効果的に行える</li>
+<li>[ ] Week 1のプログラミング学習への準備が完了している</li>
+</ul>
+<p><strong>合計点数</strong>：_____ / 20点</p>
+<ul>
+<li><strong>18-20点</strong>: 完璧！すべてのスキルを習得し、Week 1への準備が完了しています</li>
+<li><strong>15-17点</strong>: 優秀！ほとんどのスキルを習得、苦手分野を少し復習しましょう</li>
+<li><strong>12-14点</strong>: 良好！基本技術は習得済み、応用技術の練習を継続しましょう</li>
+<li><strong>9-11点</strong>: 基礎は身についています。セクション4-5を重点的に復習しましょう</li>
+<li><strong>8点以下</strong>: もう一度全体を復習し、実践練習を増やしましょう</li>
+</ul>
+<h3 id="week-1">🚀 Week 1「プログラミング基礎」への準備完了！</h3>
+<h4 id="week-1-week-03"><strong>Week 1で活用する Week 0.3 の技術</strong></h4>
+<ul>
+<li><strong>情報収集技術</strong> → プログラミング概念の理解、エラー解決</li>
+<li><strong>リソース管理</strong> → コード例の収集、参考資料の整理</li>
+<li><strong>問題解決フロー</strong> → 技術的トラブルの自己解決</li>
+<li><strong>学習記録システム</strong> → プログラミング学習の進捗管理</li>
+</ul>
+<h4 id="week-0"><strong>Week 0全体での成長の軌跡</strong></h4>
+<div class="highlight"><pre><span></span><code>Week 0.1: PC基本操作への恐怖心 → 自信を持った操作能力
+Week 0.2: ファイル管理への不安 → 体系的な整理・管理技術
+Week 0.3: インターネットへの戸惑い → 効率的な情報活用能力
+</code></pre></div>
+<p><strong>総合結果</strong>: <strong>デジタル環境での自立的な学習・作業能力の確立</strong></p>
+<h3 id="_34">💪 継続学習への動機</h3>
+<h4 id="_35"><strong>実感できる成長</strong></h4>
+<ul>
+<li><strong>Week 0.1開始時</strong>: マウス操作さえ不安だった</li>
+<li><strong>Week 0.3完了時</strong>: インターネットを使って自分で問題解決できる</li>
+</ul>
+<h4 id="week-1_1"><strong>Week 1以降での期待</strong></h4>
+<ul>
+<li>今回構築したリソース管理システムがプログラミング学習で大活躍</li>
+<li>情報収集技術がコーディング問題の解決に直結</li>
+<li>学習記録システムが技術成長の実感をサポート</li>
+</ul>
+<h4 id="_36"><strong>将来への展望</strong></h4>
+<p><strong>Week 0.3完了 = インターネットとプログラミング学習のハイブリッド能力獲得</strong></p>
+<p>今後のプログラミング学習で：
+- <strong>エラーが発生</strong> → 検索技術で解決方法を見つけられる
+- <strong>新しい概念</strong> → 効率的な情報収集で理解を深められる
+- <strong>学習継続</strong> → 構築したシステムが学習をサポート
+- <strong>セキュリティ</strong> → 安全意識を持った開発活動が可能</p>
+<hr />
+<h2 id="week-03">🏆 Week 0.3完了証明書</h2>
+<p><strong>🌟 インターネット・ブラウザ活用 マスター認定 🌟</strong></p>
+<p><strong>認定者</strong>: <strong><em>_</em></strong><strong><em>_</em></strong>__（お名前を記入してください）
+<strong>完了日</strong>: 2025年<strong><em>_月</em></strong>_日
+<strong>認定項目</strong>:
+- ✅ インターネット・ブラウザ基本概念の理解
+- ✅ 効率的なブラウザ操作技術の習得
+- ✅ 高度な情報検索・収集技術の習得
+- ✅ セキュリティ意識に基づいた安全な活用技術の習得
+- ✅ プログラミング学習に特化した情報管理システムの構築</p>
+<p><strong>Week 0.3の学習により、あなたは：</strong>
+インターネットとブラウザを効率的かつ安全に活用し、プログラミング学習に必要な情報収集・管理技術を完全に習得しました。Week 0.1・0.2で身につけた基礎技術と統合することで、デジタル環境での自立的な学習能力を確立しました。</p>
+<p><strong>次のステップ</strong>: Week 1「プログラミング基礎」での更なる成長を期待します！</p>
+<hr />
+<h2 id="_37">📝 おまけ：復習用練習課題</h2>
+<p>時間に余裕がある方、さらなるスキル向上を目指す方向けの練習課題です。</p>
+<h3 id="_38"><strong>基礎レベル</strong></h3>
+<p><strong>課題1: 情報収集の実践</strong>
+- <strong>テーマ</strong>: 「プログラマーの1日」
+- <strong>手順</strong>: 
+  1. 効果的なキーワードで検索
+  2. 信頼できる情報源を3つ以上見つける
+  3. ブックマークに整理
+  4. 学習記録に要点をまとめる</p>
+<p><strong>課題2: ブックマーク整理の高度化</strong>
+- <strong>目標</strong>: 100個以上のブックマークを効率的に管理する構造の設計
+- <strong>考慮点</strong>: カテゴリ分け、優先順位付け、定期見直しのルール</p>
+<h3 id="_39"><strong>応用レベル</strong></h3>
+<p><strong>課題3: 専門分野の情報収集システム構築</strong>
+- <strong>テーマ</strong>: 「Java言語の最新動向」
+- <strong>手順</strong>: 
+  1. 公式サイト、技術ブログ、フォーラムを見つける
+  2. RSS機能やニュースレターを活用した情報収集自動化
+  3. 週次・月次の情報整理ルーティンの確立</p>
+<p><strong>課題4: セキュリティ意識の実践強化</strong>
+- <strong>目標</strong>: 1週間のインターネット活用を完全にセキュリティ意識を持って実行
+- <strong>記録項目</strong>: アクセスしたサイトの安全性評価、パスワード管理の実践、疑わしいサイトの回避記録</p>
+<h3 id="_40"><strong>発展レベル</strong></h3>
+<p><strong>課題5: 学習効率最適化システムの構築</strong>
+- <strong>目標</strong>: Week 1-11のプログラミング学習を支援する完璧な情報基盤の構築
+- <strong>要素</strong>: 
+  - 週別学習リソースのブックマーク構造
+  - プログラミング言語別参考資料管理
+  - エラー解決のためのナレッジベース構築
+  - 学習進捗の可視化システム</p>
+<p><strong>課題6: オリジナル学習支援ツールの企画</strong>
+- <strong>テーマ</strong>: 「自分だけの最適な学習環境」
+- <strong>考慮事項</strong>: 個人の学習スタイル、時間的制約、技術的関心分野
+- <strong>成果物</strong>: 詳細な設計書と実装計画</p>
+<hr />
+<h2 id="_41">🌟 最終メッセージ</h2>
+<p><strong>Week 0.3の学習、本当にお疲れ様でした！</strong></p>
+<p>あなたは今、<strong>インターネット・ブラウザ活用のマスター</strong>です。Week 0.1のPC基本操作、Week 0.2のファイル・フォルダ管理と合わせて、<strong>デジタル環境での完全自立能力</strong>を身につけました。</p>
+<p><strong>これまでの成長を振り返ってみてください</strong>:
+- <strong>Week 0.1開始前</strong>: PC操作への不安や恐怖心
+- <strong>Week 0.3完了時</strong>: インターネットを使って自分で問題解決できる自信</p>
+<p><strong>この変化は本当に素晴らしい成果です！</strong></p>
+<p><strong>Week 1のプログラミング学習では</strong>、今回構築したリソース管理システム、情報収集技術、問題解決フローが必ず役立ちます。技術的な困難に直面しても、あなたには「自分で調べて、理解し、解決する能力」があります。</p>
+<p><strong>プログラミングの世界へようこそ！</strong> あなたの学習の旅は、確実に成功への道を歩んでいます。</p>
+<p>---</content>
+</lesson></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
