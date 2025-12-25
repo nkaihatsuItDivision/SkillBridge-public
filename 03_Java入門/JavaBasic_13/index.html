@@ -1,0 +1,4393 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/logo_tab.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>JavaBasic 13 - SKILBRIDGE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="SKILBRIDGE" class="md-header__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SKILBRIDGE
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              JavaBasic 13
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SKILBRIDGE" class="md-nav__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    SKILBRIDGE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コース一覧
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    コース一覧
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01_PC基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01_PC基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02_Web基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02_Web基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03_Java入門
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03_Java入門
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04_Java基礎固め
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04_Java基礎固め
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05_OOP基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05_OOP基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06_OOP応用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06_OOP応用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07_Git/GitHub基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    07_Git/GitHub基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08_SQL・DB設計
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    08_SQL・DB設計
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09_SpringBoot：表示機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    09_SpringBoot：表示機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10_SpringBoot：登録更新機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10_SpringBoot：登録更新機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11_SpringBoot：検索削除機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11_SpringBoot：検索削除機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12_実務基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    12_実務基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#初級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#初級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#中級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#中級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_15" id="__nav_2_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#上級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#上級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_16" id="__nav_2_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Office全般ツール
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Office全般ツール
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 このレッスンの目標
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 前回までの復習
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. なぜ入力機能が必要なのか？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. なぜ入力機能が必要なのか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現在のプログラムの限界
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        対話型プログラムの魅力
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 対話型プログラムの概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入力機能で実現できること
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-scanner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Scannerクラスの基本概念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Scannerクラスの基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scanner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scannerクラスとは？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        import文の重要性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scanner_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scannerインスタンスの作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#close" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リソース管理（close()の重要性）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-nextline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 文字列入力（nextLine()メソッド）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 文字列入力（nextLine()メソッド）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nextline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nextLine()の基本使用法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nextline_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nextLine()の特徴
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        複数の文字列入力
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-nextintnextdouble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 数値入力（nextInt()とnextDouble()）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 数値入力（nextInt()とnextDouble()）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nextint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nextInt()による整数入力
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nextdouble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nextDouble()による小数入力
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数値入力の注意点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 入力メソッドの使い分けと注意点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 入力メソッドの使い分けと注意点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主要な入力メソッド比較
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 入力手法の比較
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-vs-nextline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        next() vs nextLine()の違い
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nextintnextline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nextInt()とnextLine()の組み合わせ注意
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 基本的なエラー回避テクニック
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 基本的なエラー回避テクニック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hasnextint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hasNextInt()による事前チェック
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hasnextdouble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hasNextDouble()による小数チェック
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全な入力処理のパターン
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 実践課題：美しい対話型プログラムを作ろう
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 実践課題：美しい対話型プログラムを作ろう">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        課題1：対話型自己紹介プログラム
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="課題1：対話型自己紹介プログラム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        まずは自分で考えてみよう！
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        課題2：対話型計算機プログラム
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="課題2：対話型計算機プログラム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        まずは自分で考えてみよう！
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完成例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        さらにチャレンジ！
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 よくある質問
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 よくある質問">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q1-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q1: import文を書く場所は決まっていますか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q2-scannerscanner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q2: Scanner変数の名前は「scanner」でないとダメですか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q3-close" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q3: close()を忘れるとどうなりますか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q4-nextintnextline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q4: nextInt()の後にnextLine()を使うと空文字が返されます
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q5-hasnextint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q5: hasNextInt()はどのような場面で使いますか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 まとめ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 まとめ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技術面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実践面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロフェッショナル意識
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        重要なパターン
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 次回予告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 練習課題
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 練習課題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基礎練習
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        応用練習
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        チャレンジ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>JavaBasic 13</h1>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<p><lesson>
+  <type>text</type>
+  <description>Scannerクラスの基本概念から実用的な入力処理まで段階的に習得し、レッスン12で学んだprintf と組み合わせた美しい対話型プログラムを作成する。import文、リソース管理、入力メソッドの使い分け、基本的なエラー回避テクニックを理解する。</description>
+  <title>13. Scanner の基本（文字列・数値入力の完全マスター）</title>
+  <content># Scanner の基本（文字列・数値入力の完全マスター）</p>
+<h2 id="_1">🎯 このレッスンの目標</h2>
+<p>このレッスンを完了すると、以下ができるようになります：</p>
+<ul>
+<li>Scannerクラスの基本概念とimport文を理解できる</li>
+<li>文字列入力（nextLine()）と数値入力（nextInt(), nextDouble()）を使い分けできる</li>
+<li>入力メソッドの特性と注意点を理解できる</li>
+<li>基本的なエラー回避テクニック（hasNextInt()等）を活用できる</li>
+<li>printf と組み合わせた美しい対話型プログラムを作成できる</li>
+<li>安全で使いやすい入力処理の重要性を理解できる</li>
+</ul>
+<p><strong>学習時間</strong>: 約35-40分</p>
+<hr />
+<h2 id="_2">📚 前回までの復習</h2>
+<p>前回のレッスン12では、<strong>美しい出力技術</strong>を習得しました：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// レッスン12で習得した技術</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">商品名</span><span class="p">:</span><span class="w"> </span><span class="o">%-</span><span class="mi">15</span><span class="n">s</span><span class="w"> </span><span class="n">価格</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="p">,</span><span class="mf">6d</span><span class="n">円</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Java入門書</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="mi">2980</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">商品名</span><span class="p">:</span><span class="w"> </span><span class="o">%-</span><span class="mi">15</span><span class="n">s</span><span class="w"> </span><span class="n">価格</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="p">,</span><span class="mf">6d</span><span class="n">円</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">プログラミング</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="mi">3500</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>商品名: Java入門書       価格:  2,980円
+商品名: プログラミング     価格:  3,500円
+</code></pre></div></p>
+<p>この美しい出力技術により、<strong>プロフェッショナルな品質</strong>の表示ができるようになりました。</p>
+<p>今回は、この出力技術と組み合わせて、<strong>ユーザーからの入力を受け取る</strong>技術を学び、本格的な<strong>対話型プログラム</strong>を作成していきます！</p>
+<h2 id="1">1. なぜ入力機能が必要なのか？</h2>
+<h3 id="_3">現在のプログラムの限界</h3>
+<p>これまで作成してきたプログラムには、一つの大きな制約がありました：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Calculator</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 値がプログラム内で固定されている</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">%</span><span class="n">d</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">%</span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">%</span><span class="n">d</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>問題点：</strong>
+- 計算する数値がプログラムに<strong>固定</strong>されている
+- 別の計算をするには<strong>コードを書き換え</strong>る必要がある
+- ユーザーが<strong>自由に</strong>計算できない</p>
+<h3 id="_4">対話型プログラムの魅力</h3>
+<p><strong>入力機能</strong>があると、こんなプログラムが作れます：</p>
+<div class="highlight"><pre><span></span><code>どのような計算をしますか？
+1つ目の数値を入力してください: 25
+2つ目の数値を入力してください: 13
+
+=== 計算結果 ===
+25 + 13 = 38
+
+ありがとうございました！
+</code></pre></div>
+<h3 id="_5">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/JavaBasicLesson13_interactive_program_concept.html">対話型プログラムの概念</a></h3>
+<p><strong>対話型プログラムの利点：</strong>
+- ユーザーが<strong>自由に</strong>データを入力できる
+- <strong>同じプログラム</strong>で様々なケースに対応
+- <strong>リアルタイム</strong>で結果を確認できる
+- <strong>実用的な</strong>アプリケーションに近づく</p>
+<h3 id="_6">入力機能で実現できること</h3>
+<ul>
+<li><strong>電卓プログラム</strong>: ユーザーが自由に計算</li>
+<li><strong>アンケートシステム</strong>: 質問に回答を入力</li>
+<li><strong>データ管理</strong>: 学生情報の登録・検索</li>
+<li><strong>ゲーム</strong>: プレイヤーの選択を受け取る</li>
+</ul>
+<p>今回は、この<strong>入力機能の基礎</strong>をしっかり身につけましょう！</p>
+<h2 id="2-scanner">2. Scannerクラスの基本概念</h2>
+<h3 id="scanner">Scannerクラスとは？</h3>
+<p><strong>Scanner</strong>は、Javaでユーザーからの入力を受け取るための<strong>クラス</strong>です。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span><span class="w">  </span><span class="c1">// ← Scannerを使うための準備</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">InputExample</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span><span class="w">  </span><span class="c1">// ← 入力を受け取る準備</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">お名前を入力してください</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span><span class="w">  </span><span class="c1">// ← 実際に入力を受け取る</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">こんにちは</span><span class="err">、</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">さん</span><span class="err">！</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">  </span><span class="c1">// ← 使い終わったら閉じる（重要）</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="import">import文の重要性</h3>
+<p>Scannerクラスを使用するには、必ず<strong>import文</strong>が必要です：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span><span class="w">  </span><span class="c1">// ← この行が必須！</span>
+</code></pre></div>
+<p><strong>なぜimport文が必要？</strong>
+- ScannerはJavaの<strong>標準ライブラリ</strong>に含まれている
+- 使用前に「このクラスを使います」と<strong>宣言</strong>する必要がある
+- System.out.printlnは標準で使えるが、Scannerは明示的にimportする</p>
+<p><strong>import文を忘れると：</strong>
+<div class="highlight"><pre><span></span><code><span class="c1">// import文なしでScannerを使用</span>
+<span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span><span class="w">  </span><span class="c1">// ❌ エラー！</span>
+</code></pre></div></p>
+<p><strong>エラーメッセージ：</strong>
+<div class="highlight"><pre><span></span><code>Scanner cannot be resolved to a type
+</code></pre></div></p>
+<h3 id="scanner_1">Scannerインスタンスの作成</h3>
+<div class="highlight"><pre><span></span><code><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>各部分の説明：</strong>
+- <code>Scanner</code>: クラス名（型）
+- <code>scanner</code>: 変数名（好きな名前をつけられる）
+- <code>new Scanner(System.in)</code>: 新しいScannerオブジェクトを作成
+- <code>System.in</code>: 標準入力（キーボードからの入力）を指定</p>
+<h3 id="close">リソース管理（close()の重要性）</h3>
+<div class="highlight"><pre><span></span><code><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">  </span><span class="c1">// ← 必ず最後に実行！</span>
+</code></pre></div>
+<p><strong>なぜclose()が必要？</strong>
+- Scannerは<strong>システムリソース</strong>を使用する
+- 使い終わったら適切に<strong>解放</strong>する必要がある
+- close()を忘れると<strong>メモリリーク</strong>の原因になる</p>
+<p><strong>良い習慣：</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 入力処理</span>
+
+<span class="w">    </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">  </span><span class="c1">// ← main メソッドの最後で必ずclose()</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="3-nextline">3. 文字列入力（nextLine()メソッド）</h2>
+<h3 id="nextline">nextLine()の基本使用法</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StringInput</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">お名前を入力してください</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">お住まいの都道府県を入力してください</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">prefecture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// レッスン12で学んだprintf と組み合わせ</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">===</span><span class="w"> </span><span class="n">ご入力情報</span><span class="w"> </span><span class="o">===%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">お名前</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="n">s</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">都道府県</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="n">s</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">prefecture</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>実行例：</strong>
+<div class="highlight"><pre><span></span><code>お名前を入力してください: 山田太郎
+お住まいの都道府県を入力してください: 東京都
+=== ご入力情報 ===
+お名前: 山田太郎
+都道府県: 東京都
+</code></pre></div></p>
+<h3 id="nextline_1">nextLine()の特徴</h3>
+<p><strong>利点：</strong>
+- <strong>スペースを含む文字列</strong>も入力できる
+- <strong>日本語</strong>も正しく処理される
+- <strong>改行まで</strong>の全ての文字を取得</p>
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">好きな映画を入力してください</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="n">String</span><span class="w"> </span><span class="n">movie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+<span class="c1">// 「スター ウォーズ」のようにスペースを含む入力も可能</span>
+</code></pre></div>
+<p><strong>注意点：</strong>
+- 入力の最後で<strong>Enterキー</strong>を押す必要がある
+- Enterキーが押されるまで<strong>プログラムは待機</strong>する
+- <strong>空文字列</strong>（何も入力せずEnter）も有効な入力</p>
+<h3 id="_7">複数の文字列入力</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MultipleStringInput</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">===</span><span class="w"> </span><span class="n">自己紹介フォーム</span><span class="w"> </span><span class="o">===&amp;</span><span class="n">quot</span><span class="p">;);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">お名前</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">職業</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">趣味</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">hobby</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// 美しい出力でまとめて表示</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">%</span><span class="n">n</span><span class="o">===</span><span class="w"> </span><span class="n">自己紹介</span><span class="w"> </span><span class="o">===%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">お名前</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="n">s</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">職業</span><span class="p">:</span><span class="w">   </span><span class="o">%</span><span class="n">s</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">job</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">趣味</span><span class="p">:</span><span class="w">   </span><span class="o">%</span><span class="n">s</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">hobby</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">よろしくお願いします</span><span class="err">！</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="4-nextintnextdouble">4. 数値入力（nextInt()とnextDouble()）</h2>
+<h3 id="nextint">nextInt()による整数入力</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NumberInput</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">年齢を入力してください</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">身長を入力してください</span><span class="err">（</span><span class="n">cm</span><span class="err">）</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// 入力された数値で計算</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">birth_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2025</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">%</span><span class="n">n</span><span class="o">===</span><span class="w"> </span><span class="n">入力情報</span><span class="w"> </span><span class="o">===%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">年齢</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="n">d歳</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">age</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">身長</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="n">dcm</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">height</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">生まれ年</span><span class="p">:</span><span class="w"> </span><span class="n">約</span><span class="o">%</span><span class="n">d年</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">birth_year</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>実行例：</strong>
+<div class="highlight"><pre><span></span><code>年齢を入力してください: 25
+身長を入力してください（cm）: 170
+
+=== 入力情報 ===
+年齢: 25歳
+身長: 170cm
+生まれ年: 約2000年
+</code></pre></div></p>
+<h3 id="nextdouble">nextDouble()による小数入力</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DoubleInput</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">商品の価格を入力してください</span><span class="err">（</span><span class="n">円</span><span class="err">）</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextDouble</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">消費税率を入力してください</span><span class="err">（</span><span class="n">例</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="err">）</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">taxRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextDouble</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// 税込価格を計算</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">totalPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">taxRate</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">%</span><span class="n">n</span><span class="o">===</span><span class="w"> </span><span class="n">計算結果</span><span class="w"> </span><span class="o">===%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">商品価格</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="p">,</span><span class="mf">.0f</span><span class="n">円</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">price</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">税率</span><span class="p">:</span><span class="w">     </span><span class="o">%</span><span class="mf">.1f</span><span class="o">%%%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">taxRate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">税込価格</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="p">,</span><span class="mf">.0f</span><span class="n">円</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">totalPrice</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>実行例：</strong>
+<div class="highlight"><pre><span></span><code>商品の価格を入力してください（円）: 1980
+消費税率を入力してください（例: 0.1）: 0.1
+
+=== 計算結果 ===
+商品価格: 1,980円
+税率:     10.0%
+税込価格: 2,178円
+</code></pre></div></p>
+<h3 id="_8">数値入力の注意点</h3>
+<p><strong>正しい入力：</strong>
+<div class="highlight"><pre><span></span><code>年齢を入力してください: 25
+</code></pre></div></p>
+<p><strong>間違った入力：</strong>
+<div class="highlight"><pre><span></span><code>年齢を入力してください: 二十五
+</code></pre></div></p>
+<p>間違った形式で入力すると、<strong>InputMismatchException</strong>というエラーが発生します。このエラー対策は次のレッスンで詳しく学習します。</p>
+<h2 id="5">5. 入力メソッドの使い分けと注意点</h2>
+<h3 id="_9">主要な入力メソッド比較</h3>
+<h3 id="_10">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/JavaBasicLesson13_input_methods_comparison.html">入力手法の比較</a></h3>
+<table>
+<thead>
+<tr>
+<th>メソッド</th>
+<th>用途</th>
+<th>特徴</th>
+<th>注意点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nextLine()</code></td>
+<td>文字列入力</td>
+<td>スペース含む、改行まで全て取得</td>
+<td>改行文字も処理対象</td>
+</tr>
+<tr>
+<td><code>next()</code></td>
+<td>単語入力</td>
+<td>スペースで区切られた単語</td>
+<td>スペース以降は無視</td>
+</tr>
+<tr>
+<td><code>nextInt()</code></td>
+<td>整数入力</td>
+<td>int型の数値のみ</td>
+<td>数値以外でエラー</td>
+</tr>
+<tr>
+<td><code>nextDouble()</code></td>
+<td>小数入力</td>
+<td>double型の数値のみ</td>
+<td>数値以外でエラー</td>
+</tr>
+</tbody>
+</table>
+<h3 id="next-vs-nextline">next() vs nextLine()の違い</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NextVsNextLine</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">next</span><span class="p">()</span><span class="n">で入力してください</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">word1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w">  </span><span class="c1">// 最初の単語のみ取得</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">nextLine</span><span class="p">()</span><span class="n">で入力してください</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">line1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span><span class="w">  </span><span class="c1">// 残りの部分＋次の行</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">next</span><span class="p">()</span><span class="n">の結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="n">s</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">word1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">nextLine</span><span class="p">()</span><span class="n">の結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="n">s</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">line1</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>入力例：</strong>
+<div class="highlight"><pre><span></span><code>next()で入力してください: Hello World
+nextLine()で入力してください: 
+next()の結果: &amp;apos;Hello&amp;apos;
+nextLine()の結果: &amp;apos; World&amp;apos;
+</code></pre></div></p>
+<p><strong>ポイント：</strong>
+- <code>next()</code>は最初の<strong>単語</strong>（Hello）のみ取得
+- <code>nextLine()</code>は残りの部分（&quot; World&quot;）を取得
+- 多くの場合、<code>nextLine()</code>の方が使いやすい</p>
+<h3 id="nextintnextline">nextInt()とnextLine()の組み合わせ注意</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MixedInput</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">年齢を入力してください</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// 改行文字が残っている問題の解決</span>
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span><span class="w">  </span><span class="c1">// ← この行が重要！</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">お名前を入力してください</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">年齢</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="n">d歳</span><span class="p">,</span><span class="w"> </span><span class="n">名前</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="n">s</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>なぜscanner.nextLine()が必要？</strong>
+- <code>nextInt()</code>は数値のみを読み取り、<strong>改行文字</strong>は残る
+- その後の<code>nextLine()</code>が残った改行文字を読み取ってしまう
+- 空の<code>nextLine()</code>で改行文字を<strong>消去</strong>する必要がある</p>
+<h2 id="6">6. 基本的なエラー回避テクニック</h2>
+<h3 id="hasnextint">hasNextInt()による事前チェック</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SafeNumberInput</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">整数を入力してください</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">scanner</span><span class="p">.</span><span class="na">hasNextInt</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// 整数が入力された場合</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">入力された数値</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="n">d</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">number</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// 整数以外が入力された場合</span>
+<span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="n">s</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="n">は整数ではありません</span><span class="err">。</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>実行例1（正常な場合）：</strong>
+<div class="highlight"><pre><span></span><code>整数を入力してください: 123
+入力された数値: 123
+</code></pre></div></p>
+<p><strong>実行例2（エラーの場合）：</strong>
+<div class="highlight"><pre><span></span><code>整数を入力してください: abc
+&amp;apos;abc&amp;apos; は整数ではありません。
+</code></pre></div></p>
+<h3 id="hasnextdouble">hasNextDouble()による小数チェック</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SafeDoubleInput</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">価格を入力してください</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">scanner</span><span class="p">.</span><span class="na">hasNextDouble</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextDouble</span><span class="p">();</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">価格</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="p">,</span><span class="mf">.2f</span><span class="n">円</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">price</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="n">s</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="n">は数値ではありません</span><span class="err">。</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_11">安全な入力処理のパターン</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SafeInputPattern</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// 整数入力の安全なパターン</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">年齢を入力してください</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">scanner</span><span class="p">.</span><span class="na">hasNextInt</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">  </span><span class="c1">// 正常入力で終了</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">整数を入力してください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">                </span><span class="n">scanner</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w">  </span><span class="c1">// 不正入力を消去</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">年齢</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="n">d歳で受け付けました</span><span class="err">。</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">age</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>実行例：</strong>
+<div class="highlight"><pre><span></span><code>年齢を入力してください: abc
+整数を入力してください。
+年齢を入力してください: 25歳
+整数を入力してください。
+年齢を入力してください: 25
+年齢: 25歳で受け付けました。
+</code></pre></div></p>
+<h2 id="7">7. 実践課題：美しい対話型プログラムを作ろう</h2>
+<h3 id="1_1">課題1：対話型自己紹介プログラム</h3>
+<p>レッスン12で学んだprintf技術とScannerを組み合わせて、美しい自己紹介プログラムを作成してください。</p>
+<h4 id="_12">まずは自分で考えてみよう！</h4>
+<p><strong>要件：</strong>
+1. 名前、年齢、出身地、趣味をユーザーから入力
+2. printf を使って美しく整列した結果を表示
+3. 適切なタイトルと罫線で見やすく表示</p>
+<p><strong>💡 ヒント1: プログラムの構造</strong>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SelfIntroduction</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// タイトル表示</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">===</span><span class="w"> </span><span class="n">自己紹介プログラム</span><span class="w"> </span><span class="o">===%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+
+<span class="w">        </span><span class="c1">// 入力処理（ここを実装）</span>
+
+<span class="w">        </span><span class="c1">// 美しい結果表示（ここを実装）</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>💡 ヒント2: 入力の取得</strong>
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">お名前</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">年齢</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span><span class="w">  </span><span class="c1">// 改行文字の処理</span>
+
+<span class="c1">// 続きを実装</span>
+</code></pre></div></p>
+<p><strong>💡 ヒント3: 美しい出力</strong>
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">%</span><span class="n">n</span><span class="o">===</span><span class="w"> </span><span class="n">あなたの自己紹介</span><span class="w"> </span><span class="o">===%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">┌─────────────────────────────┐</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="n">名前</span><span class="p">:</span><span class="w"> </span><span class="o">%-</span><span class="mi">20</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="n">年齢</span><span class="p">:</span><span class="w"> </span><span class="o">%-</span><span class="mi">20</span><span class="n">d</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">age</span><span class="p">);</span>
+<span class="c1">// 続きを実装</span>
+</code></pre></div></p>
+<p><strong>🎯 期待される実行結果：</strong>
+<div class="highlight"><pre><span></span><code>=== 自己紹介プログラム ===
+お名前: 山田太郎
+年齢: 25
+出身地: 東京都
+趣味: プログラミング
+
+=== あなたの自己紹介 ===
+┌─────────────────────────────┐
+│ 名前: 山田太郎              │
+│ 年齢: 25                   │
+│ 出身地: 東京都              │
+│ 趣味: プログラミング        │
+└─────────────────────────────┘
+</code></pre></div></p>
+<h4 id="_13">完成例</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SelfIntroduction</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// タイトル表示</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">===</span><span class="w"> </span><span class="n">自己紹介プログラム</span><span class="w"> </span><span class="o">===%</span><span class="n">n</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+
+<span class="w">        </span><span class="c1">// ユーザー情報の入力</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">お名前</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">年齢</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span><span class="w">  </span><span class="c1">// 改行文字の処理</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">出身地</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">hometown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">趣味</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">hobby</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// 美しい自己紹介カード表示</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">%</span><span class="n">n</span><span class="o">===</span><span class="w"> </span><span class="n">あなたの自己紹介</span><span class="w"> </span><span class="o">===%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">┌─────────────────────────────┐</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="n">名前</span><span class="p">:</span><span class="w">   </span><span class="o">%-</span><span class="mi">20</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="n">年齢</span><span class="p">:</span><span class="w">   </span><span class="o">%-</span><span class="mi">20</span><span class="n">d</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">age</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="n">出身地</span><span class="p">:</span><span class="w"> </span><span class="o">%-</span><span class="mi">20</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">hometown</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="n">趣味</span><span class="p">:</span><span class="w">   </span><span class="o">%-</span><span class="mi">20</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">hobby</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">└─────────────────────────────┘</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">素敵な自己紹介ありがとうございました</span><span class="err">！</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="2">課題2：対話型計算機プログラム</h3>
+<h4 id="_14">まずは自分で考えてみよう！</h4>
+<p><strong>要件：</strong>
+1. 2つの数値をユーザーから入力
+2. 四則演算（+, -, *, /）の結果をすべて表示
+3. 美しい表形式で結果を表示
+4. エラーチェック（hasNextDouble()）を使用</p>
+<p><strong>💡 ヒント1: 数値入力の安全性</strong>
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mi">1</span><span class="n">つ目の数値</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">scanner</span><span class="p">.</span><span class="na">hasNextDouble</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextDouble</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 処理続行</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">数値を入力してください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>💡 ヒント2: 割り算のゼロチェック</strong>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num2</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">division</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="o">%-</span><span class="mi">10</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="o">%</span><span class="mf">8.2f</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">割り算</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">division</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="o">%-</span><span class="mi">10</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="o">%</span><span class="mi">8</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">割り算</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">不可</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>🎯 期待される実行結果：</strong>
+<div class="highlight"><pre><span></span><code>=== 対話型計算機 ===
+1つ目の数値: 15.5
+2つ目の数値: 3.2
+
+=== 計算結果 ===
+┌────────────┬──────────┐
+│ 演算       │   結果   │
+├────────────┼──────────┤
+│ 足し算     │    18.70 │
+│ 引き算     │    12.30 │
+│ 掛け算     │    49.60 │
+│ 割り算     │     4.84 │
+└────────────┴──────────┘
+</code></pre></div></p>
+<h4 id="_15">完成例</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">InteractiveCalculator</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">===</span><span class="w"> </span><span class="n">対話型計算機</span><span class="w"> </span><span class="o">===%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+
+<span class="w">        </span><span class="c1">// 1つ目の数値入力</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mi">1</span><span class="n">つ目の数値</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">scanner</span><span class="p">.</span><span class="na">hasNextDouble</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">数値を入力してください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextDouble</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// 2つ目の数値入力</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mi">2</span><span class="n">つ目の数値</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">scanner</span><span class="p">.</span><span class="na">hasNextDouble</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">数値を入力してください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextDouble</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// 計算実行</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">addition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">subtraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">multiplication</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// 美しい結果表示</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">%</span><span class="n">n</span><span class="o">===</span><span class="w"> </span><span class="n">計算結果</span><span class="w"> </span><span class="o">===%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">┌────────────┬──────────┐</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="n">演算</span><span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="n">結果</span><span class="w">   </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">├────────────┼──────────┤</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="o">%-</span><span class="mi">10</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="o">%</span><span class="mf">8.2f</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">足し算</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">addition</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="o">%-</span><span class="mi">10</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="o">%</span><span class="mf">8.2f</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">引き算</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">subtraction</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="o">%-</span><span class="mi">10</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="o">%</span><span class="mf">8.2f</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">掛け算</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">multiplication</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// 割り算はゼロチェック</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num2</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">division</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="o">%-</span><span class="mi">10</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="o">%</span><span class="mf">8.2f</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">割り算</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">division</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">│</span><span class="w"> </span><span class="o">%-</span><span class="mi">10</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="o">%</span><span class="mi">8</span><span class="n">s</span><span class="w"> </span><span class="err">│</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">割り算</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">不可</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">└────────────┴──────────┘</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_16">さらにチャレンジ！</h4>
+<p>余力がある方は、以下の機能を追加してみてください：</p>
+<ol>
+<li><strong>繰り返し計算機能</strong></li>
+<li>計算後に「もう一度計算しますか？(y/n)」</li>
+<li>
+<p>yが入力されたら最初から、nで終了</p>
+</li>
+<li>
+<p><strong>演算選択機能</strong></p>
+</li>
+<li>ユーザーが実行したい演算を選択</li>
+<li>
+<p>メニュー表示で分かりやすく</p>
+</li>
+<li>
+<p><strong>履歴機能</strong></p>
+</li>
+<li>計算履歴を保存・表示</li>
+<li>最後に全ての計算履歴を表示</li>
+</ol>
+<h2 id="_17">💡 よくある質問</h2>
+<h3 id="q1-import">Q1: import文を書く場所は決まっていますか？</h3>
+<p><strong>A</strong>: はい、import文は<strong>package文の後、class定義の前</strong>に書きます。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1. package文（今回は使用しない）</span>
+<span class="c1">// 2. import文</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="c1">// 3. class定義</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Example</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="q2-scannerscanner">Q2: Scanner変数の名前は「scanner」でないとダメですか？</h3>
+<p><strong>A</strong>: いいえ、任意の名前をつけられます。ただし、<strong>分かりやすい名前</strong>を推奨します。</p>
+<div class="highlight"><pre><span></span><code><span class="n">Scanner</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span><span class="w">     </span><span class="c1">// ✅ OK</span>
+<span class="n">Scanner</span><span class="w"> </span><span class="n">sc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span><span class="w">        </span><span class="c1">// ✅ OK  </span>
+<span class="n">Scanner</span><span class="w"> </span><span class="n">userInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span><span class="w"> </span><span class="c1">// ✅ OK</span>
+<span class="n">Scanner</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span><span class="w">         </span><span class="c1">// △ 分かりにくい</span>
+</code></pre></div>
+<h3 id="q3-close">Q3: close()を忘れるとどうなりますか？</h3>
+<p><strong>A</strong>: プログラムは動作しますが、<strong>リソースリーク</strong>が発生する可能性があります。必ず実行しましょう。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ❌ 悪い例</span>
+<span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="n">String</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+<span class="c1">// close()を忘れている</span>
+
+<span class="c1">// ✅ 良い例</span>
+<span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="n">String</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+<span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">  </span><span class="c1">// 必ず実行</span>
+</code></pre></div>
+<h3 id="q4-nextintnextline">Q4: nextInt()の後にnextLine()を使うと空文字が返されます</h3>
+<p><strong>A</strong>: これは<strong>改行文字</strong>が残るためです。nextInt()の後に空のnextLine()を実行して改行文字を消去してください。</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span><span class="w">  </span><span class="c1">// ← 改行文字を消去</span>
+<span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span><span class="w">  </span><span class="c1">// ← 正常に動作</span>
+</code></pre></div>
+<h3 id="q5-hasnextint">Q5: hasNextInt()はどのような場面で使いますか？</h3>
+<p><strong>A</strong>: ユーザーが<strong>間違った形式</strong>で入力する可能性がある場合に使用します。特に<strong>実用的なプログラム</strong>では必須です。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 安全な入力処理</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">scanner</span><span class="p">.</span><span class="na">hasNextInt</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 正常処理</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">整数を入力してください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">    </span><span class="n">scanner</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w">  </span><span class="c1">// 不正入力を消去</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_18">🎯 まとめ</h2>
+<p>このレッスンで学んだこと：</p>
+<h3 id="_19"><strong>技術面</strong></h3>
+<ul>
+<li><strong>Scanner クラス</strong>: import文、インスタンス生成、close()によるリソース管理</li>
+<li><strong>文字列入力</strong>: nextLine()による改行までの入力取得</li>
+<li><strong>数値入力</strong>: nextInt(), nextDouble()による型安全な数値取得</li>
+<li><strong>入力メソッドの使い分け</strong>: nextLine() vs next() vs nextInt()の特徴と注意点</li>
+<li><strong>エラー回避</strong>: hasNextInt(), hasNextDouble()による事前チェック</li>
+</ul>
+<h3 id="_20"><strong>実践面</strong></h3>
+<ul>
+<li><strong>対話型プログラム</strong>: ユーザーとの双方向コミュニケーション実現</li>
+<li><strong>美しい出力との組み合わせ</strong>: printf + Scanner による高品質なプログラム</li>
+<li><strong>安全な入力処理</strong>: エラーを予防する堅牢な入力システム</li>
+<li><strong>実用的なプログラム設計</strong>: 自己紹介、計算機など実際に使える形</li>
+</ul>
+<h3 id="_21"><strong>プロフェッショナル意識</strong></h3>
+<ul>
+<li><strong>ユーザビリティ</strong>: 使いやすい入力インターフェースの重要性</li>
+<li><strong>エラーハンドリング</strong>: 想定外の入力への対応</li>
+<li><strong>コード品質</strong>: 適切なリソース管理とエラー回避</li>
+<li><strong>レッスン12との統合</strong>: 美しい出力 + 安全な入力 = 高品質なプログラム</li>
+</ul>
+<h3 id="_22"><strong>重要なパターン</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 基本的な入力処理パターン</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">InputPattern</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// 入力処理</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">プロンプト</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// 結果出力（printfで美しく）</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">結果</span><span class="p">:</span><span class="w"> </span><span class="o">%</span><span class="n">s</span><span class="o">%</span><span class="n">n</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">input</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">  </span><span class="c1">// 必須</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_23">🚀 次回予告</h2>
+<p>次のレッスンでは、<strong>入力データの検証とエラーハンドリング</strong>を学習します：</p>
+<ul>
+<li><strong>try-catch文</strong>: 例外処理の基本</li>
+<li><strong>InputMismatchException</strong>: 不正入力への対応</li>
+<li><strong>データ検証</strong>: 業務ロジックレベルの入力チェック</li>
+<li><strong>ユーザーフレンドリーなエラーメッセージ</strong>: 使いやすい入力システム設計</li>
+<li><strong>繰り返し入力</strong>: 正しい入力まで再試行する仕組み</li>
+</ul>
+<p>今回学んだ基本的な入力処理を、さらに<strong>実用的で安全</strong>なレベルに引き上げていきます！</p>
+<h2 id="_24">📝 練習課題</h2>
+<p>余力がある方は、以下に挑戦してみてください：</p>
+<h3 id="_25"><strong>基礎練習</strong></h3>
+<ol>
+<li><strong>アンケートプログラム</strong></li>
+<li>好きな食べ物、色、季節を入力</li>
+<li>
+<p>結果を美しく表示</p>
+</li>
+<li>
+<p><strong>BMI計算プログラム</strong></p>
+</li>
+<li>身長（cm）、体重（kg）を入力</li>
+<li>
+<p>BMI計算結果と判定を表示</p>
+</li>
+<li>
+<p><strong>通貨換算プログラム</strong></p>
+</li>
+<li>日本円を入力、為替レート入力</li>
+<li>USD、EUR換算結果を表示</li>
+</ol>
+<h3 id="_26"><strong>応用練習</strong></h3>
+<ol>
+<li><strong>ショッピング計算</strong></li>
+<li>商品名、価格、個数を複数入力</li>
+<li>
+<p>合計金額、税込金額を計算</p>
+</li>
+<li>
+<p><strong>学習時間管理</strong></p>
+</li>
+<li>科目名、学習時間を入力</li>
+<li>
+<p>週間学習時間の統計表示</p>
+</li>
+<li>
+<p><strong>旅行計画</strong></p>
+</li>
+<li>目的地、日数、予算を入力</li>
+<li>1日あたりの予算など計算</li>
+</ol>
+<h3 id="_27"><strong>チャレンジ</strong></h3>
+<ol>
+<li><strong>メニュー選択システム</strong></li>
+<li>複数の機能を選択可能</li>
+<li>
+<p>hasNextInt()でエラー回避実装</p>
+</li>
+<li>
+<p><strong>データ一覧表示</strong></p>
+</li>
+<li>複数人の情報を入力・表示</li>
+<li>
+<p>表形式で美しく整列</p>
+</li>
+<li>
+<p><strong>対話型ゲーム</strong></p>
+</li>
+<li>数当てゲーム、じゃんけんなど</li>
+<li>勝敗判定、スコア管理</li>
+</ol>
+<p>頑張りましょう！</content>
+</lesson></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,5196 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/logo_tab.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>GitBasic 10 - SKILBRIDGE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="SKILBRIDGE" class="md-header__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SKILBRIDGE
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GitBasic 10
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SKILBRIDGE" class="md-nav__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    SKILBRIDGE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コース一覧
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    コース一覧
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01_PC基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01_PC基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02_Web基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02_Web基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03_Java入門
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03_Java入門
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04_Java基礎固め
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04_Java基礎固め
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05_OOP基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05_OOP基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06_OOP応用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06_OOP応用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07_Git/GitHub基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    07_Git/GitHub基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08_SQL・DB設計
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    08_SQL・DB設計
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09_SpringBoot：表示機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    09_SpringBoot：表示機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10_SpringBoot：登録更新機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10_SpringBoot：登録更新機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11_SpringBoot：検索削除機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11_SpringBoot：検索削除機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12_実務基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    12_実務基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#初級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#初級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#中級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#中級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_15" id="__nav_2_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#上級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#上級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_16" id="__nav_2_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Office全般ツール
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Office全般ツール
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 このレッスンの学習目標
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 前回の成果確認
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 前回の成果確認">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前回達成した技術レベル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前回習得した技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前回完了時の成果物
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今回への準備完了事項
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌟 なぜPull Requestが重要なのか
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌟 なぜPull Requestが重要なのか">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#69" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤔 レッスン6.9までとの違い
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏢 実際の企業開発現場での重要性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏢 実際の企業開発現場での重要性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        企業での一般的な開発フロー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-request_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pull Requestが解決する課題
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💼 このスキルの価値
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Fork機能：独立した開発環境の構築
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Fork機能：独立した開発環境の構築">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Forkとは何か
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Forkとは何か">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fork_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forkの仕組み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fork_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        なぜForkが必要？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fork_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Fork操作の実践
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Fork操作の実践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 自分のリポジトリをFork対象として準備
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 フォーク操作画面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 フォーク操作画面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-2-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Forkの実行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 フォーク後のリポジトリ画面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 フォーク後のリポジトリ画面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-3-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Forkしたリポジトリのクローン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-upstream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: upstream設定（重要）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fork_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Fork完了の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 機能開発とPull Request作成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 機能開発とPull Request作成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 実装する機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 機能開発の実践
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 機能開発の実践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 機能開発ブランチ作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-calculatorjava" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Calculator.java の機能拡張
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 動作確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: 変更をコミット
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: リモートにブランチをプッシュ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 機能開発完了の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Pull Request作成の実践
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Pull Request作成の実践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pull-request_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Pull Request作成の流れ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 Pull Request作成の流れ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-githubpull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: GitHub上でPull Request作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 プルリクエスト作成画面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 プルリクエスト作成提案画面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 プルリクエスト作成提案画面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-2-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Pull Request詳細情報の入力
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 プルリクエスト詳細入力画面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 プルリクエスト詳細入力画面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-3-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Pull Request設定の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Pull Request作成完了
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 プルリクエスト作成サジェスト画面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-request_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 作成されたPull Request確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. コードレビュープロセス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. コードレビュープロセス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        👥 コードレビューの実践
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="👥 コードレビューの実践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        レビュアー視点での確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: ファイル変更内容の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 変更ファイル確認画面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 変更ファイル確認画面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: レビューコメントの作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 コードレビュー画面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 コードレビュー画面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 修正内容のテスト
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 修正をコミット・プッシュ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: レビューコメントへの返信
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ コードレビュープロセス完了！
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Pull Requestのマージと完了
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Pull Requestのマージと完了">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 承認とマージ実行
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 承認とマージ実行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 最終レビューと承認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 プルリクエスト承認画面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 プルリクエスト承認画面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: マージ戦略の選択
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 マージ実行画面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 マージ実行画面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-3-pull-request_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Pull Requestのマージ実行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 マージ戦略選択画面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 マージ戦略選択画面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: マージ完了の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 マージ完了画面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧹 後処理：ブランチのクリーンアップ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧹 後処理：ブランチのクリーンアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: リモートブランチの削除
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 ブランチ削除画面のHTML
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 ブランチ削除画面のHTML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: ローカル環境のクリーンアップ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 統合結果の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-request_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Pull Request完全完了！
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-issueprojectspr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Issue・Projects・PRの統合管理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Issue・Projects・PRの統合管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 統合プロジェクト管理の実践
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 統合プロジェクト管理の実践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-github-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: GitHub Projectsでの統合管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 GitHubプロジェクトボード作成画面
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issuepr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 IssueとPRの連携画面
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 IssueとPRの連携画面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-2-issuepr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Issue作成とPR連携
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 課題管理ボードでの運用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 GitHubプロジェクトのカンバン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 統合管理の効果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Week6統合作業マップ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. チーム開発フローの総合演習
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. チーム開発フローの総合演習">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎭 実際の企業開発シミュレーション
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 エンタープライズ開発プロセス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 エンタープライズ開発プロセス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        企業でのプロフェッショナル開発フロー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        あなたが習得したスキル（企業即戦力レベル）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏆 到達した技術レベル
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏆 到達した技術レベル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        具体的な能力
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitgithub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Git/GitHubフロー図
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 まとめ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 まとめ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        このレッスンで達成したWeek 6技術統合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="このレッスンで達成したWeek 6技術統合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-6_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 6全技術の統合活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        企業レベルチーム開発能力
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実務即戦力開発体験
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-6_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 6の学習成果の総合評価
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Week 6の学習成果の総合評価">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#55-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技術習得度: ⭐⭐⭐⭐⭐ (5/5) - 完璧
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実用性: ⭐⭐⭐⭐⭐ (5/5) - 優秀
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        協業スキル: ⭐⭐⭐⭐⭐ (5/5) - 卓越
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 次回予告
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 次回予告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 7で学ぶ実務必須技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitgithub_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今回のGit/GitHubスキルとの連携
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        期待される成長
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 練習課題
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 練習課題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基礎練習
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        応用練習
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        発展練習
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#610" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎉 レッスン6.10完了おめでとうございます！
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>GitBasic 10</h1>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<p><lesson>
+  <type>text</type>
+  <description>レッスン6.9でブランチ戦略をマスターした並行開発対応エンタープライズJavaアーキテクトを対象に、Fork・Pull Request・コードレビュー・協業フローの実践を通じて、企業チーム開発で必須の協業スキルを完全習得し、バージョン管理からチーム開発まで完全対応の即戦力レベルに到達する。</description>
+  <title>10.実践演習：Pull Request体験とチーム開発フロー</title>
+  <content># 6.10 実践演習：Pull Request体験とチーム開発フロー</p>
+<h2 id="_1">🎯 このレッスンの学習目標</h2>
+<p>このレッスンを完了すると、以下ができるようになります：</p>
+<ul>
+<li><strong>Fork機能の完全習得</strong>: 他人のリポジトリを独立してコピー・開発できる</li>
+<li><strong>Pull Request作成マスター</strong>: 変更提案とコードレビュー依頼を適切に作成できる</li>
+<li><strong>コードレビュー体験</strong>: 建設的なコメント・承認・修正依頼のプロセスを実践できる</li>
+<li><strong>協業フロー完全習得</strong>: 実際の企業開発と同等のチーム開発フローを実践できる</li>
+<li><strong>統合管理</strong>: Issue・PR・Projects・ブランチの統合運用を実現できる</li>
+<li><strong>チーム開発即戦力</strong>: 企業で即座にチーム開発に参加できる技術レベルに到達する</li>
+</ul>
+<p><strong>習得技術</strong>: Fork・Pull Request・コードレビュー・upstream管理・マージ戦略・協業コミュニケーション<br />
+<strong>学習時間</strong>: 約60-70分<br />
+<strong>前提</strong>: レッスン6.9「ブランチの基礎：機能開発の安全な分岐」完了</p>
+<hr />
+<h2 id="_2">📚 前回の成果確認</h2>
+<p>レッスン6.9では、<strong>ブランチ戦略とチーム開発の基盤</strong>を完全習得しました！</p>
+<h3 id="_3"><strong>前回達成した技術レベル</strong></h3>
+<p><strong>ブランチ戦略をマスターした並行開発対応エンタープライズJavaアーキテクト</strong></p>
+<h3 id="_4"><strong>前回習得した技術</strong></h3>
+<ul>
+<li><strong>git branch基本操作</strong>: ブランチ作成・切り替え・削除の完全マスター</li>
+<li><strong>git merge実践</strong>: Fast-forward・3-way merge・コンフリクト解決の実践習得</li>
+<li><strong>Feature Branch Workflow</strong>: 企業開発標準のブランチ戦略実践</li>
+<li><strong>並行開発体験</strong>: 複数機能の同時開発・統合管理</li>
+<li><strong>Issue連携開発</strong>: GitHub Issueとブランチのシームレスな統合</li>
+</ul>
+<h3 id="_5"><strong>前回完了時の成果物</strong></h3>
+<ul>
+<li>Issue #1（バグ修正）・Issue #2（CSV機能）の実装完了</li>
+<li>複合マージ履歴（Fast-forward・3-way merge）の実践</li>
+<li>ブランチ戦略文書（README.md）への運用方針追加</li>
+<li>企業レベルの並行開発・統合フロー体験</li>
+</ul>
+<h3 id="_6"><strong>今回への準備完了事項</strong></h3>
+<p>✅ <strong>ブランチ戦略基盤</strong>: Pull Request での協業準備完了<br />
+✅ <strong>Issue管理統合</strong>: PR・Issue・Projects統合運用準備<br />
+✅ <strong>コンフリクト解決技術</strong>: チーム開発でのレビュー・統合準備<br />
+✅ <strong>GitHub高度活用</strong>: Fork・PR・レビューへの技術基盤完備</p>
+<hr />
+<h2 id="pull-request">🌟 なぜPull Requestが重要なのか</h2>
+<h3 id="69">🤔 レッスン6.9までとの違い</h3>
+<p><strong>レッスン6.9まで</strong>: 個人・小規模チームでの開発フロー<br />
+<strong>レッスン6.10から</strong>: <strong>企業レベルのチーム開発・品質管理フロー</strong></p>
+<h3 id="_7">🏢 実際の企業開発現場での重要性</h3>
+<h4 id="_8"><strong>企業での一般的な開発フロー</strong></h4>
+<div class="highlight"><pre><span></span><code>1. Fork/ブランチ作成 → 2. 機能実装 → 3. Pull Request作成
+↓
+4. コードレビュー → 5. 修正対応 → 6. 承認・マージ
+↓
+7. 本番デプロイ → 8. 品質確認
+</code></pre></div>
+<h4 id="pull-request_1"><strong>Pull Requestが解決する課題</strong></h4>
+<ul>
+<li><strong>品質保証</strong>: コードレビューによる品質向上とバグ予防</li>
+<li><strong>ナレッジ共有</strong>: チーム全体での技術共有と学習促進</li>
+<li><strong>リスク管理</strong>: 本番環境への安全な変更適用</li>
+<li><strong>トレーサビリティ</strong>: 変更理由・承認プロセスの完全記録</li>
+<li><strong>チーム協調</strong>: 効率的なコミュニケーションと意思決定</li>
+</ul>
+<h3 id="_9">💼 このスキルの価値</h3>
+<p><strong>企業採用での評価ポイント</strong>:
+- Pull Request・コードレビューの実践経験
+- チーム開発での協業コミュニケーション能力
+- 品質を意識した開発プロセスの理解
+- Git/GitHubを活用した効率的な開発フロー習得</p>
+<p><strong>今回のレッスン完了で</strong>: <strong>企業で即座にチーム開発に参加できる技術レベル</strong> に到達します！</p>
+<hr />
+<h2 id="1-fork">1. Fork機能：独立した開発環境の構築</h2>
+<h3 id="fork">🔧 Forkとは何か</h3>
+<p><strong>Fork</strong>: GitHubで他人のリポジトリを自分のアカウントに独立してコピーする機能</p>
+<h4 id="fork_1"><strong>Forkの仕組み</strong></h4>
+<div class="highlight"><pre><span></span><code>元のリポジトリ（upstream）
+     ↓ Fork
+自分のリポジトリ（origin）  ← ここで自由に開発
+     ↓ Pull Request
+元のリポジトリ（upstream）  ← 変更提案・統合
+</code></pre></div>
+<h4 id="fork_2"><strong>なぜForkが必要？</strong></h4>
+<ol>
+<li><strong>権限管理</strong>: 元のリポジトリへの直接変更権限がない場合</li>
+<li><strong>安全性</strong>: 元のコードに影響を与えずに実験・開発</li>
+<li><strong>独立性</strong>: 自分のペースでの開発・テスト</li>
+<li><strong>協業</strong>: 複数開発者での効率的な協業</li>
+</ol>
+<h3 id="fork_3">🚀 Fork操作の実践</h3>
+<h4 id="step-1-fork"><strong>Step 1: 自分のリポジトリをFork対象として準備</strong></h4>
+<p>実際のFork体験のため、まずは「Fork元」として使用するリポジトリを準備します。</p>
+<ol>
+<li><strong>GitHubで新しいリポジトリ作成</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># 新しいディレクトリで作業（Fork体験用）</span>
+<span class="nb">cd</span><span class="w"> </span>~/Desktop
+mkdir<span class="w"> </span>fork-practice-upstream
+<span class="nb">cd</span><span class="w"> </span>fork-practice-upstream
+
+<span class="c1"># Git初期化と基本ファイル作成</span>
+git<span class="w"> </span>init
+<span class="nb">echo</span><span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span><span class="c1"># Fork練習用プロジェクト&amp;quot; &amp;gt; README.md</span>
+<span class="nb">echo</span><span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span>このプロジェクトはPull<span class="w"> </span>Request練習用です<span class="p">&amp;</span>quot<span class="p">;</span><span class="w"> </span><span class="p">&amp;</span>gt<span class="p">;&amp;</span>gt<span class="p">;</span><span class="w"> </span>README.md
+
+<span class="c1"># 簡単なJavaファイル作成（Fork後に修正予定）</span>
+mkdir<span class="w"> </span>src
+<span class="nb">echo</span><span class="w"> </span><span class="p">&amp;</span>apos<span class="p">;</span>public<span class="w"> </span>class<span class="w"> </span>Calculator<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>public<span class="w"> </span>static<span class="w"> </span>void<span class="w"> </span>main<span class="o">(</span>String<span class="o">[]</span><span class="w"> </span>args<span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span>System.out.println<span class="o">(</span><span class="p">&amp;</span>quot<span class="p">;</span>Calculator<span class="w"> </span>v1.0<span class="p">&amp;</span>quot<span class="p">;</span><span class="o">)</span><span class="p">;</span>
+<span class="w">        </span>System.out.println<span class="o">(</span><span class="p">&amp;</span>quot<span class="p">;</span>加算結果:<span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span><span class="w"> </span>+<span class="w"> </span>add<span class="o">(</span><span class="m">10</span>,<span class="w"> </span><span class="m">20</span><span class="o">))</span><span class="p">;</span>
+<span class="w">    </span><span class="o">}</span>
+
+<span class="w">    </span>public<span class="w"> </span>static<span class="w"> </span>int<span class="w"> </span>add<span class="o">(</span>int<span class="w"> </span>a,<span class="w"> </span>int<span class="w"> </span>b<span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span>a<span class="w"> </span>+<span class="w"> </span>b<span class="p">;</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="o">}</span><span class="p">&amp;</span>apos<span class="p">;</span><span class="w"> </span><span class="p">&amp;</span>gt<span class="p">;</span><span class="w"> </span>src/Calculator.java
+
+<span class="c1"># コミットとGitHub公開</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span>初期バージョン:<span class="w"> </span>基本的な計算機クラス作成<span class="p">&amp;</span>quot<span class="p">;</span>
+</code></pre></div></li>
+</ol>
+<h3 id="_10">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_fork_operation_screen.html">フォーク操作画面</a></h3>
+<ol>
+<li><strong>GitHubリポジトリ作成・プッシュ</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># GitHubで「fork-practice-upstream」リポジトリ作成後</span>
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/あなたのユーザー名/fork-practice-upstream.git
+git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></li>
+</ol>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 584 bytes | 584.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/あなたのユーザー名/fork-practice-upstream.git
+ * [new branch]      main -&amp;gt; main
+Branch &amp;apos;main&amp;apos; set up to track remote branch &amp;apos;main&amp;apos; from &amp;apos;origin&amp;apos;.
+</code></pre></div></p>
+<h4 id="step-2-fork"><strong>Step 2: Forkの実行</strong></h4>
+<p><strong>重要</strong>: この段階では、別のGitHubアカウント（または同じアカウントの別名）でForkする想定で進めます。実際の企業では、チームメンバーがあなたのリポジトリをForkします。</p>
+<ol>
+<li>
+<p><strong>GitHub上でForkボタンをクリック</strong></p>
+</li>
+<li>
+<p><strong>Forkされたリポジトリの確認</strong></p>
+</li>
+</ol>
+<h3 id="_11">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_forked_repository_screen.html">フォーク後のリポジトリ画面</a></h3>
+<h4 id="step-3-fork"><strong>Step 3: Forkしたリポジトリのクローン</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 元のディレクトリから移動</span>
+<span class="nb">cd</span><span class="w"> </span>~/Desktop
+mkdir<span class="w"> </span>fork-practice-working
+<span class="nb">cd</span><span class="w"> </span>fork-practice-working
+
+<span class="c1"># Forkしたリポジトリをクローン</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/あなたのユーザー名/fork-practice-upstream.git<span class="w"> </span>fork-practice
+<span class="nb">cd</span><span class="w"> </span>fork-practice
+
+<span class="c1"># リモートリポジトリ確認</span>
+git<span class="w"> </span>remote<span class="w"> </span>-v
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>origin  https://github.com/あなたのユーザー名/fork-practice-upstream.git (fetch)
+origin  https://github.com/あなたのユーザー名/fork-practice-upstream.git (push)
+</code></pre></div></p>
+<h4 id="step-4-upstream"><strong>Step 4: upstream設定（重要）</strong></h4>
+<p>Fork元のリポジトリとの同期のため、upstreamリモートを追加します：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># upstream（Fork元）を追加</span>
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/あなたのユーザー名/fork-practice-upstream.git
+
+<span class="c1"># リモート確認</span>
+git<span class="w"> </span>remote<span class="w"> </span>-v
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>origin    https://github.com/あなたのユーザー名/fork-practice-upstream.git (fetch)
+origin    https://github.com/あなたのユーザー名/fork-practice-upstream.git (push)
+upstream  https://github.com/あなたのユーザー名/fork-practice-upstream.git (fetch)
+upstream  https://github.com/あなたのユーザー名/fork-practice-upstream.git (push)
+</code></pre></div></p>
+<h3 id="fork_4">🎯 Fork完了の確認</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 現在の状況確認</span>
+<span class="nb">pwd</span><span class="w">  </span><span class="c1"># 作業ディレクトリ確認</span>
+git<span class="w"> </span>status<span class="w">  </span><span class="c1"># Git状態確認</span>
+git<span class="w"> </span>remote<span class="w"> </span>-v<span class="w">  </span><span class="c1"># リモートリポジトリ確認</span>
+ls<span class="w"> </span>-la<span class="w"> </span>src/<span class="w">  </span><span class="c1"># ファイル構成確認</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>/Users/あなたのユーザー名/Desktop/fork-practice-working/fork-practice
+
+On branch main
+Your branch is up to date with &amp;apos;origin/main&amp;apos;.
+
+nothing to commit, working tree clean
+
+origin    https://github.com/あなたのユーザー名/fork-practice-upstream.git (fetch)
+origin    https://github.com/あなたのユーザー名/fork-practice-upstream.git (push)
+upstream  https://github.com/あなたのユーザー名/fork-practice-upstream.git (fetch)
+upstream  https://github.com/あなたのユーザー名/fork-practice-upstream.git (push)
+
+Calculator.java
+</code></pre></div></p>
+<p><strong>✅ Fork環境構築完了！</strong></p>
+<hr />
+<h2 id="2-pull-request">2. 機能開発とPull Request作成</h2>
+<h3 id="_12">💡 実装する機能</h3>
+<p>Fork環境で、以下の機能を追加します：</p>
+<p><strong>機能要件</strong>: Calculator クラスに減算・乗算・除算機能を追加</p>
+<h3 id="_13">🔨 機能開発の実践</h3>
+<h4 id="step-1"><strong>Step 1: 機能開発ブランチ作成</strong></h4>
+<p>レッスン6.9で習得したブランチ戦略を活用します：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 新機能用ブランチ作成・切り替え</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/add-basic-operations
+
+<span class="c1"># ブランチ確認</span>
+git<span class="w"> </span>branch
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>  main
+* feature/add-basic-operations
+</code></pre></div></p>
+<h4 id="step-2-calculatorjava"><strong>Step 2: Calculator.java の機能拡張</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># エディタでファイルを編集</span>
+code<span class="w"> </span>src/Calculator.java<span class="w">  </span><span class="c1"># または適切なエディタで編集</span>
+</code></pre></div>
+<p><strong>Calculator.java を以下に更新：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Calculator</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Calculator</span><span class="w"> </span><span class="n">v2</span><span class="mf">.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">四則演算対応</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">=========================&amp;</span><span class="n">quot</span><span class="p">;);</span>
+
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">計算対象</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">加算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">減算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">乗算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">除算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * 加算処理</span>
+<span class="cm">     * @param a 第一引数</span>
+<span class="cm">     * @param b 第二引数</span>
+<span class="cm">     * @return a + b</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * 減算処理</span>
+<span class="cm">     * @param a 第一引数</span>
+<span class="cm">     * @param b 第二引数</span>
+<span class="cm">     * @return a - b</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">subtract</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * 乗算処理</span>
+<span class="cm">     * @param a 第一引数</span>
+<span class="cm">     * @param b 第二引数</span>
+<span class="cm">     * @return a * b</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * 除算処理（ゼロ除算チェック付き）</span>
+<span class="cm">     * @param a 第一引数</span>
+<span class="cm">     * @param b 第二引数</span>
+<span class="cm">     * @return a / b</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">エラー</span><span class="p">:</span><span class="w"> </span><span class="n">ゼロで除算することはできません</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="step-3"><strong>Step 3: 動作確認</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># コンパイル・実行テスト</span>
+<span class="nb">cd</span><span class="w"> </span>src
+javac<span class="w"> </span>Calculator.java
+java<span class="w"> </span>Calculator
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>Calculator v2.0 - 四則演算対応
+=========================
+計算対象: 20, 5
+
+加算結果: 25
+減算結果: 15
+乗算結果: 100
+除算結果: 4
+</code></pre></div></p>
+<h4 id="step-4"><strong>Step 4: 変更をコミット</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># プロジェクトルートに戻る</span>
+<span class="nb">cd</span><span class="w"> </span>..
+
+<span class="c1"># 変更状況確認</span>
+git<span class="w"> </span>status
+git<span class="w"> </span>diff
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>On branch feature/add-basic-operations
+Changes not staged for commit:
+  (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to update what will be committed)
+  (use &amp;quot;git restore &amp;lt;file&amp;gt;...&amp;quot; to discard changes in working directory)
+        modified:   src/Calculator.java
+
+no changes added to commit (use &amp;quot;git add -A&amp;quot; or &amp;quot;git commit -a&amp;quot;)
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 変更をステージング・コミット</span>
+git<span class="w"> </span>add<span class="w"> </span>src/Calculator.java
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span>feat:<span class="w"> </span>四則演算機能を追加
+
+-<span class="w"> </span>add<span class="o">()</span>,<span class="w"> </span>subtract<span class="o">()</span>,<span class="w"> </span>multiply<span class="o">()</span>,<span class="w"> </span>divide<span class="o">()</span>メソッドを実装
+-<span class="w"> </span>ゼロ除算エラーハンドリングを追加
+-<span class="w"> </span>Javadocコメントを追加
+-<span class="w"> </span>バージョンを<span class="w"> </span>v2.0<span class="w"> </span>に更新
+
+Resolves:<span class="w"> </span>Calculator基本機能の拡張要求<span class="p">&amp;</span>quot<span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>[feature/add-basic-operations 8a3f9d2] feat: 四則演算機能を追加
+ 1 file changed, 45 insertions(+), 7 deletions(-)
+</code></pre></div></p>
+<h4 id="step-5"><strong>Step 5: リモートにブランチをプッシュ</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 機能ブランチをリモートにプッシュ</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/add-basic-operations
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 1.2 KiB | 1.2 MiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for &amp;apos;feature/add-basic-operations&amp;apos; on GitHub by visiting:
+remote:      https://github.com/あなたのユーザー名/fork-practice-upstream/pull/new/feature/add-basic-operations
+remote: 
+To https://github.com/あなたのユーザー名/fork-practice-upstream.git
+ * [new branch]      feature/add-basic-operations -&amp;gt; feature/add-basic-operations
+</code></pre></div></p>
+<h3 id="_14">🎯 機能開発完了の確認</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 現在の状況確認</span>
+git<span class="w"> </span>branch<span class="w">  </span><span class="c1"># ブランチ確認</span>
+git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>-3<span class="w">  </span><span class="c1"># コミット履歴確認</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>  main
+* feature/add-basic-operations
+
+8a3f9d2 feat: 四則演算機能を追加
+b7c8e1f 初期バージョン: 基本的な計算機クラス作成
+</code></pre></div></p>
+<p><strong>✅ 機能開発とプッシュ完了！</strong></p>
+<hr />
+<h2 id="3-pull-request">3. Pull Request作成の実践</h2>
+<h3 id="pull-request_2">📝 Pull Request作成の流れ</h3>
+<h4 id="step-1-githubpull-request"><strong>Step 1: GitHub上でPull Request作成</strong></h4>
+<ol>
+<li><strong>GitHubリポジトリページにアクセス</strong></li>
+</ol>
+<p>プッシュ後、GitHubが自動的にPull Request作成を提案します：</p>
+<h3 id="_15">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_created_pr_screen%20(1).html">プルリクエスト作成画面</a></h3>
+<ol>
+<li><strong>&quot;Compare &amp; pull request&quot;ボタンをクリック</strong></li>
+</ol>
+<h3 id="_16">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_pr_creation_proposal_screen.html">プルリクエスト作成提案画面</a></h3>
+<h4 id="step-2-pull-request"><strong>Step 2: Pull Request詳細情報の入力</strong></h4>
+<p><strong>優秀なPull Requestの書き方</strong>:</p>
+<p><strong>タイトル</strong>: 
+<div class="highlight"><pre><span></span><code>feat: 四則演算機能を追加（Calculator v2.0）
+</code></pre></div></p>
+<p><strong>説明文</strong>:
+<div class="highlight"><pre><span></span><code><span class="gu">## 概要</span>
+Calculatorクラスに減算、乗算、除算機能を追加し、基本的な四則演算を完全サポートしました。
+
+<span class="gu">## 変更内容</span>
+<span class="gu">### 追加機能</span>
+<span class="k">-</span><span class="w"> </span><span class="sb">`subtract(int a, int b)`</span>: 減算処理
+<span class="k">-</span><span class="w"> </span><span class="sb">`multiply(int a, int b)`</span>: 乗算処理  
+<span class="k">-</span><span class="w"> </span><span class="sb">`divide(int a, int b)`</span>: 除算処理（ゼロ除算チェック付き）
+
+<span class="gu">### 改善点</span>
+<span class="k">-</span><span class="w"> </span>全メソッドにJavadocコメントを追加
+<span class="k">-</span><span class="w"> </span>より詳細な出力フォーマットに変更
+<span class="k">-</span><span class="w"> </span>バージョン表示をv2.0に更新
+
+<span class="gu">## テスト結果</span>
+</code></pre></div>
+Calculator v2.0 - 四則演算対応
+=========================
+計算対象: 20, 5</p>
+<p>加算結果: 25
+減算結果: 15
+乗算結果: 100
+除算結果: 4
+<div class="highlight"><pre><span></span><code>## 確認事項
+- [x] 全メソッドが正常に動作することを確認
+- [x] ゼロ除算エラーハンドリングをテスト
+- [x] コンパイルエラーがないことを確認
+- [x] Javadocコメントが適切に記述されていることを確認
+
+## レビューポイント
+以下の点について特にレビューをお願いします：
+1. メソッド設計の妥当性
+2. エラーハンドリングの適切性
+3. コメント・ドキュメントの品質
+4. 命名規則の統一性
+
+## 関連Issue
+- Calculator基本機能拡張の要求
+
+## スクリーンショット
+（必要に応じて実行結果のスクリーンショットを添付）
+</code></pre></div></p>
+<h3 id="_17">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_pr_details_input_screen%20(1).html">プルリクエスト詳細入力画面</a></h3>
+<h4 id="step-3-pull-request"><strong>Step 3: Pull Request設定の確認</strong></h4>
+<ol>
+<li><strong>Base Repository</strong>: Fork元（upstream）を指定</li>
+<li><strong>Base Branch</strong>: <code>main</code> （統合先ブランチ）</li>
+<li><strong>Head Repository</strong>: 自分のFork（origin）</li>
+<li><strong>Compare Branch</strong>: <code>feature/add-basic-operations</code></li>
+</ol>
+<h4 id="step-4-pull-request"><strong>Step 4: Pull Request作成完了</strong></h4>
+<p>&quot;Create pull request&quot; ボタンをクリック</p>
+<h3 id="_18">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_pr_creation_suggestion_screen.html">プルリクエスト作成サジェスト画面</a></h3>
+<h3 id="pull-request_3">📊 作成されたPull Request確認</h3>
+<p><strong>✅ Pull Request作成完了！</strong></p>
+<hr />
+<h2 id="4">4. コードレビュープロセス</h2>
+<h3 id="_19">👥 コードレビューの実践</h3>
+<h4 id="_20"><strong>レビュアー視点での確認</strong></h4>
+<p>実際の企業開発では、他のチームメンバーがレビューを行います。ここでは自分自身でレビューの観点を学習します。</p>
+<h4 id="step-1_1"><strong>Step 1: ファイル変更内容の確認</strong></h4>
+<p>Pull Requestページの &quot;Files changed&quot; タブで変更内容を確認：</p>
+<h3 id="_21">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_files_changed_screen%20(1).html">変更ファイル確認画面</a></h3>
+<h4 id="step-2"><strong>Step 2: レビューコメントの作成</strong></h4>
+<p><strong>優秀なレビューコメントの例</strong>：</p>
+<h3 id="_22">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_code_review_screen%20(1).html">コードレビュー画面</a></h3>
+<p><strong>1. 肯定的フィードバック</strong>：
+<div class="highlight"><pre><span></span><code>💡 Good: Javadocコメントが丁寧に書かれており、メソッドの目的が明確です。
+特にパラメータと戻り値の説明が分かりやすいです。
+</code></pre></div></p>
+<p><strong>2. 改善提案</strong>：
+<div class="highlight"><pre><span></span><code>🔧 Suggestion: divide メソッドのゼロ除算エラーハンドリングですが、
+現在はコンソール出力のみです。例外をthrowする方が呼び出し元での
+エラー処理が適切に行えると思います。
+
+```java
+public static int divide(int a, int b) {
+    if (b == 0) {
+        throw new ArithmeticException(&amp;quot;ゼロで除算することはできません&amp;quot;);
+    }
+    return a / b;
+}
+</code></pre></div>
+どう思いますか？
+<div class="highlight"><pre><span></span><code>**3. 質問・確認**：
+</code></pre></div>
+❓ Question: バージョン表示が v2.0 になっていますが、
+バージョニング規則はどのように決めていますか？
+セマンティックバージョニング（semantic versioning）を
+採用する予定はありますか？
+<div class="highlight"><pre><span></span><code>#### **Step 3: コードレビューの送信**
+
+
+### 🔄 修正対応のプロセス
+
+#### **Step 1: レビューコメントへの対応**
+
+レビューコメントを受けて、コードを修正します：
+
+```bash
+# 作業ブランチにいることを確認
+git branch
+git checkout feature/add-basic-operations  # 必要に応じて
+</code></pre></div></p>
+<p><strong>Calculator.java の修正</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Calculator</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Calculator</span><span class="w"> </span><span class="n">v2</span><span class="mf">.0.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">四則演算対応</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">============================&amp;</span><span class="n">quot</span><span class="p">;);</span>
+
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">計算対象</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">加算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">減算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">乗算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">除算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+
+<span class="w">            </span><span class="c1">// ゼロ除算テスト</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">ゼロ除算テスト</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ArithmeticException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">エラーをキャッチしました</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * 加算処理</span>
+<span class="cm">     * @param a 第一引数</span>
+<span class="cm">     * @param b 第二引数</span>
+<span class="cm">     * @return a + b</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * 減算処理</span>
+<span class="cm">     * @param a 第一引数</span>
+<span class="cm">     * @param b 第二引数</span>
+<span class="cm">     * @return a - b</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">subtract</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * 乗算処理</span>
+<span class="cm">     * @param a 第一引数</span>
+<span class="cm">     * @param b 第二引数</span>
+<span class="cm">     * @return a * b</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * 除算処理</span>
+<span class="cm">     * @param a 被除数</span>
+<span class="cm">     * @param b 除数</span>
+<span class="cm">     * @return a / b</span>
+<span class="cm">     * @throws ArithmeticException ゼロ除算の場合</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArithmeticException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">ゼロで除算することはできません</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="step-2_1"><strong>Step 2: 修正内容のテスト</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>src
+javac<span class="w"> </span>Calculator.java
+java<span class="w"> </span>Calculator
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>Calculator v2.0.0 - 四則演算対応
+============================
+計算対象: 20, 5
+
+加算結果: 25
+減算結果: 15
+乗算結果: 100
+除算結果: 4
+ゼロ除算テスト:
+エラーをキャッチしました: ゼロで除算することはできません
+</code></pre></div></p>
+<h4 id="step-3_1"><strong>Step 3: 修正をコミット・プッシュ</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>..
+git<span class="w"> </span>add<span class="w"> </span>src/Calculator.java
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span>fix:<span class="w"> </span>レビュー指摘事項を修正
+
+-<span class="w"> </span>divide<span class="o">()</span>メソッドで例外をthrowするように変更
+-<span class="w"> </span>セマンティックバージョニング（v2.0.0）を適用<span class="w">  </span>
+-<span class="w"> </span>例外処理のテストコードを追加
+
+Co-authored-by:<span class="w"> </span>Reviewer<span class="w"> </span><span class="p">&amp;</span>lt<span class="p">;</span>reviewer@example.com<span class="p">&amp;</span>gt<span class="p">;&amp;</span>quot<span class="p">;</span>
+
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/add-basic-operations
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>[feature/add-basic-operations c3d4e5f] fix: レビュー指摘事項を修正
+ 1 file changed, 15 insertions(+), 5 deletions(-)
+
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 745 bytes | 745.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+To https://github.com/あなたのユーザー名/fork-practice-upstream.git
+   8a3f9d2..c3d4e5f  feature/add-basic-operations -&amp;gt; feature/add-basic-operations
+</code></pre></div></p>
+<h4 id="step-4_1"><strong>Step 4: レビューコメントへの返信</strong></h4>
+<p>Pull RequestページでレビューコメントにReply：</p>
+<div class="highlight"><pre><span></span><code>@reviewer さん、貴重なフィードバックありがとうございました！
+
+ご指摘いただいた点を以下のように修正しました：
+
+1. **例外処理の改善**: `ArithmeticException`をthrowするように変更し、
+   呼び出し元での適切なエラーハンドリングが可能になりました。
+
+2. **セマンティックバージョニング採用**: v2.0.0形式に変更しました。
+   今後は major.minor.patch の形式で管理していきます。
+
+3. **例外テストコード追加**: main()メソッドでゼロ除算の例外処理テストを含めました。
+
+修正内容をぜひ再度ご確認ください。他にも改善点がございましたら、
+遠慮なくお知らせください。
+</code></pre></div>
+<h3 id="_23">✅ コードレビュープロセス完了！</h3>
+<hr />
+<h2 id="5-pull-request">5. Pull Requestのマージと完了</h2>
+<h3 id="_24">🎯 承認とマージ実行</h3>
+<h4 id="step-1_2"><strong>Step 1: 最終レビューと承認</strong></h4>
+<p>レビューアーからの承認後：</p>
+<h3 id="_25">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_pr_approval_screen.html">プルリクエスト承認画面</a></h3>
+<h4 id="step-2_2"><strong>Step 2: マージ戦略の選択</strong></h4>
+<p>GitHubでは3つのマージ戦略があります：</p>
+<ol>
+<li><strong>Merge commit</strong>: ブランチ履歴を保持（推奨）</li>
+<li><strong>Squash and merge</strong>: コミットを統合して1つのコミットに</li>
+<li><strong>Rebase and merge</strong>: 線形履歴を作成</li>
+</ol>
+<p><strong>今回は&quot;Merge commit&quot;を選択</strong>：</p>
+<h3 id="_26">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_merge_execution_screen_html.html">マージ実行画面</a></h3>
+<h4 id="step-3-pull-request_1"><strong>Step 3: Pull Requestのマージ実行</strong></h4>
+<p>&quot;Merge pull request&quot; ボタンをクリック：</p>
+<h3 id="_27">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_merge_strategy_selection_html.html">マージ戦略選択画面</a></h3>
+<h4 id="step-4_2"><strong>Step 4: マージ完了の確認</strong></h4>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>✅ Pull request successfully merged and closed
+</code></pre></div></p>
+<h3 id="_28">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_merge_completed_screen_html.html">マージ完了画面</a></h3>
+<h3 id="_29">🧹 後処理：ブランチのクリーンアップ</h3>
+<h4 id="step-1_3"><strong>Step 1: リモートブランチの削除</strong></h4>
+<p>GitHubで&quot;Delete branch&quot;をクリック：</p>
+<h3 id="html">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_branch_deletion_screen_html.html">ブランチ削除画面のHTML</a></h3>
+<h4 id="step-2_3"><strong>Step 2: ローカル環境のクリーンアップ</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># mainブランチに切り替え</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+
+<span class="c1"># 最新状態を取得</span>
+git<span class="w"> </span>pull<span class="w"> </span>upstream<span class="w"> </span>main
+
+<span class="c1"># 不要になった機能ブランチを削除</span>
+git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>feature/add-basic-operations
+
+<span class="c1"># リモート追跡ブランチの削除</span>
+git<span class="w"> </span>remote<span class="w"> </span>prune<span class="w"> </span>origin
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>Switched to branch &amp;apos;main&amp;apos;
+Your branch is up to date with &amp;apos;origin/main&amp;apos;.
+
+From https://github.com/あなたのユーザー名/fork-practice-upstream
+ * branch            main       -&amp;gt; FETCH_HEAD
+   b7c8e1f..d4e6f2a  main       -&amp;gt; upstream/main
+Updating b7c8e1f..d4e6f2a
+Fast-forward
+ src/Calculator.java | 50 ++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 48 insertions(+), 2 deletions(-)
+
+Deleted branch feature/add-basic-operations (was c3d4e5f).
+</code></pre></div></p>
+<h4 id="step-3_2"><strong>Step 3: 統合結果の確認</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 最終状態確認</span>
+git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>-5
+git<span class="w"> </span>status
+java<span class="w"> </span>-cp<span class="w"> </span>src<span class="w"> </span>Calculator
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>d4e6f2a (HEAD -&amp;gt; main, upstream/main, origin/main) Merge pull request #1 from username/feature/add-basic-operations
+c3d4e5f fix: レビュー指摘事項を修正
+8a3f9d2 feat: 四則演算機能を追加
+b7c8e1f 初期バージョン: 基本的な計算機クラス作成
+
+On branch main
+Your branch is up to date with &amp;apos;origin/main&amp;apos;.
+nothing to commit, working tree clean
+
+Calculator v2.0.0 - 四則演算対応
+============================
+計算対象: 20, 5
+
+加算結果: 25
+減算結果: 15
+乗算結果: 100
+除算結果: 4
+ゼロ除算テスト:
+エラーをキャッチしました: ゼロで除算することはできません
+</code></pre></div></p>
+<h3 id="pull-request_4">✅ Pull Request完全完了！</h3>
+<hr />
+<h2 id="6-issueprojectspr">6. Issue・Projects・PRの統合管理</h2>
+<h3 id="_30">🔗 統合プロジェクト管理の実践</h3>
+<h4 id="step-1-github-projects"><strong>Step 1: GitHub Projectsでの統合管理</strong></h4>
+<ol>
+<li><strong>Projectボードの作成</strong></li>
+</ol>
+<h3 id="github">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_github_projects_board_creation_html.html">GitHubプロジェクトボード作成画面</a></h3>
+<ol>
+<li><strong>Issue・PRの連携設定</strong></li>
+</ol>
+<h3 id="issuepr">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_issue_pr_integration_screen_html.html">IssueとPRの連携画面</a></h3>
+<h4 id="step-2-issuepr"><strong>Step 2: Issue作成とPR連携</strong></h4>
+<p><strong>新しいIssue作成例</strong>：</p>
+<p><strong>タイトル</strong>: &quot;新機能: 履歴管理機能の追加&quot;</p>
+<p><strong>内容</strong>:
+<div class="highlight"><pre><span></span><code><span class="gu">## 機能要求</span>
+計算機に履歴管理機能を追加したい
+
+<span class="gu">## 詳細</span>
+<span class="k">-</span><span class="w"> </span>過去の計算結果を記録・表示
+<span class="k">-</span><span class="w"> </span>履歴のクリア機能
+<span class="k">-</span><span class="w"> </span>履歴の保存・読み込み
+
+<span class="gu">## 受け入れ条件</span>
+<span class="k">- [ ]</span> 履歴表示機能
+<span class="k">- [ ]</span> 履歴クリア機能  
+<span class="k">- [ ]</span> ファイル保存・読み込み
+
+<span class="gu">## 優先度</span>
+Medium
+
+<span class="gu">## 見積もり</span>
+3-4時間
+</code></pre></div></p>
+<h4 id="step-3_3"><strong>Step 3: 課題管理ボードでの運用</strong></h4>
+<h3 id="github_1">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_github_project_kanban.html">GitHubプロジェクトのカンバン</a></h3>
+<h3 id="_31">📊 統合管理の効果</h3>
+<p><strong>統合管理による利点</strong>：
+- <strong>可視化</strong>: プロジェクト進捗の一元管理
+- <strong>トレーサビリティ</strong>: Issue→PR→マージの完全な追跡
+- <strong>効率化</strong>: 関連情報への素早いアクセス
+- <strong>コミュニケーション</strong>: チーム内での情報共有促進</p>
+<h3 id="week6">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_week6_integration_map.html">Week6統合作業マップ</a></h3>
+<hr />
+<h2 id="7">7. チーム開発フローの総合演習</h2>
+<h3 id="_32">🎭 実際の企業開発シミュレーション</h3>
+<h3 id="_33">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_enterprise_development_process.html">エンタープライズ開発プロセス</a></h3>
+<h4 id="_34"><strong>企業でのプロフェッショナル開発フロー</strong></h4>
+<div class="highlight"><pre><span></span><code>1. Product Owner: 要求定義・Issue作成
+     ↓
+2. Developer: Issue対応・機能実装・PR作成  
+     ↓
+3. Tech Lead: コードレビュー・品質チェック
+     ↓
+4. QA Engineer: テスト・品質保証
+     ↓
+5. DevOps: マージ・デプロイ・モニタリング
+</code></pre></div>
+<h4 id="_35"><strong>あなたが習得したスキル（企業即戦力レベル）</strong></h4>
+<p>✅ <strong>Fork・ブランチ戦略</strong>: 安全で効率的な並行開発<br />
+✅ <strong>Pull Request作成</strong>: 明確で包括的な変更提案<br />
+✅ <strong>コードレビュー</strong>: 建設的で品質向上に寄与するフィードバック<br />
+✅ <strong>協業コミュニケーション</strong>: 技術的議論とチーム協調<br />
+✅ <strong>統合管理</strong>: Issue・PR・Projectsの一元管理<br />
+✅ <strong>品質保証</strong>: テスト・レビューによる品質確保<br />
+✅ <strong>運用配慮</strong>: ドキュメント・トレーサビリティの維持</p>
+<h3 id="_36">🏆 到達した技術レベル</h3>
+<p><strong>レッスン6.10完了時</strong>: <strong>バージョン管理をマスターしたチーム開発対応エンタープライズJavaアーキテクト</strong></p>
+<h4 id="_37"><strong>具体的な能力</strong></h4>
+<ul>
+<li><strong>チーム開発即戦力</strong>: 企業で即座にチーム開発に参加可能</li>
+<li><strong>品質意識</strong>: コードレビュー・テストによる品質確保</li>
+<li><strong>協業スキル</strong>: 効果的なコミュニケーションと技術議論</li>
+<li><strong>プロセス理解</strong>: 企業開発プロセスの完全理解と実践</li>
+<li><strong>ツール活用</strong>: Git/GitHubを活用した効率的開発フロー</li>
+</ul>
+<h3 id="gitgithub">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_git_github_flow_diagram.html">Git/GitHubフロー図</a></h3>
+<hr />
+<h2 id="_38">🎯 まとめ</h2>
+<h3 id="week-6">このレッスンで達成したWeek 6技術統合</h3>
+<h4 id="week-6_1"><strong>Week 6全技術の統合活用</strong></h4>
+<ul>
+<li>✅ <strong>レッスン6.1-6.2のバージョン管理基礎</strong>: 企業開発での重要性理解</li>
+<li>✅ <strong>レッスン6.3-6.5のGit基本操作</strong>: add・commit・pushの完全習得</li>
+<li>✅ <strong>レッスン6.6-6.8のGitHub連携</strong>: リモートリポジトリ・Issue・README管理</li>
+<li>✅ <strong>レッスン6.9のブランチ戦略</strong>: Feature Branch Workflowの実践</li>
+<li>✅ <strong>レッスン6.10のPR・協業フロー</strong>: チーム開発での完全即戦力化</li>
+</ul>
+<h4 id="_39"><strong>企業レベルチーム開発能力</strong></h4>
+<ul>
+<li>✅ <strong>協業フロー</strong>: Fork・PR・レビューの完全サイクル</li>
+<li>✅ <strong>品質保証</strong>: コードレビューによる継続的品質向上</li>
+<li>✅ <strong>統合管理</strong>: Issue・PR・Projects・ブランチの一元管理</li>
+<li>✅ <strong>協業コミュニケーション</strong>: 技術的議論とフィードバック文化</li>
+<li>✅ <strong>プロフェッショナル開発</strong>: 企業で求められる開発プロセス完全習得</li>
+</ul>
+<h4 id="_40"><strong>実務即戦力開発体験</strong></h4>
+<ul>
+<li>✅ <strong>全フロー体験</strong>: 要求定義→実装→レビュー→マージの完全サイクル</li>
+<li>✅ <strong>品質意識</strong>: テスト・レビュー・ドキュメントによる品質確保</li>
+<li>✅ <strong>チームワーク</strong>: 効果的な協業とコミュニケーション</li>
+<li>✅ <strong>現場対応力</strong>: 実際の企業開発で即座に活躍可能な技術レベル</li>
+</ul>
+<h3 id="week-6_2">Week 6の学習成果の総合評価</h3>
+<h4 id="55-"><strong>技術習得度</strong>: ⭐⭐⭐⭐⭐ (5/5) - 完璧</h4>
+<ul>
+<li>Git/GitHubの基礎から協業まで包括的に習得</li>
+<li>実際の企業開発で必要なバージョン管理技術を完全統合</li>
+<li>チーム開発での即戦力レベル到達</li>
+</ul>
+<h4 id="55-_1"><strong>実用性</strong>: ⭐⭐⭐⭐⭐ (5/5) - 優秀</h4>
+<ul>
+<li>実際の企業チーム開発フローを完全再現</li>
+<li>Fork・PR・レビューの実践的活用</li>
+<li>Issue・Projects統合による効率的プロジェクト管理</li>
+</ul>
+<h4 id="55-_2"><strong>協業スキル</strong>: ⭐⭐⭐⭐⭐ (5/5) - 卓越</h4>
+<ul>
+<li>建設的なコードレビューとフィードバック能力</li>
+<li>効果的な技術コミュニケーション</li>
+<li>チーム開発での品質意識と協調性</li>
+</ul>
+<p><strong>Week 6総合評価</strong>: ⭐⭐⭐⭐⭐ (5/5) - 企業即戦力レベル達成！</p>
+<hr />
+<h2 id="_41">🚀 次回予告</h2>
+<p>Week 7では、<strong>データベース・SQL基礎</strong>を学習します：</p>
+<h3 id="week-7"><strong>Week 7で学ぶ実務必須技術</strong></h3>
+<ul>
+<li><strong>SQL基本操作</strong>: SELECT・INSERT・UPDATE・DELETEによるデータ操作</li>
+<li><strong>テーブル設計</strong>: 主キー・外部キー・正規化によるデータベース設計</li>
+<li><strong>結合・集約</strong>: JOIN・GROUP BYによる複雑なデータ処理</li>
+<li><strong>実用DB設計</strong>: 学生管理システム用データベース設計</li>
+</ul>
+<h3 id="gitgithub_1"><strong>今回のGit/GitHubスキルとの連携</strong></h3>
+<ul>
+<li>データベース設計ファイル → Git/GitHubでのバージョン管理</li>
+<li>SQL修正・拡張 → ブランチ・PRによる安全な変更管理</li>
+<li>チーム開発 → DB設計レビュー・協業での設計改善</li>
+<li>システム統合 → Week 5 JavaシステムとWeek 7データベースの統合準備</li>
+</ul>
+<h3 id="_42"><strong>期待される成長</strong></h3>
+<p><strong>Week 7完了後</strong>: <strong>データベース設計をマスターしたフルスタックエンタープライズJavaアーキテクト</strong></p>
+<p><strong>継続学習への動機</strong>：
+Week 6で習得したバージョン管理・チーム開発技術を基盤として、Week 7では「実用システムに必須のデータベース技術」を習得します。SQLにより、<strong>真のフルスタック開発者</strong>への道が開かれます！</p>
+<hr />
+<h2 id="_43">📝 練習課題</h2>
+<p>時間に余裕がある方は、以下の課題にチャレンジしてみてください：</p>
+<h3 id="_44"><strong>基礎練習</strong></h3>
+<ol>
+<li><strong>複数Issueの並行対応</strong></li>
+<li>Issue #2「科学計算機能の追加」を作成</li>
+<li>sin, cos, tan, sqrt等の関数を実装</li>
+<li>
+<p>別ブランチでPR作成・レビュー実践</p>
+</li>
+<li>
+<p><strong>コードレビュー体験の拡張</strong></p>
+</li>
+<li>意図的に問題のあるコードを含むPRを作成</li>
+<li>セキュリティ・パフォーマンス観点でのレビューコメント実践</li>
+<li>修正対応からマージまでのフルサイクル体験</li>
+</ol>
+<h3 id="_45"><strong>応用練習</strong></h3>
+<ol>
+<li><strong>GitHub Actions導入</strong></li>
+<li>PR作成時の自動テスト実行</li>
+<li>コンパイルエラー・テスト失敗時のPRブロック</li>
+<li>
+<p>品質保証の自動化実践</p>
+</li>
+<li>
+<p><strong>オープンソース貢献シミュレーション</strong></p>
+</li>
+<li>実際のオープンソースプロジェクトをFork</li>
+<li>ドキュメント修正やバグ修正のPR作成</li>
+<li>OSS貢献のベストプラクティス体験</li>
+</ol>
+<h3 id="_46"><strong>発展練習</strong></h3>
+<ol>
+<li><strong>大規模チーム開発シミュレーション</strong></li>
+<li>複数人での同時機能開発（コンフリクト発生）</li>
+<li>コンフリクト解決・マージ戦略の最適化</li>
+<li>
+<p>レビューローテーション・品質基準の統一</p>
+</li>
+<li>
+<p><strong>継続的インテグレーション構築</strong></p>
+</li>
+<li>GitHub Actions + JUnit自動テスト</li>
+<li>カバレッジ測定・品質メトリクス自動取得</li>
+<li>デプロイ自動化の基礎実装</li>
+</ol>
+<p>これらの課題により、実際のエンタープライズ開発で求められる高度なチーム開発・品質管理技術が身につきます！</p>
+<p><strong>あなたは今、真のプロフェッショナル開発者として、企業チーム開発で即戦力として活躍できるレベルに到達しました！</strong> 🚀</p>
+<h3 id="610">🎉 レッスン6.10完了おめでとうございます！</h3>
+<p><strong>バージョン管理をマスターしたチーム開発対応エンタープライズJavaアーキテクト</strong>として、Week 7でのさらなる成長を期待しています！</content>
+</lesson></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

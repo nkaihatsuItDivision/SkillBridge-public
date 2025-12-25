@@ -1,0 +1,4285 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/logo_tab.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>SQLDB 10 - SKILBRIDGE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#week-8" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="SKILBRIDGE" class="md-header__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SKILBRIDGE
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SQLDB 10
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SKILBRIDGE" class="md-nav__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    SKILBRIDGE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コース一覧
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    コース一覧
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01_PC基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01_PC基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02_Web基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02_Web基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03_Java入門
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03_Java入門
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04_Java基礎固め
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04_Java基礎固め
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05_OOP基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05_OOP基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06_OOP応用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06_OOP応用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07_Git/GitHub基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    07_Git/GitHub基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08_SQL・DB設計
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    08_SQL・DB設計
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09_SpringBoot：表示機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    09_SpringBoot：表示機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10_SpringBoot：登録更新機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10_SpringBoot：登録更新機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11_SpringBoot：検索削除機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11_SpringBoot：検索削除機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12_実務基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    12_実務基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#初級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#初級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#中級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#中級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_15" id="__nav_2_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#上級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#上級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_16" id="__nav_2_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Office全般ツール
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Office全般ツール
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#week-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 このレッスンの目的：Week 8での成功を確実にする！
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 このレッスンの目的：Week 8での成功を確実にする！">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-8_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        重要：このレッスンはWeek 8準備に特化しています
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 このレッスンの学習目標
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-7-week-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Week 7の成果と Week 8への橋渡し
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Week 7の成果と Week 8への橋渡し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#79" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        レッスン7.9での完璧な達成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5er" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 完成した5テーブルER図
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 8で実現すること
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今回のレッスンの価値
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-8_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Week 8成功のための準備項目
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Week 8成功のための準備項目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-8_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 準備完了チェックリスト（Week 8開始前）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 準備完了チェックリスト（Week 8開始前）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データベース準備 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spring Boot設定準備 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Javaクラス準備 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mybatis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MyBatis設定準備 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        開発環境準備 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Spring Boot設定ファイルの完成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Spring Boot設定ファイルの完成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-week-810" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ ステップ1: Week 8〜10で使用する設定ファイル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 8での活用方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-mybatis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. MyBatis連携の完全準備
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. MyBatis連携の完全準備">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-week-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ ステップ2: Week 8で使用するマッパーインターフェース
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-week-810xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ ステップ3: Week 8〜10で段階的に活用するXMLマッパー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-810" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 8〜10での段階的活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. エンティティクラスの準備完了
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. エンティティクラスの準備完了">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-week-810" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ ステップ4: Week 8〜10で中心的に使用するエンティティ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-week-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ ステップ5: Week 9で使用するフォームクラス
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-week-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ ステップ6: Week 10で使用する検索フォーム
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-810_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 8〜10での活用シナリオ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 開発環境の最終確認
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 開発環境の最終確認">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#7-week-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ ステップ7: Week 8での成功を保証する環境チェック
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ ステップ7: Week 8での成功を保証する環境チェック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mavenpomxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Maven依存関係の確認（pom.xml）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 8での最初の動作確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-week-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Week 8学習内容への期待感醸成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Week 8学習内容への期待感醸成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-8_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Week 8で体験する「魔法のような」瞬間
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Week 8で体験する「魔法のような」瞬間">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1週間前との比較
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-810_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 8〜10で実現する機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 学生管理Webアプリのモックアップ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Week 8学習の価値
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Week 8学習の価値">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技術的価値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        キャリア的価値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学習的価値
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💫 Week 8での「成功体験」への道筋
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-8_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Week 8準備完了チェック
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Week 8準備完了チェック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 最終確認チェックリスト
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 最終確認チェックリスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データベース準備 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ファイル準備 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        環境準備 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 8学習準備 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Week 8開始日の流れ（予定）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-8_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎉 Week 8への期待を最大化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎉 Week 8への期待を最大化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💫 あなたが手に入れる技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-810_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌟 Week 8〜10での成長曲線
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 今回の準備の価値（再確認）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 今回の準備の価値（再確認）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学習効率の向上
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技術習得の加速
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自信とモチベーションの向上
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💪 Week 8への決意
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-8_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 次回予告：Week 8での魔法の瞬間
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 次回予告：Week 8での魔法の瞬間">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-81-spring-bootmvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 8.1: Spring Boot概要・MVCアーキテクチャ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 8.2: 学生一覧表示機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-83-thymeleaf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 8.3: Thymeleafテンプレート
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        期待される最初の成功体験
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 最後のメッセージ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>SQLDB 10</h1>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<p><lesson>
+  <type>text</type>
+  <description>レッスン7.9で学生管理システム用データベースの完全設計を完成させた学習者を対象に、Week 8のSpring Boot学習への準備に特化したレッスン。MyBatis設定、エンティティクラス設計、開発環境最適化を通じて、Week 8でのWeb開発学習が環境エラーなく開始できる状態を構築する。技術的準備を完璧に整えることで、Week 8〜10のSpring Boot学習効率を最大化し、確実な成功体験を保証する。</description>
+  <title>10.実践演習：Week 8準備・Spring Boot連携用DB設計完成</title>
+  <content># レッスン7.10: Week 8準備完了！Spring Boot連携のための最終セットアップ</p>
+<h2 id="week-8">🚀 このレッスンの目的：Week 8での成功を確実にする！</h2>
+<h3 id="week-8_1"><strong>重要：このレッスンはWeek 8準備に特化しています</strong></h3>
+<p>このレッスンの最大の目的は、<strong>Week 8のSpring Boot学習を最初から最後まで集中して学べるよう、技術的な準備を完璧に整える</strong>ことです。</p>
+<p>Week 8では以下のような学習を予定しています：
+- <strong>Spring Boot概要・MVCアーキテクチャの理解</strong>
+- <strong>学生一覧表示機能の実装</strong>
+- <strong>Thymeleafテンプレートでの画面作成</strong>
+- <strong>Controllerクラスでのリクエスト処理</strong></p>
+<p><strong>これらの学習に集中できるよう、今回で技術的な「下準備」を完璧に整えます！</strong></p>
+<h2 id="_1">🎯 このレッスンの学習目標</h2>
+<ul>
+<li><strong>Week 8即座開始</strong>：Spring Boot学習を環境構築で躓くことなく始められる</li>
+<li><strong>MyBatis設定完成</strong>：データベースとJavaの自動連携を実現する</li>
+<li><strong>エンティティクラス準備</strong>：7.9のDB設計をJavaクラスに変換する</li>
+<li><strong>開発環境最適化</strong>：Week 8〜10の学生管理システム開発に最適な環境を構築</li>
+<li><strong>学習効率最大化</strong>：Week 8でのコーディングに100%集中できる状態を作る</li>
+</ul>
+<p><strong>学習時間</strong>: 約50-60分</p>
+<hr />
+<h2 id="week-7-week-8">📚 Week 7の成果と Week 8への橋渡し</h2>
+<h3 id="79">レッスン7.9での完璧な達成</h3>
+<p>前回のレッスン7.9では、<strong>学生管理システム用データベースの完全設計</strong>を達成しました：</p>
+<h3 id="5er">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_9_beautiful_five_table_er.html">完成した5テーブルER図</a></h3>
+<ul>
+<li><strong>departments, students, teachers, subjects, grades</strong> の5テーブル構造</li>
+<li><strong>完全正規化</strong>と<strong>包括的制約設計</strong></li>
+<li><strong>エンタープライズレベル</strong>の品質</li>
+</ul>
+<h3 id="week-8_2">Week 8で実現すること</h3>
+<p>Week 8では、この完璧なDB設計を使って以下を実現します：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 8で実際に書くコード例</span>
+<span class="nd">@Controller</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentController</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showStudents</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 7.9で設計したstudentsテーブルから全学生を取得</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">students</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">index</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span><span class="w">  </span><span class="c1">// Thymeleafテンプレートで表示</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>今回の準備により、Week 8でこのようなコードがエラーなく動作します！</strong></p>
+<h3 id="_2">今回のレッスンの価値</h3>
+<p><strong>Week 8での学習効率を劇的に向上</strong>させることが今回の最大の価値です：</p>
+<ul>
+<li>❌ <strong>準備不足の場合</strong>：環境エラーで30分〜1時間のロス、Spring Boot学習に集中できない</li>
+<li>✅ <strong>完璧な準備後</strong>：最初のコードから動作成功、Spring Boot概念の理解に集中可能</li>
+</ul>
+<hr />
+<h2 id="week-8_3">🔧 Week 8成功のための準備項目</h2>
+<h3 id="week-8_4">📋 準備完了チェックリスト（Week 8開始前）</h3>
+<p>Week 8開始時に以下が全て準備完了している状態を目指します：</p>
+<h4 id="_3"><strong>データベース準備</strong> ✅</h4>
+<ul>
+<li>[ ] MySQL サーバーが正常稼働</li>
+<li>[ ] sampledb データベースに5テーブルが正しく作成済み</li>
+<li>[ ] サンプルデータが適切に投入済み</li>
+<li>[ ] phpMyAdmin で操作・確認が可能</li>
+</ul>
+<h4 id="spring-boot"><strong>Spring Boot設定準備</strong> ✅</h4>
+<ul>
+<li>[ ] application.properties でDB接続設定完了</li>
+<li>[ ] MyBatis設定が正しく記述済み</li>
+<li>[ ] データベース接続テストが成功</li>
+</ul>
+<h4 id="java"><strong>Javaクラス準備</strong> ✅</h4>
+<ul>
+<li>[ ] Student エンティティクラスが作成済み</li>
+<li>[ ] StudentMapper インターフェースが作成済み</li>
+<li>[ ] フォーム用クラス（StudentData, StudentQuery）が作成済み</li>
+</ul>
+<h4 id="mybatis"><strong>MyBatis設定準備</strong> ✅</h4>
+<ul>
+<li>[ ] StudentMapper.xml で全CRUD操作が定義済み</li>
+<li>[ ] 動的検索機能が実装済み</li>
+<li>[ ] Week 8〜10で使用する全機能が準備完了</li>
+</ul>
+<h4 id="_4"><strong>開発環境準備</strong> ✅</h4>
+<ul>
+<li>[ ] Eclipse でSpring Bootプロジェクトが作成可能</li>
+<li>[ ] Maven依存関係が正しく設定済み</li>
+<li>[ ] Lombok が正常に動作</li>
+<li>[ ] 簡単な接続テストが成功</li>
+</ul>
+<p><strong>全てにチェックが入れば、Week 8での成功は確実です！</strong></p>
+<hr />
+<h2 id="1-spring-boot">1. Spring Boot設定ファイルの完成</h2>
+<h3 id="1-week-810">🛠️ ステップ1: Week 8〜10で使用する設定ファイル</h3>
+<p>Week 8では最初のレッスンでデータベースに接続し、学生データを取得します。<br />
+そのための設定を今回で完璧に整えます。</p>
+<p><strong>application.properties</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Week 8〜10のSpring Bootプロジェクトで使用する設定</span>
+
+<span class="c1"># アプリケーション名（Week 8で作成するプロジェクト名）</span>
+<span class="na">spring.application.name</span><span class="o">=</span><span class="s">StudentSpringBootMyBatisProject</span>
+
+<span class="c1"># MySQL接続設定（7.9で構築したデータベースに接続）</span>
+<span class="na">spring.datasource.driver-class-name</span><span class="o">=</span><span class="s">com.mysql.cj.jdbc.Driver</span>
+<span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">jdbc:mysql://localhost:3306/sampledb</span>
+<span class="na">spring.datasource.username</span><span class="o">=</span><span class="s">root</span>
+<span class="na">spring.datasource.password</span><span class="o">=</span><span class="s">pass</span>
+
+<span class="c1"># Week 9〜10で使用するHTTPメソッド設定</span>
+<span class="na">spring.mvc.hiddenmethod.filter.enabled</span><span class="o">=</span><span class="s">true</span>
+
+<span class="c1"># Week 8で使用するThymeleafテンプレート設定</span>
+<span class="na">spring.mvc.view.prefix</span><span class="o">=</span><span class="s">/templates/</span>
+<span class="na">spring.mvc.view.suffix</span><span class="o">=</span><span class="s">.html</span>
+
+<span class="c1"># MyBatis設定（重要！）</span>
+<span class="c1"># Week 8でstudent_id → studentId の自動変換が動作</span>
+<span class="na">mybatis.configuration.map-underscore-to-camel-case</span><span class="o">=</span><span class="s">true</span>
+
+<span class="c1"># Week 8〜10で使用するXMLマッパーファイルの場所</span>
+<span class="na">mybatis.mapper-locations</span><span class="o">=</span><span class="s">classpath:mapper/*.xml</span>
+
+<span class="c1"># Week 8での学習支援：実行SQLをログ出力（学習時のみ）</span>
+<span class="na">logging.level.com.example.demo.repository</span><span class="o">=</span><span class="s">DEBUG</span>
+</code></pre></div>
+<h3 id="week-8_5">Week 8での活用方法</h3>
+<p>Week 8の最初のレッスンで、この設定により以下が実現されます：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 8.1で最初に書くコード</span>
+<span class="nd">@SpringBootApplication</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentSpringBootMyBatisProjectApplication</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">StudentSpringBootMyBatisProjectApplication</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// → この設定により、起動時にMySQLに自動接続成功！</span>
+</code></pre></div>
+<p><strong>今回の準備により、Week 8で環境エラーに悩まされることが一切なくなります！</strong></p>
+<hr />
+<h2 id="2-mybatis">2. MyBatis連携の完全準備</h2>
+<h3 id="2-week-8">🛠️ ステップ2: Week 8で使用するマッパーインターフェース</h3>
+<p>Week 8では学生一覧表示から開始します。そのために必要なインターフェースを準備します。</p>
+<p><strong>StudentMapper.java</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.example.demo.repository</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.apache.ibatis.annotations.Mapper</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.example.demo.entity.Student</span><span class="p">;</span>
+
+<span class="c1">// Week 8〜10で段階的に使用するマッパーインターフェース</span>
+<span class="nd">@Mapper</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">StudentMapper</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Week 8.2: 学生一覧表示で最初に使用</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">findAll</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Week 8.3: 学生詳細表示で使用</span>
+<span class="w">    </span><span class="n">Student</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Week 9.1: 新規登録機能で使用</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Week 9.2: 更新機能で使用</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Week 10.1: 検索機能で使用</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">search</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Week 10.2: 削除機能で使用</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Week 10.3: 論理削除機能で使用</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">logicalDelete</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="3-week-810xml">🛠️ ステップ3: Week 8〜10で段階的に活用するXMLマッパー</h3>
+<p><strong>StudentMapper.xml</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>?xml<span class="w"> </span>version=<span class="ni">&amp;quot;</span>1.0<span class="ni">&amp;quot;</span><span class="w"> </span>encoding=<span class="ni">&amp;quot;</span>UTF-8<span class="ni">&amp;quot;</span>?<span class="ni">&amp;gt;</span>
+<span class="ni">&amp;lt;</span>!DOCTYPE<span class="w"> </span>mapper<span class="w"> </span>PUBLIC<span class="w"> </span><span class="ni">&amp;quot;</span>-//mybatis.org//DTD<span class="w"> </span>Mapper<span class="w"> </span>3.0//EN<span class="ni">&amp;quot;</span><span class="w"> </span>
+<span class="w">    </span><span class="ni">&amp;quot;</span>http://mybatis.org/dtd/mybatis-3-mapper.dtd<span class="ni">&amp;quot;&amp;gt;</span>
+
+<span class="ni">&amp;lt;</span>mapper<span class="w"> </span>namespace=<span class="ni">&amp;quot;</span>com.example.demo.repository.StudentMapper<span class="ni">&amp;quot;&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8〜10で共通使用する結果マッピング<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>resultMap<span class="w"> </span>id=<span class="ni">&amp;quot;</span>studentResultMap<span class="ni">&amp;quot;</span><span class="w"> </span>type=<span class="ni">&amp;quot;</span>com.example.demo.entity.Student<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>id<span class="w"> </span>property=<span class="ni">&amp;quot;</span>studentId<span class="ni">&amp;quot;</span><span class="w"> </span>column=<span class="ni">&amp;quot;</span>student_id<span class="ni">&amp;quot;</span>/<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>result<span class="w"> </span>property=<span class="ni">&amp;quot;</span>name<span class="ni">&amp;quot;</span><span class="w"> </span>column=<span class="ni">&amp;quot;</span>name<span class="ni">&amp;quot;</span>/<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>result<span class="w"> </span>property=<span class="ni">&amp;quot;</span>email<span class="ni">&amp;quot;</span><span class="w"> </span>column=<span class="ni">&amp;quot;</span>email<span class="ni">&amp;quot;</span>/<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>result<span class="w"> </span>property=<span class="ni">&amp;quot;</span>enrollmentDate<span class="ni">&amp;quot;</span><span class="w"> </span>column=<span class="ni">&amp;quot;</span>enrollment_date<span class="ni">&amp;quot;</span>/<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>result<span class="w"> </span>property=<span class="ni">&amp;quot;</span>gpa<span class="ni">&amp;quot;</span><span class="w"> </span>column=<span class="ni">&amp;quot;</span>gpa<span class="ni">&amp;quot;</span>/<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>result<span class="w"> </span>property=<span class="ni">&amp;quot;</span>departmentId<span class="ni">&amp;quot;</span><span class="w"> </span>column=<span class="ni">&amp;quot;</span>department_id<span class="ni">&amp;quot;</span>/<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>/resultMap<span class="ni">&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8.2:<span class="w"> </span>最初に動作確認するクエリ<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>select<span class="w"> </span>id=<span class="ni">&amp;quot;</span>findAll<span class="ni">&amp;quot;</span><span class="w"> </span>resultMap=<span class="ni">&amp;quot;</span>studentResultMap<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">        </span>SELECT<span class="w"> </span>student_id,<span class="w"> </span>name,<span class="w"> </span>email,<span class="w"> </span>enrollment_date,<span class="w"> </span>gpa,<span class="w"> </span>department_id
+<span class="w">        </span>FROM<span class="w"> </span>students
+<span class="w">        </span>ORDER<span class="w"> </span>BY<span class="w"> </span>student_id
+<span class="w">    </span><span class="ni">&amp;lt;</span>/select<span class="ni">&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8.3:<span class="w"> </span>学生詳細表示で使用<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>select<span class="w"> </span>id=<span class="ni">&amp;quot;</span>findById<span class="ni">&amp;quot;</span><span class="w"> </span>resultMap=<span class="ni">&amp;quot;</span>studentResultMap<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">        </span>SELECT<span class="w"> </span>student_id,<span class="w"> </span>name,<span class="w"> </span>email,<span class="w"> </span>enrollment_date,<span class="w"> </span>gpa,<span class="w"> </span>department_id
+<span class="w">        </span>FROM<span class="w"> </span>students
+<span class="w">        </span>WHERE<span class="w"> </span>student_id<span class="w"> </span>=<span class="w"> </span>#{id}
+<span class="w">    </span><span class="ni">&amp;lt;</span>/select<span class="ni">&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>9.1:<span class="w"> </span>新規登録で使用<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>insert<span class="w"> </span>id=<span class="ni">&amp;quot;</span>save<span class="ni">&amp;quot;</span><span class="w"> </span>useGeneratedKeys=<span class="ni">&amp;quot;</span>true<span class="ni">&amp;quot;</span><span class="w"> </span>keyProperty=<span class="ni">&amp;quot;</span>studentId<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">        </span>INSERT<span class="w"> </span>INTO<span class="w"> </span>students<span class="w"> </span>(name,<span class="w"> </span>email,<span class="w"> </span>enrollment_date,<span class="w"> </span>gpa,<span class="w"> </span>department_id)
+<span class="w">        </span>VALUES<span class="w"> </span>(#{name},<span class="w"> </span>#{email},<span class="w"> </span>#{enrollmentDate},<span class="w"> </span>#{gpa},<span class="w"> </span>#{departmentId})
+<span class="w">    </span><span class="ni">&amp;lt;</span>/insert<span class="ni">&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>9.2:<span class="w"> </span>更新機能で使用<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>update<span class="w"> </span>id=<span class="ni">&amp;quot;</span>update<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">        </span>UPDATE<span class="w"> </span>students<span class="w"> </span>SET
+<span class="w">            </span>name<span class="w"> </span>=<span class="w"> </span>#{name},
+<span class="w">            </span>email<span class="w"> </span>=<span class="w"> </span>#{email},
+<span class="w">            </span>gpa<span class="w"> </span>=<span class="w"> </span>#{gpa},
+<span class="w">            </span>department_id<span class="w"> </span>=<span class="w"> </span>#{departmentId}
+<span class="w">        </span>WHERE<span class="w"> </span>student_id<span class="w"> </span>=<span class="w"> </span>#{studentId}
+<span class="w">    </span><span class="ni">&amp;lt;</span>/update<span class="ni">&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>10.1:<span class="w"> </span>動的検索で使用（MyBatisの高度機能）<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>select<span class="w"> </span>id=<span class="ni">&amp;quot;</span>search<span class="ni">&amp;quot;</span><span class="w"> </span>resultMap=<span class="ni">&amp;quot;</span>studentResultMap<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">        </span>SELECT<span class="w"> </span>student_id,<span class="w"> </span>name,<span class="w"> </span>email,<span class="w"> </span>enrollment_date,<span class="w"> </span>gpa,<span class="w"> </span>department_id
+<span class="w">        </span>FROM<span class="w"> </span>students
+<span class="w">        </span><span class="ni">&amp;lt;</span>where<span class="ni">&amp;gt;</span>
+<span class="w">            </span><span class="ni">&amp;lt;</span>if<span class="w"> </span>test=<span class="ni">&amp;quot;</span>name<span class="w"> </span>!=<span class="w"> </span>null<span class="w"> </span>and<span class="w"> </span>name<span class="w"> </span>!=<span class="w"> </span><span class="ni">&amp;apos;&amp;apos;&amp;quot;&amp;gt;</span>
+<span class="w">                </span>AND<span class="w"> </span>name<span class="w"> </span>LIKE<span class="w"> </span>CONCAT(<span class="ni">&amp;apos;</span>%<span class="ni">&amp;apos;</span>,<span class="w"> </span>#{name},<span class="w"> </span><span class="ni">&amp;apos;</span>%<span class="ni">&amp;apos;</span>)
+<span class="w">            </span><span class="ni">&amp;lt;</span>/if<span class="ni">&amp;gt;</span>
+<span class="w">            </span><span class="ni">&amp;lt;</span>if<span class="w"> </span>test=<span class="ni">&amp;quot;</span>email<span class="w"> </span>!=<span class="w"> </span>null<span class="w"> </span>and<span class="w"> </span>email<span class="w"> </span>!=<span class="w"> </span><span class="ni">&amp;apos;&amp;apos;&amp;quot;&amp;gt;</span>
+<span class="w">                </span>AND<span class="w"> </span>email<span class="w"> </span>LIKE<span class="w"> </span>CONCAT(<span class="ni">&amp;apos;</span>%<span class="ni">&amp;apos;</span>,<span class="w"> </span>#{email},<span class="w"> </span><span class="ni">&amp;apos;</span>%<span class="ni">&amp;apos;</span>)
+<span class="w">            </span><span class="ni">&amp;lt;</span>/if<span class="ni">&amp;gt;</span>
+<span class="w">            </span><span class="ni">&amp;lt;</span>if<span class="w"> </span>test=<span class="ni">&amp;quot;</span>departmentId<span class="w"> </span>!=<span class="w"> </span>null<span class="w"> </span>and<span class="w"> </span>departmentId<span class="w"> </span><span class="ni">&amp;gt;</span><span class="w"> </span>0<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">                </span>AND<span class="w"> </span>department_id<span class="w"> </span>=<span class="w"> </span>#{departmentId}
+<span class="w">            </span><span class="ni">&amp;lt;</span>/if<span class="ni">&amp;gt;</span>
+<span class="w">            </span><span class="ni">&amp;lt;</span>if<span class="w"> </span>test=<span class="ni">&amp;quot;</span>gpa<span class="w"> </span>!=<span class="w"> </span>null<span class="w"> </span>and<span class="w"> </span>gpa<span class="w"> </span><span class="ni">&amp;gt;</span><span class="w"> </span>0<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">                </span>AND<span class="w"> </span>gpa<span class="w"> </span><span class="ni">&amp;gt;</span>=<span class="w"> </span>#{gpa}
+<span class="w">            </span><span class="ni">&amp;lt;</span>/if<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>/where<span class="ni">&amp;gt;</span>
+<span class="w">        </span>ORDER<span class="w"> </span>BY<span class="w"> </span>student_id
+<span class="w">    </span><span class="ni">&amp;lt;</span>/select<span class="ni">&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>10.2:<span class="w"> </span>削除機能で使用<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>delete<span class="w"> </span>id=<span class="ni">&amp;quot;</span>delete<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">        </span>DELETE<span class="w"> </span>FROM<span class="w"> </span>students<span class="w"> </span>WHERE<span class="w"> </span>student_id<span class="w"> </span>=<span class="w"> </span>#{id}
+<span class="w">    </span><span class="ni">&amp;lt;</span>/delete<span class="ni">&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>10.3:<span class="w"> </span>論理削除で使用<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>update<span class="w"> </span>id=<span class="ni">&amp;quot;</span>logicalDelete<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">        </span>UPDATE<span class="w"> </span>students<span class="w"> </span>SET<span class="w"> </span>deleted_at<span class="w"> </span>=<span class="w"> </span>NOW()<span class="w"> </span>WHERE<span class="w"> </span>student_id<span class="w"> </span>=<span class="w"> </span>#{id}
+<span class="w">    </span><span class="ni">&amp;lt;</span>/update<span class="ni">&amp;gt;</span>
+
+<span class="ni">&amp;lt;</span>/mapper<span class="ni">&amp;gt;</span>
+</code></pre></div>
+<h3 id="week-810">Week 8〜10での段階的活用</h3>
+<p><strong>Week 8</strong>: findAll, findById のみ使用（基本表示機能）<br />
+<strong>Week 9</strong>: save, update を追加使用（登録・更新機能）<br />
+<strong>Week 10</strong>: search, delete, logicalDelete で全機能完成</p>
+<p><strong>この準備により、各週で新機能を学ぶ際に「既に動作する状態」から開始できます！</strong></p>
+<hr />
+<h2 id="3">3. エンティティクラスの準備完了</h2>
+<h3 id="4-week-810">🛠️ ステップ4: Week 8〜10で中心的に使用するエンティティ</h3>
+<p><strong>Student.java</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.example.demo.entity</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">lombok.Data</span><span class="p">;</span>
+
+<span class="c1">// Week 8〜10で最も重要なクラス</span>
+<span class="c1">// 7.9で設計したstudentsテーブルと完全対応</span>
+<span class="nd">@Data</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Student</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// student_id（主キー）→ Week 8で自動マッピング確認</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">studentId</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Week 8で画面表示に使用</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Week 8でDate型の取り扱いを学習</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">enrollmentDate</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Week 8で小数点表示の学習に使用</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">gpa</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Week 9で部門選択機能として使用</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">departmentId</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Week 10で論理削除機能の学習に使用</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">deletedAt</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="5-week-9">🛠️ ステップ5: Week 9で使用するフォームクラス</h3>
+<p><strong>StudentData.java</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.example.demo.form</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javax.validation.constraints.*</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">lombok.Data</span><span class="p">;</span>
+
+<span class="c1">// Week 9で入力フォーム・バリデーションの学習に使用</span>
+<span class="nd">@Data</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentData</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">studentId</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Week 9.1: バリデーション学習で使用</span>
+<span class="w">    </span><span class="nd">@NotBlank</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生名は必須です</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@Size</span><span class="p">(</span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生名は100文字以内で入力してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Week 9.2: Email形式チェックの学習で使用</span>
+<span class="w">    </span><span class="nd">@NotBlank</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">メールアドレスは必須です</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@Email</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">正しいメールアドレス形式で入力してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Week 9.3: 日付入力の学習で使用</span>
+<span class="w">    </span><span class="nd">@NotNull</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">入学日は必須です</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">enrollmentDate</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Week 9.4: 数値範囲チェックの学習で使用</span>
+<span class="w">    </span><span class="nd">@NotNull</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">GPAは必須です</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@DecimalMin</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mf">0.0</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">GPAは0</span><span class="mf">.0</span><span class="n">以上で入力してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@DecimalMax</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mf">4.0</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">GPAは4</span><span class="mf">.0</span><span class="n">以下で入力してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">gpa</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@NotNull</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学科を選択してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@Min</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">正しい学科を選択してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">departmentId</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="6-week-10">🛠️ ステップ6: Week 10で使用する検索フォーム</h3>
+<p><strong>StudentQuery.java</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.example.demo.form</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">lombok.Data</span><span class="p">;</span>
+
+<span class="c1">// Week 10で動的検索機能の学習に使用</span>
+<span class="nd">@Data</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentQuery</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Week 10.1: 部分一致検索の学習</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Week 10.2: プルダウン検索の学習</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">departmentId</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Week 10.3: 数値範囲検索の学習</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">gpa</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="week-810_1">Week 8〜10での活用シナリオ</h3>
+<p><strong>Week 8</strong>: <code>Student</code> エンティティでデータ表示の基本を学習<br />
+<strong>Week 9</strong>: <code>StudentData</code> でフォーム処理・バリデーションを学習<br />
+<strong>Week 10</strong>: <code>StudentQuery</code> で検索機能・動的SQLを学習</p>
+<p><strong>各週で段階的に新しいクラスを導入することで、学習負荷を分散させます！</strong></p>
+<hr />
+<h2 id="4">4. 開発環境の最終確認</h2>
+<h3 id="7-week-8">🛠️ ステップ7: Week 8での成功を保証する環境チェック</h3>
+<h4 id="mavenpomxml">Maven依存関係の確認（pom.xml）</h4>
+<p>Week 8で作成するプロジェクトには以下の依存関係が必要です：</p>
+<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>dependencies<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8:<span class="w"> </span>Spring<span class="w"> </span>Boot基本機能<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>dependency<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>groupId<span class="ni">&amp;gt;</span>org.springframework.boot<span class="ni">&amp;lt;</span>/groupId<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>artifactId<span class="ni">&amp;gt;</span>spring-boot-starter-web<span class="ni">&amp;lt;</span>/artifactId<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>/dependency<span class="ni">&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8:<span class="w"> </span>Thymeleafテンプレートエンジン<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>dependency<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>groupId<span class="ni">&amp;gt;</span>org.springframework.boot<span class="ni">&amp;lt;</span>/groupId<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>artifactId<span class="ni">&amp;gt;</span>spring-boot-starter-thymeleaf<span class="ni">&amp;lt;</span>/artifactId<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>/dependency<span class="ni">&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8〜10:<span class="w"> </span>MyBatis<span class="w"> </span>ORM<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>dependency<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>groupId<span class="ni">&amp;gt;</span>org.mybatis.spring.boot<span class="ni">&amp;lt;</span>/groupId<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>artifactId<span class="ni">&amp;gt;</span>mybatis-spring-boot-starter<span class="ni">&amp;lt;</span>/artifactId<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>version<span class="ni">&amp;gt;</span>2.3.0<span class="ni">&amp;lt;</span>/version<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>/dependency<span class="ni">&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8〜10:<span class="w"> </span>MySQL接続<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>dependency<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>groupId<span class="ni">&amp;gt;</span>mysql<span class="ni">&amp;lt;</span>/groupId<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>artifactId<span class="ni">&amp;gt;</span>mysql-connector-java<span class="ni">&amp;lt;</span>/artifactId<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>scope<span class="ni">&amp;gt;</span>runtime<span class="ni">&amp;lt;</span>/scope<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>/dependency<span class="ni">&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8〜10:<span class="w"> </span>Lombok（Week<span class="w"> </span>5で習得済み）<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>dependency<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>groupId<span class="ni">&amp;gt;</span>org.projectlombok<span class="ni">&amp;lt;</span>/groupId<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>artifactId<span class="ni">&amp;gt;</span>lombok<span class="ni">&amp;lt;</span>/artifactId<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>optional<span class="ni">&amp;gt;</span>true<span class="ni">&amp;lt;</span>/optional<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>/dependency<span class="ni">&amp;gt;</span>
+
+<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>9:<span class="w"> </span>バリデーション機能<span class="w"> </span>--<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>dependency<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>groupId<span class="ni">&amp;gt;</span>org.springframework.boot<span class="ni">&amp;lt;</span>/groupId<span class="ni">&amp;gt;</span>
+<span class="w">        </span><span class="ni">&amp;lt;</span>artifactId<span class="ni">&amp;gt;</span>spring-boot-starter-validation<span class="ni">&amp;lt;</span>/artifactId<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="ni">&amp;lt;</span>/dependency<span class="ni">&amp;gt;</span>
+<span class="ni">&amp;lt;</span>/dependencies<span class="ni">&amp;gt;</span>
+</code></pre></div>
+<h4 id="week-8_6">Week 8での最初の動作確認</h4>
+<p>Week 8の最初のレッスンで、以下のコードが正常動作することを確認します：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 8.1で最初に作成・実行するテストコード</span>
+<span class="nd">@SpringBootTest</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DatabaseConnectionTest</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Autowired</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StudentMapper</span><span class="w"> </span><span class="n">studentMapper</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Week8_最初の動作確認</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 7.9で作成したデータベースから学生一覧を取得</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentMapper</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// 正常にデータが取得できることを確認</span>
+<span class="w">        </span><span class="n">assertNotNull</span><span class="p">(</span><span class="n">students</span><span class="p">);</span>
+<span class="w">        </span><span class="n">assertTrue</span><span class="p">(</span><span class="n">students</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Week</span><span class="w"> </span><span class="mi">8</span><span class="n">準備完了</span><span class="err">！</span><span class="n">学生数</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">students</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">students</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Week 8でこのテストが成功すれば、全ての準備が完璧だったことが証明されます！</strong></p>
+<hr />
+<h2 id="5-week-8">5. Week 8学習内容への期待感醸成</h2>
+<h3 id="week-8_7">🚀 Week 8で体験する「魔法のような」瞬間</h3>
+<h4 id="1">1週間前との比較</h4>
+<p><strong>Week 7（1週間前）</strong>：
+<div class="highlight"><pre><span></span><code><span class="c1">-- SQLで手動でデータ取得</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">gpa</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>Week 8（来週）</strong>：
+<div class="highlight"><pre><span></span><code><span class="c1">// Javaコードで簡単にデータ取得・Web表示</span>
+<span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showStudents</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">students</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">index</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>ブラウザで美しい一覧画面が表示される！</strong></p>
+<h4 id="week-810_2">Week 8〜10で実現する機能</h4>
+<p><strong>Week 8</strong>: 学生一覧・詳細表示（美しいWeb画面）<br />
+<strong>Week 9</strong>: 学生の新規登録・編集（リアルタイムバリデーション）<br />
+<strong>Week 10</strong>: 高度な検索・削除（本格的なWebアプリケーション）</p>
+<h3 id="web">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_10_student_management_webapp_mockup.html">学生管理Webアプリのモックアップ</a></h3>
+<h3 id="week-8_8">🎯 Week 8学習の価値</h3>
+<h4 id="_5">技術的価値</h4>
+<ul>
+<li><strong>Webアプリケーション開発の全体像</strong>を理解</li>
+<li><strong>MVCアーキテクチャ</strong>の実践的習得</li>
+<li><strong>Spring Boot</strong>という現代的フレームワークの基礎</li>
+</ul>
+<h4 id="_6">キャリア的価値</h4>
+<ul>
+<li><strong>実務で最も使用される技術</strong>（Spring Boot）の習得</li>
+<li><strong>ポートフォリオ</strong>として使える実用的なWebアプリケーション</li>
+<li><strong>就職・転職時のアピール材料</strong>としての技術力証明</li>
+</ul>
+<h4 id="_7">学習的価値</h4>
+<ul>
+<li><strong>Week 1〜7の全技術が統合</strong>される達成感</li>
+<li><strong>プログラマーとしての自信</strong>の大幅向上</li>
+<li><strong>更に高度な技術への学習意欲</strong>向上</li>
+</ul>
+<h3 id="week-8_9">💫 Week 8での「成功体験」への道筋</h3>
+<p>今回の完璧な準備により、Week 8では以下の成功体験を確実に味わえます：</p>
+<ol>
+<li><strong>初回からコードが動作</strong>：環境エラーに悩まされない</li>
+<li><strong>段階的な理解</strong>：設定ではなく概念学習に集中できる</li>
+<li><strong>目に見える成果</strong>：ブラウザで動作するWebアプリケーション</li>
+<li><strong>自信の向上</strong>：「自分にもWebアプリが作れる」という実感</li>
+</ol>
+<p><strong>今回の準備は、Week 8での成功を100%保証するものです！</strong></p>
+<hr />
+<h2 id="week-8_10">🎯 Week 8準備完了チェック</h2>
+<h3 id="_8">📋 最終確認チェックリスト</h3>
+<p>以下の全項目をチェックして、Week 8への準備が完璧であることを確認してください：</p>
+<h4 id="_9"><strong>データベース準備</strong> ✅</h4>
+<ul>
+<li>[ ] MySQL が正常に起動している</li>
+<li>[ ] sampledb に5テーブル（departments, students, teachers, subjects, grades）が存在</li>
+<li>[ ] students テーブルに適切なサンプルデータが投入済み</li>
+<li>[ ] phpMyAdmin でデータが確認できる</li>
+</ul>
+<h4 id="_10"><strong>ファイル準備</strong> ✅</h4>
+<ul>
+<li>[ ] application.properties が適切に作成済み</li>
+<li>[ ] StudentMapper.java インターフェースが作成済み</li>
+<li>[ ] StudentMapper.xml が作成済み</li>
+<li>[ ] Student.java エンティティクラスが作成済み</li>
+<li>[ ] StudentData.java フォームクラスが作成済み</li>
+<li>[ ] StudentQuery.java 検索クラスが作成済み</li>
+</ul>
+<h4 id="_11"><strong>環境準備</strong> ✅</h4>
+<ul>
+<li>[ ] Eclipse でSpring Bootプロジェクトが新規作成できる</li>
+<li>[ ] Maven の依存関係が正しく解決される</li>
+<li>[ ] Lombok が正常に動作する（Week 5で確認済み）</li>
+<li>[ ] データベース接続テストが成功する</li>
+</ul>
+<h4 id="week-8_11"><strong>Week 8学習準備</strong> ✅</h4>
+<ul>
+<li>[ ] Week 8のカリキュラム内容を確認済み</li>
+<li>[ ] Spring Boot学習への期待感が高まっている</li>
+<li>[ ] Web開発への学習意欲が向上している</li>
+</ul>
+<h3 id="week-8_12">🚀 Week 8開始日の流れ（予定）</h3>
+<p><strong>Week 8.1開始時</strong>：
+1. Spring Bootプロジェクト新規作成（5分）
+2. 今回準備したファイルを配置（5分）
+3. 最初の動作テスト実行（5分）
+4. <strong>成功！</strong> → Spring Boot学習に集中開始</p>
+<p><strong>合計15分で開発開始 → 残り時間を全てSpring Boot学習に投入可能！</strong></p>
+<hr />
+<h2 id="week-8_13">🎉 Week 8への期待を最大化</h2>
+<h3 id="_12">💫 あなたが手に入れる技術</h3>
+<p><strong>1週間後のあなたは：</strong>
+- <strong>Web開発の基礎</strong>を完全理解
+- <strong>Spring Boot</strong>を使った実用的なWebアプリケーションを開発
+- <strong>フルスタック開発者</strong>としての第一歩を踏み出した状態</p>
+<h3 id="week-810_3">🌟 Week 8〜10での成長曲線</h3>
+<p><strong>Week 8</strong>: Web開発の基礎理解 + 画面表示機能<br />
+<strong>Week 9</strong>: フォーム処理・バリデーション機能<br />
+<strong>Week 10</strong>: 高度な検索・削除機能  </p>
+<p><strong>Week 10完了時</strong>: <strong>本格的なWebアプリケーション開発者</strong></p>
+<h3 id="_13">🎯 今回の準備の価値（再確認）</h3>
+<h4 id="_14"><strong>学習効率の向上</strong></h4>
+<ul>
+<li>環境エラーによる学習中断：<strong>0回</strong></li>
+<li>Week 8初回からの動作成功率：<strong>100%</strong></li>
+<li>Spring Boot概念学習への集中度：<strong>最大化</strong></li>
+</ul>
+<h4 id="_15"><strong>技術習得の加速</strong></h4>
+<ul>
+<li>設定作業の学習時間：<strong>最小化</strong></li>
+<li>実装・理解の学習時間：<strong>最大化</strong></li>
+<li>Week 8〜10での達成感：<strong>最大化</strong></li>
+</ul>
+<h4 id="_16"><strong>自信とモチベーションの向上</strong></h4>
+<ul>
+<li>Week 8初日からの成功体験</li>
+<li>段階的な理解による着実な成長実感</li>
+<li>Web開発への強い学習意欲</li>
+</ul>
+<h3 id="week-8_14">💪 Week 8への決意</h3>
+<p><strong>今回の完璧な準備により、あなたのWeek 8は確実に成功します。</strong></p>
+<p>7週間の学習で積み重ねた<strong>HTML、Java、SQL、データベース設計</strong>の全ての知識が、Week 8でついに<strong>統合されて</strong>実用的なWebアプリケーションとして花開きます。</p>
+<p><strong>Week 8で、あなたは間違いなく「Webアプリケーション開発者」になります。</strong></p>
+<hr />
+<h2 id="week-8_15">🚀 次回予告：Week 8での魔法の瞬間</h2>
+<h3 id="week-81-spring-bootmvc"><strong>Week 8.1: Spring Boot概要・MVCアーキテクチャ</strong></h3>
+<ul>
+<li>今回準備した設定により<strong>初回から完璧に動作</strong></li>
+<li>Web開発の全体像が<strong>具体的に</strong>理解できる</li>
+<li><strong>「こんなに簡単にWebアプリが作れるのか！」</strong>という驚き</li>
+</ul>
+<h3 id="week-82"><strong>Week 8.2: 学生一覧表示機能</strong></h3>
+<ul>
+<li>7.9で設計したデータベースのデータが<strong>ブラウザに美しく表示</strong>される</li>
+<li>SQLの手動実行から<strong>Java自動処理</strong>への劇的な進歩を実感</li>
+<li><strong>「データベース設計の学習が活きている！」</strong>という達成感</li>
+</ul>
+<h3 id="week-83-thymeleaf"><strong>Week 8.3: Thymeleafテンプレート</strong></h3>
+<ul>
+<li>Week 1のHTML知識が<strong>サーバーサイド技術</strong>として進化</li>
+<li>動的なWeb画面生成の<strong>仕組みが明確に</strong>理解できる</li>
+<li><strong>「全ての学習がつながった！」</strong>という感動</li>
+</ul>
+<h3 id="_17"><strong>期待される最初の成功体験</strong></h3>
+<p>Week 8の最初のレッスンで、あなたは以下のコードを書いて実行します：</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Controller</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showStudents</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">students</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">index</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>このコードにより、ブラウザに美しい学生一覧画面が表示される瞬間、あなたは確実にWeb開発者としての第一歩を踏み出します。</strong></p>
+<h3 id="_18">🎯 最後のメッセージ</h3>
+<p><strong>Week 8への準備、完璧に完了です！</strong></p>
+<p>今回の丁寧な準備により、Week 8では技術的なトラブルに一切悩まされることなく、Spring BootとWeb開発の本質的な学習に100%集中できます。</p>
+<p><strong>7週間の学習成果が全て統合されて、実用的なWebアプリケーションとして実現される瞬間を、心から楽しみにしてください！</strong></p>
+<p><strong>Week 8で、あなたの人生に「Webアプリケーション開発者」という新しいアイデンティティが加わります。</strong></p>
+<p><strong>それでは、Week 8でお会いしましょう！素晴らしい成長の瞬間を一緒に体験しましょう！</strong> 🚀</p>
+<hr />
+<p><strong>Week 8成功への確信度</strong>: <strong>100%</strong><br />
+<strong>あなたの技術的成長</strong>: <strong>確実に保証されています</strong><br />
+<strong>Web開発者への道</strong>: <strong>もう目の前です</strong></content>
+</lesson></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

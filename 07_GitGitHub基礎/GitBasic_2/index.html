@@ -1,0 +1,4445 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/logo_tab.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>GitBasic 2 - SKILBRIDGE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="SKILBRIDGE" class="md-header__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SKILBRIDGE
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GitBasic 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SKILBRIDGE" class="md-nav__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    SKILBRIDGE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コース一覧
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    コース一覧
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01_PC基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01_PC基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02_Web基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02_Web基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03_Java入門
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03_Java入門
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04_Java基礎固め
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04_Java基礎固め
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05_OOP基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05_OOP基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06_OOP応用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06_OOP応用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07_Git/GitHub基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    07_Git/GitHub基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08_SQL・DB設計
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    08_SQL・DB設計
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09_SpringBoot：表示機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    09_SpringBoot：表示機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10_SpringBoot：登録更新機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10_SpringBoot：登録更新機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11_SpringBoot：検索削除機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11_SpringBoot：検索削除機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12_実務基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    12_実務基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#初級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#初級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#中級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#中級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_15" id="__nav_2_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#上級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#上級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_16" id="__nav_2_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Office全般ツール
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Office全般ツール
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 このレッスンの学習目標
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 前回までの復習
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 前回までの復習">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        レッスン6.1で理解した課題
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5で完成したシステム
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Gitとは何か：分散バージョン管理システムの理解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Gitとは何か：分散バージョン管理システムの理解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gitの基本的な定義
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Gitの概念概要
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        従来のバージョン管理との違い
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="従来のバージョン管理との違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ 手作業でのバージョン管理の問題
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Gitでの管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gitの核心的な特徴
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gitの核心的な特徴">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 分散型管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 変更の追跡
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ブランチ機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. リポジトリ：プロジェクトの「データベース」
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. リポジトリ：プロジェクトの「データベース」">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リポジトリの基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 リポジトリ構造の図解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システムでのリポジトリイメージ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リポジトリの種類
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="リポジトリの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ローカルリポジトリ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リモートリポジトリ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リポジトリの初期化プロセス（概念理解）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. コミット：変更の「セーブポイント」
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. コミット：変更の「セーブポイント」">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コミットの基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 コミットによる保存ポイントの概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システム開発でのコミット例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Week 5システム開発でのコミット例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コミット1: 基本クラス作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コミット2: 継承機能追加
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-lombok" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コミット3: Lombok統合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コミットの重要な特徴
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コミットの重要な特徴">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-atomicity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 原子性（Atomicity）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-uniqueness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 一意性（Uniqueness）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-immutability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 不変性（Immutability）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コミットメッセージの重要性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コミットメッセージの重要性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 良いコミットメッセージの例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ 悪いコミットメッセージの例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 履歴管理：タイムライン的な変更追跡
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 履歴管理：タイムライン的な変更追跡">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        履歴管理の基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 プロジェクト成長履歴の概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システムの開発履歴例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        履歴から得られる重要な情報
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="履歴から得られる重要な情報">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 変更の経緯
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. プロジェクトの成長過程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 問題解決の手がかり
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        履歴の活用例：バグ発生時の対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 コミット履歴のタイムライン
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 分散バージョン管理の理解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 分散バージョン管理の理解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        中央集権型 vs 分散型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="中央集権型 vs 分散型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#svn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        従来の中央集権型（SVN等）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gitの分散型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 分散型と集中型の比較
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システムでの分散開発イメージ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Gitのワークフロー概念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Gitのワークフロー概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gitの3つのエリア
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Gitの3つの作業エリアのワークフロー
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 Gitの3つの作業エリアのワークフロー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワーキングディレクトリ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ステージングエリア
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リポジトリ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        変更のライフサイクル
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 よくある質問
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 よくある質問">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q1: コミットはどの程度の頻度で行うべきですか？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q1: コミットはどの程度の頻度で行うべきですか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        適切なコミット頻度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システム開発での例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q2: コミットメッセージはどう書けばいいですか？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q2: コミットメッセージはどう書けばいいですか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        効果的なメッセージパターン
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q3: ファイルを削除した場合はどうなりますか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q4: 間違ってコミットした場合は修正できますか？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q4: 間違ってコミットした場合は修正できますか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        直前のコミットの場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        過去のコミットの場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q5-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q5: バイナリファイル（画像・音声等）もGitで管理できますか？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q5: バイナリファイル（画像・音声等）もGitで管理できますか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        管理可能なバイナリファイル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        避けるべきファイル
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 まとめ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 まとめ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技術的理解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実用的理解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概念的理解
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 次回予告
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 次回予告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        次回学習内容
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システムとの統合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        期待される成長
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 練習課題
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 練習課題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概念確認課題
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        環境準備
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>GitBasic 2</h1>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<p><lesson>
+  <type>text</type>
+  <description>レッスン6.1でバージョン管理の必要性を理解した学習者に対して、Gitの具体的な仕組みと基本概念を体系的に説明する。Week 5で作成したOOP応用版学生管理システム（600-700行規模）を具体例として活用し、リポジトリ・コミット・履歴管理の概念を実践的に理解させる。分散バージョン管理の特徴、Git特有の概念、実際のファイル構成での説明を通じて、レッスン6.3での実際のGit操作への準備を整える。</description>
+  <title>2.Gitの基本概念：リポジトリ・コミット・履歴の理解</title>
+  <content># Gitの基本概念：リポジトリ・コミット・履歴の理解</p>
+<h2 id="_1">🎯 このレッスンの学習目標</h2>
+<ul>
+<li><strong>Gitの基本概念</strong>を体系的に理解する</li>
+<li><strong>リポジトリ</strong>：プロジェクトの「データベース」としての理解</li>
+<li><strong>コミット</strong>：変更の「セーブポイント」作成の理解</li>
+<li><strong>分散バージョン管理</strong>：GitとSVN等の違いの理解</li>
+<li><strong>履歴管理</strong>：タイムライン的な変更追跡の理解</li>
+<li><strong>Week 5システム</strong>を題材にした具体的な概念理解</li>
+</ul>
+<h2 id="_2">📚 前回までの復習</h2>
+<p><strong>レッスン6.1</strong>では、開発現場でのバージョン管理の重要性を学習しました：</p>
+<h3 id="61"><strong>レッスン6.1で理解した課題</strong></h3>
+<ul>
+<li><strong>複数人でのコード編集</strong>: 誰がどこを変更したかわからない</li>
+<li><strong>変更履歴の不明</strong>: いつ何を変更したかの記録がない</li>
+<li><strong>バックアップの困難</strong>: 過去のバージョンに戻せない</li>
+<li><strong>機能追加時の不安</strong>: 既存機能を壊してしまうリスク</li>
+<li><strong>チーム開発の複雑さ</strong>: コードの統合・共有の困難</li>
+</ul>
+<h3 id="week-5"><strong>Week 5で完成したシステム</strong></h3>
+<div class="highlight"><pre><span></span><code>OOP応用版学生管理システム（600-700行規模）
+├── Person.java（基底クラス）
+├── Student.java（継承クラス）
+├── GraduateStudent.java（大学院生クラス）
+├── UndergraduateStudent.java（学部生クラス）
+├── StudentManager.java（管理クラス）
+├── 3つのインターフェース
+├── 4つのカスタム例外
+└── Lombok統合による効率化
+</code></pre></div>
+<p><strong>この素晴らしいシステムを安全に管理し、チーム開発できるようにするために、Gitの仕組みを理解していきましょう！</strong></p>
+<h2 id="1-git">1. Gitとは何か：分散バージョン管理システムの理解</h2>
+<h3 id="git"><strong>Gitの基本的な定義</strong></h3>
+<p><strong>Git</strong>は、プログラムのソースコード等の変更履歴を記録・追跡するための<strong>分散型バージョン管理システム</strong>です。</p>
+<h3 id="git_1">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_2_concept_overview.html">Gitの概念概要</a></h3>
+<h3 id="_3"><strong>従来のバージョン管理との違い</strong></h3>
+<h4 id="_4"><strong>❌ 手作業でのバージョン管理の問題</strong></h4>
+<div class="highlight"><pre><span></span><code>プロジェクトフォルダ/
+├── StudentManager_v1.java
+├── StudentManager_v2.java
+├── StudentManager_v2_修正版.java
+├── StudentManager_最新.java
+├── StudentManager_最新_本当に最新.java
+└── StudentManager_最終版.java  ← 結局どれが最新？
+</code></pre></div>
+<h4 id="git_2"><strong>✅ Gitでの管理</strong></h4>
+<div class="highlight"><pre><span></span><code>プロジェクトフォルダ/
+├── .git/（Git管理情報）
+└── src/
+    ├── Person.java
+    ├── Student.java
+    └── StudentManager.java  ← 1つのファイルで全履歴管理
+</code></pre></div>
+<h3 id="git_3"><strong>Gitの核心的な特徴</strong></h3>
+<h4 id="1"><strong>1. 分散型管理</strong></h4>
+<ul>
+<li>各開発者が<strong>完全な履歴</strong>を持つ</li>
+<li>中央サーバーが停止しても作業継続可能</li>
+<li>オフライン環境でも履歴管理が可能</li>
+</ul>
+<h4 id="2"><strong>2. 変更の追跡</strong></h4>
+<ul>
+<li><strong>ファイル単位</strong>ではなく<strong>変更内容</strong>を記録</li>
+<li>どの行が変更されたかを正確に把握</li>
+<li>変更理由や内容をメッセージで記録</li>
+</ul>
+<h4 id="3"><strong>3. ブランチ機能</strong></h4>
+<ul>
+<li>複数の開発ラインを並行管理</li>
+<li>実験的な機能開発を安全に実施</li>
+<li>完成した機能のみを統合可能</li>
+</ul>
+<h2 id="2_1">2. リポジトリ：プロジェクトの「データベース」</h2>
+<h3 id="_5"><strong>リポジトリの基本概念</strong></h3>
+<p><strong>リポジトリ（Repository）</strong>は、プロジェクトのすべての<strong>ファイル</strong>と<strong>変更履歴</strong>を保存するデータベースのような仕組みです。</p>
+<h3 id="_6">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_2_repository_structure_diagram.html">リポジトリ構造の図解</a></h3>
+<h3 id="week-5_1"><strong>Week 5システムでのリポジトリイメージ</strong></h3>
+<div class="highlight"><pre><span></span><code>学生管理システム リポジトリ
+├── 📁 プロジェクトファイル
+│   ├── Person.java
+│   ├── Student.java
+│   ├── GraduateStudent.java
+│   ├── UndergraduateStudent.java
+│   ├── StudentManager.java
+│   └── （その他のファイル）
+├── 📜 変更履歴
+│   ├── 2024/12/01 - 基本クラス作成
+│   ├── 2024/12/02 - 継承機能追加
+│   ├── 2024/12/03 - インターフェース実装
+│   ├── 2024/12/04 - 例外処理追加
+│   └── 2024/12/05 - Lombok統合
+└── 🏷️ バージョン情報
+    ├── v1.0 - 基本機能完成
+    ├── v2.0 - OOP機能統合
+    └── v3.0 - エンタープライズ版完成
+</code></pre></div>
+<h3 id="_7"><strong>リポジトリの種類</strong></h3>
+<h4 id="_8"><strong>ローカルリポジトリ</strong></h4>
+<ul>
+<li>自分のPC内にあるリポジトリ</li>
+<li>個人作業時のメイン作業場</li>
+<li>オフラインでも履歴管理可能</li>
+</ul>
+<h4 id="_9"><strong>リモートリポジトリ</strong></h4>
+<ul>
+<li>GitHub等のサーバー上にあるリポジトリ</li>
+<li>チーム共有・バックアップ・公開用</li>
+<li>複数人での協業の中心拠点</li>
+</ul>
+<h3 id="_10"><strong>リポジトリの初期化プロセス（概念理解）</strong></h3>
+<p>Week 5システムをGit管理にする場合のイメージ：</p>
+<div class="highlight"><pre><span></span><code>1. 既存プロジェクト
+   学生管理システム/
+   ├── Person.java
+   ├── Student.java
+   └── ...
+
+2. Git初期化後
+   学生管理システム/
+   ├── .git/（Git管理情報）
+   ├── Person.java
+   ├── Student.java
+   └── ...
+
+3. 変更履歴の開始
+   すべてのファイルがGitによって追跡される状態
+</code></pre></div>
+<h2 id="3_1">3. コミット：変更の「セーブポイント」</h2>
+<h3 id="_11"><strong>コミットの基本概念</strong></h3>
+<p><strong>コミット（Commit）</strong>は、プロジェクトの変更内容を履歴として保存する<strong>「セーブポイント」</strong>の作成です。</p>
+<h3 id="_12">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_2_commit_savepoint_concept.html">コミットによる保存ポイントの概念</a></h3>
+<h3 id="week-5_2"><strong>Week 5システム開発でのコミット例</strong></h3>
+<h4 id="1_1"><strong>コミット1: 基本クラス作成</strong></h4>
+<div class="highlight"><pre><span></span><code>変更内容：
+├── Person.java（新規作成）
+└── Student.java（新規作成）
+
+コミットメッセージ：
+「基本的なPersonクラスとStudentクラスを作成」
+
+保存される情報：
+- 変更したファイル
+- 変更した内容（追加・削除・修正）
+- 変更した日時
+- 変更者の情報
+- 変更理由（メッセージ）
+</code></pre></div>
+<h4 id="2_2"><strong>コミット2: 継承機能追加</strong></h4>
+<div class="highlight"><pre><span></span><code>変更内容：
+├── Person.java（修正）
+├── Student.java（修正：継承関係追加）
+├── GraduateStudent.java（新規作成）
+└── UndergraduateStudent.java（新規作成）
+
+コミットメッセージ：
+「継承機能実装：Person→Student階層構造完成」
+</code></pre></div>
+<h4 id="3-lombok"><strong>コミット3: Lombok統合</strong></h4>
+<div class="highlight"><pre><span></span><code>変更内容：
+├── Person.java（修正：@Data追加）
+├── Student.java（修正：@Builder追加）
+├── GraduateStudent.java（修正：Lombok化）
+└── UndergraduateStudent.java（修正：Lombok化）
+
+コミットメッセージ：
+「Lombok統合で86%コード削減を実現」
+</code></pre></div>
+<h3 id="_13"><strong>コミットの重要な特徴</strong></h3>
+<h4 id="1-atomicity"><strong>1. 原子性（Atomicity）</strong></h4>
+<ul>
+<li>1つのコミット = 1つの論理的な変更</li>
+<li>関連する変更を1つのまとまりとして記録</li>
+<li>「部分的に適用」されることがない</li>
+</ul>
+<h4 id="2-uniqueness"><strong>2. 一意性（Uniqueness）</strong></h4>
+<ul>
+<li>各コミットには固有のID（ハッシュ値）が付与</li>
+<li>同じ変更内容でも異なるコミットとして識別</li>
+<li>履歴の中で確実に特定可能</li>
+</ul>
+<h4 id="3-immutability"><strong>3. 不変性（Immutability）</strong></h4>
+<ul>
+<li>一度作成されたコミットは変更されない</li>
+<li>過去の状態を確実に保持</li>
+<li>改変されていないことを保証</li>
+</ul>
+<h3 id="_14"><strong>コミットメッセージの重要性</strong></h3>
+<h4 id="_15"><strong>✅ 良いコミットメッセージの例</strong></h4>
+<div class="highlight"><pre><span></span><code>✅ 「新規登録機能のバリデーション強化」
+✅ 「学生検索機能の性能改善（O(n)→O(log n)）」
+✅ 「例外処理追加：不正な学生IDの対応」
+✅ 「Lombok導入によるボイラープレートコード削減」
+</code></pre></div>
+<h4 id="_16"><strong>❌ 悪いコミットメッセージの例</strong></h4>
+<div class="highlight"><pre><span></span><code>❌ 「修正」
+❌ 「バグ修正」
+❌ 「更新」
+❌ 「テスト」
+</code></pre></div>
+<h2 id="4">4. 履歴管理：タイムライン的な変更追跡</h2>
+<h3 id="_17"><strong>履歴管理の基本概念</strong></h3>
+<p>Gitの履歴管理は、プロジェクトの<strong>成長過程</strong>を時系列で追跡する仕組みです。</p>
+<h3 id="_18">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_2_project_growth_history_concept.html">プロジェクト成長履歴の概念</a></h3>
+<h3 id="week-5_3"><strong>Week 5システムの開発履歴例</strong></h3>
+<div class="highlight"><pre><span></span><code>📅 Week 5システム開発タイムライン
+
+12月1日  🎯 基本設計完成
+commit a1b2c3d4: &amp;quot;Person・Studentクラス基本構造完成&amp;quot;
+
+12月2日  🔄 継承機能実装
+commit e5f6g7h8: &amp;quot;継承関係実装：Person→Student階層&amp;quot;
+
+12月3日  🎨 ポリモーフィズム追加
+commit i9j0k1l2: &amp;quot;学部生・大学院生クラス分離実装&amp;quot;
+
+12月4日  🛡️ 例外処理強化
+commit m3n4o5p6: &amp;quot;カスタム例外4種実装：エラー処理完備&amp;quot;
+
+12月5日  ⚡ Lombok統合
+commit q7r8s9t0: &amp;quot;Lombok導入：86%コード削減達成&amp;quot;
+
+12月6日  🏆 システム完成
+commit u1v2w3x4: &amp;quot;エンタープライズ版学生管理システム完成&amp;quot;
+</code></pre></div>
+<h3 id="_19"><strong>履歴から得られる重要な情報</strong></h3>
+<h4 id="1_2"><strong>1. 変更の経緯</strong></h4>
+<ul>
+<li><strong>いつ</strong> その機能が追加されたか</li>
+<li><strong>なぜ</strong> その変更が必要だったか</li>
+<li><strong>どのように</strong> 実装されたか</li>
+<li><strong>誰が</strong> 変更を行ったか</li>
+</ul>
+<h4 id="2_3"><strong>2. プロジェクトの成長過程</strong></h4>
+<ul>
+<li>機能の追加順序</li>
+<li>設計思想の変化</li>
+<li>技術的な進歩</li>
+<li>品質向上の軌跡</li>
+</ul>
+<h4 id="3_2"><strong>3. 問題解決の手がかり</strong></h4>
+<ul>
+<li>バグが発生した時期の特定</li>
+<li>機能退行の原因調査</li>
+<li>成功した実装パターンの参照</li>
+<li>リファクタリングの効果測定</li>
+</ul>
+<h3 id="_20"><strong>履歴の活用例：バグ発生時の対応</strong></h3>
+<div class="highlight"><pre><span></span><code>問題発生：
+「学生の成績計算が正しく動作しない」
+
+履歴を確認：
+commit m3n4o5p6: &amp;quot;カスタム例外4種実装：エラー処理完備&amp;quot;
+├── この変更後から問題が発生している
+├── 変更内容を確認
+└── 問題のある箇所を特定
+
+対応：
+1. 該当コミットの変更内容を詳細確認
+2. 問題のある部分を修正
+3. 修正内容を新しいコミットとして記録
+</code></pre></div>
+<h3 id="_21">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_2_commit_history_timeline.html">コミット履歴のタイムライン</a></h3>
+<h2 id="5">5. 分散バージョン管理の理解</h2>
+<h3 id="vs"><strong>中央集権型 vs 分散型</strong></h3>
+<h4 id="svn"><strong>従来の中央集権型（SVN等）</strong></h4>
+<div class="highlight"><pre><span></span><code>中央サーバー
+    ↓
+  全履歴
+    ↓
+開発者A ← 部分的な情報
+開発者B ← 部分的な情報
+開発者C ← 部分的な情報
+</code></pre></div>
+<p><strong>問題点</strong>：
+- サーバー停止時は作業不可
+- 履歴情報が分散されていない
+- オフライン作業の制限</p>
+<h4 id="git_4"><strong>Gitの分散型</strong></h4>
+<div class="highlight"><pre><span></span><code>開発者A     開発者B     開発者C
+完全な履歴   完全な履歴   完全な履歴
+    ↓          ↓          ↓
+      GitHub（共有拠点）
+        完全な履歴
+</code></pre></div>
+<p><strong>メリット</strong>：
+- 各自が完全な履歴を保持
+- オフライン作業が可能
+- 単一障害点が存在しない</p>
+<h3 id="_22">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_2_distributed_vs_centralized_comparison.html">分散型と集中型の比較</a></h3>
+<h3 id="week-5_4"><strong>Week 5システムでの分散開発イメージ</strong></h3>
+<div class="highlight"><pre><span></span><code>田中さん（フロントエンド担当）
+└── 学生一覧表示機能を開発
+    ├── commit: &amp;quot;学生一覧画面作成&amp;quot;
+    └── commit: &amp;quot;検索機能追加&amp;quot;
+
+佐藤さん（バックエンド担当）
+└── データ処理機能を開発
+    ├── commit: &amp;quot;データベース接続機能&amp;quot;
+    └── commit: &amp;quot;成績計算ロジック&amp;quot;
+
+山田さん（テスト担当）
+└── テスト機能を開発
+    ├── commit: &amp;quot;単体テスト追加&amp;quot;
+    └── commit: &amp;quot;統合テスト実装&amp;quot;
+
+↓ GitHub で統合 ↓
+
+完成版システム
+├── フロントエンド機能
+├── バックエンド機能
+└── テスト機能
+</code></pre></div>
+<h2 id="6-git">6. Gitのワークフロー概念</h2>
+<h3 id="git3"><strong>Gitの3つのエリア</strong></h3>
+<h3 id="git3_1">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_2_workflow_three_areas.html">Gitの3つの作業エリアのワークフロー</a></h3>
+<h4 id="_23"><strong>ワーキングディレクトリ</strong></h4>
+<ul>
+<li>実際にファイルを編集する場所</li>
+<li>現在作業中のファイル状態</li>
+<li>Week 5システムのファイルがある場所</li>
+</ul>
+<h4 id="_24"><strong>ステージングエリア</strong></h4>
+<ul>
+<li>コミット予定の変更を準備する場所</li>
+<li>「次のコミットに含める変更」を選択</li>
+<li>部分的な変更の選択が可能</li>
+</ul>
+<h4 id="_25"><strong>リポジトリ</strong></h4>
+<ul>
+<li>コミットされた履歴が保存される場所</li>
+<li>プロジェクトの確定した履歴</li>
+<li>過去のバージョンへのアクセス拠点</li>
+</ul>
+<h3 id="_26"><strong>変更のライフサイクル</strong></h3>
+<div class="highlight"><pre><span></span><code>1. ファイル編集
+   Student.java を修正
+   ↓
+2. ステージング
+   修正内容をコミット準備エリアに追加
+   ↓
+3. コミット
+   変更をリポジトリの履歴として確定
+   ↓
+4. プッシュ（後のレッスンで学習）
+   リモートリポジトリに共有
+</code></pre></div>
+<h2 id="_27">💡 よくある質問</h2>
+<h3 id="q1">Q1: コミットはどの程度の頻度で行うべきですか？</h3>
+<p><strong>A</strong>: 以下の基準を参考にしてください：</p>
+<h4 id="_28"><strong>適切なコミット頻度</strong></h4>
+<ul>
+<li><strong>機能完成時</strong>: 1つの機能が動作するようになった時</li>
+<li><strong>論理的な区切り</strong>: 意味のある変更のまとまりごと</li>
+<li><strong>1日1回以上</strong>: 作業終了時には必ずコミット</li>
+</ul>
+<h4 id="week-5_5"><strong>Week 5システム開発での例</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// 悪い例：すべてを1つのコミットに</span>
+<span class="nl">commit</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生管理システム完成</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span>
+<span class="err">└──</span><span class="w"> </span><span class="n">全ファイル600行一括変更</span>
+
+<span class="c1">// 良い例：段階的なコミット</span>
+<span class="nl">commit</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Person基底クラス作成</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span>
+<span class="nl">commit</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Student継承クラス追加</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span>
+<span class="nl">commit</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">例外処理機能実装</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span>
+<span class="nl">commit</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Lombok統合による最適化</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="q2">Q2: コミットメッセージはどう書けばいいですか？</h3>
+<p><strong>A</strong>: 以下のパターンを参考にしてください：</p>
+<h4 id="_29"><strong>効果的なメッセージパターン</strong></h4>
+<div class="highlight"><pre><span></span><code>✅ 「[種別] 概要：詳細」形式
+[機能追加] 学生検索：名前での部分一致検索機能
+[バグ修正] 成績計算：平均値算出時の小数点処理
+[改善] 性能：学生一覧表示の処理速度向上
+[リファクタ] コード整理：重複処理の共通化
+</code></pre></div>
+<h3 id="q3">Q3: ファイルを削除した場合はどうなりますか？</h3>
+<p><strong>A</strong>: Gitでは削除も「変更」として記録されます：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ファイル削除もコミットで記録</span>
+<span class="nl">commit</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">不要なテストファイル削除</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span>
+<span class="err">└──</span><span class="w"> </span><span class="n">TestData</span><span class="p">.</span><span class="na">java</span><span class="w"> </span><span class="n">削除</span>
+
+<span class="c1">// 必要に応じて過去のコミットから復元可能</span>
+<span class="n">git</span><span class="w"> </span><span class="n">checkout</span><span class="w"> </span><span class="n">コミットID</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="n">TestData</span><span class="p">.</span><span class="na">java</span>
+</code></pre></div>
+<h3 id="q4">Q4: 間違ってコミットした場合は修正できますか？</h3>
+<p><strong>A</strong>: 状況に応じて修正方法があります：</p>
+<h4 id="_30"><strong>直前のコミットの場合</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># コミットメッセージのみ修正</span>
+git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>-m<span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span>正しいメッセージ<span class="p">&amp;</span>quot<span class="p">;</span>
+
+<span class="c1"># ファイルの追加も可能</span>
+git<span class="w"> </span>add<span class="w"> </span>忘れたファイル.java
+git<span class="w"> </span>commit<span class="w"> </span>--amend
+</code></pre></div>
+<h4 id="_31"><strong>過去のコミットの場合</strong></h4>
+<ul>
+<li>新しいコミットで修正内容を追加</li>
+<li>履歴の改変は推奨されない（特にチーム開発）</li>
+</ul>
+<h3 id="q5-git">Q5: バイナリファイル（画像・音声等）もGitで管理できますか？</h3>
+<p><strong>A</strong>: 管理可能ですが注意が必要です：</p>
+<h4 id="_32"><strong>管理可能なバイナリファイル</strong></h4>
+<div class="highlight"><pre><span></span><code>✅ 小さな画像ファイル（アイコン等）
+✅ 設定ファイル（小サイズ）
+✅ ドキュメント（少数）
+</code></pre></div>
+<h4 id="_33"><strong>避けるべきファイル</strong></h4>
+<div class="highlight"><pre><span></span><code>❌ 大きな動画ファイル
+❌ 頻繁に変更される一時ファイル
+❌ ビルド成果物（.class、.jar等）
+</code></pre></div>
+<h2 id="_34">🎯 まとめ</h2>
+<p>このレッスンで学んだGitの基本概念：</p>
+<h3 id="_35"><strong>技術的理解</strong></h3>
+<ul>
+<li><strong>Git</strong>: 分散型バージョン管理システムの特徴</li>
+<li><strong>リポジトリ</strong>: プロジェクトの完全なデータベース</li>
+<li><strong>コミット</strong>: 変更の確定セーブポイント作成</li>
+<li><strong>履歴管理</strong>: 時系列での変更追跡システム</li>
+<li><strong>分散型</strong>: 各開発者が完全な履歴を保持</li>
+</ul>
+<h3 id="_36"><strong>実用的理解</strong></h3>
+<ul>
+<li><strong>Week 5システム</strong>: 600-700行システムでの具体的活用イメージ</li>
+<li><strong>開発フロー</strong>: 編集→ステージング→コミット→共有</li>
+<li><strong>チーム開発</strong>: 複数人での安全な協業方法</li>
+<li><strong>問題解決</strong>: 履歴を活用したバグ特定・修正</li>
+<li><strong>品質管理</strong>: 変更理由の記録と追跡</li>
+</ul>
+<h3 id="_37"><strong>概念的理解</strong></h3>
+<ul>
+<li><strong>変更の追跡</strong>: ファイル単位ではなく変更内容の管理</li>
+<li><strong>時間軸管理</strong>: プロジェクトの成長過程の記録</li>
+<li><strong>安全性</strong>: 過去バージョンへの確実な復元能力</li>
+<li><strong>協業性</strong>: 複数人でのコンフリクトのない開発</li>
+<li><strong>透明性</strong>: すべての変更の可視化と共有</li>
+</ul>
+<h2 id="_38">🚀 次回予告</h2>
+<p>レッスン6.3では、<strong>実際のGit操作</strong>を開始します：</p>
+<h3 id="_39"><strong>次回学習内容</strong></h3>
+<ul>
+<li><strong>Git環境構築</strong>: GitとGitHubアカウントの準備</li>
+<li><strong>最初のコミット</strong>: Week 5システムをGit管理下に置く</li>
+<li><strong>基本コマンド</strong>: <code>git init</code>, <code>git add</code>, <code>git commit</code>の実践</li>
+<li><strong>履歴確認</strong>: <code>git log</code>でコミット履歴の確認</li>
+<li><strong>実際の操作体験</strong>: コマンドラインでのGit操作</li>
+</ul>
+<h3 id="week-5_6"><strong>Week 5システムとの統合</strong></h3>
+<p>今回理解した概念を基に、実際にWeek 5で作成したOOP応用版学生管理システムをGit管理下に置き、<strong>実践的なバージョン管理</strong>を体験します。</p>
+<h3 id="_40"><strong>期待される成長</strong></h3>
+<p><strong>レッスン6.3完了後</strong>: <strong>Gitの基本操作をマスターし、Week 5システムでの実践的バージョン管理を開始したエンタープライズJavaアーキテクト</strong></p>
+<p><strong>実践への期待</strong>：
+概念理解から実際の操作へ！Week 5システムが、真のプロフェッショナル開発環境で管理される体験が始まります。</p>
+<hr />
+<h2 id="_41">📝 練習課題</h2>
+<p>次回レッスンに向けて、以下の準備をお願いします：</p>
+<h3 id="_42"><strong>概念確認課題</strong></h3>
+<ol>
+<li>
+<p><strong>コミットのタイミング練習</strong>
+   Week 5システムの開発を振り返り、どのタイミングでコミットすべきだったかを考えてみてください。</p>
+</li>
+<li>
+<p><strong>コミットメッセージ作成練習</strong>
+   以下の変更内容に対する適切なコミットメッセージを考えてみてください：</p>
+</li>
+<li>Person.javaに新しいメソッドを追加</li>
+<li>バグ修正：成績計算の小数点処理</li>
+<li>
+<p>Lombokの@Builderアノテーション追加</p>
+</li>
+<li>
+<p><strong>履歴活用場面の想像</strong>
+   Week 5システムで以下の問題が発生した場合、Gitの履歴をどう活用するか考えてみてください：</p>
+</li>
+<li>昨日まで動いていた機能が動かない</li>
+<li>1週間前の状態に戻したい</li>
+<li>特定の機能を追加した理由を確認したい</li>
+</ol>
+<h3 id="_43"><strong>環境準備</strong></h3>
+<p>次回のレッスン6.3では実際にGitを使用しますので、心の準備をお願いします。コマンドライン操作がありますが、段階的に丁寧に説明しますので安心してください！</content>
+</lesson></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

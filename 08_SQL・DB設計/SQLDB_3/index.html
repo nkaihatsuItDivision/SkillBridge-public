@@ -1,0 +1,4989 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/logo_tab.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>SQLDB 3 - SKILBRIDGE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="SKILBRIDGE" class="md-header__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SKILBRIDGE
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SQLDB 3
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SKILBRIDGE" class="md-nav__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    SKILBRIDGE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コース一覧
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    コース一覧
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01_PC基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01_PC基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_PC%E5%9F%BA%E7%A4%8E/PCBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02_Web基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02_Web基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン18
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03_Java入門
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03_Java入門
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%85%A5%E9%96%80/JavaBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04_Java基礎固め
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04_Java基礎固め
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05_OOP基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05_OOP基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06_OOP応用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06_OOP応用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07_Git/GitHub基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    07_Git/GitHub基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08_SQL・DB設計
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    08_SQL・DB設計
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09_SpringBoot：表示機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    09_SpringBoot：表示機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10_SpringBoot：登録更新機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10_SpringBoot：登録更新機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11_SpringBoot：検索削除機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11_SpringBoot：検索削除機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12_実務基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    12_実務基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#初級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#初級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#中級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#中級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_15" id="__nav_2_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#上級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#上級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_16" id="__nav_2_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Office全般ツール
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Office全般ツール
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    レッスン2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 このレッスンの学習目標
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 前回の復習
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 前回の復習">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 7.2で構築したデータベース環境
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Week 7.2で構築したデータベース環境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        構築済みの基盤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72student" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2で作成したstudentテーブル
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 データベースとテーブルの関係図
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 データベースとテーブルの関係図">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本SELECT文の復習
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現在の学習者レベル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今回の学習の位置づけ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-5javasql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Week 5システムとの連携：Java検索→SQL検索
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Week 5システムとの連携：Java検索→SQL検索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プログラミングの思考転換
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 リレーショナルDBの構造図
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 リレーショナルDBの構造図">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javaweek-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Java配列検索の例（Week 5復習）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL検索への変換（今回の学習内容）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 リレーショナルDBの保存イメージ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-where" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 ステップ1: WHERE句による基本的な条件指定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 ステップ1: WHERE句による基本的な条件指定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WHERE句の基本構文
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 実践：基本的な条件検索
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 練習問題1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 ステップ2: 比較演算子による高度な条件指定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 ステップ2: 比較演算子による高度な条件指定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        比較演算子の種類
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 実践：比較演算子の活用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 実践：比較演算子の活用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数値フィールドでの比較
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        文字列フィールドでの比較
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システムとの対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 練習問題2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 ステップ3: 論理演算子による複合条件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 ステップ3: 論理演算子による複合条件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        論理演算子の種類
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 実践：論理演算子の活用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 実践：論理演算子の活用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#and" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AND演算子：複数条件の同時指定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OR演算子：いずれかの条件を満たす
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NOT演算子：条件の否定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        複雑な組み合わせ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システムとの対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 ステップ4: LIKE演算子とパターンマッチング
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 ステップ4: LIKE演算子とパターンマッチング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LIKE演算子の基本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ワイルドカードの種類
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#like_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 実践：LIKE演算子の活用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 実践：LIKE演算子の活用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        %ワイルドカードによる部分一致検索
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        _ワイルドカードによる文字数指定検索
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NOTとの組み合わせ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システムとの対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 テーブル構造とデータ格納イメージ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 練習問題3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-order-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 ステップ5: ORDER BYによる並び替え
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 ステップ5: ORDER BYによる並び替え">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#order-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ORDER BYの基本構文
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#order-by_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 実践：ORDER BYの活用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 実践：ORDER BYの活用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数値フィールドでの並び替え
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        文字列フィールドでの並び替え
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        複数フィールドでの並び替え
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WHERE句との組み合わせ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システムとの対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 ステップ6: LIMITによる取得件数制限
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 ステップ6: LIMITによる取得件数制限">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LIMITの基本構文
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 実践：LIMITの活用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 実践：LIMITの活用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limit_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本的なLIMIT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limit_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        オフセット付きLIMIT（ページング処理）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        複合的な活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システムとの対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 ステップ7: 実践演習 - 複合条件による高度な検索
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 ステップ7: 実践演習 - 複合条件による高度な検索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 実践課題：学生検索システムの構築
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 実践課題：学生検索システムの構築">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        課題1：成績優秀者抽出システム
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        課題2：詳細検索システム
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        課題3：ランキングシステム
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        課題4：統計情報システム
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 総合練習問題
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 よくある質問
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 よくある質問">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q1-whereor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q1: WHERE句でOR条件を使うとき、括弧は必要ですか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q2-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q2: LIKE演算子で%を文字として検索したい場合は？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q3-order-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q3: ORDER BYで複数フィールドを指定する順序は重要ですか？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q4-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q4: LIMITを使わずに最大値・最小値を取得する方法は？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 まとめ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 まとめ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        このレッスンで習得した技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="このレッスンで習得した技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ WHERE句による条件指定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#like_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ LIKE演算子とパターンマッチング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#order-bylimit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ ORDER BY・LIMITによるデータ制御
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Week 5システムとの連携理解
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学習者の到達レベル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技術習得の成果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="技術習得の成果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#55-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技術習得度: ⭐⭐⭐⭐⭐ (5/5) - 完璧
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実用性: ⭐⭐⭐⭐⭐ (5/5) - 優秀
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8-55-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 8への準備: ⭐⭐⭐⭐⭐ (5/5) - 十分
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 次回予告
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 次回予告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        次回で学ぶ内容
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        今回の技術との連携
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        期待される成長
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学習継続への動機
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 追加練習課題
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 追加練習課題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基礎強化練習
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        応用挑戦
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>SQLDB 3</h1>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<p><lesson>
+  <type>text</type>
+  <description>Week 7.2でMySQL環境構築とSQL基本概念を習得し、studentテーブル（5件）を作成済みの実践的データベース活用者を対象に、SELECT文の高度な活用技術を習得する。WHERE句による条件指定、比較演算子・論理演算子、LIKE演算子、ORDER BY・LIMITによる並び替え・制限など、実用的なデータ抽出技術を段階的に学習し、Week 5のJava配列検索処理との対応関係も理解して、高度なデータ抽出技術をマスターした実践的SQLエンジニアレベルへの到達を図る。</description>
+  <title>3.データ取得の基本：SELECT文によるデータ抽出</title>
+  <content># データ取得の基本：SELECT文によるデータ抽出</p>
+<h2 id="_1">🎯 このレッスンの学習目標</h2>
+<ul>
+<li><strong>WHERE句の完全習得</strong>：単純条件から複雑な複合条件まで、精密なデータ抽出技術を身につける</li>
+<li><strong>比較演算子の実践活用</strong>：=、!=、&gt;、&lt;、&gt;=、&lt;=による数値・文字列の効率的な検索</li>
+<li><strong>論理演算子の組み合わせ技術</strong>：AND、OR、NOTを駆使した高度な検索条件の構築</li>
+<li><strong>LIKE演算子とパターンマッチング</strong>：ワイルドカードを使った柔軟で実用的な文字列検索</li>
+<li><strong>ORDER BY・LIMIT の活用</strong>：データの並び替えと取得件数制限による効率的なデータ取得</li>
+<li><strong>Week 5システムとの連携理解</strong>：Java配列検索からSQL検索への思考転換と実装対応</li>
+</ul>
+<p><strong>学習時間</strong>: 約60-70分<br />
+<strong>難易度</strong>: SQL基本操作習得済み（Week 7.2完了レベル）</p>
+<hr />
+<h2 id="_2">📚 前回の復習</h2>
+<h3 id="week-72">Week 7.2で構築したデータベース環境</h3>
+<p>前回のレッスンで、あなたは以下の環境とデータを構築しました：</p>
+<h4 id="_3"><strong>構築済みの基盤</strong></h4>
+<ul>
+<li>✅ <strong>MySQL環境</strong>: XAMPP・phpMyAdmin完全セットアップ</li>
+<li>✅ <strong>データベース</strong>: <code>week5_system</code>データベース作成完了</li>
+<li>✅ <strong>テーブル</strong>: <code>student</code>テーブル構造設計・作成完了</li>
+<li>✅ <strong>サンプルデータ</strong>: 5件の学生データ挿入完了</li>
+</ul>
+<h4 id="72student"><strong>7.2で作成したstudentテーブル</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- テーブル構造</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">student_id</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">department</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="p">);</span>
+
+<span class="c1">-- 挿入済みデータ（5件）</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="n">S001</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">田中太郎</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">情報工学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;),</span>
+<span class="p">(</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="n">S002</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">佐藤花子</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">経済学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;),</span>
+<span class="p">(</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="n">S003</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">鈴木次郎</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">文学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;),</span>
+<span class="p">(</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="n">S004</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">高橋一郎</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;,</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">理学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;),</span>
+<span class="p">(</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="n">S005</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">山田美咲</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">工学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;);</span>
+</code></pre></div>
+<h3 id="_4">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_3_image_2.html">データベースとテーブルの関係図</a></h3>
+<h4 id="select"><strong>基本SELECT文の復習</strong></h4>
+<p>前回学習した基本的なSELECT文を確認しましょう：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 全データの取得</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="p">;</span>
+
+<span class="c1">-- 特定のフィールドのみ取得</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="p">;</span>
+
+<span class="c1">-- 基本的な条件指定</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="_5">現在の学習者レベル</h3>
+<p><strong>Week 7.2完了時</strong>: <strong>MySQL・SQL基本操作をマスターした実践的データベース活用者</strong></p>
+<h3 id="_6">今回の学習の位置づけ</h3>
+<p><strong>基本SELECT → 高度なSELECT技術</strong>: WHERE句、演算子、並び替え、制限の完全習得</p>
+<hr />
+<h2 id="week-5javasql">🎯 Week 5システムとの連携：Java検索→SQL検索</h2>
+<h3 id="_7">プログラミングの思考転換</h3>
+<p>Week 5で作成したJavaの学生管理システムでは、以下のような配列検索を行っていました。今回はこれをSQLで実現する方法を学びます：</p>
+<h3 id="db">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_3_image_1.html">リレーショナルDBの構造図</a></h3>
+<h4 id="javaweek-5"><strong>Java配列検索の例（Week 5復習）</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 5での配列検索例</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">students</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 年齢が20歳の学生を検索</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 工学部の学生を検索</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getDepartment</span><span class="p">().</span><span class="na">contains</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">工学</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 20歳以上の学生を検索</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="sql"><strong>SQL検索への変換（今回の学習内容）</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 年齢が20歳の学生を検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+
+<span class="c1">-- 工学部の学生を検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">工学</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;;</span>
+
+<span class="c1">-- 20歳以上の学生を検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>💡 重要な気づき</strong>: 
+- <strong>Java</strong>: ループ処理で一件ずつチェック → 時間がかかる
+- <strong>SQL</strong>: データベースが高速に検索 → 大量データでも瞬時に結果</p>
+<h3 id="db_1">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_3_image_4.html">リレーショナルDBの保存イメージ</a></h3>
+<hr />
+<h2 id="1-where">📋 ステップ1: WHERE句による基本的な条件指定</h2>
+<h3 id="where">WHERE句の基本構文</h3>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="err">フィールド名</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="err">条件</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>WHERE句</strong>は「どのデータを取得するか」を指定する条件文です。</p>
+<h3 id="_8">🔍 実践：基本的な条件検索</h3>
+<p>まず、phpMyAdminでweek5_systemデータベースを開き、以下のクエリを実行してみましょう：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 1. 特定の名前で検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">田中太郎</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 2. 特定の年齢で検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+5  | S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 3. 特定の学部で検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">経済学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+2  | S002      | 佐藤花子  | 21  | 経済学部
+</code></pre></div></p>
+<h3 id="1">📝 練習問題1</h3>
+<p>以下の検索をWHERE句を使って実行してみてください：</p>
+<p>🎯 <strong>目標</strong>: 基本的なWHERE句の使い方を身につける</p>
+<p>💭 <strong>考えるポイント</strong>: 
+- 検索したい条件は何か？
+- フィールド名と値を正確に指定できているか？</p>
+<p><strong>問題</strong>:
+1. 学生ID &apos;S003&apos; の学生を検索してください
+2. 19歳の学生を検索してください<br />
+3. 理学部の学生を検索してください</p>
+<p>&lt;details&gt;
+&lt;summary&gt;💡 ヒント（クリックして確認）&lt;/summary&gt;</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- ヒント1: 学生IDはstudent_idフィールドです</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+
+<span class="c1">-- ヒント2: 年齢はageフィールドです</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+
+<span class="c1">-- ヒント3: 学部はdepartmentフィールドです</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</code></pre></div>
+<p>&lt;/details&gt;</p>
+<p>&lt;details&gt;
+&lt;summary&gt;✅ 解答（クリックして確認）&lt;/summary&gt;</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 1. 学生ID &amp;apos;S003&amp;apos; の学生を検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="n">S003</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+
+<span class="c1">-- 2. 19歳の学生を検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">19</span><span class="p">;</span>
+
+<span class="c1">-- 3. 理学部の学生を検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">理学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>-- 1の結果
+id | student_id | name     | age | department
+3  | S003      | 鈴木次郎  | 19  | 文学部
+
+-- 2の結果
+id | student_id | name     | age | department  
+3  | S003      | 鈴木次郎  | 19  | 文学部
+
+-- 3の結果
+id | student_id | name     | age | department
+4  | S004      | 高橋一郎  | 22  | 理学部
+</code></pre></div></p>
+<p>&lt;/details&gt;</p>
+<hr />
+<h2 id="2">📋 ステップ2: 比較演算子による高度な条件指定</h2>
+<h3 id="_9">比較演算子の種類</h3>
+<table>
+<thead>
+<tr>
+<th>演算子</th>
+<th>意味</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td>等しい</td>
+<td><code>age = 20</code></td>
+</tr>
+<tr>
+<td><code>!=</code> または <code>&amp;lt;&amp;gt;</code></td>
+<td>等しくない</td>
+<td><code>age != 20</code></td>
+</tr>
+<tr>
+<td><code>&amp;gt;</code></td>
+<td>より大きい</td>
+<td><code>age &amp;gt; 20</code></td>
+</tr>
+<tr>
+<td><code>&amp;lt;</code></td>
+<td>より小さい</td>
+<td><code>age &amp;lt; 20</code></td>
+</tr>
+<tr>
+<td><code>&amp;gt;=</code></td>
+<td>以上（以上の意味）</td>
+<td><code>age &amp;gt;= 20</code></td>
+</tr>
+<tr>
+<td><code>&amp;lt;=</code></td>
+<td>以下（以下の意味）</td>
+<td><code>age &amp;lt;= 20</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">🔍 実践：比較演算子の活用</h3>
+<h4 id="_11"><strong>数値フィールドでの比較</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 1. 20歳より年上の学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+2  | S002      | 佐藤花子  | 21  | 経済学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 2. 20歳以上の学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+2  | S002      | 佐藤花子  | 21  | 経済学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+5  | S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 3. 20歳でない学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+2  | S002      | 佐藤花子  | 21  | 経済学部
+3  | S003      | 鈴木次郎  | 19  | 文学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+</code></pre></div></p>
+<h4 id="_12"><strong>文字列フィールドでの比較</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 4. 学生IDが&amp;apos;S003&amp;apos;より大きい学生（辞書順）</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="n">S003</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+4  | S004      | 高橋一郎  | 22  | 理学部
+5  | S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<h3 id="week-5">Week 5システムとの対応</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 5のJava配列検索</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">students</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// Java: &amp;gt; 演算子</span>
+<span class="w">        </span><span class="n">results</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>↓ <strong>SQL検索への変換</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- SQL検索：同じ条件をより高速に処理</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="2_1">📝 練習問題2</h3>
+<p>以下の条件で学生を検索してください：</p>
+<p>🎯 <strong>目標</strong>: 比較演算子を使った様々な検索条件を試す</p>
+<p>💭 <strong>考えるポイント</strong>: 
+- 数値の比較と文字列の比較の違いは？
+- 以上・以下・より大きい・より小さいの使い分けは？</p>
+<p><strong>問題</strong>:
+1. 21歳未満の学生を検索してください
+2. 学生IDが&apos;S002&apos;以下の学生を検索してください
+3. 22歳の学生以外を検索してください</p>
+<p>&lt;details&gt;
+&lt;summary&gt;✅ 解答（クリックして確認）&lt;/summary&gt;</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 1. 21歳未満の学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="w"> </span><span class="mi">21</span><span class="p">;</span>
+
+<span class="c1">-- 2. 学生IDが&amp;apos;S002&amp;apos;以下の学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="n">S002</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+
+<span class="c1">-- 3. 22歳の学生以外</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">22</span><span class="p">;</span>
+</code></pre></div>
+<p>&lt;/details&gt;</p>
+<hr />
+<h2 id="3">📋 ステップ3: 論理演算子による複合条件</h2>
+<h3 id="_13">論理演算子の種類</h3>
+<table>
+<thead>
+<tr>
+<th>演算子</th>
+<th>意味</th>
+<th>使用例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AND</code></td>
+<td>かつ（両方の条件を満たす）</td>
+<td><code>age = 20 AND department = &amp;apos;工学部&amp;apos;</code></td>
+</tr>
+<tr>
+<td><code>OR</code></td>
+<td>または（いずれかの条件を満たす）</td>
+<td><code>age = 20 OR age = 21</code></td>
+</tr>
+<tr>
+<td><code>NOT</code></td>
+<td>否定（条件を満たさない）</td>
+<td><code>NOT department = &amp;apos;経済学部&amp;apos;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_14">🔍 実践：論理演算子の活用</h3>
+<h4 id="and"><strong>AND演算子：複数条件の同時指定</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 1. 20歳かつ工学部に所属する学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">工学</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+5  | S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 2. 21歳以上かつ学生IDがS003以降の学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="n">S003</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+4  | S004      | 高橋一郎  | 22  | 理学部
+</code></pre></div></p>
+<h4 id="or"><strong>OR演算子：いずれかの条件を満たす</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 3. 19歳または22歳の学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">19</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+3  | S003      | 鈴木次郎  | 19  | 文学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 4. 経済学部または理学部の学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">経済学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">理学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+2  | S002      | 佐藤花子  | 21  | 経済学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+</code></pre></div></p>
+<h4 id="not"><strong>NOT演算子：条件の否定</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 5. 20歳でない学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+2  | S002      | 佐藤花子  | 21  | 経済学部
+3  | S003      | 鈴木次郎  | 19  | 文学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+</code></pre></div></p>
+<h4 id="_15"><strong>複雑な組み合わせ</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 6. 20歳以上かつ（工学部または理学部）の学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span>
+<span class="k">AND</span><span class="w"> </span><span class="p">(</span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">工学</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">理学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;);</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+5  | S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<h3 id="week-5_1">Week 5システムとの対応</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 5のJava複合条件検索</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">students</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="w"> </span>
+<span class="w">        </span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getDepartment</span><span class="p">().</span><span class="na">contains</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">工学</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>
+<span class="w">         </span><span class="n">student</span><span class="p">.</span><span class="na">getDepartment</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">理学部</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">results</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>↓ <strong>SQL検索への変換</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- SQL検索：同じ複合条件を簡潔に表現</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span>
+<span class="k">AND</span><span class="w"> </span><span class="p">(</span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">工学</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">理学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;);</span>
+</code></pre></div>
+<p><strong>💡 重要な優位性</strong>:
+- <strong>Java</strong>: 複雑な条件分岐をコードで記述
+- <strong>SQL</strong>: 直感的で読みやすい条件式</p>
+<hr />
+<h2 id="4-like">📋 ステップ4: LIKE演算子とパターンマッチング</h2>
+<h3 id="like">LIKE演算子の基本</h3>
+<p><strong>LIKE演算子</strong>は文字列の<strong>パターンマッチング</strong>に使用します。ワイルドカードと組み合わせて柔軟な検索が可能です。</p>
+<h3 id="_16">ワイルドカードの種類</h3>
+<table>
+<thead>
+<tr>
+<th>ワイルドカード</th>
+<th>意味</th>
+<th>使用例</th>
+<th>マッチする例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%</code></td>
+<td>任意の0文字以上の文字列</td>
+<td><code>&amp;apos;田%&amp;apos;</code></td>
+<td>田中、田村、田</td>
+</tr>
+<tr>
+<td><code>_</code></td>
+<td>任意の1文字</td>
+<td><code>&amp;apos;田_太郎&amp;apos;</code></td>
+<td>田中太郎、田村太郎</td>
+</tr>
+</tbody>
+</table>
+<h3 id="like_1">🔍 実践：LIKE演算子の活用</h3>
+<h4 id="_17"><strong>%ワイルドカードによる部分一致検索</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 1. 名前が「田」で始まる学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">田</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 2. 名前に「郎」が含まれる学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">郎</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+3  | S003      | 鈴木次郎  | 19  | 文学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 3. 学部名に「工学」が含まれる学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">工学</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+5  | S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 4. 名前が「子」で終わる学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">子</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+2  | S002      | 佐藤花子  | 21  | 経済学部
+</code></pre></div></p>
+<h4 id="_"><strong>_ワイルドカードによる文字数指定検索</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 5. 学生IDがS00で始まり、4文字目が任意の1文字</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="n">S00_</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+2  | S002      | 佐藤花子  | 21  | 経済学部
+3  | S003      | 鈴木次郎  | 19  | 文学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+5  | S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 6. 名前が4文字で「田」で始まり「郎」で終わる学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">田</span><span class="n">_太郎</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+</code></pre></div></p>
+<h4 id="not_1"><strong>NOTとの組み合わせ</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 7. 学部名に「学部」が含まれない学生（実際にはすべて含まれる）</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>(0 rows)
+</code></pre></div></p>
+<h3 id="week-5_2">Week 5システムとの対応</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 5のJava部分一致検索</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">students</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">().</span><span class="na">startsWith</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">田</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;))</span><span class="w"> </span><span class="p">{</span><span class="w">      </span><span class="c1">// Java: startsWith</span>
+<span class="w">        </span><span class="n">results</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">().</span><span class="na">contains</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">郎</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;))</span><span class="w"> </span><span class="p">{</span><span class="w">        </span><span class="c1">// Java: contains  </span>
+<span class="w">        </span><span class="n">results</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getDepartment</span><span class="p">().</span><span class="na">contains</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">工学</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Java: contains</span>
+<span class="w">        </span><span class="n">results</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>↓ <strong>SQL検索への変換</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- SQL検索：パターンマッチングで同等の検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">田</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;;</span><span class="w">          </span><span class="c1">-- startsWith相当</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">郎</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;;</span><span class="w">        </span><span class="c1">-- contains相当</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">工学</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;;</span><span class="w"> </span><span class="c1">-- contains相当</span>
+</code></pre></div>
+<h3 id="_18">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_3_image_3.html">テーブル構造とデータ格納イメージ</a></h3>
+<h3 id="3_1">📝 練習問題3</h3>
+<p>以下の条件でLIKE演算子を使った検索を実行してください：</p>
+<p>🎯 <strong>目標</strong>: LIKE演算子とワイルドカードを使った柔軟な検索技術を身につける</p>
+<p>💭 <strong>考えるポイント</strong>: 
+- %と_の使い分けは理解できましたか？
+- 部分一致・前方一致・後方一致をどう表現しますか？</p>
+<p><strong>問題</strong>:
+1. 名前に「佐」が含まれる学生を検索してください
+2. 学部名が「学」で終わる学生を検索してください
+3. 学生IDがS00で始まり、最後が5の学生を検索してください</p>
+<p>&lt;details&gt;
+&lt;summary&gt;✅ 解答（クリックして確認）&lt;/summary&gt;</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 1. 名前に「佐」が含まれる学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">佐</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;;</span>
+
+<span class="c1">-- 2. 学部名が「学」で終わる学生  </span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">学</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+
+<span class="c1">-- 3. 学生IDがS00で始まり、最後が5の学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="n">S00_5</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<p>&lt;/details&gt;</p>
+<hr />
+<h2 id="5-order-by">📋 ステップ5: ORDER BYによる並び替え</h2>
+<h3 id="order-by">ORDER BYの基本構文</h3>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="err">フィールド名</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="err">ソートフィールド</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">];</span>
+</code></pre></div>
+<ul>
+<li><strong>ASC</strong>: 昇順（小さい→大きい、あいうえお順）※省略時のデフォルト</li>
+<li><strong>DESC</strong>: 降順（大きい→小さい、逆順）</li>
+</ul>
+<h3 id="order-by_1">🔍 実践：ORDER BYの活用</h3>
+<h4 id="_19"><strong>数値フィールドでの並び替え</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 1. 年齢の昇順（若い順）</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+3  | S003      | 鈴木次郎  | 19  | 文学部
+1  | S001      | 田中太郎  | 20  | 情報工学部
+5  | S005      | 山田美咲  | 20  | 工学部
+2  | S002      | 佐藤花子  | 21  | 経済学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 2. 年齢の降順（年上順）</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+4  | S004      | 高橋一郎  | 22  | 理学部
+2  | S002      | 佐藤花子  | 21  | 経済学部
+1  | S001      | 田中太郎  | 20  | 情報工学部
+5  | S005      | 山田美咲  | 20  | 工学部
+3  | S003      | 鈴木次郎  | 19  | 文学部
+</code></pre></div></p>
+<h4 id="_20"><strong>文字列フィールドでの並び替え</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 3. 名前のあいうえお順</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+2  | S002      | 佐藤花子  | 21  | 経済学部
+3  | S003      | 鈴木次郎  | 19  | 文学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+1  | S001      | 田中太郎  | 20  | 情報工学部
+5  | S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 4. 学部名順</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+5  | S005      | 山田美咲  | 20  | 工学部
+2  | S002      | 佐藤花子  | 21  | 経済学部
+1  | S001      | 田中太郎  | 20  | 情報工学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+3  | S003      | 鈴木次郎  | 19  | 文学部
+</code></pre></div></p>
+<h4 id="_21"><strong>複数フィールドでの並び替え</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 5. 年齢の昇順、同じ年齢の場合は名前順</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+3  | S003      | 鈴木次郎  | 19  | 文学部
+1  | S001      | 田中太郎  | 20  | 情報工学部
+5  | S005      | 山田美咲  | 20  | 工学部
+2  | S002      | 佐藤花子  | 21  | 経済学部
+4  | S004      | 高橋一郎  | 22  | 理学部
+</code></pre></div></p>
+<h4 id="where_1"><strong>WHERE句との組み合わせ</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 6. 20歳以上の学生を年齢の降順で表示</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+4  | S004      | 高橋一郎  | 22  | 理学部
+2  | S002      | 佐藤花子  | 21  | 経済学部
+1  | S001      | 田中太郎  | 20  | 情報工学部
+5  | S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<h3 id="week-5_3">Week 5システムとの対応</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 5のJavaソート処理</span>
+<span class="n">Collections</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">students</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Comparator</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compare</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="n">s2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="n">s1</span><span class="p">.</span><span class="na">getAge</span><span class="p">(),</span><span class="w"> </span><span class="n">s2</span><span class="p">.</span><span class="na">getAge</span><span class="p">());</span><span class="w">  </span><span class="c1">// 年齢昇順</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>↓ <strong>SQL並び替えへの変換</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- SQL並び替え：シンプルで直感的</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>💡 重要な利点</strong>:
+- <strong>Java</strong>: Comparatorクラスの作成、複雑なソートロジック
+- <strong>SQL</strong>: ORDER BY一行でシンプルに実現</p>
+<hr />
+<h2 id="6-limit">📋 ステップ6: LIMITによる取得件数制限</h2>
+<h3 id="limit">LIMITの基本構文</h3>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="err">フィールド名</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="err">件数</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="err">フィールド名</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="err">オフセット</span><span class="p">,</span><span class="w"> </span><span class="err">件数</span><span class="p">;</span>
+</code></pre></div>
+<ul>
+<li><strong>件数</strong>: 取得するレコードの最大件数</li>
+<li><strong>オフセット</strong>: 開始位置（0から始まる）</li>
+</ul>
+<h3 id="limit_1">🔍 実践：LIMITの活用</h3>
+<h4 id="limit_2"><strong>基本的なLIMIT</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 1. 最初の3件のみ取得</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+2  | S002      | 佐藤花子  | 21  | 経済学部
+3  | S003      | 鈴木次郎  | 19  | 文学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 2. 最年長の学生1名のみ取得</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+4  | S004      | 高橋一郎  | 22  | 理学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 3. 最年少の学生2名を取得</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">ASC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+3  | S003      | 鈴木次郎  | 19  | 文学部
+1  | S001      | 田中太郎  | 20  | 情報工学部
+</code></pre></div></p>
+<h4 id="limit_3"><strong>オフセット付きLIMIT（ページング処理）</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 4. 2番目から2件取得（オフセット1、件数2）</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">ASC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+5  | S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 5. 4番目から最後まで取得（オフセット3）</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">ASC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+5  | S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<h4 id="_22"><strong>複合的な活用</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 6. 工学系学部の学生で年齢が高い順に2名</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">工学</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+5  | S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<h3 id="week-5_4">Week 5システムとの対応</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 5のJava件数制限処理</span>
+<span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;();</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">students</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">results</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
+<span class="w">        </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>↓ <strong>SQL制限処理への変換</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- SQL制限処理：効率的で明確</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div>
+<hr />
+<h2 id="7-">📋 ステップ7: 実践演習 - 複合条件による高度な検索</h2>
+<h3 id="_23">🎯 実践課題：学生検索システムの構築</h3>
+<p>現在までに学習した技術をすべて組み合わせて、以下の高度な検索パターンを実装してみましょう：</p>
+<h4 id="1_1"><strong>課題1：成績優秀者抽出システム</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 1. 20歳以上で工学系学部の学生を年齢順に表示</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">工学</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>student_id | name     | age | department
+S001      | 田中太郎  | 20  | 情報工学部
+S005      | 山田美咲  | 20  | 工学部
+</code></pre></div></p>
+<h4 id="2_2"><strong>課題2：詳細検索システム</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 2. 名前に「太郎」または「花子」が含まれ、かつ20歳以上の学生</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">太郎</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">花子</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;)</span><span class="w"> </span>
+<span class="k">AND</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>id | student_id | name     | age | department
+1  | S001      | 田中太郎  | 20  | 情報工学部
+2  | S002      | 佐藤花子  | 21  | 経済学部
+</code></pre></div></p>
+<h4 id="3_2"><strong>課題3：ランキングシステム</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 3. 全学生を年齢の降順で並べ、上位3名を表示</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">第</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;,</span><span class="w"> </span><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">DESC</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">位</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="err">順位</span><span class="p">,</span>
+<span class="w">       </span><span class="n">name</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="err">名前</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">age</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="err">年齢</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">department</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="err">学部</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>順位 | 名前     | 年齢 | 学部
+第1位| 高橋一郎  | 22  | 理学部
+第2位| 佐藤花子  | 21  | 経済学部  
+第3位| 田中太郎  | 20  | 情報工学部
+</code></pre></div></p>
+<h4 id="4"><strong>課題4：統計情報システム</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 4. 各学部の学生数と平均年齢（GROUP BYは次回詳細学習予定）</span>
+<span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="k">CASE</span><span class="w"> </span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">工学</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">工学系</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">経済学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">文系</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">文学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">文系</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">理学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">理系</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span>
+<span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="err">学部系統</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="err">学生数</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">age</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="err">平均年齢</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="err">学部系統</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="err">平均年齢</span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>学部系統 | 学生数 | 平均年齢
+理系    | 1     | 22.0
+文系    | 2     | 20.0
+工学系   | 2     | 20.0
+</code></pre></div></p>
+<h3 id="_24">📝 総合練習問題</h3>
+<p>以下の検索要求を満たすSQLクエリを作成してください：</p>
+<p>🎯 <strong>目標</strong>: これまで学習したすべての技術を組み合わせて実用的な検索を実装する</p>
+<p>💭 <strong>考えるポイント</strong>: 
+- 複数の条件をどう組み合わせるか？
+- 適切な並び替えと件数制限をどう設定するか？
+- 検索結果は期待通りになっているか？</p>
+<p><strong>問題</strong>:
+1. <strong>若手優秀者検索</strong>: 21歳以下で、学部名に「学」が含まれる学生を年齢の昇順で2名まで表示
+2. <strong>部分一致検索</strong>: 名前または学部名に「田」が含まれる学生をすべて表示
+3. <strong>上位者抽出</strong>: 全学生を学生ID順に並べ、3番目と4番目の学生のみ表示
+4. <strong>除外検索</strong>: 経済学部と文学部以外の学生を名前順で表示</p>
+<p>&lt;details&gt;
+&lt;summary&gt;✅ 解答（クリックして確認）&lt;/summary&gt;</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 1. 若手優秀者検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">学</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">ASC</span><span class="w"> </span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+<span class="c1">-- 2. 部分一致検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">田</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">田</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;;</span>
+
+<span class="c1">-- 3. 上位者抽出（3番目と4番目）</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="k">ASC</span><span class="w"> </span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+<span class="c1">-- 4. 除外検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">経済学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">文学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;)</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果例：</strong>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 1の結果</span>
+<span class="n">id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">name</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">department</span>
+<span class="mi">3</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">S003</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="err">鈴木次郎</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">19</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="err">文学部</span>
+<span class="mi">1</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">S001</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="err">田中太郎</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">20</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="err">情報工学部</span>
+
+<span class="c1">-- 4の結果  </span>
+<span class="n">id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">name</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">department</span>
+<span class="mi">4</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">S004</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="err">高橋一郎</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">22</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="err">理学部</span>
+<span class="mi">1</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">S001</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="err">田中太郎</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">20</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="err">情報工学部</span>
+<span class="mi">5</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">S005</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="err">山田美咲</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">20</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="err">工学部</span>
+</code></pre></div></p>
+<p>&lt;/details&gt;</p>
+<hr />
+<h2 id="_25">💡 よくある質問</h2>
+<h3 id="q1-whereor">Q1: WHERE句でOR条件を使うとき、括弧は必要ですか？</h3>
+<p><strong>A</strong>: 複数の条件が混在する場合は<strong>括弧を使って明確にする</strong>ことを強く推奨します：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- ❌ 分かりにくい（AND優先のため意図と異なる可能性）</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">田</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">工学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+
+<span class="c1">-- ✅ 明確で理解しやすい</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">田</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">工学部</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;);</span>
+</code></pre></div>
+<h3 id="q2-like">Q2: LIKE演算子で%を文字として検索したい場合は？</h3>
+<p><strong>A</strong>: <strong>エスケープ文字</strong>を使用します：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 文字として「%」を検索</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="err">\</span><span class="o">%%&amp;</span><span class="n">apos</span><span class="p">;</span><span class="w"> </span><span class="k">ESCAPE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="err">\</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;;</span>
+<span class="c1">-- または</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">apos</span><span class="p">;</span><span class="o">%</span><span class="p">[</span><span class="o">%</span><span class="p">]</span><span class="o">%&amp;</span><span class="n">apos</span><span class="p">;;</span>
+</code></pre></div>
+<h3 id="q3-order-by">Q3: ORDER BYで複数フィールドを指定する順序は重要ですか？</h3>
+<p><strong>A</strong>: <strong>非常に重要</strong>です。左から順に優先度が決まります：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 年齢優先 → 同じ年齢の中で名前順</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+
+<span class="c1">-- 名前優先 → 同じ名前の中で年齢順（結果が大きく変わる）</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="q4-limit">Q4: LIMITを使わずに最大値・最小値を取得する方法は？</h3>
+<p><strong>A</strong>: <strong>MAX()・MIN()関数</strong>を使用します（次のレッスンで詳細学習）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 最年長の年齢</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="p">;</span>
+
+<span class="c1">-- 最年少の学生（サブクエリ使用）</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_26">🎯 まとめ</h2>
+<h3 id="_27">このレッスンで習得した技術</h3>
+<h4 id="where_2"><strong>✅ WHERE句による条件指定</strong></h4>
+<ul>
+<li><strong>基本条件</strong>: =、!=、&gt;、&lt;、&gt;=、&lt;=による精密な検索</li>
+<li><strong>論理演算子</strong>: AND、OR、NOTによる複合条件の構築  </li>
+<li><strong>実用性</strong>: 業務で必要な複雑な検索条件を自在に構築可能</li>
+</ul>
+<h4 id="like_2"><strong>✅ LIKE演算子とパターンマッチング</strong></h4>
+<ul>
+<li><strong>ワイルドカード</strong>: %（任意の文字列）、_（任意の1文字）の使い分け</li>
+<li><strong>柔軟な検索</strong>: 前方一致、後方一致、部分一致検索の実装</li>
+<li><strong>実用性</strong>: 曖昧な条件での効率的なデータ抽出</li>
+</ul>
+<h4 id="order-bylimit"><strong>✅ ORDER BY・LIMITによるデータ制御</strong></h4>
+<ul>
+<li><strong>並び替え</strong>: 昇順・降順、複数フィールド並び替えの完全習得</li>
+<li><strong>件数制限</strong>: ページング処理、上位N件抽出の実装</li>
+<li><strong>効率性</strong>: 大量データからの必要データのみ効率的な取得</li>
+</ul>
+<h4 id="week-5_5"><strong>✅ Week 5システムとの連携理解</strong></h4>
+<ul>
+<li><strong>思考転換</strong>: Java配列処理→SQL処理への発想の切り替え</li>
+<li><strong>効率性実感</strong>: SQLの高速処理とシンプルな記述の体験</li>
+<li><strong>実用性向上</strong>: 実務レベルのデータ管理手法の習得</li>
+</ul>
+<h3 id="_28">学習者の到達レベル</h3>
+<p><strong>Week 7.2完了時</strong>: MySQL・SQL基本操作をマスターした実践的データベース活用者</p>
+<p><strong>Week 7.3完了時</strong>: <strong>高度なデータ抽出技術をマスターした実践的SQLエンジニア</strong></p>
+<h3 id="_29">技術習得の成果</h3>
+<h4 id="55-"><strong>技術習得度</strong>: ⭐⭐⭐⭐⭐ (5/5) - 完璧</h4>
+<ul>
+<li>SELECT文の基本から応用まで包括的に習得</li>
+<li>複雑な検索条件の構築能力を完全獲得</li>
+<li>実務で即座に活用可能なSQL技術を確立</li>
+</ul>
+<h4 id="55-_1"><strong>実用性</strong>: ⭐⭐⭐⭐⭐ (5/5) - 優秀</h4>
+<ul>
+<li>業務での典型的な検索パターンを完全マスター</li>
+<li>効率的なデータ抽出技術を実用レベルで習得</li>
+<li>Week 5システムとの関連性を実感し、技術統合が進展</li>
+</ul>
+<h4 id="week-8-55-"><strong>Week 8への準備</strong>: ⭐⭐⭐⭐⭐ (5/5) - 十分</h4>
+<ul>
+<li>Spring Boot + MyBatisで使用する検索パターンの基礎完成</li>
+<li>複雑なWHERE句・ORDER BY・LIMITの実践習得完了</li>
+<li>データベース操作の実用技術が確実に身についている</li>
+</ul>
+<p><strong>Week 7.3総合評価</strong>: ⭐⭐⭐⭐⭐ (5/5) - 期待を上回る優秀な成果！</p>
+<hr />
+<h2 id="_30">🚀 次回予告</h2>
+<p><strong>Week 7.4: データ操作の実践：INSERT・UPDATE・DELETEによるデータ管理</strong>では：</p>
+<h3 id="_31"><strong>次回で学ぶ内容</strong></h3>
+<ul>
+<li><strong>INSERT文の応用</strong>: 複数データの一括挿入、他テーブルからのデータ挿入</li>
+<li><strong>UPDATE文の実践</strong>: 条件指定による部分更新、複雑な更新処理</li>
+<li><strong>DELETE文の活用</strong>: 安全な削除処理、条件指定による部分削除</li>
+<li><strong>トランザクション</strong>: データ整合性を保つ安全なデータ操作手法</li>
+</ul>
+<h3 id="_32"><strong>今回の技術との連携</strong></h3>
+<ul>
+<li>今回習得したWHERE句 → UPDATE・DELETE文での条件指定</li>
+<li>ORDER BY・LIMIT → 特定の条件に合致するデータの優先更新・削除</li>
+<li>複合条件検索 → 複雑なデータ更新・削除処理の実装</li>
+</ul>
+<h3 id="_33"><strong>期待される成長</strong></h3>
+<p><strong>Week 7.4完了後</strong>: <strong>CRUD操作を完全にマスターしたデータベース管理エキスパート</strong></p>
+<h3 id="_34"><strong>学習継続への動機</strong></h3>
+<p>今回習得した高度な検索技術を基盤として、次回は「データの安全で効率的な更新・削除技術」を学びます。Week 7.3の検索技術 + Week 7.4の操作技術により、<strong>実務レベルの完全なデータベース操作能力</strong>が確立されます！</p>
+<hr />
+<h2 id="_35">📝 追加練習課題</h2>
+<p>余力がある方は、以下の課題にも挑戦してみてください：</p>
+<h3 id="_36"><strong>基礎強化練習</strong></h3>
+<ol>
+<li><strong>検索パターンの習得</strong></li>
+<li>年齢範囲検索（19-21歳の学生）</li>
+<li>複数学部検索（工学部または理学部）</li>
+<li>
+<p>除外検索（特定学部以外）</p>
+</li>
+<li>
+<p><strong>並び替えの応用</strong></p>
+</li>
+<li>学部名順→年齢順の複合ソート</li>
+<li>降順・昇順の混合ソート</li>
+<li>条件付きソート（特定条件下での並び替え）</li>
+</ol>
+<h3 id="_37"><strong>応用挑戦</strong></h3>
+<ol>
+<li><strong>実用的な検索システム</strong></li>
+<li>学生情報検索API相当の複合検索</li>
+<li>ページング処理を想定した分割取得</li>
+<li>
+<p>統計情報を含む分析クエリ</p>
+</li>
+<li>
+<p><strong>Week 5システムとの比較</strong></p>
+</li>
+<li>Java配列処理で実装していた検索をSQLで再現</li>
+<li>処理速度・記述量・保守性の比較</li>
+<li>より効率的なデータ管理方法の検討</li>
+</ol>
+<p><strong>学習継続のコツ</strong>: 今回習得したSELECT文の技術は、Week 8のSpring Boot開発で直接活用されます。確実に身につけることで、Web開発での大きなアドバンテージを得ることができます！ 🎯</p>
+<p><strong>学習時間</strong>: 約60-70分完了<br />
+<strong>次回</strong>: レッスン7.4「データ操作の実践：INSERT・UPDATE・DELETEによるデータ管理」</p>
+<p>🎯 <strong>高度なデータ抽出技術をマスターした実践的SQLエンジニアへ成長しました！</strong></content>
+</lesson></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
