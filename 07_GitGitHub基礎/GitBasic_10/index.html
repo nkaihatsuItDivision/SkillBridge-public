@@ -7992,25 +7992,25 @@ mkdir<span class="w"> </span>fork-practice-upstream
 
 <span class="c1"># Git初期化と基本ファイル作成</span>
 git<span class="w"> </span>init
-<span class="nb">echo</span><span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span><span class="c1"># Fork練習用プロジェクト&amp;quot; &amp;gt; README.md</span>
-<span class="nb">echo</span><span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span>このプロジェクトはPull<span class="w"> </span>Request練習用です<span class="p">&amp;</span>quot<span class="p">;</span><span class="w"> </span><span class="p">&amp;</span>gt<span class="p">;&amp;</span>gt<span class="p">;</span><span class="w"> </span>README.md
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# Fork練習用プロジェクト&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;このプロジェクトはPull Request練習用です&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>README.md
 
 <span class="c1"># 簡単なJavaファイル作成（Fork後に修正予定）</span>
 mkdir<span class="w"> </span>src
 <span class="nb">echo</span><span class="w"> </span><span class="p">&amp;</span>apos<span class="p">;</span>public<span class="w"> </span>class<span class="w"> </span>Calculator<span class="w"> </span><span class="o">{</span>
 <span class="w">    </span>public<span class="w"> </span>static<span class="w"> </span>void<span class="w"> </span>main<span class="o">(</span>String<span class="o">[]</span><span class="w"> </span>args<span class="o">)</span><span class="w"> </span><span class="o">{</span>
-<span class="w">        </span>System.out.println<span class="o">(</span><span class="p">&amp;</span>quot<span class="p">;</span>Calculator<span class="w"> </span>v1.0<span class="p">&amp;</span>quot<span class="p">;</span><span class="o">)</span><span class="p">;</span>
-<span class="w">        </span>System.out.println<span class="o">(</span><span class="p">&amp;</span>quot<span class="p">;</span>加算結果:<span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span><span class="w"> </span>+<span class="w"> </span>add<span class="o">(</span><span class="m">10</span>,<span class="w"> </span><span class="m">20</span><span class="o">))</span><span class="p">;</span>
+<span class="w">        </span>System.out.println<span class="o">(</span><span class="s2">&quot;Calculator v1.0&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="w">        </span>System.out.println<span class="o">(</span><span class="s2">&quot;加算結果: &quot;</span><span class="w"> </span>+<span class="w"> </span>add<span class="o">(</span><span class="m">10</span>,<span class="w"> </span><span class="m">20</span><span class="o">))</span><span class="p">;</span>
 <span class="w">    </span><span class="o">}</span>
 
 <span class="w">    </span>public<span class="w"> </span>static<span class="w"> </span>int<span class="w"> </span>add<span class="o">(</span>int<span class="w"> </span>a,<span class="w"> </span>int<span class="w"> </span>b<span class="o">)</span><span class="w"> </span><span class="o">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span>a<span class="w"> </span>+<span class="w"> </span>b<span class="p">;</span>
 <span class="w">    </span><span class="o">}</span>
-<span class="o">}</span><span class="p">&amp;</span>apos<span class="p">;</span><span class="w"> </span><span class="p">&amp;</span>gt<span class="p">;</span><span class="w"> </span>src/Calculator.java
+<span class="o">}</span><span class="p">&amp;</span>apos<span class="p">;</span><span class="w"> </span>&gt;<span class="w"> </span>src/Calculator.java
 
 <span class="c1"># コミットとGitHub公開</span>
 git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span>初期バージョン:<span class="w"> </span>基本的な計算機クラス作成<span class="p">&amp;</span>quot<span class="p">;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;初期バージョン: 基本的な計算機クラス作成&quot;</span>
 </code></pre></div></li>
 </ol>
 <h3 id="_10">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_fork_operation_screen.html">フォーク操作画面</a></h3>
@@ -8030,7 +8030,7 @@ Compressing objects: 100% (3/3), done.
 Writing objects: 100% (5/5), 584 bytes | 584.00 KiB/s, done.
 Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
 To https://github.com/あなたのユーザー名/fork-practice-upstream.git
- * [new branch]      main -&amp;gt; main
+ * [new branch]      main -&gt; main
 Branch &amp;apos;main&amp;apos; set up to track remote branch &amp;apos;main&amp;apos; from &amp;apos;origin&amp;apos;.
 </code></pre></div></p>
 <h4 id="step-2-fork"><strong>Step 2: Forkの実行</strong></h4>
@@ -8123,17 +8123,17 @@ code<span class="w"> </span>src/Calculator.java<span class="w">  </span><span cl
 <p><strong>Calculator.java を以下に更新：</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Calculator</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Calculator</span><span class="w"> </span><span class="n">v2</span><span class="mf">.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">四則演算対応</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">=========================&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Calculator v2.0 - 四則演算対応&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=========================&quot;</span><span class="p">);</span>
 
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">計算対象</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;計算対象: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
 <span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
 
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">加算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">減算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">乗算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">除算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;加算結果: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;減算結果: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;乗算結果: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;除算結果: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="cm">/**</span>
@@ -8174,7 +8174,7 @@ code<span class="w"> </span>src/Calculator.java<span class="w">  </span><span cl
 <span class="cm">     */</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">エラー</span><span class="p">:</span><span class="w"> </span><span class="n">ゼロで除算することはできません</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;エラー: ゼロで除算することはできません&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
@@ -8208,22 +8208,22 @@ git<span class="w"> </span>diff
 <p><strong>実行結果：</strong>
 <div class="highlight"><pre><span></span><code>On branch feature/add-basic-operations
 Changes not staged for commit:
-  (use &amp;quot;git add &amp;lt;file&amp;gt;...&amp;quot; to update what will be committed)
-  (use &amp;quot;git restore &amp;lt;file&amp;gt;...&amp;quot; to discard changes in working directory)
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
         modified:   src/Calculator.java
 
-no changes added to commit (use &amp;quot;git add -A&amp;quot; or &amp;quot;git commit -a&amp;quot;)
+no changes added to commit (use &quot;git add -A&quot; or &quot;git commit -a&quot;)
 </code></pre></div></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 変更をステージング・コミット</span>
 git<span class="w"> </span>add<span class="w"> </span>src/Calculator.java
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span>feat:<span class="w"> </span>四則演算機能を追加
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: 四則演算機能を追加</span>
 
--<span class="w"> </span>add<span class="o">()</span>,<span class="w"> </span>subtract<span class="o">()</span>,<span class="w"> </span>multiply<span class="o">()</span>,<span class="w"> </span>divide<span class="o">()</span>メソッドを実装
--<span class="w"> </span>ゼロ除算エラーハンドリングを追加
--<span class="w"> </span>Javadocコメントを追加
--<span class="w"> </span>バージョンを<span class="w"> </span>v2.0<span class="w"> </span>に更新
+<span class="s2">- add(), subtract(), multiply(), divide()メソッドを実装</span>
+<span class="s2">- ゼロ除算エラーハンドリングを追加</span>
+<span class="s2">- Javadocコメントを追加</span>
+<span class="s2">- バージョンを v2.0 に更新</span>
 
-Resolves:<span class="w"> </span>Calculator基本機能の拡張要求<span class="p">&amp;</span>quot<span class="p">;</span>
+<span class="s2">Resolves: Calculator基本機能の拡張要求&quot;</span>
 </code></pre></div>
 <p><strong>実行結果：</strong>
 <div class="highlight"><pre><span></span><code>[feature/add-basic-operations 8a3f9d2] feat: 四則演算機能を追加
@@ -8245,7 +8245,7 @@ remote: Create a pull request for &amp;apos;feature/add-basic-operations&amp;apo
 remote:      https://github.com/あなたのユーザー名/fork-practice-upstream/pull/new/feature/add-basic-operations
 remote: 
 To https://github.com/あなたのユーザー名/fork-practice-upstream.git
- * [new branch]      feature/add-basic-operations -&amp;gt; feature/add-basic-operations
+ * [new branch]      feature/add-basic-operations -&gt; feature/add-basic-operations
 </code></pre></div></p>
 <h3 id="_14">🎯 機能開発完了の確認</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 現在の状況確認</span>
@@ -8270,7 +8270,7 @@ b7c8e1f 初期バージョン: 基本的な計算機クラス作成
 <p>プッシュ後、GitHubが自動的にPull Request作成を提案します：</p>
 <h3 id="_15">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_created_pr_screen%20(1).html">プルリクエスト作成画面</a></h3>
 <ol>
-<li><strong>&quot;Compare &amp; pull request&quot;ボタンをクリック</strong></li>
+<li><strong>"Compare &amp; pull request"ボタンをクリック</strong></li>
 </ol>
 <h3 id="_16">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_pr_creation_proposal_screen.html">プルリクエスト作成提案画面</a></h3>
 <h4 id="step-2-pull-request"><strong>Step 2: Pull Request詳細情報の入力</strong></h4>
@@ -8330,7 +8330,7 @@ Calculator v2.0 - 四則演算対応
 <li><strong>Compare Branch</strong>: <code>feature/add-basic-operations</code></li>
 </ol>
 <h4 id="step-4-pull-request"><strong>Step 4: Pull Request作成完了</strong></h4>
-<p>&quot;Create pull request&quot; ボタンをクリック</p>
+<p>"Create pull request" ボタンをクリック</p>
 <h3 id="_18">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_pr_creation_suggestion_screen.html">プルリクエスト作成サジェスト画面</a></h3>
 <h3 id="pull-request_3">📊 作成されたPull Request確認</h3>
 <p><strong>✅ Pull Request作成完了！</strong></p>
@@ -8340,7 +8340,7 @@ Calculator v2.0 - 四則演算対応
 <h4 id="_20"><strong>レビュアー視点での確認</strong></h4>
 <p>実際の企業開発では、他のチームメンバーがレビューを行います。ここでは自分自身でレビューの観点を学習します。</p>
 <h4 id="step-1_1"><strong>Step 1: ファイル変更内容の確認</strong></h4>
-<p>Pull Requestページの &quot;Files changed&quot; タブで変更内容を確認：</p>
+<p>Pull Requestページの "Files changed" タブで変更内容を確認：</p>
 <h3 id="_21">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_files_changed_screen%20(1).html">変更ファイル確認画面</a></h3>
 <h4 id="step-2"><strong>Step 2: レビューコメントの作成</strong></h4>
 <p><strong>優秀なレビューコメントの例</strong>：</p>
@@ -8357,7 +8357,7 @@ Calculator v2.0 - 四則演算対応
 ```java
 public static int divide(int a, int b) {
     if (b == 0) {
-        throw new ArithmeticException(&amp;quot;ゼロで除算することはできません&amp;quot;);
+        throw new ArithmeticException(&quot;ゼロで除算することはできません&quot;);
     }
     return a / b;
 }
@@ -8386,24 +8386,24 @@ git checkout feature/add-basic-operations  # 必要に応じて
 <p><strong>Calculator.java の修正</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Calculator</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Calculator</span><span class="w"> </span><span class="n">v2</span><span class="mf">.0.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">四則演算対応</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">============================&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Calculator v2.0.0 - 四則演算対応&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;============================&quot;</span><span class="p">);</span>
 
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">計算対象</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;計算対象: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
 <span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
 
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">加算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">減算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">乗算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">除算結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;加算結果: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;減算結果: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;乗算結果: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;除算結果: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
 
 <span class="w">            </span><span class="c1">// ゼロ除算テスト</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">ゼロ除算テスト</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">結果</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;ゼロ除算テスト:&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;結果: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ArithmeticException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">エラーをキャッチしました</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;エラーをキャッチしました: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -8446,7 +8446,7 @@ git checkout feature/add-basic-operations  # 必要に応じて
 <span class="cm">     */</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArithmeticException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">ゼロで除算することはできません</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArithmeticException</span><span class="p">(</span><span class="s">&quot;ゼロで除算することはできません&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
@@ -8472,13 +8472,13 @@ java<span class="w"> </span>Calculator
 <h4 id="step-3_1"><strong>Step 3: 修正をコミット・プッシュ</strong></h4>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>..
 git<span class="w"> </span>add<span class="w"> </span>src/Calculator.java
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="p">&amp;</span>quot<span class="p">;</span>fix:<span class="w"> </span>レビュー指摘事項を修正
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;fix: レビュー指摘事項を修正</span>
 
--<span class="w"> </span>divide<span class="o">()</span>メソッドで例外をthrowするように変更
--<span class="w"> </span>セマンティックバージョニング（v2.0.0）を適用<span class="w">  </span>
--<span class="w"> </span>例外処理のテストコードを追加
+<span class="s2">- divide()メソッドで例外をthrowするように変更</span>
+<span class="s2">- セマンティックバージョニング（v2.0.0）を適用  </span>
+<span class="s2">- 例外処理のテストコードを追加</span>
 
-Co-authored-by:<span class="w"> </span>Reviewer<span class="w"> </span><span class="p">&amp;</span>lt<span class="p">;</span>reviewer@example.com<span class="p">&amp;</span>gt<span class="p">;&amp;</span>quot<span class="p">;</span>
+<span class="s2">Co-authored-by: Reviewer &lt;reviewer@example.com&gt;&quot;</span>
 
 git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/add-basic-operations
 </code></pre></div>
@@ -8493,7 +8493,7 @@ Compressing objects: 100% (3/3), done.
 Writing objects: 100% (4/4), 745 bytes | 745.00 KiB/s, done.
 Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
 To https://github.com/あなたのユーザー名/fork-practice-upstream.git
-   8a3f9d2..c3d4e5f  feature/add-basic-operations -&amp;gt; feature/add-basic-operations
+   8a3f9d2..c3d4e5f  feature/add-basic-operations -&gt; feature/add-basic-operations
 </code></pre></div></p>
 <h4 id="step-4_1"><strong>Step 4: レビューコメントへの返信</strong></h4>
 <p>Pull RequestページでレビューコメントにReply：</p>
@@ -8526,10 +8526,10 @@ To https://github.com/あなたのユーザー名/fork-practice-upstream.git
 <li><strong>Squash and merge</strong>: コミットを統合して1つのコミットに</li>
 <li><strong>Rebase and merge</strong>: 線形履歴を作成</li>
 </ol>
-<p><strong>今回は&quot;Merge commit&quot;を選択</strong>：</p>
+<p><strong>今回は"Merge commit"を選択</strong>：</p>
 <h3 id="_26">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_merge_execution_screen_html.html">マージ実行画面</a></h3>
 <h4 id="step-3-pull-request_1"><strong>Step 3: Pull Requestのマージ実行</strong></h4>
-<p>&quot;Merge pull request&quot; ボタンをクリック：</p>
+<p>"Merge pull request" ボタンをクリック：</p>
 <h3 id="_27">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_merge_strategy_selection_html.html">マージ戦略選択画面</a></h3>
 <h4 id="step-4_2"><strong>Step 4: マージ完了の確認</strong></h4>
 <p><strong>実行結果：</strong>
@@ -8538,7 +8538,7 @@ To https://github.com/あなたのユーザー名/fork-practice-upstream.git
 <h3 id="_28">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_merge_completed_screen_html.html">マージ完了画面</a></h3>
 <h3 id="_29">🧹 後処理：ブランチのクリーンアップ</h3>
 <h4 id="step-1_3"><strong>Step 1: リモートブランチの削除</strong></h4>
-<p>GitHubで&quot;Delete branch&quot;をクリック：</p>
+<p>GitHubで"Delete branch"をクリック：</p>
 <h3 id="html">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_branch_deletion_screen_html.html">ブランチ削除画面のHTML</a></h3>
 <h4 id="step-2_3"><strong>Step 2: ローカル環境のクリーンアップ</strong></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># mainブランチに切り替え</span>
@@ -8558,8 +8558,8 @@ git<span class="w"> </span>remote<span class="w"> </span>prune<span class="w"> <
 Your branch is up to date with &amp;apos;origin/main&amp;apos;.
 
 From https://github.com/あなたのユーザー名/fork-practice-upstream
- * branch            main       -&amp;gt; FETCH_HEAD
-   b7c8e1f..d4e6f2a  main       -&amp;gt; upstream/main
+ * branch            main       -&gt; FETCH_HEAD
+   b7c8e1f..d4e6f2a  main       -&gt; upstream/main
 Updating b7c8e1f..d4e6f2a
 Fast-forward
  src/Calculator.java | 50 ++++++++++++++++++++++++++++++++++++++++++++++++--
@@ -8574,7 +8574,7 @@ git<span class="w"> </span>status
 java<span class="w"> </span>-cp<span class="w"> </span>src<span class="w"> </span>Calculator
 </code></pre></div>
 <p><strong>実行結果：</strong>
-<div class="highlight"><pre><span></span><code>d4e6f2a (HEAD -&amp;gt; main, upstream/main, origin/main) Merge pull request #1 from username/feature/add-basic-operations
+<div class="highlight"><pre><span></span><code>d4e6f2a (HEAD -&gt; main, upstream/main, origin/main) Merge pull request #1 from username/feature/add-basic-operations
 c3d4e5f fix: レビュー指摘事項を修正
 8a3f9d2 feat: 四則演算機能を追加
 b7c8e1f 初期バージョン: 基本的な計算機クラス作成
@@ -8609,7 +8609,7 @@ Calculator v2.0.0 - 四則演算対応
 <h3 id="issuepr">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/git_10_issue_pr_integration_screen_html.html">IssueとPRの連携画面</a></h3>
 <h4 id="step-2-issuepr"><strong>Step 2: Issue作成とPR連携</strong></h4>
 <p><strong>新しいIssue作成例</strong>：</p>
-<p><strong>タイトル</strong>: &quot;新機能: 履歴管理機能の追加&quot;</p>
+<p><strong>タイトル</strong>: "新機能: 履歴管理機能の追加"</p>
 <p><strong>内容</strong>:
 <div class="highlight"><pre><span></span><code><span class="gu">## 機能要求</span>
 計算機に履歴管理機能を追加したい
