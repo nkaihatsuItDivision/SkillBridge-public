@@ -6712,12 +6712,12 @@
 <span class="nd">@Controller</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentController</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showStudents</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 7.9で設計したstudentsテーブルから全学生を取得</span>
-<span class="w">        </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">students</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">index</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span><span class="w">  </span><span class="c1">// Thymeleafテンプレートで表示</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;students&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">students</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/index&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Thymeleafテンプレートで表示</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -6828,7 +6828,7 @@
 <span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">StudentMapper</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// Week 8.2: 学生一覧表示で最初に使用</span>
-<span class="w">    </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">findAll</span><span class="p">();</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findAll</span><span class="p">();</span>
 
 <span class="w">    </span><span class="c1">// Week 8.3: 学生詳細表示で使用</span>
 <span class="w">    </span><span class="n">Student</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
@@ -6840,7 +6840,7 @@
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Week 10.1: 検索機能で使用</span>
-<span class="w">    </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">search</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">);</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Week 10.2: 削除機能で使用</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
@@ -6851,84 +6851,84 @@
 </code></pre></div>
 <h3 id="3-week-810xml">🛠️ ステップ3: Week 8〜10で段階的に活用するXMLマッパー</h3>
 <p><strong>StudentMapper.xml</strong></p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>?xml<span class="w"> </span>version=<span class="ni">&amp;quot;</span>1.0<span class="ni">&amp;quot;</span><span class="w"> </span>encoding=<span class="ni">&amp;quot;</span>UTF-8<span class="ni">&amp;quot;</span>?<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>!DOCTYPE<span class="w"> </span>mapper<span class="w"> </span>PUBLIC<span class="w"> </span><span class="ni">&amp;quot;</span>-//mybatis.org//DTD<span class="w"> </span>Mapper<span class="w"> </span>3.0//EN<span class="ni">&amp;quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="ni">&amp;quot;</span>http://mybatis.org/dtd/mybatis-3-mapper.dtd<span class="ni">&amp;quot;&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; </span>
+<span class="cp">    &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span>
 
-<span class="ni">&amp;lt;</span>mapper<span class="w"> </span>namespace=<span class="ni">&amp;quot;</span>com.example.demo.repository.StudentMapper<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="nt">&lt;mapper</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;com.example.demo.repository.StudentMapper&quot;</span><span class="nt">&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8〜10で共通使用する結果マッピング<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>resultMap<span class="w"> </span>id=<span class="ni">&amp;quot;</span>studentResultMap<span class="ni">&amp;quot;</span><span class="w"> </span>type=<span class="ni">&amp;quot;</span>com.example.demo.entity.Student<span class="ni">&amp;quot;&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>id<span class="w"> </span>property=<span class="ni">&amp;quot;</span>studentId<span class="ni">&amp;quot;</span><span class="w"> </span>column=<span class="ni">&amp;quot;</span>student_id<span class="ni">&amp;quot;</span>/<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>result<span class="w"> </span>property=<span class="ni">&amp;quot;</span>name<span class="ni">&amp;quot;</span><span class="w"> </span>column=<span class="ni">&amp;quot;</span>name<span class="ni">&amp;quot;</span>/<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>result<span class="w"> </span>property=<span class="ni">&amp;quot;</span>email<span class="ni">&amp;quot;</span><span class="w"> </span>column=<span class="ni">&amp;quot;</span>email<span class="ni">&amp;quot;</span>/<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>result<span class="w"> </span>property=<span class="ni">&amp;quot;</span>enrollmentDate<span class="ni">&amp;quot;</span><span class="w"> </span>column=<span class="ni">&amp;quot;</span>enrollment_date<span class="ni">&amp;quot;</span>/<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>result<span class="w"> </span>property=<span class="ni">&amp;quot;</span>gpa<span class="ni">&amp;quot;</span><span class="w"> </span>column=<span class="ni">&amp;quot;</span>gpa<span class="ni">&amp;quot;</span>/<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>result<span class="w"> </span>property=<span class="ni">&amp;quot;</span>departmentId<span class="ni">&amp;quot;</span><span class="w"> </span>column=<span class="ni">&amp;quot;</span>department_id<span class="ni">&amp;quot;</span>/<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>/resultMap<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 8〜10で共通使用する結果マッピング --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;resultMap</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;studentResultMap&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;com.example.demo.entity.Student&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;id</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;studentId&quot;</span><span class="w"> </span><span class="na">column=</span><span class="s">&quot;student_id&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;result</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="na">column=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;result</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;email&quot;</span><span class="w"> </span><span class="na">column=</span><span class="s">&quot;email&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;result</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;enrollmentDate&quot;</span><span class="w"> </span><span class="na">column=</span><span class="s">&quot;enrollment_date&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;result</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;gpa&quot;</span><span class="w"> </span><span class="na">column=</span><span class="s">&quot;gpa&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;result</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;departmentId&quot;</span><span class="w"> </span><span class="na">column=</span><span class="s">&quot;department_id&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/resultMap&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8.2:<span class="w"> </span>最初に動作確認するクエリ<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>select<span class="w"> </span>id=<span class="ni">&amp;quot;</span>findAll<span class="ni">&amp;quot;</span><span class="w"> </span>resultMap=<span class="ni">&amp;quot;</span>studentResultMap<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 8.2: 最初に動作確認するクエリ --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;select</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;findAll&quot;</span><span class="w"> </span><span class="na">resultMap=</span><span class="s">&quot;studentResultMap&quot;</span><span class="nt">&gt;</span>
 <span class="w">        </span>SELECT<span class="w"> </span>student_id,<span class="w"> </span>name,<span class="w"> </span>email,<span class="w"> </span>enrollment_date,<span class="w"> </span>gpa,<span class="w"> </span>department_id
 <span class="w">        </span>FROM<span class="w"> </span>students
 <span class="w">        </span>ORDER<span class="w"> </span>BY<span class="w"> </span>student_id
-<span class="w">    </span><span class="ni">&amp;lt;</span>/select<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="nt">&lt;/select&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8.3:<span class="w"> </span>学生詳細表示で使用<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>select<span class="w"> </span>id=<span class="ni">&amp;quot;</span>findById<span class="ni">&amp;quot;</span><span class="w"> </span>resultMap=<span class="ni">&amp;quot;</span>studentResultMap<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 8.3: 学生詳細表示で使用 --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;select</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;findById&quot;</span><span class="w"> </span><span class="na">resultMap=</span><span class="s">&quot;studentResultMap&quot;</span><span class="nt">&gt;</span>
 <span class="w">        </span>SELECT<span class="w"> </span>student_id,<span class="w"> </span>name,<span class="w"> </span>email,<span class="w"> </span>enrollment_date,<span class="w"> </span>gpa,<span class="w"> </span>department_id
 <span class="w">        </span>FROM<span class="w"> </span>students
 <span class="w">        </span>WHERE<span class="w"> </span>student_id<span class="w"> </span>=<span class="w"> </span>#{id}
-<span class="w">    </span><span class="ni">&amp;lt;</span>/select<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="nt">&lt;/select&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>9.1:<span class="w"> </span>新規登録で使用<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>insert<span class="w"> </span>id=<span class="ni">&amp;quot;</span>save<span class="ni">&amp;quot;</span><span class="w"> </span>useGeneratedKeys=<span class="ni">&amp;quot;</span>true<span class="ni">&amp;quot;</span><span class="w"> </span>keyProperty=<span class="ni">&amp;quot;</span>studentId<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 9.1: 新規登録で使用 --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;insert</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;save&quot;</span><span class="w"> </span><span class="na">useGeneratedKeys=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">keyProperty=</span><span class="s">&quot;studentId&quot;</span><span class="nt">&gt;</span>
 <span class="w">        </span>INSERT<span class="w"> </span>INTO<span class="w"> </span>students<span class="w"> </span>(name,<span class="w"> </span>email,<span class="w"> </span>enrollment_date,<span class="w"> </span>gpa,<span class="w"> </span>department_id)
 <span class="w">        </span>VALUES<span class="w"> </span>(#{name},<span class="w"> </span>#{email},<span class="w"> </span>#{enrollmentDate},<span class="w"> </span>#{gpa},<span class="w"> </span>#{departmentId})
-<span class="w">    </span><span class="ni">&amp;lt;</span>/insert<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="nt">&lt;/insert&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>9.2:<span class="w"> </span>更新機能で使用<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>update<span class="w"> </span>id=<span class="ni">&amp;quot;</span>update<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 9.2: 更新機能で使用 --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;update</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;update&quot;</span><span class="nt">&gt;</span>
 <span class="w">        </span>UPDATE<span class="w"> </span>students<span class="w"> </span>SET
 <span class="w">            </span>name<span class="w"> </span>=<span class="w"> </span>#{name},
 <span class="w">            </span>email<span class="w"> </span>=<span class="w"> </span>#{email},
 <span class="w">            </span>gpa<span class="w"> </span>=<span class="w"> </span>#{gpa},
 <span class="w">            </span>department_id<span class="w"> </span>=<span class="w"> </span>#{departmentId}
 <span class="w">        </span>WHERE<span class="w"> </span>student_id<span class="w"> </span>=<span class="w"> </span>#{studentId}
-<span class="w">    </span><span class="ni">&amp;lt;</span>/update<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="nt">&lt;/update&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>10.1:<span class="w"> </span>動的検索で使用（MyBatisの高度機能）<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>select<span class="w"> </span>id=<span class="ni">&amp;quot;</span>search<span class="ni">&amp;quot;</span><span class="w"> </span>resultMap=<span class="ni">&amp;quot;</span>studentResultMap<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 10.1: 動的検索で使用（MyBatisの高度機能） --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;select</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;search&quot;</span><span class="w"> </span><span class="na">resultMap=</span><span class="s">&quot;studentResultMap&quot;</span><span class="nt">&gt;</span>
 <span class="w">        </span>SELECT<span class="w"> </span>student_id,<span class="w"> </span>name,<span class="w"> </span>email,<span class="w"> </span>enrollment_date,<span class="w"> </span>gpa,<span class="w"> </span>department_id
 <span class="w">        </span>FROM<span class="w"> </span>students
-<span class="w">        </span><span class="ni">&amp;lt;</span>where<span class="ni">&amp;gt;</span>
-<span class="w">            </span><span class="ni">&amp;lt;</span>if<span class="w"> </span>test=<span class="ni">&amp;quot;</span>name<span class="w"> </span>!=<span class="w"> </span>null<span class="w"> </span>and<span class="w"> </span>name<span class="w"> </span>!=<span class="w"> </span><span class="ni">&amp;apos;&amp;apos;&amp;quot;&amp;gt;</span>
-<span class="w">                </span>AND<span class="w"> </span>name<span class="w"> </span>LIKE<span class="w"> </span>CONCAT(<span class="ni">&amp;apos;</span>%<span class="ni">&amp;apos;</span>,<span class="w"> </span>#{name},<span class="w"> </span><span class="ni">&amp;apos;</span>%<span class="ni">&amp;apos;</span>)
-<span class="w">            </span><span class="ni">&amp;lt;</span>/if<span class="ni">&amp;gt;</span>
-<span class="w">            </span><span class="ni">&amp;lt;</span>if<span class="w"> </span>test=<span class="ni">&amp;quot;</span>email<span class="w"> </span>!=<span class="w"> </span>null<span class="w"> </span>and<span class="w"> </span>email<span class="w"> </span>!=<span class="w"> </span><span class="ni">&amp;apos;&amp;apos;&amp;quot;&amp;gt;</span>
-<span class="w">                </span>AND<span class="w"> </span>email<span class="w"> </span>LIKE<span class="w"> </span>CONCAT(<span class="ni">&amp;apos;</span>%<span class="ni">&amp;apos;</span>,<span class="w"> </span>#{email},<span class="w"> </span><span class="ni">&amp;apos;</span>%<span class="ni">&amp;apos;</span>)
-<span class="w">            </span><span class="ni">&amp;lt;</span>/if<span class="ni">&amp;gt;</span>
-<span class="w">            </span><span class="ni">&amp;lt;</span>if<span class="w"> </span>test=<span class="ni">&amp;quot;</span>departmentId<span class="w"> </span>!=<span class="w"> </span>null<span class="w"> </span>and<span class="w"> </span>departmentId<span class="w"> </span><span class="ni">&amp;gt;</span><span class="w"> </span>0<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">        </span><span class="nt">&lt;where&gt;</span>
+<span class="w">            </span><span class="nt">&lt;if</span><span class="w"> </span><span class="na">test=</span><span class="s">&quot;name != null and name != &#39;&#39;&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span>AND<span class="w"> </span>name<span class="w"> </span>LIKE<span class="w"> </span>CONCAT(&#39;%&#39;,<span class="w"> </span>#{name},<span class="w"> </span>&#39;%&#39;)
+<span class="w">            </span><span class="nt">&lt;/if&gt;</span>
+<span class="w">            </span><span class="nt">&lt;if</span><span class="w"> </span><span class="na">test=</span><span class="s">&quot;email != null and email != &#39;&#39;&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span>AND<span class="w"> </span>email<span class="w"> </span>LIKE<span class="w"> </span>CONCAT(&#39;%&#39;,<span class="w"> </span>#{email},<span class="w"> </span>&#39;%&#39;)
+<span class="w">            </span><span class="nt">&lt;/if&gt;</span>
+<span class="w">            </span><span class="nt">&lt;if</span><span class="w"> </span><span class="na">test=</span><span class="s">&quot;departmentId != null and departmentId &gt; 0&quot;</span><span class="nt">&gt;</span>
 <span class="w">                </span>AND<span class="w"> </span>department_id<span class="w"> </span>=<span class="w"> </span>#{departmentId}
-<span class="w">            </span><span class="ni">&amp;lt;</span>/if<span class="ni">&amp;gt;</span>
-<span class="w">            </span><span class="ni">&amp;lt;</span>if<span class="w"> </span>test=<span class="ni">&amp;quot;</span>gpa<span class="w"> </span>!=<span class="w"> </span>null<span class="w"> </span>and<span class="w"> </span>gpa<span class="w"> </span><span class="ni">&amp;gt;</span><span class="w"> </span>0<span class="ni">&amp;quot;&amp;gt;</span>
-<span class="w">                </span>AND<span class="w"> </span>gpa<span class="w"> </span><span class="ni">&amp;gt;</span>=<span class="w"> </span>#{gpa}
-<span class="w">            </span><span class="ni">&amp;lt;</span>/if<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>/where<span class="ni">&amp;gt;</span>
+<span class="w">            </span><span class="nt">&lt;/if&gt;</span>
+<span class="w">            </span><span class="nt">&lt;if</span><span class="w"> </span><span class="na">test=</span><span class="s">&quot;gpa != null and gpa &gt; 0&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span>AND<span class="w"> </span>gpa<span class="w"> </span>&gt;=<span class="w"> </span>#{gpa}
+<span class="w">            </span><span class="nt">&lt;/if&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/where&gt;</span>
 <span class="w">        </span>ORDER<span class="w"> </span>BY<span class="w"> </span>student_id
-<span class="w">    </span><span class="ni">&amp;lt;</span>/select<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="nt">&lt;/select&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>10.2:<span class="w"> </span>削除機能で使用<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>delete<span class="w"> </span>id=<span class="ni">&amp;quot;</span>delete<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 10.2: 削除機能で使用 --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;delete</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;delete&quot;</span><span class="nt">&gt;</span>
 <span class="w">        </span>DELETE<span class="w"> </span>FROM<span class="w"> </span>students<span class="w"> </span>WHERE<span class="w"> </span>student_id<span class="w"> </span>=<span class="w"> </span>#{id}
-<span class="w">    </span><span class="ni">&amp;lt;</span>/delete<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="nt">&lt;/delete&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>10.3:<span class="w"> </span>論理削除で使用<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>update<span class="w"> </span>id=<span class="ni">&amp;quot;</span>logicalDelete<span class="ni">&amp;quot;&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 10.3: 論理削除で使用 --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;update</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;logicalDelete&quot;</span><span class="nt">&gt;</span>
 <span class="w">        </span>UPDATE<span class="w"> </span>students<span class="w"> </span>SET<span class="w"> </span>deleted_at<span class="w"> </span>=<span class="w"> </span>NOW()<span class="w"> </span>WHERE<span class="w"> </span>student_id<span class="w"> </span>=<span class="w"> </span>#{id}
-<span class="w">    </span><span class="ni">&amp;lt;</span>/update<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="nt">&lt;/update&gt;</span>
 
-<span class="ni">&amp;lt;</span>/mapper<span class="ni">&amp;gt;</span>
+<span class="nt">&lt;/mapper&gt;</span>
 </code></pre></div>
 <h3 id="week-810">Week 8〜10での段階的活用</h3>
 <p><strong>Week 8</strong>: findAll, findById のみ使用（基本表示機能）<br />
@@ -6982,27 +6982,27 @@
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">studentId</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// Week 9.1: バリデーション学習で使用</span>
-<span class="w">    </span><span class="nd">@NotBlank</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生名は必須です</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
-<span class="w">    </span><span class="nd">@Size</span><span class="p">(</span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生名は100文字以内で入力してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@NotBlank</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;学生名は必須です&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@Size</span><span class="p">(</span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;学生名は100文字以内で入力してください&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// Week 9.2: Email形式チェックの学習で使用</span>
-<span class="w">    </span><span class="nd">@NotBlank</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">メールアドレスは必須です</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
-<span class="w">    </span><span class="nd">@Email</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">正しいメールアドレス形式で入力してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@NotBlank</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;メールアドレスは必須です&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@Email</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;正しいメールアドレス形式で入力してください&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// Week 9.3: 日付入力の学習で使用</span>
-<span class="w">    </span><span class="nd">@NotNull</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">入学日は必須です</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@NotNull</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;入学日は必須です&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">enrollmentDate</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// Week 9.4: 数値範囲チェックの学習で使用</span>
-<span class="w">    </span><span class="nd">@NotNull</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">GPAは必須です</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
-<span class="w">    </span><span class="nd">@DecimalMin</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mf">0.0</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">GPAは0</span><span class="mf">.0</span><span class="n">以上で入力してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
-<span class="w">    </span><span class="nd">@DecimalMax</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mf">4.0</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">GPAは4</span><span class="mf">.0</span><span class="n">以下で入力してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@NotNull</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GPAは必須です&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@DecimalMin</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GPAは0.0以上で入力してください&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@DecimalMax</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;4.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GPAは4.0以下で入力してください&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">gpa</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@NotNull</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学科を選択してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
-<span class="w">    </span><span class="nd">@Min</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">正しい学科を選択してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@NotNull</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;学科を選択してください&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@Min</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;正しい学科を選択してください&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">departmentId</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -7036,46 +7036,46 @@
 <h3 id="7-week-8">🛠️ ステップ7: Week 8での成功を保証する環境チェック</h3>
 <h4 id="mavenpomxml">Maven依存関係の確認（pom.xml）</h4>
 <p>Week 8で作成するプロジェクトには以下の依存関係が必要です：</p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>dependencies<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8:<span class="w"> </span>Spring<span class="w"> </span>Boot基本機能<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>dependency<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>groupId<span class="ni">&amp;gt;</span>org.springframework.boot<span class="ni">&amp;lt;</span>/groupId<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>artifactId<span class="ni">&amp;gt;</span>spring-boot-starter-web<span class="ni">&amp;lt;</span>/artifactId<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>/dependency<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 8: Spring Boot基本機能 --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8:<span class="w"> </span>Thymeleafテンプレートエンジン<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>dependency<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>groupId<span class="ni">&amp;gt;</span>org.springframework.boot<span class="ni">&amp;lt;</span>/groupId<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>artifactId<span class="ni">&amp;gt;</span>spring-boot-starter-thymeleaf<span class="ni">&amp;lt;</span>/artifactId<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>/dependency<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 8: Thymeleafテンプレートエンジン --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-thymeleaf<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8〜10:<span class="w"> </span>MyBatis<span class="w"> </span>ORM<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>dependency<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>groupId<span class="ni">&amp;gt;</span>org.mybatis.spring.boot<span class="ni">&amp;lt;</span>/groupId<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>artifactId<span class="ni">&amp;gt;</span>mybatis-spring-boot-starter<span class="ni">&amp;lt;</span>/artifactId<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>version<span class="ni">&amp;gt;</span>2.3.0<span class="ni">&amp;lt;</span>/version<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>/dependency<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 8〜10: MyBatis ORM --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.mybatis.spring.boot<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>mybatis-spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;version&gt;</span>2.3.0<span class="nt">&lt;/version&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8〜10:<span class="w"> </span>MySQL接続<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>dependency<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>groupId<span class="ni">&amp;gt;</span>mysql<span class="ni">&amp;lt;</span>/groupId<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>artifactId<span class="ni">&amp;gt;</span>mysql-connector-java<span class="ni">&amp;lt;</span>/artifactId<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>scope<span class="ni">&amp;gt;</span>runtime<span class="ni">&amp;lt;</span>/scope<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>/dependency<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 8〜10: MySQL接続 --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>8〜10:<span class="w"> </span>Lombok（Week<span class="w"> </span>5で習得済み）<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>dependency<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>groupId<span class="ni">&amp;gt;</span>org.projectlombok<span class="ni">&amp;lt;</span>/groupId<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>artifactId<span class="ni">&amp;gt;</span>lombok<span class="ni">&amp;lt;</span>/artifactId<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>optional<span class="ni">&amp;gt;</span>true<span class="ni">&amp;lt;</span>/optional<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>/dependency<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 8〜10: Lombok（Week 5で習得済み） --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.projectlombok<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>lombok<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
 
-<span class="w">    </span><span class="ni">&amp;lt;</span>!--<span class="w"> </span>Week<span class="w"> </span>9:<span class="w"> </span>バリデーション機能<span class="w"> </span>--<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>dependency<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>groupId<span class="ni">&amp;gt;</span>org.springframework.boot<span class="ni">&amp;lt;</span>/groupId<span class="ni">&amp;gt;</span>
-<span class="w">        </span><span class="ni">&amp;lt;</span>artifactId<span class="ni">&amp;gt;</span>spring-boot-starter-validation<span class="ni">&amp;lt;</span>/artifactId<span class="ni">&amp;gt;</span>
-<span class="w">    </span><span class="ni">&amp;lt;</span>/dependency<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/dependencies<span class="ni">&amp;gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Week 9: バリデーション機能 --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-validation<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
 </code></pre></div>
 <h4 id="week-8_6">Week 8での最初の動作確認</h4>
 <p>Week 8の最初のレッスンで、以下のコードが正常動作することを確認します：</p>
@@ -7089,15 +7089,15 @@
 <span class="w">    </span><span class="nd">@Test</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Week8_最初の動作確認</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 7.9で作成したデータベースから学生一覧を取得</span>
-<span class="w">        </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentMapper</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentMapper</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
 
 <span class="w">        </span><span class="c1">// 正常にデータが取得できることを確認</span>
 <span class="w">        </span><span class="n">assertNotNull</span><span class="p">(</span><span class="n">students</span><span class="p">);</span>
-<span class="w">        </span><span class="n">assertTrue</span><span class="p">(</span><span class="n">students</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="n">assertTrue</span><span class="p">(</span><span class="n">students</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Week</span><span class="w"> </span><span class="mi">8</span><span class="n">準備完了</span><span class="err">！</span><span class="n">学生数</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">students</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Week 8準備完了！学生数: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">students</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">students</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;学生: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -7113,11 +7113,11 @@
 </code></pre></div></p>
 <p><strong>Week 8（来週）</strong>：
 <div class="highlight"><pre><span></span><code><span class="c1">// Javaコードで簡単にデータ取得・Web表示</span>
-<span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showStudents</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
-<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">students</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">index</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;students&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">students</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/index&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></p>
 <p><strong>ブラウザで美しい一覧画面が表示される！</strong></p>
@@ -7253,11 +7253,11 @@
 <p>Week 8の最初のレッスンで、あなたは以下のコードを書いて実行します：</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@Controller</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentController</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showStudents</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">students</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">index</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;students&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">students</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/index&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
