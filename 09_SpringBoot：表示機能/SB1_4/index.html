@@ -6363,9 +6363,9 @@ $<span class="w"> </span>mvn<span class="w"> </span>spring-boot:run
 - <strong>MyBatis連携</strong>: XML Mapperファイルの自動読み込み
 - <strong>SQL実行ログ</strong>: <code>StdOutImpl</code>による開発支援設定</p>
 <p><strong>実行結果：</strong>
-<div class="highlight"><pre><span></span><code>2025-08-13 10:15:23.456  INFO 12345 --- [main] c.e.StudentSpringBootMyBatisProject      : Starting StudentSpringBootMyBatisProject&amp;lt;br&amp;gt;
-2025-08-13 10:15:23.789  INFO 12345 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...&amp;lt;br&amp;gt;
-2025-08-13 10:15:23.823  INFO 12345 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.&amp;lt;br&amp;gt;
+<div class="highlight"><pre><span></span><code>2025-08-13 10:15:23.456  INFO 12345 --- [main] c.e.StudentSpringBootMyBatisProject      : Starting StudentSpringBootMyBatisProject&lt;br&gt;
+2025-08-13 10:15:23.789  INFO 12345 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...&lt;br&gt;
+2025-08-13 10:15:23.823  INFO 12345 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.&lt;br&gt;
 2025-08-13 10:15:24.156  INFO 12345 --- [main] c.e.StudentSpringBootMyBatisProject      : Started StudentSpringBootMyBatisProject in 2.345 seconds
 </code></pre></div></p>
 <hr />
@@ -6385,21 +6385,21 @@ $<span class="w"> </span>mvn<span class="w"> </span>spring-boot:run
 <span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
 
 <span class="nd">@RestController</span>
-<span class="nd">@RequestMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">api</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/api&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TestController</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StudentMapper</span><span class="w"> </span><span class="n">studentMapper</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">test</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/test&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">test</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Spring</span><span class="w"> </span><span class="n">Boot</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">MyBatis</span><span class="w"> </span><span class="n">連携テスト成功</span><span class="err">！</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Spring Boot + MyBatis 連携テスト成功！&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="n">count</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students/count&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getStudentCount</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentMapper</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生数</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">students</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">人</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentMapper</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;学生数: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">students</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;人&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -6434,18 +6434,18 @@ $<span class="w"> </span>mvn<span class="w"> </span>spring-boot:run
 <h3 id="5-api">ステップ5: 学生データ取得APIの作成</h3>
 <p>Week 7.9で登録した学生データを実際にWeb API経由で取得できるようにしましょう。</p>
 <p><strong>TestControllerの機能拡張</strong>：</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
-<span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">getAllStudents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentMapper</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
-<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">===</span><span class="w"> </span><span class="n">データベースから</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">students</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">件の学生データを取得</span><span class="w"> </span><span class="o">===&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<div class="highlight"><pre><span></span><code><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAllStudents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentMapper</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=== データベースから&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">students</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;件の学生データを取得 ===&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">students</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="nf">getStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentMapper</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生情報取得成功</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;学生情報取得成功: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">student</span><span class="p">;</span>
 <span class="p">}</span>
@@ -6457,20 +6457,20 @@ $<span class="w"> </span>mvn<span class="w"> </span>spring-boot:run
 <p><strong>期待されるJSON出力</strong>：
 <div class="highlight"><pre><span></span><code><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;s</span><span class="kc">tu</span><span class="err">de</span><span class="kc">nt</span><span class="err">Id&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">    </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="kc">na</span><span class="err">me&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;田中太郎&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">,</span>
-<span class="w">    </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;email&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="kc">tana</span><span class="err">ka@</span><span class="kc">test</span><span class="err">.com&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">,</span>
-<span class="w">    </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;e</span><span class="kc">nr</span><span class="err">ollme</span><span class="kc">nt</span><span class="err">Da</span><span class="kc">te</span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="mi">2023-04-01</span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">,</span>
-<span class="w">    </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;gpa&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.8</span><span class="p">,</span>
-<span class="w">    </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;depar</span><span class="kc">t</span><span class="err">me</span><span class="kc">nt</span><span class="err">Id&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nt">&quot;studentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;田中太郎&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tanaka@test.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;enrollmentDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-04-01&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gpa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.8</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;departmentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;s</span><span class="kc">tu</span><span class="err">de</span><span class="kc">nt</span><span class="err">Id&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">    </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="kc">na</span><span class="err">me&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;佐藤花子&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">,</span>
-<span class="w">    </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;email&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;sa</span><span class="kc">t</span><span class="err">o@</span><span class="kc">test</span><span class="err">.com&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">,</span>
-<span class="w">    </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;e</span><span class="kc">nr</span><span class="err">ollme</span><span class="kc">nt</span><span class="err">Da</span><span class="kc">te</span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="mi">2023-04-01</span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">,</span>
-<span class="w">    </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;gpa&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.9</span><span class="p">,</span>
-<span class="w">    </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;depar</span><span class="kc">t</span><span class="err">me</span><span class="kc">nt</span><span class="err">Id&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="nt">&quot;studentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;佐藤花子&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sato@test.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;enrollmentDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-04-01&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gpa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.9</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;departmentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="c1">// ... 他の学生データ</span>
 <span class="p">]</span>
@@ -6480,29 +6480,29 @@ $<span class="w"> </span>mvn<span class="w"> </span>spring-boot:run
 </code></pre></div></p>
 <p><strong>期待されるJSON出力</strong>：
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;s</span><span class="kc">tu</span><span class="err">de</span><span class="kc">nt</span><span class="err">Id&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="kc">na</span><span class="err">me&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;田中太郎&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">,</span>
-<span class="w">  </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;email&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="kc">tana</span><span class="err">ka@</span><span class="kc">test</span><span class="err">.com&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">,</span>
-<span class="w">  </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;e</span><span class="kc">nr</span><span class="err">ollme</span><span class="kc">nt</span><span class="err">Da</span><span class="kc">te</span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="mi">2023-04-01</span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">,</span>
-<span class="w">  </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;gpa&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.8</span><span class="p">,</span>
-<span class="w">  </span><span class="err">&amp;quo</span><span class="kc">t</span><span class="err">;depar</span><span class="kc">t</span><span class="err">me</span><span class="kc">nt</span><span class="err">Id&amp;quo</span><span class="kc">t</span><span class="err">;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="nt">&quot;studentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;田中太郎&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tanaka@test.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;enrollmentDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-04-01&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;gpa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.8</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;departmentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div></p>
 <h3 id="json-api">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot1_4_json_api_results.html">JSON APIの結果例</a></h3>
 <h3 id="7-sql">ステップ7: コンソールでのSQL実行ログ確認</h3>
 <p>MyBatis設定により、実行されるSQLがコンソールに表示されます：</p>
 <p><strong>実行結果：</strong>
-<div class="highlight"><pre><span></span><code>=== API実行ログ ===&amp;lt;br&amp;gt;
-Creating a new SqlSession&amp;lt;br&amp;gt;
-==&amp;gt;  Preparing: SELECT student_id, name, email, enrollment_date, gpa, department_id FROM students&amp;lt;br&amp;gt;
-==&amp;gt; Parameters: &amp;lt;br&amp;gt;
-&amp;lt;==    Columns: student_id, name, email, enrollment_date, gpa, department_id&amp;lt;br&amp;gt;
-&amp;lt;==        Row: 1, 田中太郎, tanaka@test.com, 2023-04-01, 3.8, 1&amp;lt;br&amp;gt;
-&amp;lt;==        Row: 2, 佐藤花子, sato@test.com, 2023-04-01, 3.9, 2&amp;lt;br&amp;gt;
-&amp;lt;==        Row: 3, 鈴木一郎, suzuki@test.com, 2023-04-01, 3.7, 1&amp;lt;br&amp;gt;
-&amp;lt;==        Row: 4, 高橋美咲, takahashi@test.com, 2023-04-01, 3.6, 3&amp;lt;br&amp;gt;
-&amp;lt;==        Row: 5, 伊藤健太, ito@test.com, 2023-04-01, 3.4, 2&amp;lt;br&amp;gt;
-&amp;lt;==      Total: 5&amp;lt;br&amp;gt;
+<div class="highlight"><pre><span></span><code>=== API実行ログ ===&lt;br&gt;
+Creating a new SqlSession&lt;br&gt;
+==&gt;  Preparing: SELECT student_id, name, email, enrollment_date, gpa, department_id FROM students&lt;br&gt;
+==&gt; Parameters: &lt;br&gt;
+&lt;==    Columns: student_id, name, email, enrollment_date, gpa, department_id&lt;br&gt;
+&lt;==        Row: 1, 田中太郎, tanaka@test.com, 2023-04-01, 3.8, 1&lt;br&gt;
+&lt;==        Row: 2, 佐藤花子, sato@test.com, 2023-04-01, 3.9, 2&lt;br&gt;
+&lt;==        Row: 3, 鈴木一郎, suzuki@test.com, 2023-04-01, 3.7, 1&lt;br&gt;
+&lt;==        Row: 4, 高橋美咲, takahashi@test.com, 2023-04-01, 3.6, 3&lt;br&gt;
+&lt;==        Row: 5, 伊藤健太, ito@test.com, 2023-04-01, 3.4, 2&lt;br&gt;
+&lt;==      Total: 5&lt;br&gt;
 === データベースから5件の学生データを取得 ===
 </code></pre></div></p>
 <p><strong>重要なポイント</strong>：
@@ -6620,7 +6620,7 @@ Week 8.4: 実際の動作確認（データベース連携 + REST API成功）
 - MySQLサービスが起動しているか確認
 - Week 7.9のデータベース作成手順を再確認</p>
 <p><strong>エラー2: StudentMapperが見つからない</strong>
-<div class="highlight"><pre><span></span><code>Could not autowire. No beans of &amp;apos;StudentMapper&amp;apos; type found.
+<div class="highlight"><pre><span></span><code>Could not autowire. No beans of &#39;StudentMapper&#39; type found.
 </code></pre></div>
 <strong>解決方法</strong>:
 - @Mapper アノテーションの確認
