@@ -3858,7 +3858,7 @@
   <a href="#spring-boot-patch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ​ Spring Boot Patch マッピングによる更新処理
+        📘 Spring Boot Patch マッピングによる更新処理
       
     </span>
   </a>
@@ -5994,7 +5994,7 @@
   <a href="#spring-boot-patch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ​ Spring Boot Patch マッピングによる更新処理
+        📘 Spring Boot Patch マッピングによる更新処理
       
     </span>
   </a>
@@ -6401,18 +6401,18 @@
 <h3 id="week-95_1">Week 9.5での輝かしい成果</h3>
 <p>前回のレッスンでは、<strong>新規登録処理とデータベース保存技術</strong>を完全にマスターしました：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Week 9.5で習得した技術</span>
-<span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// Week 9.1のtoEntity()メソッド活用</span>
 <span class="w">    </span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentData</span><span class="p">.</span><span class="na">toEntity</span><span class="p">();</span>
 <span class="w">    </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>Week 9.5の輝かしい成果</strong>：
@@ -6424,14 +6424,14 @@
 <h3 id="week-96">Week 9.6での技術発展</h3>
 <p><strong>Week 9.5（新規登録）</strong> → <strong>Week 9.6（編集機能）</strong> → <strong>Week 9.7（成功・失敗処理）</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Week 9.5：新規登録処理</span>
-<span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(...)</span>
 
 <span class="c1">// Week 9.6：編集機能（今回習得）</span>
-<span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}/edit&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showEditForm</span><span class="p">(...)</span>
 
-<span class="nd">@PatchMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@PatchMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(...)</span>
 </code></pre></div>
 <h3 id="spring-bootw95w96">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_6_week95_to_96_evolution.html">Spring Boot（W95→W96）進化記録</a></h3>
@@ -6473,31 +6473,31 @@
 <h2 id="1">1. 既存データの取得処理</h2>
 <h3 id="1-id">ステップ1: IDによる特定データ取得</h3>
 <p>編集機能では、まず<strong>編集対象のデータを取得</strong>する必要があります。</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<div class="highlight"><pre><span></span><code><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}/edit&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showEditForm</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// IDによる特定データ取得</span>
 <span class="w">    </span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Invalid</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="n">Id</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">));</span>
+<span class="w">        </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Invalid student Id:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">));</span>
 
 <span class="w">    </span><span class="c1">// Week 9.1のfromEntity()メソッド活用</span>
 <span class="w">    </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StudentData</span><span class="p">.</span><span class="na">fromEntity</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">studentData</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">studentData</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;studentData&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">studentData</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="spring-boot-pathvariable">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_6_pathvariable_data_retrieval.html">Spring Boot PathVariable を使ったデータ取得</a></h3>
 <h3 id="pathvariable">@PathVariableの詳細理解</h3>
 <p><strong>@PathVariable</strong>は、URLの一部を変数として受け取るアノテーションです：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// URL: /students/5/edit</span>
-<span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}/edit&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showEditForm</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ここで id = 5 が受け取られる</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>実用的な活用例</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 複数のパスパラメータ</span>
-<span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">schools</span><span class="o">/</span><span class="p">{</span><span class="n">schoolId</span><span class="p">}</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">studentId</span><span class="p">}</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/schools/{schoolId}/students/{studentId}/edit&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showEditForm</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">schoolId</span><span class="p">,</span>
 <span class="w">                          </span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">studentId</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                          </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -6524,77 +6524,77 @@
 <h2 id="2">2. 編集フォーム構築</h2>
 <h3 id="2-ui">ステップ2: 初期値設定と更新専用UI</h3>
 <p>編集フォームは、<strong>新規登録フォーム（Week 9.2）を基礎</strong>として、以下の特徴を追加します：</p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>!DOCTYPE html<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>html xmlns:th=<span class="ni">&amp;quot;</span>http://www.thymeleaf.org<span class="ni">&amp;quot;&amp;gt;</span>
-<span class="ni">&amp;lt;</span>head<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>title<span class="ni">&amp;gt;</span>学生情報編集<span class="ni">&amp;lt;</span>/title<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>link href=<span class="ni">&amp;quot;</span>https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css<span class="ni">&amp;quot;</span> rel=<span class="ni">&amp;quot;</span>stylesheet<span class="ni">&amp;quot;&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/head<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>body<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>container mt-5<span class="ni">&amp;quot;&amp;gt;</span>
-        <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>row justify-content-center<span class="ni">&amp;quot;&amp;gt;</span>
-            <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>col-md-8<span class="ni">&amp;quot;&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>card<span class="ni">&amp;quot;&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>card-header bg-warning text-white<span class="ni">&amp;quot;&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>h4 class=<span class="ni">&amp;quot;</span>mb-0<span class="ni">&amp;quot;&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-edit<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span> 学生情報編集
-                        <span class="ni">&amp;lt;</span>/h4<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">&quot;http://www.thymeleaf.org&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>学生情報編集<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container mt-5&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row justify-content-center&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-8&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card-header bg-warning text-white&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">h4</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-0&quot;</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-edit&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> 学生情報編集
+                        <span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-                    <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>card-body<span class="ni">&amp;quot;&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>!-- Week 9.2技術の発展的活用 --<span class="ni">&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>form th:action=<span class="ni">&amp;quot;</span>@{/students/{id}(id=${studentData.id})}<span class="ni">&amp;quot;</span> 
-                              th:object=<span class="ni">&amp;quot;</span>${studentData}<span class="ni">&amp;quot;</span> method=<span class="ni">&amp;quot;</span>post<span class="ni">&amp;quot;&amp;gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card-body&quot;</span><span class="p">&gt;</span>
+                        <span class="cm">&lt;!-- Week 9.2技術の発展的活用 --&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">th:action</span><span class="o">=</span><span class="s">&quot;@{/students/{id}(id=${studentData.id})}&quot;</span> 
+                              <span class="na">th:object</span><span class="o">=</span><span class="s">&quot;${studentData}&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
 
-                            <span class="ni">&amp;lt;</span>!-- PATCHメソッドの指定 --<span class="ni">&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>input type=<span class="ni">&amp;quot;</span>hidden<span class="ni">&amp;quot;</span> name=<span class="ni">&amp;quot;</span>_method<span class="ni">&amp;quot;</span> value=<span class="ni">&amp;quot;</span>patch<span class="ni">&amp;quot;&amp;gt;</span>
+                            <span class="cm">&lt;!-- PATCHメソッドの指定 --&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;_method&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;patch&quot;</span><span class="p">&gt;</span>
 
-                            <span class="ni">&amp;lt;</span>!-- IDとversionのhiddenフィールド --<span class="ni">&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>input type=<span class="ni">&amp;quot;</span>hidden<span class="ni">&amp;quot;</span> th:field=<span class="ni">&amp;quot;</span>*{id}<span class="ni">&amp;quot;&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>input type=<span class="ni">&amp;quot;</span>hidden<span class="ni">&amp;quot;</span> th:field=<span class="ni">&amp;quot;</span>*{version}<span class="ni">&amp;quot;&amp;gt;</span>
+                            <span class="cm">&lt;!-- IDとversionのhiddenフィールド --&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{id}&quot;</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{version}&quot;</span><span class="p">&gt;</span>
 
-                            <span class="ni">&amp;lt;</span>!-- 名前フィールド --<span class="ni">&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>mb-3<span class="ni">&amp;quot;&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>label for=<span class="ni">&amp;quot;</span>name<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>form-label<span class="ni">&amp;quot;&amp;gt;</span>名前 <span class="ni">&amp;lt;</span>span class=<span class="ni">&amp;quot;</span>text-danger<span class="ni">&amp;quot;&amp;gt;</span>*<span class="ni">&amp;lt;</span>/span<span class="ni">&amp;gt;&amp;lt;</span>/label<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>input type=<span class="ni">&amp;quot;</span>text<span class="ni">&amp;quot;</span> 
-                                       th:field=<span class="ni">&amp;quot;</span>*{name}<span class="ni">&amp;quot;</span> 
-                                       th:class=<span class="ni">&amp;quot;</span>${#fields.hasErrors(<span class="ni">&amp;apos;</span>name<span class="ni">&amp;apos;</span>)} ? <span class="ni">&amp;apos;</span>form-control is-invalid<span class="ni">&amp;apos;</span> : <span class="ni">&amp;apos;</span>form-control<span class="ni">&amp;apos;&amp;quot;</span>
-                                       id=<span class="ni">&amp;quot;</span>name<span class="ni">&amp;quot;</span> 
-                                       placeholder=<span class="ni">&amp;quot;</span>学生の名前を入力してください<span class="ni">&amp;quot;&amp;gt;</span>
+                            <span class="cm">&lt;!-- 名前フィールド --&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-3&quot;</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;name&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>名前 <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger&quot;</span><span class="p">&gt;</span>*<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> 
+                                       <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{name}&quot;</span> 
+                                       <span class="na">th:class</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;name&#39;)} ? &#39;form-control is-invalid&#39; : &#39;form-control&#39;&quot;</span>
+                                       <span class="na">id</span><span class="o">=</span><span class="s">&quot;name&quot;</span> 
+                                       <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;学生の名前を入力してください&quot;</span><span class="p">&gt;</span>
 
-                                <span class="ni">&amp;lt;</span>!-- Week 9.3技術を活用したエラー表示 --<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>div th:if=<span class="ni">&amp;quot;</span>${#fields.hasErrors(<span class="ni">&amp;apos;</span>name<span class="ni">&amp;apos;</span>)}<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>invalid-feedback<span class="ni">&amp;quot;&amp;gt;</span>
-                                    <span class="ni">&amp;lt;</span>small th:each=<span class="ni">&amp;quot;</span>error : ${#fields.errors(<span class="ni">&amp;apos;</span>name<span class="ni">&amp;apos;</span>)}<span class="ni">&amp;quot;</span> th:text=<span class="ni">&amp;quot;</span>${error}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/small<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+                                <span class="cm">&lt;!-- Week 9.3技術を活用したエラー表示 --&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;name&#39;)}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;invalid-feedback&quot;</span><span class="p">&gt;</span>
+                                    <span class="p">&lt;</span><span class="nt">small</span> <span class="na">th:each</span><span class="o">=</span><span class="s">&quot;error : ${#fields.errors(&#39;name&#39;)}&quot;</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${error}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+                                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-                            <span class="ni">&amp;lt;</span>!-- その他のフィールドも同様に実装 --<span class="ni">&amp;gt;</span>
+                            <span class="cm">&lt;!-- その他のフィールドも同様に実装 --&gt;</span>
 
-                            <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>d-grid gap-2 d-md-flex justify-content-md-end<span class="ni">&amp;quot;&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>a th:href=<span class="ni">&amp;quot;</span>@{/students}<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>btn btn-secondary me-md-2<span class="ni">&amp;quot;&amp;gt;</span>
-                                    <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-arrow-left<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span> 戻る
-                                <span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>button type=<span class="ni">&amp;quot;</span>submit<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>btn btn-warning<span class="ni">&amp;quot;&amp;gt;</span>
-                                    <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-save<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span> 更新
-                                <span class="ni">&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>/form<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-            <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-        <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/body<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/html<span class="ni">&amp;gt;</span>
+                            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;d-grid gap-2 d-md-flex justify-content-md-end&quot;</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">a</span> <span class="na">th:href</span><span class="o">=</span><span class="s">&quot;@{/students}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-secondary me-md-2&quot;</span><span class="p">&gt;</span>
+                                    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-arrow-left&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> 戻る
+                                <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-warning&quot;</span><span class="p">&gt;</span>
+                                    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-save&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> 更新
+                                <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+                            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 <h3 id="spring-boot_2">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_6_edit_form_construction.html">Spring Boot編集フォーム構築</a></h3>
 <h3 id="_4">重要なポイント</h3>
 <p><strong>1. PATCHメソッドの指定</strong>：
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>input type=<span class="ni">&amp;quot;</span>hidden<span class="ni">&amp;quot;</span> name=<span class="ni">&amp;quot;</span>_method<span class="ni">&amp;quot;</span> value=<span class="ni">&amp;quot;</span>patch<span class="ni">&amp;quot;&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;_method&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;patch&quot;</span><span class="p">&gt;</span>
 </code></pre></div></p>
 <p><strong>2. IDとversionのhiddenフィールド</strong>：
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>input type=<span class="ni">&amp;quot;</span>hidden<span class="ni">&amp;quot;</span> th:field=<span class="ni">&amp;quot;</span>*{id}<span class="ni">&amp;quot;&amp;gt;</span>
-<span class="ni">&amp;lt;</span>input type=<span class="ni">&amp;quot;</span>hidden<span class="ni">&amp;quot;</span> th:field=<span class="ni">&amp;quot;</span>*{version}<span class="ni">&amp;quot;&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{id}&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{version}&quot;</span><span class="p">&gt;</span>
 </code></pre></div></p>
 <p><strong>3. 初期値の自動設定</strong>：
 Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が自動的にフォームに表示されます。</p>
@@ -6602,14 +6602,14 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 <h2 id="3-patchmapping">3. @PatchMappingによる更新処理</h2>
 <h3 id="3-restful">ステップ3: RESTful設計による更新処理</h3>
 <p><strong>@PatchMapping</strong>を使用することで、RESTful設計に準拠した更新処理を実装できます：</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@PatchMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<div class="highlight"><pre><span></span><code><span class="nd">@PatchMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
 <span class="w">                          </span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                          </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                          </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Week 9.3-9.4技術：バリデーションエラーチェック</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -6621,31 +6621,31 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 <span class="w">        </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// Week 9.5技術：PRGパターン</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">OptimisticLockingFailureException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 楽観ロック例外の処理</span>
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">データが他のユーザーによって更新されました</span><span class="err">。</span><span class="n">最新データで再度お試しください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;データが他のユーザーによって更新されました。最新データで再度お試しください。&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="spring-boot-patch">​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_6_patch_mapping_update_process.html">Spring Boot Patch マッピングによる更新処理</a></h3>
+<h3 id="spring-boot-patch">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_6_patch_mapping_update_process.html">Spring Boot Patch マッピングによる更新処理</a></h3>
 <h3 id="http">HTTPメソッドの使い分け</h3>
 <p><strong>RESTful設計</strong>では、HTTPメソッドを適切に使い分けます：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Week 8で習得</span>
-<span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span><span class="w">          </span><span class="c1">// 一覧表示</span>
-<span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span><span class="w">     </span><span class="c1">// 詳細表示</span>
+<span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span><span class="w">          </span><span class="c1">// 一覧表示</span>
+<span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span><span class="w">     </span><span class="c1">// 詳細表示</span>
 
 <span class="c1">// Week 9.5で習得</span>
-<span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span><span class="w">         </span><span class="c1">// 新規作成</span>
+<span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span><span class="w">         </span><span class="c1">// 新規作成</span>
 
 <span class="c1">// Week 9.6で習得</span>
-<span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span><span class="w"> </span><span class="c1">// 編集フォーム表示</span>
-<span class="nd">@PatchMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span><span class="w">    </span><span class="c1">// 更新処理</span>
+<span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}/edit&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 編集フォーム表示</span>
+<span class="nd">@PatchMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span><span class="w">    </span><span class="c1">// 更新処理</span>
 
 <span class="c1">// Week 10で習得予定</span>
-<span class="nd">@DeleteMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span><span class="w">   </span><span class="c1">// 削除処理</span>
+<span class="nd">@DeleteMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span><span class="w">   </span><span class="c1">// 削除処理</span>
 </code></pre></div>
 <hr />
 <h2 id="4">4. 楽観ロック実装</h2>
@@ -6653,7 +6653,7 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 <p><strong>楽観ロック</strong>は、複数のユーザーが同時にデータを編集した際の競合を制御する技術です。</p>
 <h3 id="entity">Entityでのバージョン管理</h3>
 <div class="highlight"><pre><span></span><code><span class="nd">@Entity</span>
-<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;students&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Student</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nd">@Id</span>
 <span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerationType</span><span class="p">.</span><span class="na">IDENTITY</span><span class="p">)</span>
@@ -6680,8 +6680,8 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentData</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@NotBlank</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">名前は必須です</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
-<span class="w">    </span><span class="nd">@Size</span><span class="p">(</span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">名前は100文字以内で入力してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@NotBlank</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;名前は必須です&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@Size</span><span class="p">(</span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;名前は100文字以内で入力してください&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// その他のフィールド...</span>
@@ -6715,31 +6715,31 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="_5">楽観ロック例外処理</h3>
-<div class="highlight"><pre><span></span><code><span class="nd">@PatchMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<div class="highlight"><pre><span></span><code><span class="nd">@PatchMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
 <span class="w">                          </span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                          </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                          </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentData</span><span class="p">.</span><span class="na">toEntity</span><span class="p">();</span>
 <span class="w">        </span><span class="n">student</span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
 <span class="w">        </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">OptimisticLockingFailureException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 最新データを再取得</span>
 <span class="w">        </span><span class="n">Student</span><span class="w"> </span><span class="n">latestStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Invalid</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="n">Id</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">));</span>
+<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Invalid student Id:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">));</span>
 <span class="w">        </span><span class="n">StudentData</span><span class="w"> </span><span class="n">latestData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StudentData</span><span class="p">.</span><span class="na">fromEntity</span><span class="p">(</span><span class="n">latestStudent</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">studentData</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">latestData</span><span class="p">);</span>
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">データが他のユーザーによって更新されました</span><span class="err">。</span><span class="n">最新データで再度お試しください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;studentData&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">latestData</span><span class="p">);</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">&quot;データが他のユーザーによって更新されました。最新データで再度お試しください。&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -6748,7 +6748,7 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 <h2 id="5">5. エラーハンドリングの強化</h2>
 <h3 id="_6">更新処理特有のエラー処理</h3>
 <p>編集機能では、新規登録にはない特有のエラーが発生する可能性があります：</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@PatchMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<div class="highlight"><pre><span></span><code><span class="nd">@PatchMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
 <span class="w">                          </span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                          </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
@@ -6756,41 +6756,41 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 
 <span class="w">    </span><span class="c1">// 1. バリデーションエラー（Week 9.3-9.4技術）</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 2. データ存在チェック</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">studentRepository</span><span class="p">.</span><span class="na">existsById</span><span class="p">(</span><span class="n">id</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">指定された学生が見つかりません</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;指定された学生が見つかりません。&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentData</span><span class="p">.</span><span class="na">toEntity</span><span class="p">();</span>
 <span class="w">        </span><span class="n">student</span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
 <span class="w">        </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">OptimisticLockingFailureException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 3. 楽観ロック例外</span>
 <span class="w">        </span><span class="n">Student</span><span class="w"> </span><span class="n">latestStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Invalid</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="n">Id</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">));</span>
+<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Invalid student Id:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">));</span>
 <span class="w">        </span><span class="n">StudentData</span><span class="w"> </span><span class="n">latestData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StudentData</span><span class="p">.</span><span class="na">fromEntity</span><span class="p">(</span><span class="n">latestStudent</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">studentData</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">latestData</span><span class="p">);</span>
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">データが他のユーザーによって更新されました</span><span class="err">。</span><span class="n">最新データで再度お試しください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;studentData&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">latestData</span><span class="p">);</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">&quot;データが他のユーザーによって更新されました。最新データで再度お試しください。&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">DataIntegrityViolationException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 4. データ整合性例外（重複メールアドレスなど）</span>
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">データの整合性エラーが発生しました</span><span class="err">。</span><span class="n">入力内容を確認してください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;データの整合性エラーが発生しました。入力内容を確認してください。&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 5. その他の例外</span>
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">システムエラーが発生しました</span><span class="err">。</span><span class="n">しばらく時間をおいてから再度お試しください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;システムエラーが発生しました。しばらく時間をおいてから再度お試しください。&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -6799,59 +6799,59 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 <h3 id="studentcontrollerjava">StudentController.java（編集機能部分）</h3>
 <p>以下は、Week 9.1-9.5の技術を統合した完全な編集機能実装です：</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@Controller</span>
-<span class="nd">@RequestMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentController</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StudentRepository</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// 編集フォーム表示</span>
-<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/{id}/edit&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showEditForm</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Invalid</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="n">Id</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">));</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">        </span><span class="c1">// Week 9.1のfromEntity()メソッド活用&amp;lt;br&amp;gt;</span>
-<span class="w">        </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StudentData</span><span class="p">.</span><span class="na">fromEntity</span><span class="p">(</span><span class="n">student</span><span class="p">);</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">studentData</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">studentData</span><span class="p">);</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">    </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">    </span><span class="c1">// 更新処理&amp;lt;br&amp;gt;</span>
-<span class="w">    </span><span class="nd">@PatchMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">                              </span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">                              </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">                              </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">        </span><span class="c1">// Week 9.3-9.4技術：バリデーションチェック&amp;lt;br&amp;gt;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="c1">// Week 9.1技術：toEntity()メソッド活用&amp;lt;br&amp;gt;</span>
-<span class="w">            </span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentData</span><span class="p">.</span><span class="na">toEntity</span><span class="p">();</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="n">student</span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="c1">// Week 9.5技術：PRGパターン&amp;lt;br&amp;gt;</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">OptimisticLockingFailureException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="c1">// 楽観ロック例外処理&amp;lt;br&amp;gt;</span>
-<span class="w">            </span><span class="n">Student</span><span class="w"> </span><span class="n">latestStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">                </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Invalid</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="n">Id</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">));</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="n">StudentData</span><span class="w"> </span><span class="n">latestData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StudentData</span><span class="p">.</span><span class="na">fromEntity</span><span class="p">(</span><span class="n">latestStudent</span><span class="p">);</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">studentData</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">latestData</span><span class="p">);</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">                </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">データが他のユーザーによって更新されました</span><span class="err">。</span><span class="n">最新データで再度お試しください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">br</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Invalid student Id:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">));</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="c1">// Week 9.1のfromEntity()メソッド活用&lt;br&gt;</span>
+<span class="w">        </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StudentData</span><span class="p">.</span><span class="na">fromEntity</span><span class="p">(</span><span class="n">student</span><span class="p">);</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;studentData&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">studentData</span><span class="p">);</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="p">}</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="c1">// 更新処理&lt;br&gt;</span>
+<span class="w">    </span><span class="nd">@PatchMapping</span><span class="p">(</span><span class="s">&quot;/{id}&quot;</span><span class="p">)</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">                              </span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">                              </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">                              </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="c1">// Week 9.3-9.4技術：バリデーションチェック&lt;br&gt;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="p">}</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="c1">// Week 9.1技術：toEntity()メソッド活用&lt;br&gt;</span>
+<span class="w">            </span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentData</span><span class="p">.</span><span class="na">toEntity</span><span class="p">();</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="n">student</span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="c1">// Week 9.5技術：PRGパターン&lt;br&gt;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">OptimisticLockingFailureException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="c1">// 楽観ロック例外処理&lt;br&gt;</span>
+<span class="w">            </span><span class="n">Student</span><span class="w"> </span><span class="n">latestStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">                </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Invalid student Id:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">));</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="n">StudentData</span><span class="w"> </span><span class="n">latestData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StudentData</span><span class="p">.</span><span class="na">fromEntity</span><span class="p">(</span><span class="n">latestStudent</span><span class="p">);</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;studentData&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">latestData</span><span class="p">);</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">                </span><span class="s">&quot;データが他のユーザーによって更新されました。最新データで再度お試しください。&quot;</span><span class="p">);</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="p">}</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="p">}</span><span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="spring-boot_5">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_6_complete_implementation_example.html">Spring Boot完成実装例</a></h3>
@@ -6867,37 +6867,46 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 <strong>ステップ4</strong>: 楽観ロック対応の追加
 <strong>ステップ5</strong>: エラーハンドリングの強化</p>
 <h3 id="_10">段階的ヒント</h3>
-<p>&lt;details&gt;
-&lt;summary&gt;ステップ1のヒント：既存データ取得処理&lt;/summary&gt;</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<details>
+<summary>ステップ1のヒント：既存データ取得処理</summary>
+
+<div class="highlight"><pre><span></span><code><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/{id}/edit&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">showEditForm</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// TODO: studentRepository.findById()を使用してデータ取得</span>
 <span class="w">    </span><span class="c1">// TODO: Week 9.1のfromEntity()メソッドでDTOに変換</span>
 <span class="w">    </span><span class="c1">// TODO: model.addAttributeでビューに渡す</span>
-<span class="w">    </span><span class="c1">// TODO: &amp;quot;students/edit&amp;quot;ビューを返す</span>
+<span class="w">    </span><span class="c1">// TODO: &quot;students/edit&quot;ビューを返す</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>実装のポイント</strong>：
-- <code>@PathVariable</code>でIDを受け取る
-- <code>orElseThrow()</code>で存在チェック
-- <code>StudentData.fromEntity()</code>でDTO変換</p>
-<p>&lt;/details&gt;</p>
-<p>&lt;details&gt;
-&lt;summary&gt;ステップ2のヒント：編集フォーム画面&lt;/summary&gt;</p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>!-- TODO: Week 9.2のregister.htmlを参考にedit.htmlを作成 --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>!-- TODO: フォームのactionを更新用URLに変更 --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>!-- TODO: PATCHメソッド用のhiddenフィールドを追加 --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>!-- TODO: IDとversionのhiddenフィールドを追加 --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>!-- TODO: Week 9.3-9.4のバリデーション表示を維持 --<span class="ni">&amp;gt;</span>
+
+**実装のポイント**：
+- `@PathVariable`でIDを受け取る
+- `orElseThrow()`で存在チェック
+- `StudentData.fromEntity()`でDTO変換
+
+</details>
+
+<details>
+<summary>ステップ2のヒント：編集フォーム画面</summary>
+
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- TODO: Week 9.2のregister.htmlを参考にedit.htmlを作成 --&gt;</span>
+<span class="cm">&lt;!-- TODO: フォームのactionを更新用URLに変更 --&gt;</span>
+<span class="cm">&lt;!-- TODO: PATCHメソッド用のhiddenフィールドを追加 --&gt;</span>
+<span class="cm">&lt;!-- TODO: IDとversionのhiddenフィールドを追加 --&gt;</span>
+<span class="cm">&lt;!-- TODO: Week 9.3-9.4のバリデーション表示を維持 --&gt;</span>
 </code></pre></div>
-<p><strong>実装のポイント</strong>：
-- <code>th:action=&amp;quot;@{/students/{id}(id=${studentData.id})}&amp;quot;</code>
-- <code>&amp;lt;input type=&amp;quot;hidden&amp;quot; name=&amp;quot;_method&amp;quot; value=&amp;quot;patch&amp;quot;&amp;gt;</code>
-- <code>&amp;lt;input type=&amp;quot;hidden&amp;quot; th:field=&amp;quot;*{id}&amp;quot;&amp;gt;</code></p>
-<p>&lt;/details&gt;</p>
-<p>&lt;details&gt;
-&lt;summary&gt;ステップ3のヒント：@PatchMappingによる更新処理&lt;/summary&gt;</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@PatchMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+
+**実装のポイント**：
+- `th:action="@{/students/{id}(id=${studentData.id})}"`
+- `<input type="hidden" name="_method" value="patch">`
+- `<input type="hidden" th:field="*{id}">`
+
+</details>
+
+<details>
+<summary>ステップ3のヒント：@PatchMappingによる更新処理</summary>
+
+<div class="highlight"><pre><span></span><code><span class="nd">@PatchMapping</span><span class="p">(</span><span class="s">&quot;/{id}&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
 <span class="w">                          </span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                          </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -6905,15 +6914,19 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 <span class="w">    </span><span class="c1">// TODO: studentData.toEntity()でEntity変換</span>
 <span class="w">    </span><span class="c1">// TODO: student.setId(id)でIDを設定</span>
 <span class="w">    </span><span class="c1">// TODO: studentRepository.save()で保存</span>
-<span class="w">    </span><span class="c1">// TODO: &amp;quot;redirect:/students&amp;quot;でリダイレクト</span>
+<span class="w">    </span><span class="c1">// TODO: &quot;redirect:/students&quot;でリダイレクト</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>実装のポイント</strong>：
+
+**実装のポイント**：
 - Week 9.5の@PostMappingを参考にする
-- IDの明示的な設定を忘れずに</p>
-<p>&lt;/details&gt;</p>
-<p>&lt;details&gt;
-&lt;summary&gt;ステップ4のヒント：楽観ロック対応&lt;/summary&gt;</p>
+- IDの明示的な設定を忘れずに
+
+</details>
+
+<details>
+<summary>ステップ4のヒント：楽観ロック対応</summary>
+
 <div class="highlight"><pre><span></span><code><span class="c1">// TODO: StudentクラスにversionフィールドとgetComputedStyle Setterを追加</span>
 <span class="nd">@Version</span>
 <span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">version</span><span class="p">;</span>
@@ -6922,12 +6935,16 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 <span class="c1">// TODO: fromEntity()とtoEntity()メソッドでversion処理を追加</span>
 <span class="c1">// TODO: 更新処理でOptimisticLockingFailureExceptionをキャッチ</span>
 </code></pre></div>
-<p><strong>実装のポイント</strong>：
-- <code>@Version</code>アノテーションの使用
-- 例外処理での最新データ再取得</p>
-<p>&lt;/details&gt;</p>
-<p>&lt;details&gt;
-&lt;summary&gt;ステップ5のヒント：エラーハンドリングの強化&lt;/summary&gt;</p>
+
+**実装のポイント**：
+- `@Version`アノテーションの使用
+- 例外処理での最新データ再取得
+
+</details>
+
+<details>
+<summary>ステップ5のヒント：エラーハンドリングの強化</summary>
+
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 更新処理</span>
 <span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">OptimisticLockingFailureException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -6940,10 +6957,13 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 <span class="w">    </span><span class="c1">// TODO: その他のエラー処理</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>実装のポイント</strong>：
+
+**実装のポイント**：
 - 複数の例外タイプに対応
-- ユーザーフレンドリーなエラーメッセージ</p>
-<p>&lt;/details&gt;</p>
+- ユーザーフレンドリーなエラーメッセージ
+
+</details>
+
 <h3 id="_11">完成時の動作確認</h3>
 <ol>
 <li><strong>編集フォーム表示</strong>: <code>/students/1/edit</code>で編集画面が表示される</li>
@@ -7009,22 +7029,22 @@ Thymeleafの<code>th:field</code>により、<code>StudentData</code>の値が�
 <h3 id="week-96_3">Week 9.6基盤の活用</h3>
 <p>Week 9.6で確立したCRUD操作基盤が、Week 9.7でさらに洗練されます：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Week 9.6で習得した技術基盤</span>
-<span class="nd">@PatchMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@PatchMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 更新処理</span>
 <span class="w">    </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1">// Week 9.7で学習する成功・失敗処理</span>
-<span class="nd">@PatchMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@PatchMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(...,</span><span class="w"> </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 更新処理</span>
 <span class="w">    </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 成功メッセージの設定</span>
-<span class="w">    </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生情報を更新しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;学生情報を更新しました&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>Week 9.6の技術基盤により、Week 9.7での学習が加速されます！</strong></p>
