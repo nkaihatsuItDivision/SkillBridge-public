@@ -6265,27 +6265,27 @@
 <h3 id="_3">今回の学習の位置づけ</h3>
 <p><strong>Week 9.6</strong>: CRUD操作の「<strong>技術実装</strong>」 → <strong>今回</strong>: CRUD操作の「<strong>ユーザー体験完成</strong>」</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Week 9.6で習得：基本的なCRUD操作</span>
-<span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">toEntity</span><span class="p">());</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span><span class="w">  </span><span class="c1">// 成功時のリダイレクトのみ</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// 成功時のリダイレクトのみ</span>
 <span class="p">}</span>
 
 <span class="c1">// 今回習得：プロフェッショナルレベルのフィードバック付きCRUD操作</span>
-<span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">toEntity</span><span class="p">());</span>
-<span class="w">    </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生を登録しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;学生を登録しました&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>なぜフィードバック機能が重要なのか？</strong></p>
@@ -6308,34 +6308,34 @@
 <h3 id="flash_1">なぜFlash属性が必要なのか？</h3>
 <p><strong>問題</strong>: 通常のModelAttributeはリダイレクト後に消失してしまう</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// ❌ 通常のModelAttributeを使った場合（動作しない）</span>
-<span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">toEntity</span><span class="p">());</span>
 
 <span class="w">    </span><span class="c1">// リダイレクト後、このメッセージは消失してしまう</span>
-<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">message</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生を登録しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span><span class="w">  </span><span class="c1">// リダイレクトで model の内容は失われる</span>
+<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;学生を登録しました&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// リダイレクトで model の内容は失われる</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>解決</strong>: Flash属性を使用してリダイレクト後も一時的にメッセージを保持</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// ✅ Flash属性を使った場合（正常に動作）</span>
-<span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">toEntity</span><span class="p">());</span>
 
 <span class="w">    </span><span class="c1">// リダイレクト後も一時的にメッセージが保持される</span>
-<span class="w">    </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生を登録しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;学生を登録しました&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <hr />
@@ -6343,14 +6343,14 @@
 <h3 id="1">1. 新規登録時の成功メッセージ</h3>
 <p>まず、Week 9.5で作成した新規登録処理にフィードバック機能を追加しましょう。</p>
 <p><strong>StudentController.java（新規登録処理の改良）</strong>：</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<div class="highlight"><pre><span></span><code><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// バリデーションエラーがある場合は元の画面に戻る</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -6359,24 +6359,24 @@
 <span class="w">        </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// 成功メッセージの設定</span>
-<span class="w">        </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生</span><span class="err">「</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">」</span><span class="n">を登録しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">&quot;学生「&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;」を登録しました&quot;</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// PRGパターンでリダイレクト</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// システムエラーが発生した場合</span>
-<span class="w">        </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">システムエラーが発生しました</span><span class="err">。</span><span class="n">しばらく時間をおいてから再度お試しください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">&quot;システムエラーが発生しました。しばらく時間をおいてから再度お試しください。&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students/register&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="2">2. 更新処理の成功メッセージ</h3>
 <p>Week 9.6で作成した編集機能にもフィードバック機能を追加しましょう。</p>
 <p><strong>StudentController.java（更新処理の改良）</strong>：</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@PatchMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<div class="highlight"><pre><span></span><code><span class="nd">@PatchMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
 <span class="w">                          </span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                          </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
@@ -6385,7 +6385,7 @@
 
 <span class="w">    </span><span class="c1">// バリデーションエラーがある場合は編集画面に戻る</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -6395,22 +6395,22 @@
 <span class="w">        </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// 更新成功メッセージの設定</span>
-<span class="w">        </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生</span><span class="err">「</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">」</span><span class="n">の情報を更新しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">&quot;学生「&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;」の情報を更新しました&quot;</span><span class="p">);</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">OptimisticLockingFailureException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 楽観ロックエラー（他のユーザーが同時更新）</span>
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">データが他のユーザーによって更新されました</span><span class="err">。</span><span class="n">最新データで再度お試しください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">&quot;データが他のユーザーによって更新されました。最新データで再度お試しください。&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// その他のシステムエラー</span>
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">更新処理中にエラーが発生しました</span><span class="err">。</span><span class="n">しばらく時間をおいてから再度お試しください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">&quot;更新処理中にエラーが発生しました。しばらく時間をおいてから再度お試しください。&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -6419,222 +6419,222 @@
 - <strong>成功時</strong>: <code>redirectAttributes</code> + <code>redirect:</code> を使用（PRGパターン）
 - <strong>エラー時</strong>: <code>model</code> + 直接テンプレート返却を使用（フォーム値保持）</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 成功時：PRGパターンでリダイレクト</span>
-<span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">成功しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;成功しました&quot;</span><span class="p">);</span>
+<span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="c1">// エラー時：フォーム値を保持して元の画面に戻る</span>
-<span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">エラーが発生しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span><span class="w">  </span><span class="c1">// リダイレクトしない</span>
+<span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;エラーが発生しました&quot;</span><span class="p">);</span>
+<span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// リダイレクトしない</span>
 </code></pre></div>
 <hr />
 <h2 id="view">🎨 View側でのメッセージ表示</h2>
 <h3 id="1_1">1. メッセージ表示用の共通部品作成</h3>
 <p>全ての画面で統一されたメッセージ表示を行うため、共通の部品を作成します。</p>
 <p><strong>templates/fragments/messages.html</strong>：</p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>!DOCTYPE html<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>html xmlns:th=<span class="ni">&amp;quot;</span>http://www.thymeleaf.org<span class="ni">&amp;quot;&amp;gt;</span>
-<span class="ni">&amp;lt;</span>head<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>title<span class="ni">&amp;gt;</span>Messages Fragment<span class="ni">&amp;lt;</span>/title<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/head<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>body<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">&quot;http://www.thymeleaf.org&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Messages Fragment<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>!-- 成功メッセージ表示部品 --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>div th:fragment=<span class="ni">&amp;quot;</span>success-message<span class="ni">&amp;quot;</span> th:if=<span class="ni">&amp;quot;</span>${successMessage}<span class="ni">&amp;quot;</span> 
-     class=<span class="ni">&amp;quot;</span>alert alert-success alert-dismissible fade show<span class="ni">&amp;quot;</span> role=<span class="ni">&amp;quot;</span>alert<span class="ni">&amp;quot;&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-check-circle me-2<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>span th:text=<span class="ni">&amp;quot;</span>${successMessage}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/span<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>button type=<span class="ni">&amp;quot;</span>button<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>btn-close<span class="ni">&amp;quot;</span> data-bs-dismiss=<span class="ni">&amp;quot;</span>alert<span class="ni">&amp;quot;</span> aria-label=<span class="ni">&amp;quot;</span>Close<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+<span class="cm">&lt;!-- 成功メッセージ表示部品 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:fragment</span><span class="o">=</span><span class="s">&quot;success-message&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${successMessage}&quot;</span> 
+     <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-success alert-dismissible fade show&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-check-circle me-2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${successMessage}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn-close&quot;</span> <span class="na">data-bs-dismiss</span><span class="o">=</span><span class="s">&quot;alert&quot;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&quot;Close&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>!-- エラーメッセージ表示部品 --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>div th:fragment=<span class="ni">&amp;quot;</span>error-message<span class="ni">&amp;quot;</span> th:if=<span class="ni">&amp;quot;</span>${errorMessage}<span class="ni">&amp;quot;</span> 
-     class=<span class="ni">&amp;quot;</span>alert alert-danger alert-dismissible fade show<span class="ni">&amp;quot;</span> role=<span class="ni">&amp;quot;</span>alert<span class="ni">&amp;quot;&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-exclamation-triangle me-2<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>span th:text=<span class="ni">&amp;quot;</span>${errorMessage}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/span<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>button type=<span class="ni">&amp;quot;</span>button<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>btn-close<span class="ni">&amp;quot;</span> data-bs-dismiss=<span class="ni">&amp;quot;</span>alert<span class="ni">&amp;quot;</span> aria-label=<span class="ni">&amp;quot;</span>Close<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+<span class="cm">&lt;!-- エラーメッセージ表示部品 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:fragment</span><span class="o">=</span><span class="s">&quot;error-message&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${errorMessage}&quot;</span> 
+     <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-danger alert-dismissible fade show&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-exclamation-triangle me-2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${errorMessage}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn-close&quot;</span> <span class="na">data-bs-dismiss</span><span class="o">=</span><span class="s">&quot;alert&quot;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&quot;Close&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>!-- 情報メッセージ表示部品 --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>div th:fragment=<span class="ni">&amp;quot;</span>info-message<span class="ni">&amp;quot;</span> th:if=<span class="ni">&amp;quot;</span>${infoMessage}<span class="ni">&amp;quot;</span> 
-     class=<span class="ni">&amp;quot;</span>alert alert-info alert-dismissible fade show<span class="ni">&amp;quot;</span> role=<span class="ni">&amp;quot;</span>alert<span class="ni">&amp;quot;&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-info-circle me-2<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>span th:text=<span class="ni">&amp;quot;</span>${infoMessage}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/span<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>button type=<span class="ni">&amp;quot;</span>button<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>btn-close<span class="ni">&amp;quot;</span> data-bs-dismiss=<span class="ni">&amp;quot;</span>alert<span class="ni">&amp;quot;</span> aria-label=<span class="ni">&amp;quot;</span>Close<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+<span class="cm">&lt;!-- 情報メッセージ表示部品 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:fragment</span><span class="o">=</span><span class="s">&quot;info-message&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${infoMessage}&quot;</span> 
+     <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-info alert-dismissible fade show&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-info-circle me-2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${infoMessage}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn-close&quot;</span> <span class="na">data-bs-dismiss</span><span class="o">=</span><span class="s">&quot;alert&quot;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&quot;Close&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>!-- 警告メッセージ表示部品 --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>div th:fragment=<span class="ni">&amp;quot;</span>warning-message<span class="ni">&amp;quot;</span> th:if=<span class="ni">&amp;quot;</span>${warningMessage}<span class="ni">&amp;quot;</span> 
-     class=<span class="ni">&amp;quot;</span>alert alert-warning alert-dismissible fade show<span class="ni">&amp;quot;</span> role=<span class="ni">&amp;quot;</span>alert<span class="ni">&amp;quot;&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-exclamation-circle me-2<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>span th:text=<span class="ni">&amp;quot;</span>${warningMessage}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/span<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>button type=<span class="ni">&amp;quot;</span>button<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>btn-close<span class="ni">&amp;quot;</span> data-bs-dismiss=<span class="ni">&amp;quot;</span>alert<span class="ni">&amp;quot;</span> aria-label=<span class="ni">&amp;quot;</span>Close<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+<span class="cm">&lt;!-- 警告メッセージ表示部品 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:fragment</span><span class="o">=</span><span class="s">&quot;warning-message&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${warningMessage}&quot;</span> 
+     <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-warning alert-dismissible fade show&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-exclamation-circle me-2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${warningMessage}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn-close&quot;</span> <span class="na">data-bs-dismiss</span><span class="o">=</span><span class="s">&quot;alert&quot;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&quot;Close&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>/body<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/html<span class="ni">&amp;gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 <h3 id="2_1">2. 学生一覧画面での適用</h3>
 <p><strong>templates/students/list.html（メッセージ表示追加版）</strong>：</p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>!DOCTYPE html<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>html xmlns:th=<span class="ni">&amp;quot;</span>http://www.thymeleaf.org<span class="ni">&amp;quot;&amp;gt;</span>
-<span class="ni">&amp;lt;</span>head<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>meta charset=<span class="ni">&amp;quot;</span>UTF-8<span class="ni">&amp;quot;&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>meta name=<span class="ni">&amp;quot;</span>viewport<span class="ni">&amp;quot;</span> content=<span class="ni">&amp;quot;</span>width=device-width, initial-scale=1.0<span class="ni">&amp;quot;&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>title<span class="ni">&amp;gt;</span>学生一覧<span class="ni">&amp;lt;</span>/title<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>link href=<span class="ni">&amp;quot;</span>https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css<span class="ni">&amp;quot;</span> rel=<span class="ni">&amp;quot;</span>stylesheet<span class="ni">&amp;quot;&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>link href=<span class="ni">&amp;quot;</span>https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css<span class="ni">&amp;quot;</span> rel=<span class="ni">&amp;quot;</span>stylesheet<span class="ni">&amp;quot;&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/head<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>body<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>container mt-4<span class="ni">&amp;quot;&amp;gt;</span>
-        <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>row<span class="ni">&amp;quot;&amp;gt;</span>
-            <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>col-12<span class="ni">&amp;quot;&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>h1 class=<span class="ni">&amp;quot;</span>mb-4<span class="ni">&amp;quot;&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-users me-2<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span>学生一覧
-                <span class="ni">&amp;lt;</span>/h1<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">&quot;http://www.thymeleaf.org&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>学生一覧<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container mt-4&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-12&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-4&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-users me-2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>学生一覧
+                <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
-                <span class="ni">&amp;lt;</span>!-- メッセージ表示エリア --<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>div th:replace=<span class="ni">&amp;quot;</span>~{fragments/messages :: success-message}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>div th:replace=<span class="ni">&amp;quot;</span>~{fragments/messages :: error-message}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>div th:replace=<span class="ni">&amp;quot;</span>~{fragments/messages :: info-message}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>div th:replace=<span class="ni">&amp;quot;</span>~{fragments/messages :: warning-message}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+                <span class="cm">&lt;!-- メッセージ表示エリア --&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">&quot;~{fragments/messages :: success-message}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">&quot;~{fragments/messages :: error-message}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">&quot;~{fragments/messages :: info-message}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">&quot;~{fragments/messages :: warning-message}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-                <span class="ni">&amp;lt;</span>!-- 新規登録ボタン --<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>mb-3<span class="ni">&amp;quot;&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>a href=<span class="ni">&amp;quot;</span>/students/register<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>btn btn-primary<span class="ni">&amp;quot;&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-plus me-2<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span>新規登録
-                    <span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+                <span class="cm">&lt;!-- 新規登録ボタン --&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-3&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/students/register&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-plus me-2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>新規登録
+                    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-                <span class="ni">&amp;lt;</span>!-- 学生一覧テーブル --<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>table-responsive<span class="ni">&amp;quot;&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>table class=<span class="ni">&amp;quot;</span>table table-striped table-hover<span class="ni">&amp;quot;&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>thead class=<span class="ni">&amp;quot;</span>table-dark<span class="ni">&amp;quot;&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>tr<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>th<span class="ni">&amp;gt;</span>ID<span class="ni">&amp;lt;</span>/th<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>th<span class="ni">&amp;gt;</span>名前<span class="ni">&amp;lt;</span>/th<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>th<span class="ni">&amp;gt;</span>年齢<span class="ni">&amp;lt;</span>/th<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>th<span class="ni">&amp;gt;</span>学年<span class="ni">&amp;lt;</span>/th<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>th<span class="ni">&amp;gt;</span>専攻<span class="ni">&amp;lt;</span>/th<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>th<span class="ni">&amp;gt;</span>操作<span class="ni">&amp;lt;</span>/th<span class="ni">&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>/tr<span class="ni">&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>/thead<span class="ni">&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>tbody<span class="ni">&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>tr th:each=<span class="ni">&amp;quot;</span>student : ${students}<span class="ni">&amp;quot;&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>td th:text=<span class="ni">&amp;quot;</span>${student.id}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>td th:text=<span class="ni">&amp;quot;</span>${student.name}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>td th:text=<span class="ni">&amp;quot;</span>${student.age}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>td th:text=<span class="ni">&amp;quot;</span>${student.grade}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>td th:text=<span class="ni">&amp;quot;</span>${student.major}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>td<span class="ni">&amp;gt;</span>
-                                    <span class="ni">&amp;lt;</span>a th:href=<span class="ni">&amp;quot;</span>@{/students/{id}/edit(id=${student.id})}<span class="ni">&amp;quot;</span> 
-                                       class=<span class="ni">&amp;quot;</span>btn btn-sm btn-outline-primary me-1<span class="ni">&amp;quot;&amp;gt;</span>
-                                        <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-edit<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span> 編集
-                                    <span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;</span>
-                                    <span class="ni">&amp;lt;</span>button class=<span class="ni">&amp;quot;</span>btn btn-sm btn-outline-danger<span class="ni">&amp;quot;</span> 
-                                            onclick=<span class="ni">&amp;quot;</span>confirmDelete([[${student.id}]], <span class="ni">&amp;apos;</span>[[${student.name}]]<span class="ni">&amp;apos;</span>)<span class="ni">&amp;quot;&amp;gt;</span>
-                                        <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-trash<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span> 削除
-                                    <span class="ni">&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
-                                <span class="ni">&amp;lt;</span>/td<span class="ni">&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>/tr<span class="ni">&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>/tbody<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>/table<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-            <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-        <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+                <span class="cm">&lt;!-- 学生一覧テーブル --&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;table-responsive&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">table</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;table table-striped table-hover&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">thead</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;table-dark&quot;</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>ID<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>名前<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>年齢<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>学年<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>専攻<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>操作<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+                            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                        <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">th:each</span><span class="o">=</span><span class="s">&quot;student : ${students}&quot;</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">td</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${student.id}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">td</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${student.name}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">td</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${student.age}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">td</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${student.grade}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">td</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${student.major}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+                                    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">th:href</span><span class="o">=</span><span class="s">&quot;@{/students/{id}/edit(id=${student.id})}&quot;</span> 
+                                       <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-sm btn-outline-primary me-1&quot;</span><span class="p">&gt;</span>
+                                        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-edit&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> 編集
+                                    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+                                    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-sm btn-outline-danger&quot;</span> 
+                                            <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;confirmDelete([[${student.id}]], &#39;[[${student.name}]]&#39;)&quot;</span><span class="p">&gt;</span>
+                                        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-trash&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> 削除
+                                    <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+                                <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                        <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-    <span class="ni">&amp;lt;</span>script src=<span class="ni">&amp;quot;</span>https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/body<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/html<span class="ni">&amp;gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 <h3 id="spring-boot_1">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_7_view_message_integration.html">Spring Boot ビューとメッセージの連携</a></h3>
 <h3 id="3">3. 新規登録・編集画面での適用</h3>
 <p><strong>templates/students/register.html（メッセージ表示追加版）</strong>：</p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>!DOCTYPE html<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>html xmlns:th=<span class="ni">&amp;quot;</span>http://www.thymeleaf.org<span class="ni">&amp;quot;&amp;gt;</span>
-<span class="ni">&amp;lt;</span>head<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>meta charset=<span class="ni">&amp;quot;</span>UTF-8<span class="ni">&amp;quot;&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>meta name=<span class="ni">&amp;quot;</span>viewport<span class="ni">&amp;quot;</span> content=<span class="ni">&amp;quot;</span>width=device-width, initial-scale=1.0<span class="ni">&amp;quot;&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>title<span class="ni">&amp;gt;</span>学生登録<span class="ni">&amp;lt;</span>/title<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>link href=<span class="ni">&amp;quot;</span>https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css<span class="ni">&amp;quot;</span> rel=<span class="ni">&amp;quot;</span>stylesheet<span class="ni">&amp;quot;&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>link href=<span class="ni">&amp;quot;</span>https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css<span class="ni">&amp;quot;</span> rel=<span class="ni">&amp;quot;</span>stylesheet<span class="ni">&amp;quot;&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/head<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>body<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>container mt-4<span class="ni">&amp;quot;&amp;gt;</span>
-        <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>row justify-content-center<span class="ni">&amp;quot;&amp;gt;</span>
-            <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>col-md-8<span class="ni">&amp;quot;&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>h1 class=<span class="ni">&amp;quot;</span>mb-4<span class="ni">&amp;quot;&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-user-plus me-2<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span>学生登録
-                <span class="ni">&amp;lt;</span>/h1<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">&quot;http://www.thymeleaf.org&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>学生登録<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container mt-4&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row justify-content-center&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-8&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-4&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-user-plus me-2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>学生登録
+                <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
-                <span class="ni">&amp;lt;</span>!-- メッセージ表示エリア --<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>div th:replace=<span class="ni">&amp;quot;</span>~{fragments/messages :: success-message}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>div th:replace=<span class="ni">&amp;quot;</span>~{fragments/messages :: error-message}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>div th:replace=<span class="ni">&amp;quot;</span>~{fragments/messages :: info-message}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>div th:replace=<span class="ni">&amp;quot;</span>~{fragments/messages :: warning-message}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+                <span class="cm">&lt;!-- メッセージ表示エリア --&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">&quot;~{fragments/messages :: success-message}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">&quot;~{fragments/messages :: error-message}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">&quot;~{fragments/messages :: info-message}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">&quot;~{fragments/messages :: warning-message}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-                <span class="ni">&amp;lt;</span>!-- 登録フォーム --<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>form th:action=<span class="ni">&amp;quot;</span>@{/students}<span class="ni">&amp;quot;</span> th:object=<span class="ni">&amp;quot;</span>${studentData}<span class="ni">&amp;quot;</span> method=<span class="ni">&amp;quot;</span>post<span class="ni">&amp;quot;&amp;gt;</span>
+                <span class="cm">&lt;!-- 登録フォーム --&gt;</span>
+                <span class="p">&lt;</span><span class="nt">form</span> <span class="na">th:action</span><span class="o">=</span><span class="s">&quot;@{/students}&quot;</span> <span class="na">th:object</span><span class="o">=</span><span class="s">&quot;${studentData}&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
 
-                    <span class="ni">&amp;lt;</span>!-- 名前入力 --<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>mb-3<span class="ni">&amp;quot;&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>label for=<span class="ni">&amp;quot;</span>name<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>form-label<span class="ni">&amp;quot;&amp;gt;</span>名前 <span class="ni">&amp;lt;</span>span class=<span class="ni">&amp;quot;</span>text-danger<span class="ni">&amp;quot;&amp;gt;</span>*<span class="ni">&amp;lt;</span>/span<span class="ni">&amp;gt;&amp;lt;</span>/label<span class="ni">&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>input type=<span class="ni">&amp;quot;</span>text<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>form-control<span class="ni">&amp;quot;</span> th:field=<span class="ni">&amp;quot;</span>*{name}<span class="ni">&amp;quot;</span> 
-                               th:classappend=<span class="ni">&amp;quot;</span>${#fields.hasErrors(<span class="ni">&amp;apos;</span>name<span class="ni">&amp;apos;</span>)} ? <span class="ni">&amp;apos;</span>is-invalid<span class="ni">&amp;apos;</span> : <span class="ni">&amp;apos;&amp;apos;&amp;quot;&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>invalid-feedback<span class="ni">&amp;quot;</span> th:if=<span class="ni">&amp;quot;</span>${#fields.hasErrors(<span class="ni">&amp;apos;</span>name<span class="ni">&amp;apos;</span>)}<span class="ni">&amp;quot;</span> 
-                             th:errors=<span class="ni">&amp;quot;</span>*{name}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+                    <span class="cm">&lt;!-- 名前入力 --&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-3&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;name&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>名前 <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger&quot;</span><span class="p">&gt;</span>*<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{name}&quot;</span> 
+                               <span class="na">th:classappend</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;name&#39;)} ? &#39;is-invalid&#39; : &#39;&#39;&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;invalid-feedback&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;name&#39;)}&quot;</span> 
+                             <span class="na">th:errors</span><span class="o">=</span><span class="s">&quot;*{name}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-                    <span class="ni">&amp;lt;</span>!-- 年齢入力 --<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>mb-3<span class="ni">&amp;quot;&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>label for=<span class="ni">&amp;quot;</span>age<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>form-label<span class="ni">&amp;quot;&amp;gt;</span>年齢 <span class="ni">&amp;lt;</span>span class=<span class="ni">&amp;quot;</span>text-danger<span class="ni">&amp;quot;&amp;gt;</span>*<span class="ni">&amp;lt;</span>/span<span class="ni">&amp;gt;&amp;lt;</span>/label<span class="ni">&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>input type=<span class="ni">&amp;quot;</span>number<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>form-control<span class="ni">&amp;quot;</span> th:field=<span class="ni">&amp;quot;</span>*{age}<span class="ni">&amp;quot;</span> 
-                               th:classappend=<span class="ni">&amp;quot;</span>${#fields.hasErrors(<span class="ni">&amp;apos;</span>age<span class="ni">&amp;apos;</span>)} ? <span class="ni">&amp;apos;</span>is-invalid<span class="ni">&amp;apos;</span> : <span class="ni">&amp;apos;&amp;apos;&amp;quot;&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>invalid-feedback<span class="ni">&amp;quot;</span> th:if=<span class="ni">&amp;quot;</span>${#fields.hasErrors(<span class="ni">&amp;apos;</span>age<span class="ni">&amp;apos;</span>)}<span class="ni">&amp;quot;</span> 
-                             th:errors=<span class="ni">&amp;quot;</span>*{age}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+                    <span class="cm">&lt;!-- 年齢入力 --&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-3&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;age&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>年齢 <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger&quot;</span><span class="p">&gt;</span>*<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;number&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{age}&quot;</span> 
+                               <span class="na">th:classappend</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;age&#39;)} ? &#39;is-invalid&#39; : &#39;&#39;&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;invalid-feedback&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;age&#39;)}&quot;</span> 
+                             <span class="na">th:errors</span><span class="o">=</span><span class="s">&quot;*{age}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-                    <span class="ni">&amp;lt;</span>!-- 学年選択 --<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>mb-3<span class="ni">&amp;quot;&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>label for=<span class="ni">&amp;quot;</span>grade<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>form-label<span class="ni">&amp;quot;&amp;gt;</span>学年 <span class="ni">&amp;lt;</span>span class=<span class="ni">&amp;quot;</span>text-danger<span class="ni">&amp;quot;&amp;gt;</span>*<span class="ni">&amp;lt;</span>/span<span class="ni">&amp;gt;&amp;lt;</span>/label<span class="ni">&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>select class=<span class="ni">&amp;quot;</span>form-select<span class="ni">&amp;quot;</span> th:field=<span class="ni">&amp;quot;</span>*{grade}<span class="ni">&amp;quot;</span> 
-                                th:classappend=<span class="ni">&amp;quot;</span>${#fields.hasErrors(<span class="ni">&amp;apos;</span>grade<span class="ni">&amp;apos;</span>)} ? <span class="ni">&amp;apos;</span>is-invalid<span class="ni">&amp;apos;</span> : <span class="ni">&amp;apos;&amp;apos;&amp;quot;&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>option value=<span class="ni">&amp;quot;&amp;quot;&amp;gt;</span>選択してください<span class="ni">&amp;lt;</span>/option<span class="ni">&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>option value=<span class="ni">&amp;quot;</span>1年生<span class="ni">&amp;quot;&amp;gt;</span>1年生<span class="ni">&amp;lt;</span>/option<span class="ni">&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>option value=<span class="ni">&amp;quot;</span>2年生<span class="ni">&amp;quot;&amp;gt;</span>2年生<span class="ni">&amp;lt;</span>/option<span class="ni">&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>option value=<span class="ni">&amp;quot;</span>3年生<span class="ni">&amp;quot;&amp;gt;</span>3年生<span class="ni">&amp;lt;</span>/option<span class="ni">&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>option value=<span class="ni">&amp;quot;</span>4年生<span class="ni">&amp;quot;&amp;gt;</span>4年生<span class="ni">&amp;lt;</span>/option<span class="ni">&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>/select<span class="ni">&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>invalid-feedback<span class="ni">&amp;quot;</span> th:if=<span class="ni">&amp;quot;</span>${#fields.hasErrors(<span class="ni">&amp;apos;</span>grade<span class="ni">&amp;apos;</span>)}<span class="ni">&amp;quot;</span> 
-                             th:errors=<span class="ni">&amp;quot;</span>*{grade}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+                    <span class="cm">&lt;!-- 学年選択 --&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-3&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;grade&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>学年 <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger&quot;</span><span class="p">&gt;</span>*<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">select</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-select&quot;</span> <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{grade}&quot;</span> 
+                                <span class="na">th:classappend</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;grade&#39;)} ? &#39;is-invalid&#39; : &#39;&#39;&quot;</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>選択してください<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;1年生&quot;</span><span class="p">&gt;</span>1年生<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;2年生&quot;</span><span class="p">&gt;</span>2年生<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;3年生&quot;</span><span class="p">&gt;</span>3年生<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;4年生&quot;</span><span class="p">&gt;</span>4年生<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+                        <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;invalid-feedback&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;grade&#39;)}&quot;</span> 
+                             <span class="na">th:errors</span><span class="o">=</span><span class="s">&quot;*{grade}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-                    <span class="ni">&amp;lt;</span>!-- 専攻入力 --<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>mb-3<span class="ni">&amp;quot;&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>label for=<span class="ni">&amp;quot;</span>major<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>form-label<span class="ni">&amp;quot;&amp;gt;</span>専攻 <span class="ni">&amp;lt;</span>span class=<span class="ni">&amp;quot;</span>text-danger<span class="ni">&amp;quot;&amp;gt;</span>*<span class="ni">&amp;lt;</span>/span<span class="ni">&amp;gt;&amp;lt;</span>/label<span class="ni">&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>input type=<span class="ni">&amp;quot;</span>text<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>form-control<span class="ni">&amp;quot;</span> th:field=<span class="ni">&amp;quot;</span>*{major}<span class="ni">&amp;quot;</span> 
-                               th:classappend=<span class="ni">&amp;quot;</span>${#fields.hasErrors(<span class="ni">&amp;apos;</span>major<span class="ni">&amp;apos;</span>)} ? <span class="ni">&amp;apos;</span>is-invalid<span class="ni">&amp;apos;</span> : <span class="ni">&amp;apos;&amp;apos;&amp;quot;&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>invalid-feedback<span class="ni">&amp;quot;</span> th:if=<span class="ni">&amp;quot;</span>${#fields.hasErrors(<span class="ni">&amp;apos;</span>major<span class="ni">&amp;apos;</span>)}<span class="ni">&amp;quot;</span> 
-                             th:errors=<span class="ni">&amp;quot;</span>*{major}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+                    <span class="cm">&lt;!-- 専攻入力 --&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-3&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;major&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>専攻 <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger&quot;</span><span class="p">&gt;</span>*<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{major}&quot;</span> 
+                               <span class="na">th:classappend</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;major&#39;)} ? &#39;is-invalid&#39; : &#39;&#39;&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;invalid-feedback&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;major&#39;)}&quot;</span> 
+                             <span class="na">th:errors</span><span class="o">=</span><span class="s">&quot;*{major}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-                    <span class="ni">&amp;lt;</span>!-- ボタンエリア --<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;quot;</span>d-flex justify-content-between<span class="ni">&amp;quot;&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>a href=<span class="ni">&amp;quot;</span>/students<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>btn btn-secondary<span class="ni">&amp;quot;&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-arrow-left me-2<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span>戻る
-                        <span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;</span>
-                        <span class="ni">&amp;lt;</span>button type=<span class="ni">&amp;quot;</span>submit<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>btn btn-primary<span class="ni">&amp;quot;&amp;gt;</span>
-                            <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-save me-2<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span>登録
-                        <span class="ni">&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
-                    <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-                <span class="ni">&amp;lt;</span>/form<span class="ni">&amp;gt;</span>
-            <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-        <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+                    <span class="cm">&lt;!-- ボタンエリア --&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;d-flex justify-content-between&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/students&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-secondary&quot;</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-arrow-left me-2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>戻る
+                        <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-save me-2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>登録
+                        <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-    <span class="ni">&amp;lt;</span>script src=<span class="ni">&amp;quot;</span>https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/body<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/html<span class="ni">&amp;gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 <hr />
 <h2 id="_7">🏗️ メッセージ管理アーキテクチャ</h2>
@@ -6649,27 +6649,27 @@
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Messages</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 成功メッセージ</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">STUDENT_REGISTERED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生</span><span class="err">「</span><span class="o">%</span><span class="n">s</span><span class="err">」</span><span class="n">を登録しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">STUDENT_UPDATED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生</span><span class="err">「</span><span class="o">%</span><span class="n">s</span><span class="err">」</span><span class="n">の情報を更新しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">STUDENT_DELETED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生</span><span class="err">「</span><span class="o">%</span><span class="n">s</span><span class="err">」</span><span class="n">を削除しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">STUDENT_REGISTERED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;学生「%s」を登録しました&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">STUDENT_UPDATED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;学生「%s」の情報を更新しました&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">STUDENT_DELETED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;学生「%s」を削除しました&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// エラーメッセージ</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">VALIDATION_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">入力内容に不備があります</span><span class="err">。</span><span class="n">各項目をご確認ください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">OPTIMISTIC_LOCK_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">データが他のユーザーによって更新されました</span><span class="err">。</span><span class="n">最新データで再度お試しください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">SYSTEM_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">システムエラーが発生しました</span><span class="err">。</span><span class="n">しばらく時間をおいてから再度お試しください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">NOT_FOUND_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">指定されたデータが見つかりません</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">VALIDATION_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;入力内容に不備があります。各項目をご確認ください。&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">OPTIMISTIC_LOCK_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;データが他のユーザーによって更新されました。最新データで再度お試しください。&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">SYSTEM_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;システムエラーが発生しました。しばらく時間をおいてから再度お試しください。&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">NOT_FOUND_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;指定されたデータが見つかりません。&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// 情報メッセージ</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">NO_DATA_AVAILABLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">表示するデータがありません</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">SEARCH_NO_RESULT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">検索条件に一致するデータが見つかりませんでした</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">NO_DATA_AVAILABLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;表示するデータがありません。&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">SEARCH_NO_RESULT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;検索条件に一致するデータが見つかりませんでした。&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// 警告メッセージ</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DELETE_CONFIRMATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">この操作は取り消すことができません</span><span class="err">。</span><span class="n">本当に削除しますか</span><span class="err">？</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">UNSAVED_CHANGES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">保存されていない変更があります</span><span class="err">。</span><span class="n">ページを離れますか</span><span class="err">？</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">DELETE_CONFIRMATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;この操作は取り消すことができません。本当に削除しますか？&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">UNSAVED_CHANGES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;保存されていない変更があります。ページを離れますか？&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// プライベートコンストラクタ（インスタンス化を防ぐ）</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">Messages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UnsupportedOperationException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">Utility</span><span class="w"> </span><span class="kd">class</span> <span class="nc">cannot</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">instantiated</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UnsupportedOperationException</span><span class="p">(</span><span class="s">&quot;Utility class cannot be instantiated&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -6679,13 +6679,13 @@
 <span class="nd">@Controller</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentController</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -6694,17 +6694,17 @@
 
 <span class="w">            </span><span class="c1">// 定数クラスを使用してメッセージを設定</span>
 <span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">Messages</span><span class="p">.</span><span class="na">STUDENT_REGISTERED</span><span class="p">,</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
 
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">Messages</span><span class="p">.</span><span class="na">SYSTEM_ERROR</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Messages</span><span class="p">.</span><span class="na">SYSTEM_ERROR</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nd">@PatchMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PatchMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
 <span class="w">                              </span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
@@ -6712,8 +6712,8 @@
 <span class="w">                              </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">Messages</span><span class="p">.</span><span class="na">VALIDATION_ERROR</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Messages</span><span class="p">.</span><span class="na">VALIDATION_ERROR</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -6722,17 +6722,17 @@
 <span class="w">            </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
 
 <span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">Messages</span><span class="p">.</span><span class="na">STUDENT_UPDATED</span><span class="p">,</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
 
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">OptimisticLockingFailureException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">Messages</span><span class="p">.</span><span class="na">OPTIMISTIC_LOCK_ERROR</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Messages</span><span class="p">.</span><span class="na">OPTIMISTIC_LOCK_ERROR</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">Messages</span><span class="p">.</span><span class="na">SYSTEM_ERROR</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Messages</span><span class="p">.</span><span class="na">SYSTEM_ERROR</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -6762,14 +6762,14 @@
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">MessageSource</span><span class="w"> </span><span class="n">messageSource</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">Locale</span><span class="w"> </span><span class="n">locale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -6777,17 +6777,17 @@
 <span class="w">            </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
 
 <span class="w">            </span><span class="c1">// MessageSource を使用した多言語対応メッセージ</span>
-<span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">messageSource</span><span class="p">.</span><span class="na">getMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">student</span><span class="p">.</span><span class="na">registered</span><span class="p">.</span><span class="na">success</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">messageSource</span><span class="p">.</span><span class="na">getMessage</span><span class="p">(</span><span class="s">&quot;student.registered.success&quot;</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                                                    </span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="o">[]</span><span class="p">{</span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">()},</span><span class="w"> </span>
 <span class="w">                                                    </span><span class="n">locale</span><span class="p">);</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
 
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">errorMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">messageSource</span><span class="p">.</span><span class="na">getMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">system</span><span class="p">.</span><span class="na">error</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="p">);</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">errorMessage</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">errorMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">messageSource</span><span class="p">.</span><span class="na">getMessage</span><span class="p">(</span><span class="s">&quot;system.error&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="p">);</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">errorMessage</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -6797,18 +6797,19 @@
 <h2 id="_8">💻 実践演習：フィードバック機能の統合実装</h2>
 <p>以下の手順で、Week 9.1-9.6で構築したシステムにプロフェッショナルレベルのフィードバック機能を追加してみましょう。</p>
 <h3 id="1-flash">ステップ1: Flash属性の基本実装</h3>
-<p>&lt;details&gt;
-&lt;summary&gt;💡 ヒント1: RedirectAttributesの導入&lt;/summary&gt;</p>
+<details>
+<summary>💡 ヒント1: RedirectAttributesの導入</summary>
+
 <div class="highlight"><pre><span></span><code><span class="c1">// TODO: StudentControllerの各メソッドにRedirectAttributesパラメータを追加</span>
-<span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                              </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// ← 追加</span>
 <span class="w">    </span><span class="c1">// TODO: 成功時にFlash属性でメッセージを設定</span>
-<span class="w">    </span><span class="c1">// redirectAttributes.addFlashAttribute(&amp;quot;successMessage&amp;quot;, &amp;quot;登録成功メッセージ&amp;quot;);</span>
+<span class="w">    </span><span class="c1">// redirectAttributes.addFlashAttribute(&quot;successMessage&quot;, &quot;登録成功メッセージ&quot;);</span>
 <span class="p">}</span>
 
-<span class="nd">@PatchMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="nd">@PatchMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
 <span class="w">                          </span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                          </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
@@ -6817,113 +6818,116 @@
 <span class="w">    </span><span class="c1">// TODO: 成功時と失敗時のメッセージ設定を実装</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>チェックポイント</strong>: すべてのPOST/PATCHメソッドにRedirectAttributesが追加されているか確認
-&lt;/details&gt;</p>
+
+**チェックポイント**: すべてのPOST/PATCHメソッドにRedirectAttributesが追加されているか確認
+</details>
+
 <h3 id="2_2">ステップ2: 成功メッセージの実装</h3>
-<p>&lt;details&gt;
-&lt;summary&gt;💡 ヒント2: 具体的で親切な成功メッセージ&lt;/summary&gt;</p>
+<details>
+<summary>💡 ヒント2: 具体的で親切な成功メッセージ</summary>
+
 <div class="highlight"><pre><span></span><code><span class="c1">// TODO: 学生名を含む具体的なメッセージを作成</span>
 <span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentData</span><span class="p">.</span><span class="na">toEntity</span><span class="p">();</span>
 <span class="w">    </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// TODO: 以下のような具体的なメッセージを設定</span>
-<span class="w">    </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生</span><span class="err">「</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">」</span><span class="n">を登録しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">    </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="s">&quot;学生「&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;」を登録しました&quot;</span><span class="p">);</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 <span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// TODO: エラーメッセージも設定</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>チェックポイント</strong>: ユーザーにとって分かりやすいメッセージになっているか確認
-&lt;/details&gt;</p>
+
+**チェックポイント**: ユーザーにとって分かりやすいメッセージになっているか確認
+</details>
+
 <h3 id="3_1">ステップ3: エラーメッセージの統一</h3>
-<p>&lt;details&gt;
-&lt;summary&gt;💡 ヒント3: 定数クラスによるメッセージ管理&lt;/summary&gt;</p>
+<details>
+<summary>💡 ヒント3: 定数クラスによるメッセージ管理</summary>
+
 <div class="highlight"><pre><span></span><code><span class="c1">// TODO: Messages.javaクラスを作成</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Messages</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">STUDENT_REGISTERED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生</span><span class="err">「</span><span class="o">%</span><span class="n">s</span><span class="err">」</span><span class="n">を登録しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">STUDENT_UPDATED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生</span><span class="err">「</span><span class="o">%</span><span class="n">s</span><span class="err">」</span><span class="n">の情報を更新しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">SYSTEM_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">システムエラーが発生しました</span><span class="err">。</span><span class="n">しばらく時間をおいてから再度お試しください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">OPTIMISTIC_LOCK_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">データが他のユーザーによって更新されました</span><span class="err">。</span><span class="n">最新データで再度お試しください</span><span class="err">。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">STUDENT_REGISTERED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;学生「%s」を登録しました&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">STUDENT_UPDATED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;学生「%s」の情報を更新しました&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">SYSTEM_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;システムエラーが発生しました。しばらく時間をおいてから再度お試しください。&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">OPTIMISTIC_LOCK_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;データが他のユーザーによって更新されました。最新データで再度お試しください。&quot;</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">Messages</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 
 <span class="c1">// TODO: Controllerでの使用</span>
 <span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">Messages</span><span class="p">.</span><span class="na">STUDENT_REGISTERED</span><span class="p">,</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
-<span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
 </code></pre></div>
-<p><strong>チェックポイント</strong>: すべてのメッセージが定数クラスで管理されているか確認
-&lt;/details&gt;</p>
+
+**チェックポイント**: すべてのメッセージが定数クラスで管理されているか確認
+</details>
+
 <h3 id="4-view">ステップ4: View側でのメッセージ表示</h3>
-<p>&lt;details&gt;
-&lt;summary&gt;💡 ヒント4: 共通メッセージ部品の作成&lt;/summary&gt;</p>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>!-- TODO: templates/fragments/messages.html を作成 --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>!DOCTYPE html<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>html xmlns:th=<span class="ni">&amp;quot;</span>http://www.thymeleaf.org<span class="ni">&amp;quot;&amp;gt;</span>
-<span class="ni">&amp;lt;</span>body<span class="ni">&amp;gt;</span>
+<details>
+<summary>💡 ヒント4: 共通メッセージ部品の作成</summary>
 
-<span class="ni">&amp;lt;</span>!-- TODO: 成功メッセージ部品 --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>div th:fragment=<span class="ni">&amp;quot;</span>success-message<span class="ni">&amp;quot;</span> th:if=<span class="ni">&amp;quot;</span>${successMessage}<span class="ni">&amp;quot;</span> 
-     class=<span class="ni">&amp;quot;</span>alert alert-success alert-dismissible fade show<span class="ni">&amp;quot;</span> role=<span class="ni">&amp;quot;</span>alert<span class="ni">&amp;quot;&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-check-circle me-2<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>span th:text=<span class="ni">&amp;quot;</span>${successMessage}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/span<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>button type=<span class="ni">&amp;quot;</span>button<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>btn-close<span class="ni">&amp;quot;</span> data-bs-dismiss=<span class="ni">&amp;quot;</span>alert<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- TODO: templates/fragments/messages.html を作成 --&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">&quot;http://www.thymeleaf.org&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>!-- TODO: エラーメッセージ部品 --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>div th:fragment=<span class="ni">&amp;quot;</span>error-message<span class="ni">&amp;quot;</span> th:if=<span class="ni">&amp;quot;</span>${errorMessage}<span class="ni">&amp;quot;</span> 
-     class=<span class="ni">&amp;quot;</span>alert alert-danger alert-dismissible fade show<span class="ni">&amp;quot;</span> role=<span class="ni">&amp;quot;</span>alert<span class="ni">&amp;quot;&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>i class=<span class="ni">&amp;quot;</span>fas fa-exclamation-triangle me-2<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/i<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>span th:text=<span class="ni">&amp;quot;</span>${errorMessage}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/span<span class="ni">&amp;gt;</span>
-    <span class="ni">&amp;lt;</span>button type=<span class="ni">&amp;quot;</span>button<span class="ni">&amp;quot;</span> class=<span class="ni">&amp;quot;</span>btn-close<span class="ni">&amp;quot;</span> data-bs-dismiss=<span class="ni">&amp;quot;</span>alert<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/button<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+<span class="cm">&lt;!-- TODO: 成功メッセージ部品 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:fragment</span><span class="o">=</span><span class="s">&quot;success-message&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${successMessage}&quot;</span> 
+     <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-success alert-dismissible fade show&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-check-circle me-2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${successMessage}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn-close&quot;</span> <span class="na">data-bs-dismiss</span><span class="o">=</span><span class="s">&quot;alert&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>/body<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/html<span class="ni">&amp;gt;</span>
+<span class="cm">&lt;!-- TODO: エラーメッセージ部品 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:fragment</span><span class="o">=</span><span class="s">&quot;error-message&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${errorMessage}&quot;</span> 
+     <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-danger alert-dismissible fade show&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-exclamation-triangle me-2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${errorMessage}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn-close&quot;</span> <span class="na">data-bs-dismiss</span><span class="o">=</span><span class="s">&quot;alert&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-<span class="ni">&amp;lt;</span>!-- TODO: 各画面でメッセージ部品をインクルード --<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>div th:replace=<span class="ni">&amp;quot;</span>~{fragments/messages :: success-message}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>div th:replace=<span class="ni">&amp;quot;</span>~{fragments/messages :: error-message}<span class="ni">&amp;quot;&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- TODO: 各画面でメッセージ部品をインクルード --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">&quot;~{fragments/messages :: success-message}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:replace</span><span class="o">=</span><span class="s">&quot;~{fragments/messages :: error-message}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
-<p><strong>チェックポイント</strong>: すべての画面でメッセージが統一されたデザインで表示されるか確認
-&lt;/details&gt;</p>
+
+**チェックポイント**: すべての画面でメッセージが統一されたデザインで表示されるか確認
+</details>
+
 <h3 id="5">ステップ5: 統合テストと最終確認</h3>
-<p>&lt;details&gt;
-&lt;summary&gt;💡 ヒント5: 総合的な動作確認&lt;/summary&gt;</p>
-<p><strong>確認項目リスト</strong>:</p>
-<ol>
-<li><strong>新規登録テスト</strong></li>
-<li>[ ] 正常データでの登録 → 成功メッセージ表示</li>
-<li>[ ] バリデーションエラー → エラーメッセージ表示</li>
-<li>
-<p>[ ] システムエラー → 適切なエラーメッセージ表示</p>
-</li>
-<li>
-<p><strong>編集機能テスト</strong></p>
-</li>
-<li>[ ] 正常データでの更新 → 成功メッセージ表示</li>
-<li>[ ] バリデーションエラー → エラーメッセージ表示（フォーム値保持）</li>
-<li>
-<p>[ ] 楽観ロックエラー → 適切なエラーメッセージ表示</p>
-</li>
-<li>
-<p><strong>UI/UXテスト</strong></p>
-</li>
-<li>[ ] メッセージの自動消去機能（×ボタン）</li>
-<li>[ ] メッセージのアイコン表示</li>
-<li>
-<p>[ ] Bootstrap アラートのスタイル適用</p>
-</li>
-<li>
-<p><strong>メッセージ管理テスト</strong></p>
-</li>
-<li>[ ] 定数クラスからのメッセージ取得</li>
-<li>[ ] 学生名など動的な情報の適切な表示</li>
-</ol>
-<p><strong>動作確認手順</strong>:
+<details>
+<summary>💡 ヒント5: 総合的な動作確認</summary>
+
+**確認項目リスト**:
+
+1. **新規登録テスト**
+   - [ ] 正常データでの登録 → 成功メッセージ表示
+   - [ ] バリデーションエラー → エラーメッセージ表示
+   - [ ] システムエラー → 適切なエラーメッセージ表示
+
+2. **編集機能テスト**
+   - [ ] 正常データでの更新 → 成功メッセージ表示
+   - [ ] バリデーションエラー → エラーメッセージ表示（フォーム値保持）
+   - [ ] 楽観ロックエラー → 適切なエラーメッセージ表示
+
+3. **UI/UXテスト**
+   - [ ] メッセージの自動消去機能（×ボタン）
+   - [ ] メッセージのアイコン表示
+   - [ ] Bootstrap アラートのスタイル適用
+
+4. **メッセージ管理テスト**
+   - [ ] 定数クラスからのメッセージ取得
+   - [ ] 学生名など動的な情報の適切な表示
+
+**動作確認手順**:
 <div class="highlight"><pre><span></span><code><span class="c1"># 1. アプリケーション起動</span>
 mvn<span class="w"> </span>spring-boot:run
 
@@ -6936,8 +6940,9 @@ mvn<span class="w"> </span>spring-boot:run
 <span class="c1"># 4. 編集機能テスト</span>
 <span class="c1"># - データ更新 → 成功メッセージ確認</span>
 <span class="c1"># - 無効データ → エラーメッセージ確認</span>
-</code></pre></div></p>
-<p><strong>期待される完成画面例</strong>:
+</code></pre></div>
+
+**期待される完成画面例**:
 <div class="highlight"><pre><span></span><code>╔══════════════════════════════════════════════╗
 ║  🎯 学生管理システム                          ║
 ║                                              ║
@@ -6951,7 +6956,8 @@ mvn<span class="w"> </span>spring-boot:run
 ║  └──────────────────────────────────────┘   ║
 ╚══════════════════════════════════════════════╝
 </code></pre></div>
-&lt;/details&gt;</p>
+</details>
+
 <h3 id="_9">完成時の達成レベル</h3>
 <p>この実践演習を完了することで、以下のレベルに到達します：</p>
 <ul>
@@ -7048,7 +7054,7 @@ mvn<span class="w"> </span>spring-boot:run
 <div class="highlight"><pre><span></span><code><span class="c1">// Week 9.7までの実装：Controller中心の設計</span>
 <span class="nd">@Controller</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentController</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// バリデーション</span>
 <span class="w">        </span><span class="c1">// DB保存</span>
@@ -7063,11 +7069,11 @@ mvn<span class="w"> </span>spring-boot:run
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StudentService</span><span class="w"> </span><span class="n">studentService</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">StudentDto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">registerStudent</span><span class="p">(</span><span class="n">studentData</span><span class="p">);</span>
-<span class="w">        </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -7096,27 +7102,27 @@ mvn<span class="w"> </span>spring-boot:run
 <h3 id="q1-flashmodelattribute">Q1: Flash属性とModelAttributeの使い分けは？</h3>
 <p><strong>A1</strong>: 画面遷移の種類で使い分けます。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// リダイレクト時：Flash属性を使用</span>
-<span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">message</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">成功しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span><span class="w">  </span><span class="c1">// 別のURLに遷移</span>
+<span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;成功しました&quot;</span><span class="p">);</span>
+<span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// 別のURLに遷移</span>
 
 <span class="c1">// 同一画面返却時：ModelAttributeを使用</span>
-<span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">エラーが発生しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span><span class="w">  </span><span class="c1">// 同じテンプレートを返却</span>
+<span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;エラーが発生しました&quot;</span><span class="p">);</span>
+<span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// 同じテンプレートを返却</span>
 </code></pre></div>
 <h3 id="q2">Q2: メッセージが表示されない場合の確認ポイントは？</h3>
 <p><strong>A2</strong>: 以下の点を確認してください。</p>
 <ol>
 <li><strong>Flash属性の設定</strong>: <code>addFlashAttribute()</code> を使用しているか</li>
-<li><strong>リダイレクトの実行</strong>: <code>return &amp;quot;redirect:...&amp;quot;</code> になっているか</li>
-<li><strong>View側の条件分岐</strong>: <code>th:if=&amp;quot;${successMessage}&amp;quot;</code> が正しいか</li>
+<li><strong>リダイレクトの実行</strong>: <code>return "redirect:..."</code> になっているか</li>
+<li><strong>View側の条件分岐</strong>: <code>th:if="${successMessage}"</code> が正しいか</li>
 <li><strong>セッション設定</strong>: Spring Bootのセッション設定が有効か</li>
 </ol>
 <h3 id="q3-modelattribute">Q3: 楽観ロックエラー時はなぜModelAttributeを使うのか？</h3>
 <p><strong>A3</strong>: フォームの入力値を保持するためです。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 楽観ロックエラー時：フォーム値を保持して同じ画面に戻る</span>
 <span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">OptimisticLockingFailureException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">他のユーザーが更新しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span><span class="w">  </span><span class="c1">// リダイレクトしない</span>
+<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;他のユーザーが更新しました&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// リダイレクトしない</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>リダイレクトすると入力データが失われてしまうため、エラー時は同一画面に戻します。</p>
