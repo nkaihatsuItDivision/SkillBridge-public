@@ -3692,7 +3692,7 @@
   <a href="#spring-boot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ​ Spring Boot進化記録
+        📘 Spring Boot進化記録
       
     </span>
   </a>
@@ -4003,7 +4003,7 @@
   <a href="#spring-boot_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ​ Spring Boot 技術統合
+        📘 Spring Boot 技術統合
       
     </span>
   </a>
@@ -4175,7 +4175,7 @@
   <a href="#spring-bootweek10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ​ Spring Boot（Week10）準備
+        📘 Spring Boot（Week10）準備
       
     </span>
   </a>
@@ -5728,7 +5728,7 @@
   <a href="#spring-boot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ​ Spring Boot進化記録
+        📘 Spring Boot進化記録
       
     </span>
   </a>
@@ -6039,7 +6039,7 @@
   <a href="#spring-boot_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ​ Spring Boot 技術統合
+        📘 Spring Boot 技術統合
       
     </span>
   </a>
@@ -6211,7 +6211,7 @@
   <a href="#spring-bootweek10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ​ Spring Boot（Week10）準備
+        📘 Spring Boot（Week10）準備
       
     </span>
   </a>
@@ -6325,12 +6325,12 @@
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StudentRepository</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -6340,18 +6340,18 @@
 <span class="w">            </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
 
 <span class="w">            </span><span class="c1">// Week 9.7: 成功フィードバック</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生を登録しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;学生を登録しました&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// Week 9.7: エラーフィードバック</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">登録に失敗しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;登録に失敗しました&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="spring-boot">​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_8_week97_to_week98_evolution.html">Spring Boot進化記録</a></h3>
+<h3 id="spring-boot">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_8_week97_to_week98_evolution.html">Spring Boot進化記録</a></h3>
 <hr />
 <h2 id="1-servicecontroller">1. Service層分離の必要性：Controller肥大化問題</h2>
 <h3 id="_2">🚨 <strong>現在の問題点</strong></h3>
@@ -6361,21 +6361,21 @@
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StudentRepository</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// 🚨 問題1: ビジネスロジックがControllerに混在</span>
 <span class="w">            </span><span class="c1">// メールアドレス重複チェック</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">studentRepository</span><span class="p">.</span><span class="na">existsByEmail</span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getEmail</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span>
-<span class="w">                    </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">このメールアドレスは既に使用されています</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">                </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                    </span><span class="s">&quot;このメールアドレスは既に使用されています&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students/register&quot;</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
 
 <span class="w">            </span><span class="c1">// 🚨 問題2: データベース操作が直接実行</span>
@@ -6384,17 +6384,17 @@
 
 <span class="w">            </span><span class="c1">// 🚨 問題3: 複雑なビジネスルールがController内に</span>
 <span class="w">            </span><span class="c1">// 学年による専攻制限</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getGrade</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="w"> </span>
-<span class="w">                </span><span class="o">!</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">情報工学</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">基礎教養</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;).</span><span class="na">contains</span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getMajor</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getGrade</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">                </span><span class="o">!</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;情報工学&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;基礎教養&quot;</span><span class="p">).</span><span class="na">contains</span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="na">getMajor</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="c1">// 複雑な制御処理...</span>
 <span class="w">            </span><span class="p">}</span>
 
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生を登録しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;学生を登録しました&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">登録に失敗しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;登録に失敗しました&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -6455,7 +6455,7 @@
 <span class="w">        </span><span class="c1">// 更新処理の実装</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">getAllStudents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAllStudents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 一覧取得の実装</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -6468,24 +6468,24 @@
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StudentService</span><span class="w"> </span><span class="n">studentService</span><span class="p">;</span><span class="w">  </span><span class="c1">// Service層に依存</span>
 
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// ビジネスロジックはServiceに委譲</span>
 <span class="w">            </span><span class="n">studentService</span><span class="p">.</span><span class="na">registerStudent</span><span class="p">(</span><span class="n">studentData</span><span class="p">);</span>
 
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生を登録しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;学生を登録しました&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ServiceException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -6499,7 +6499,7 @@
 <span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">StudentService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">;</span>
-<span class="w">    </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">getAllStudents</span><span class="p">();</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAllStudents</span><span class="p">();</span>
 <span class="w">    </span><span class="n">Student</span><span class="w"> </span><span class="nf">getStudentById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -6524,19 +6524,19 @@
 <span class="w">            </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生登録処理でエラーが発生しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="s">&quot;学生登録処理でエラーが発生しました&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">validateEmailUnique</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">studentRepository</span><span class="p">.</span><span class="na">existsByEmail</span><span class="p">(</span><span class="n">email</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">このメールアドレスは既に使用されています</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="s">&quot;このメールアドレスは既に使用されています&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">validateGradeAndMajor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">grade</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">major</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">grade</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="w"> </span><span class="o">!</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">情報工学</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">基礎教養</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;).</span><span class="na">contains</span><span class="p">(</span><span class="n">major</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mi">1</span><span class="n">年生は情報工学または基礎教養のみ選択可能です</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">grade</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;情報工学&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;基礎教養&quot;</span><span class="p">).</span><span class="na">contains</span><span class="p">(</span><span class="n">major</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="s">&quot;1年生は情報工学または基礎教養のみ選択可能です&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -6567,7 +6567,7 @@
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// 1. 既存データの取得</span>
 <span class="w">            </span><span class="n">Student</span><span class="w"> </span><span class="n">existingStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生が見つかりません</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;));</span>
+<span class="w">                </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="s">&quot;学生が見つかりません&quot;</span><span class="p">));</span>
 
 <span class="w">            </span><span class="c1">// 2. 履歴テーブルへの保存</span>
 <span class="w">            </span><span class="n">StudentHistory</span><span class="w"> </span><span class="n">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createHistory</span><span class="p">(</span><span class="n">existingStudent</span><span class="p">);</span>
@@ -6579,14 +6579,14 @@
 <span class="w">            </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">updatedStudent</span><span class="p">);</span>
 
 <span class="w">            </span><span class="c1">// 4. ログテーブルの更新</span>
-<span class="w">            </span><span class="n">updateAuditLog</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">UPDATE</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生情報更新</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">updateAuditLog</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;UPDATE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;学生情報更新&quot;</span><span class="p">);</span>
 
 <span class="w">            </span><span class="c1">// すべて成功した場合のみコミット</span>
 <span class="w">            </span><span class="c1">// 途中で例外が発生した場合は自動ロールバック</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// @Transactionalにより自動的にロールバック</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生情報更新に失敗しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="s">&quot;学生情報更新に失敗しました&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -6604,10 +6604,10 @@
 <span class="w">            </span><span class="n">createInitialSettings</span><span class="p">(</span><span class="n">savedStudent</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span>
 
 <span class="w">            </span><span class="c1">// 3. 監査ログの記録</span>
-<span class="w">            </span><span class="n">createAuditLog</span><span class="p">(</span><span class="n">savedStudent</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">CREATE</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">新規学生登録</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">createAuditLog</span><span class="p">(</span><span class="n">savedStudent</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;CREATE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;新規学生登録&quot;</span><span class="p">);</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生登録処理でエラーが発生しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="s">&quot;学生登録処理でエラーが発生しました&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -6685,28 +6685,28 @@
 <span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">DataAccessException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// データベースエラーは一般的なメッセージに変換</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">データベース処理中にエラーが発生しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="s">&quot;データベース処理中にエラーが発生しました&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// 予期しないエラーは一般的なメッセージに変換</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生登録処理でエラーが発生しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="s">&quot;学生登録処理でエラーが発生しました&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">validateBusinessRules</span><span class="p">(</span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ValidationException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// メールアドレス重複チェック</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">studentRepository</span><span class="p">.</span><span class="na">existsByEmail</span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getEmail</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValidationException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">このメールアドレスは既に使用されています</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValidationException</span><span class="p">(</span><span class="s">&quot;このメールアドレスは既に使用されています&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1">// 学年と専攻の整合性チェック</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getGrade</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="w"> </span>
-<span class="w">            </span><span class="o">!</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">情報工学</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">基礎教養</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;).</span><span class="na">contains</span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getMajor</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValidationException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mi">1</span><span class="n">年生は情報工学または基礎教養のみ選択可能です</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getGrade</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">            </span><span class="o">!</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;情報工学&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;基礎教養&quot;</span><span class="p">).</span><span class="na">contains</span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getMajor</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValidationException</span><span class="p">(</span><span class="s">&quot;1年生は情報工学または基礎教養のみ選択可能です&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1">// 年齢制限チェック</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">studentData</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="mi">65</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValidationException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">年齢は16歳以上65歳以下で入力してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">studentData</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">65</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValidationException</span><span class="p">(</span><span class="s">&quot;年齢は16歳以上65歳以下で入力してください&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -6732,7 +6732,7 @@
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ValidationException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生登録処理でエラーが発生しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="s">&quot;学生登録処理でエラーが発生しました&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -6740,7 +6740,7 @@
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">Student</span><span class="w"> </span><span class="n">existingStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataNotFoundException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生が見つかりません</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;));</span>
+<span class="w">                </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataNotFoundException</span><span class="p">(</span><span class="s">&quot;学生が見つかりません&quot;</span><span class="p">));</span>
 
 <span class="w">            </span><span class="n">validateBusinessRules</span><span class="p">(</span><span class="n">studentData</span><span class="p">);</span>
 
@@ -6751,17 +6751,17 @@
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">DataNotFoundException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ValidationException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生情報更新でエラーが発生しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="s">&quot;学生情報更新でエラーが発生しました&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">getAllStudents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAllStudents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="nf">getStudentById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataNotFoundException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">指定された学生が見つかりません</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;));</span>
+<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataNotFoundException</span><span class="p">(</span><span class="s">&quot;指定された学生が見つかりません&quot;</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">validateBusinessRules</span><span class="p">(</span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ValidationException</span><span class="w"> </span><span class="p">{</span>
@@ -6776,45 +6776,45 @@
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StudentService</span><span class="w"> </span><span class="n">studentService</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// ビジネスロジックはServiceに完全委譲</span>
 <span class="w">            </span><span class="n">studentService</span><span class="p">.</span><span class="na">registerStudent</span><span class="p">(</span><span class="n">studentData</span><span class="p">);</span>
 
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生を登録しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;学生を登録しました&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ServiceException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
 <span class="w">                                </span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">studentService</span><span class="p">.</span><span class="na">updateStudent</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">studentData</span><span class="p">);</span>
 
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生情報を更新しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;学生情報を更新しました&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ServiceException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">/&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/edit&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -6848,7 +6848,7 @@
 <li>@Transactionalによるデータ整合性確保</li>
 <li>統一的な例外処理によるエラーハンドリング</li>
 </ol>
-<h3 id="spring-boot_4">​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_8_technology_integration.html">Spring Boot 技術統合</a></h3>
+<h3 id="spring-boot_4">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_8_technology_integration.html">Spring Boot 技術統合</a></h3>
 <hr />
 <h2 id="7-service">7. 実践演習：Service層リファクタリング</h2>
 <h3 id="_7">💡 <strong>課題内容</strong></h3>
@@ -6860,13 +6860,15 @@
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">StudentService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">;</span>
-<span class="w">    </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">getAllStudents</span><span class="p">();</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAllStudents</span><span class="p">();</span>
 <span class="w">    </span><span class="n">Student</span><span class="w"> </span><span class="nf">getStudentById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<p>&lt;details&gt;
-&lt;summary&gt;🔍 ステップ1のヒント&lt;/summary&gt;</p>
-<p><strong>StudentService.java</strong> の作成ポイント：</p>
+<details>
+<summary>🔍 ステップ1のヒント</summary>
+
+**StudentService.java** の作成ポイント：
+
 <div class="highlight"><pre><span></span><code><span class="c1">// TODO: 必要なimportを追加</span>
 <span class="c1">// import java.util.List;</span>
 
@@ -6877,18 +6879,21 @@
 <span class="w">    </span><span class="c1">// TODO: 学生更新メソッド（IDとデータを受け取る）</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// TODO: 全学生取得メソッド（戻り値はList&amp;lt;Student&amp;gt;）</span>
-<span class="w">    </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">getAllStudents</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// TODO: 全学生取得メソッド（戻り値はList&lt;Student&gt;）</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAllStudents</span><span class="p">();</span>
 
 <span class="w">    </span><span class="c1">// TODO: ID指定学生取得メソッド（例外をスローする）</span>
 <span class="w">    </span><span class="n">Student</span><span class="w"> </span><span class="nf">getStudentById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>ポイント:</strong>
+
+**ポイント:**
 - インターフェースは実装の詳細を含まない
 - メソッド名は動詞で始める（register、update、get）
-- 例外が発生する可能性があるメソッドは <code>throws</code> で明示</p>
-<p>&lt;/details&gt;</p>
+- 例外が発生する可能性があるメソッドは `throws` で明示
+
+</details>
+
 <h4 id="2"><strong>ステップ2: カスタム例外クラス作成</strong></h4>
 <p>以下の例外クラスを作成してください：</p>
 <p><strong>ServiceException.java</strong>
@@ -6896,9 +6901,11 @@
 <span class="w">    </span><span class="c1">// TODO: コンストラクタを実装</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<p>&lt;details&gt;
-&lt;summary&gt;🔍 ステップ2のヒント&lt;/summary&gt;</p>
-<p><strong>ServiceException.java</strong> の完全実装：</p>
+<details>
+<summary>🔍 ステップ2のヒント</summary>
+
+**ServiceException.java** の完全実装：
+
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ServiceException</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// TODO: メッセージのみのコンストラクタ</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">ServiceException</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -6911,21 +6918,27 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>ValidationException.java</strong> も同様に作成：</p>
+
+**ValidationException.java** も同様に作成：
+
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ValidationException</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ServiceException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">ValidationException</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>DataNotFoundException.java</strong>：</p>
+
+**DataNotFoundException.java**：
+
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DataNotFoundException</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ServiceException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">DataNotFoundException</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>&lt;/details&gt;</p>
+
+</details>
+
 <h4 id="3-service"><strong>ステップ3: Service実装クラス作成</strong></h4>
 <p><strong>StudentServiceImpl.java</strong> を作成してください：</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@Service</span>
@@ -6943,9 +6956,11 @@
 <span class="w">    </span><span class="c1">// TODO: 他のメソッドも実装</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>&lt;details&gt;
-&lt;summary&gt;🔍 ステップ3のヒント&lt;/summary&gt;</p>
-<p><strong>StudentServiceImpl.java</strong> の実装例：</p>
+<details>
+<summary>🔍 ステップ3のヒント</summary>
+
+**StudentServiceImpl.java** の実装例：
+
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Service</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.transaction.annotation.Transactional</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span>
@@ -6972,7 +6987,7 @@
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ValidationException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">e</span><span class="p">;</span><span class="w">  </span><span class="c1">// ビジネスルールエラーはそのまま</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生登録処理でエラーが発生しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="s">&quot;学生登録処理でエラーが発生しました&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -6981,7 +6996,7 @@
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// TODO: 既存データの確認</span>
 <span class="w">            </span><span class="n">Student</span><span class="w"> </span><span class="n">existingStudent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataNotFoundException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生が見つかりません</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;));</span>
+<span class="w">                </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataNotFoundException</span><span class="p">(</span><span class="s">&quot;学生が見つかりません&quot;</span><span class="p">));</span>
 
 <span class="w">            </span><span class="c1">// TODO: ビジネスルール検証</span>
 <span class="w">            </span><span class="n">validateBusinessRules</span><span class="p">(</span><span class="n">studentData</span><span class="p">);</span>
@@ -6994,39 +7009,41 @@
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">DataNotFoundException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ValidationException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生情報更新でエラーが発生しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServiceException</span><span class="p">(</span><span class="s">&quot;学生情報更新でエラーが発生しました&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">getAllStudents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAllStudents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="nf">getStudentById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServiceException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">studentRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataNotFoundException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">指定された学生が見つかりません</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;));</span>
+<span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataNotFoundException</span><span class="p">(</span><span class="s">&quot;指定された学生が見つかりません&quot;</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">validateBusinessRules</span><span class="p">(</span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ValidationException</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// TODO: メールアドレス重複チェック</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">studentRepository</span><span class="p">.</span><span class="na">existsByEmail</span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getEmail</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValidationException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">このメールアドレスは既に使用されています</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValidationException</span><span class="p">(</span><span class="s">&quot;このメールアドレスは既に使用されています&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1">// TODO: 学年と専攻の整合性チェック</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getGrade</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="w"> </span>
-<span class="w">            </span><span class="o">!</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">情報工学</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">基礎教養</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;).</span><span class="na">contains</span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getMajor</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValidationException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mi">1</span><span class="n">年生は情報工学または基礎教養のみ選択可能です</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getGrade</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">            </span><span class="o">!</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;情報工学&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;基礎教養&quot;</span><span class="p">).</span><span class="na">contains</span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getMajor</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValidationException</span><span class="p">(</span><span class="s">&quot;1年生は情報工学または基礎教養のみ選択可能です&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1">// TODO: 年齢制限チェック</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">studentData</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="mi">65</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValidationException</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">年齢は16歳以上65歳以下で入力してください</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">studentData</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">studentData</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">65</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ValidationException</span><span class="p">(</span><span class="s">&quot;年齢は16歳以上65歳以下で入力してください&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>&lt;/details&gt;</p>
+
+</details>
+
 <h4 id="4-controller"><strong>ステップ4: Controllerリファクタリング</strong></h4>
 <p>既存の <strong>StudentController.java</strong> を修正してください：</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@Controller</span>
@@ -7036,7 +7053,7 @@
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StudentService</span><span class="w"> </span><span class="n">studentService</span><span class="p">;</span>
 
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -7044,87 +7061,92 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>&lt;details&gt;
-&lt;summary&gt;🔍 ステップ4のヒント&lt;/summary&gt;</p>
-<p><strong>StudentController.java</strong> のリファクタリング：</p>
+<details>
+<summary>🔍 ステップ4のヒント</summary>
+
+**StudentController.java** のリファクタリング：
+
 <div class="highlight"><pre><span></span><code><span class="nd">@Controller</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentController</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StudentService</span><span class="w"> </span><span class="n">studentService</span><span class="p">;</span><span class="w">  </span><span class="c1">// RepositoryからServiceに変更</span>
 
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">registerStudent</span><span class="p">(</span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                                  </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// TODO: ビジネスロジックはServiceに完全委譲</span>
 <span class="w">            </span><span class="n">studentService</span><span class="p">.</span><span class="na">registerStudent</span><span class="p">(</span><span class="n">studentData</span><span class="p">);</span>
 
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生を登録しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;学生を登録しました&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ServiceException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// TODO: Service例外をキャッチして適切なメッセージを設定</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="n">register</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students/register&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
 <span class="w">                                </span><span class="nd">@Valid</span><span class="w"> </span><span class="nd">@ModelAttribute</span><span class="w"> </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">BindingResult</span><span class="w"> </span><span class="n">bindingResult</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bindingResult</span><span class="p">.</span><span class="na">hasErrors</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">studentService</span><span class="p">.</span><span class="na">updateStudent</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">studentData</span><span class="p">);</span>
 
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">successMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">学生情報を更新しました</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;successMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;学生情報を更新しました&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ServiceException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">/&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/edit&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">listStudents</span><span class="p">(</span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// TODO: Service層から学生一覧を取得</span>
-<span class="w">        </span><span class="n">List</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Student</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">getAllStudents</span><span class="p">();</span>
-<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">students</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">list</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">getAllStudents</span><span class="p">();</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;students&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">students</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/list&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">/</span><span class="n">students</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;)</span>
+<span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/students/{id}/edit&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">editStudent</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">RedirectAttributes</span><span class="w"> </span><span class="n">redirectAttributes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">studentService</span><span class="p">.</span><span class="na">getStudentById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
 <span class="w">            </span><span class="n">StudentData</span><span class="w"> </span><span class="n">studentData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StudentData</span><span class="p">.</span><span class="na">fromEntity</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
-<span class="w">            </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">studentData</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">studentData</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">students</span><span class="o">/</span><span class="n">edit</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">model</span><span class="p">.</span><span class="na">addAttribute</span><span class="p">(</span><span class="s">&quot;studentData&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">studentData</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;students/edit&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ServiceException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">errorMessage</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">redirect</span><span class="p">:</span><span class="o">/</span><span class="n">students</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
+<span class="w">            </span><span class="n">redirectAttributes</span><span class="p">.</span><span class="na">addFlashAttribute</span><span class="p">(</span><span class="s">&quot;errorMessage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;redirect:/students&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>リファクタリングのポイント:</strong>
-- <code>@Autowired</code> を <code>StudentRepository</code> から <code>StudentService</code> に変更
+
+**リファクタリングのポイント:**
+- `@Autowired` を `StudentRepository` から `StudentService` に変更
 - ビジネスロジックはすべてService層に委譲
-- 例外処理は <code>ServiceException</code> をキャッチ
-- Controllerは画面制御のみに専念</p>
-<p>&lt;/details&gt;</p>
+- 例外処理は `ServiceException` をキャッチ
+- Controllerは画面制御のみに専念
+
+</details>
+
 <h4 id="5_1"><strong>ステップ5: 統合テスト</strong></h4>
 <p>実装完了後、以下をテストしてください：</p>
 <ol>
@@ -7133,36 +7155,44 @@
 <li><strong>一覧表示機能</strong>: 全学生の表示</li>
 <li><strong>詳細表示機能</strong>: 個別学生の情報表示</li>
 </ol>
-<p>&lt;details&gt;
-&lt;summary&gt;🔍 ステップ5のヒント&lt;/summary&gt;</p>
-<p><strong>テスト項目チェックリスト:</strong></p>
-<p><strong>✅ 新規登録機能テスト</strong>
+<details>
+<summary>🔍 ステップ5のヒント</summary>
+
+**テスト項目チェックリスト:**
+
+**✅ 新規登録機能テスト**
 - [ ] 正常なデータで登録成功
 - [ ] 重複メールアドレスでエラー表示
 - [ ] 1年生の専攻制限チェック
 - [ ] 年齢制限チェック（16歳未満、65歳超過）
-- [ ] バリデーションエラー時のフォーム値保持</p>
-<p><strong>✅ 更新機能テスト</strong>
+- [ ] バリデーションエラー時のフォーム値保持
+
+**✅ 更新機能テスト**
 - [ ] 既存データの正常更新
 - [ ] 存在しないIDでエラー表示
 - [ ] 更新時のビジネスルール適用
-- [ ] トランザクション動作確認</p>
-<p><strong>✅ 表示機能テスト</strong>
+- [ ] トランザクション動作確認
+
+**✅ 表示機能テスト**
 - [ ] 学生一覧の正常表示
 - [ ] 個別学生詳細の正常表示
-- [ ] 存在しない学生IDでエラー処理</p>
-<p><strong>✅ エラーハンドリングテスト</strong>
+- [ ] 存在しない学生IDでエラー処理
+
+**✅ エラーハンドリングテスト**
 - [ ] ServiceExceptionの適切なキャッチ
 - [ ] フラッシュメッセージの正常表示
-- [ ] 画面遷移の正常動作</p>
-<p><strong>動作確認コマンド:</strong>
+- [ ] 画面遷移の正常動作
+
+**動作確認コマンド:**
 <div class="highlight"><pre><span></span><code><span class="c1"># アプリケーション起動</span>
 ./mvnw<span class="w"> </span>spring-boot:run
 
 <span class="c1"># ブラウザで確認</span>
 http://localhost:8080/students
-</code></pre></div></p>
-<p>&lt;/details&gt;</p>
+</code></pre></div>
+
+</details>
+
 <h3 id="_9">🎉 <strong>完成確認</strong></h3>
 <p>以下がすべて動作すれば、Service層リファクタリングの完成です：</p>
 <ul>
@@ -7237,7 +7267,7 @@ Week 9.8: Service層リファクタリング（ビジネスロジック分離）
 <li><strong>API開発</strong>: Service層をそのままRESTful APIでも活用可能</li>
 <li><strong>マイクロサービス</strong>: Service層をマイクロサービスの基盤として活用</li>
 </ol>
-<h3 id="spring-bootweek10">​ <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_8_week10_preparation.html">Spring Boot（Week10）準備</a></h3>
+<h3 id="spring-bootweek10">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_8_week10_preparation.html">Spring Boot（Week10）準備</a></h3>
 <hr />
 <h2 id="9-week-10">9. 次回予告：Week 10「検索・削除機能完成」</h2>
 <h3 id="week-10">🔮 <strong>Week 10で実装する高度機能</strong></h3>
