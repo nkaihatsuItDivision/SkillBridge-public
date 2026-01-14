@@ -5914,12 +5914,6 @@
 
   <h1>ユーザー入力と対話的プログラム</h1>
 
-<?xml version="1.0" encoding="UTF-8"?>
-<p><lesson>
-  <type>text</type>
-  <description>ユーザーからの入力を受け取り、対話的なプログラムを作成する方法を学習する。Console.ReadLine()の使い方と型変換について理解する。</description>
-  <title>レッスン3: ユーザー入力と対話的プログラム</title>
-  <content># レッスン3: ユーザー入力と対話的プログラム</p>
 <h2 id="_1">学習目標</h2>
 <ul>
 <li><code>Console.ReadLine()</code>を使ってユーザーからの入力を受け取れるようになる</li>
@@ -5934,7 +5928,7 @@
 <p>1.プログラムが止まる：Console.ReadLine()に到達すると、プログラムはユーザーの入力を待って一時停止する<br />
 2.Enterキーが必要：ユーザーがEnterキーを押すまで入力は確定されない<br />
 3.常にstring型：どんな内容を入力しても、結果は必ずstring（文字列）型になる  </p>
-<div class="highlight"><pre><span></span><code><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">名前を入力してください</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<div class="highlight"><pre><span></span><code><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;名前を入力してください:&quot;</span><span class="p">);</span>
 <span class="c1">// ↑ この行が実行されて画面に表示される</span>
 
 <span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
@@ -5942,7 +5936,7 @@
 <span class="c1">// ユーザーが「太郎」と入力してEnterを押すと...</span>
 <span class="c1">// name変数に「太郎」という文字列が保存される</span>
 
-<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">こんにちは</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">さん</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;こんにちは&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;さん&quot;</span><span class="p">);</span>
 <span class="c1">// ↑ ここで再びプログラムが動き出す</span>
 </code></pre></div>
 <h2 id="_4">型変換（文字列から数値へ）</h2>
@@ -5950,29 +5944,29 @@
 <p>型変換とは、あるデータ型の値を別のデータ型に変えることです。</p>
 <p><code>Console.ReadLine()</code>は常に文字列（string）を返すため、数値として使いたい場合は変換が必要です。</p>
 <h3 id="intparse">int.Parse()（整数に変換）</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">年齢を入力してください</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<div class="highlight"><pre><span></span><code><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;年齢を入力してください:&quot;</span><span class="p">);</span>
 <span class="kt">string</span><span class="w"> </span><span class="n">ageText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">ageText</span><span class="p">);</span>
-<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">あなたは</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">歳ですね。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;あなたは&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;歳ですね。&quot;</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="doubleparse">double.Parse()（小数に変換）</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">身長を入力してください（</span><span class="n">cm</span><span class="err">）</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<div class="highlight"><pre><span></span><code><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;身長を入力してください（cm）:&quot;</span><span class="p">);</span>
 <span class="kt">string</span><span class="w"> </span><span class="n">heightText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
 <span class="kt">double</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">heightText</span><span class="p">);</span>
-<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">身長は</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">cm</span><span class="err">ですね。</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;身長は&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;cmですね。&quot;</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="_6">なぜ型変換が必要なのか</h4>
 <p>Console.ReadLine()は、ユーザーが何を入力しても必ず<strong>文字列（string）</strong>として受け取ります。たとえユーザーが数字の「25」を入力したとしても、コンピュータにとっては「2という文字と5という文字が並んだもの」として認識されます。
 <div class="highlight"><pre><span></span><code><span class="c1">// ユーザーが「25」と入力した場合</span>
-<span class="kt">string</span><span class="w"> </span><span class="n">ageText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span><span class="w"> </span><span class="c1">// &amp;quot;25&amp;quot;（文字列）</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">ageText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span><span class="w"> </span><span class="c1">// &quot;25&quot;（文字列）</span>
 <span class="c1">// これは数字の25ではなく、「2」と「5」という文字の組み合わせ</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">ageText</span><span class="p">);</span><span class="w"> </span><span class="c1">// 25（数値）</span>
-<span class="c1">// int.Parse()で文字列の&amp;quot;25&amp;quot;を数値の25に変換</span>
+<span class="c1">// int.Parse()で文字列の&quot;25&quot;を数値の25に変換</span>
 </code></pre></div></p>
 <h4 id="_7">計算するには数値に変換が必要</h4>
-<p>文字列の&quot;25&quot;を数値の25に変換することで、初めて計算ができるようになります。
-<div class="highlight"><pre><span></span><code><span class="kt">string</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span><span class="w"> </span><span class="c1">// &amp;quot;25&amp;quot;（文字列）</span>
+<p>文字列の"25"を数値の25に変換することで、初めて計算ができるようになります。
+<div class="highlight"><pre><span></span><code><span class="kt">string</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span><span class="w"> </span><span class="c1">// &quot;25&quot;（文字列）</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">input</span><span class="p">);</span><span class="w">     </span><span class="c1">// 25（数値）</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">          </span><span class="c1">// 35（計算可能！）</span>
@@ -5983,16 +5977,16 @@
 その「25」を数値として理解して計算に使う → 数値に変換した状態</p>
 <h4 id="_9">よく使う型変換</h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// 文字列 → 整数</span>
-<span class="kt">string</span><span class="w"> </span><span class="n">ageText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mi">20</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">ageText</span><span class="p">);</span><span class="w">      </span><span class="c1">// &amp;quot;20&amp;quot; → 20</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">ageText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;20&quot;</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">ageText</span><span class="p">);</span><span class="w">      </span><span class="c1">// &quot;20&quot; → 20</span>
 
 <span class="c1">// 文字列 → 小数</span>
-<span class="kt">string</span><span class="w"> </span><span class="n">heightText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mf">175.5</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;;</span>
-<span class="kt">double</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">heightText</span><span class="p">);</span><span class="w"> </span><span class="c1">// &amp;quot;175.5&amp;quot; → 175.5</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">heightText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;175.5&quot;</span><span class="p">;</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">heightText</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;175.5&quot; → 175.5</span>
 
 <span class="c1">// 数値 → 文字列</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">85</span><span class="p">;</span>
-<span class="kt">string</span><span class="w"> </span><span class="n">scoreText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span><span class="w"> </span><span class="c1">// 85 → &amp;quot;85&amp;quot;</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">scoreText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span><span class="w"> </span><span class="c1">// 85 → &quot;85&quot;</span>
 </code></pre></div>
 <h2 id="_10">例題：簡単な計算機</h2>
 <p>まずは下記のコードを手作業で書き写して流れを理解しながら出力を確認しましょう</p>
@@ -6004,23 +5998,23 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">===</span><span class="w"> </span><span class="err">簡単な足し算計算機</span><span class="w"> </span><span class="o">===&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;=== 簡単な足し算計算機 ===&quot;</span><span class="p">);</span>
 
 <span class="w">            </span><span class="c1">// 1つ目の数値を入力</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mi">1</span><span class="err">つ目の数値を入力してください</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;1つ目の数値を入力してください:&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="n">input1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
 <span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">number1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">input1</span><span class="p">);</span>
 
 <span class="w">            </span><span class="c1">// 2つ目の数値を入力</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="mi">2</span><span class="err">つ目の数値を入力してください</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;2つ目の数値を入力してください:&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="n">input2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
 <span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">number2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">input2</span><span class="p">);</span>
 
 <span class="w">            </span><span class="c1">// 計算と結果表示</span>
 <span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">number2</span><span class="p">;</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">計算結果</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">number1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">number2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;計算結果:&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">number1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; + &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">number2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -6042,18 +6036,18 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">===</span><span class="w"> </span><span class="n">BMI</span><span class="err">計算機</span><span class="w"> </span><span class="o">===&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;=== BMI計算機 ===&quot;</span><span class="p">);</span>
 
 <span class="w">            </span><span class="c1">// 名前の入力</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">お名前を入力してください</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;お名前を入力してください:&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
 
 <span class="w">            </span><span class="c1">// 身長の入力</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">身長を入力してください（</span><span class="n">cm</span><span class="err">）</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;身長を入力してください（cm）:&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">());</span>
 
 <span class="w">            </span><span class="c1">// 体重の入力</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">体重を入力してください（</span><span class="n">kg</span><span class="err">）</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;体重を入力してください（kg）:&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">double</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">());</span>
 
 <span class="w">            </span><span class="c1">// BMI計算（身長をメートルに変換）</span>
@@ -6061,18 +6055,18 @@
 <span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">bmi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">heightInMeters</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">heightInMeters</span><span class="p">);</span>
 
 <span class="w">            </span><span class="c1">// 結果表示</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">===</span><span class="w"> </span><span class="err">結果</span><span class="w"> </span><span class="o">===&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">さんの</span><span class="n">BMI</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bmi</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">F1</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;));</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;=== 結果 ===&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;さんのBMI: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bmi</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&quot;F1&quot;</span><span class="p">));</span>
 
 <span class="w">            </span><span class="c1">// BMIの判定</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">判定</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bmi</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="w"> </span><span class="mf">18.5</span><span class="p">)</span>
-<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">低体重</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">bmi</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span>
-<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">普通体重</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;判定: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bmi</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">18.5</span><span class="p">)</span>
+<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;低体重&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">bmi</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span>
+<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;普通体重&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="k">else</span>
-<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">肥満</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;肥満&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -6095,10 +6089,6 @@
 2. 単価を入力
 3. 個数を入力
 4. 合計金額を計算して表示</p>
-<p>&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;</p>
 <h3 id="_14">解答例</h3>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
 
@@ -6108,28 +6098,28 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">===</span><span class="w"> </span><span class="err">買い物計算機</span><span class="w"> </span><span class="o">===&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;=== 買い物計算機 ===&quot;</span><span class="p">);</span>
 
 <span class="w">            </span><span class="c1">// 商品情報の入力</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">商品名を入力してください</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;商品名を入力してください:&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="kt">string</span><span class="w"> </span><span class="n">productName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
 
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">単価を入力してください（円）</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;単価を入力してください（円）:&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">unitPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">());</span>
 
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">個数を入力してください</span><span class="p">:</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;個数を入力してください:&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">());</span>
 
 <span class="w">            </span><span class="c1">// 計算</span>
 <span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">totalPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unitPrice</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span>
 
 <span class="w">            </span><span class="c1">// 結果表示</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="o">===</span><span class="w"> </span><span class="err">計算結果</span><span class="w"> </span><span class="o">===&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">商品名</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">productName</span><span class="p">);</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">単価</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">unitPrice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">円</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">個数</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">個</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
-<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">合計金額</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">totalPrice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;</span><span class="err">円</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">;);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;=== 計算結果 ===&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;商品名: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">productName</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;単価: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">unitPrice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;円&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;個数: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;個&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;合計金額: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">totalPrice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;円&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
