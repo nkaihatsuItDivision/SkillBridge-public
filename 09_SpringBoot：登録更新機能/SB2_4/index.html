@@ -1,0 +1,7356 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../SB2_3/">
+      
+      
+        <link rel="next" href="../SB2_5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/logo_tab.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>9.4 エラー処理・UX改善：ユーザビリティ重視の設計 - SKILBRIDGE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="SKILBRIDGE" class="md-header__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SKILBRIDGE
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9.4 エラー処理・UX改善：ユーザビリティ重視の設計
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SKILBRIDGE" class="md-nav__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    SKILBRIDGE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コース一覧
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    コース一覧
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00_PC基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00_PC基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC%E5%9F%BA%E7%A4%8E/PCBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.1 PC基本操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC%E5%9F%BA%E7%A4%8E/PCBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.2 ファイル・フォルダ操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC%E5%9F%BA%E7%A4%8E/PCBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.3 インターネット・ブラウザ活用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC%E5%9F%BA%E7%A4%8E/PCBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.4 タイピング練習
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC%E5%9F%BA%E7%A4%8E/PCBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.5 次章への準備・心構え
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01_Web基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01_Web基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 Webページが表示される基本的な流れ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 HTTP/HTTPS - インターネットの共通言語
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 リクエストとレスポンス - データのやり取り
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 フォーム送信の仕組み
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5 Webページの仕組みとHTML/CSSの役割
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.6 HTMLの基本構造を理解する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.7 基本的なHTMLタグで文書を作る
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.8 リストとリンクで情報を整理する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.9 画像と表で内容を豊かにする
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.10 CSSの基本とスタイルの適用方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.11 レイアウトの基礎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.11 レイアウトの基礎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.13 実践：シンプルな自己紹介ページを作成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.14 フォームの基本構造を理解する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.15 様々な入力要素でフォームを充実させる
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.16 HTMLバリデーションでユーザビリティを向上させる
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.17 CSSでフォームを美しくスタイリングする
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.18 実践：お問い合わせフォームを完成させて送信体験
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02_Java入門
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02_Java入門
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 開発環境とJavaプログラムの基本構造
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 変数の基礎（int, String）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 基本的な演算（+, -, ==, !=）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 簡単な条件分岐（if, else）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 簡単な繰り返し（for文の基本）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6 メソッドとクラスの概念紹介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 8つの基本データ型完全マスター
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.8 文字列（String）と参照型の理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.9 型変換（キャスト）と注意点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.10 全演算子と優先順位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.11 実践演習：型と演算子の使い分け
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.11 実践演習：型と演算子の使い分け
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.13 Scanner の基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.14 入力データの検証とエラーハンドリング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.15 対話型プログラム・実用的入出力
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.16 設計から実装までの流れ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.17 実践課題1：電卓プログラム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.18 実践課題2：成績管理プログラム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.19 Week4への準備（配列・ArrayListの予告）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03_Java基礎固め
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03_Java基礎固め
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 配列の詳細復習と制限の再確認
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 ArrayList入門：基本操作をマスター
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 ArrayListの高度な操作：検索・並び替え・変換
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 配列とArrayListの使い分け：実践的判断基準
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 実践演習：ToDoリスト管理システム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 クラスの豊富なメソッド完全ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.7 文字列の検索・置換・分割の実践活用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.8 メソッドのオーバーロード：同名メソッドの使い分け
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.9 実践演習：文字列処理ツール作成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.10 Eclipse デバッグ機能：バグの効率的な発見と修正
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04_OOP基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04_OOP基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 オブジェクト指向とは何か：手続き型からOOPへの思考転換
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 クラスとインスタンス：設計図と実体の関係理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 初めてのクラス作成：Studentクラスの基本実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 フィールド：オブジェクトが持つデータの定義
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 コンストラクタ：オブジェクトの初期化処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 インスタンスメソッド：オブジェクトの動作定義
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7 カプセル化：private修飾子でデータを保護
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8 ゲッター・セッター：安全なデータアクセス方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.9 複数クラスの協調設計：StudentとGradeクラスの連携
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.10 実践演習：OOP版学生管理システム開発
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05_OOP応用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05_OOP応用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 継承とは何か：クラス間の親子関係を理解する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 メソッドのオーバーライド：子クラスでの動作カスタマイズ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 継承を活用した学生管理システムの拡張
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 ポリモーフィズム：同じインターフェースで異なる動作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 抽象クラス：具体化を強制する設計技術
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 インターフェース：契約による設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.7 例外処理の設計：try-catch-finallyの体系的活用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.8 堅牢なシステム設計：例外処理のベストプラクティス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.9 Lombok導入：コード生成による開発効率化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.10 実践演習：OOP応用版学生管理システム完成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06_GitGitHub基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06_GitGitHub基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 なぜバージョン管理が必要なのか：開発現場の現実
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 Gitの基本概念：リポジトリ・コミット・履歴の理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 最初のコミット：システムをGit管理下に置く
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4 変更管理の実践：ファイル修正・追加・削除の管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.5 履歴管理と復元：過去のバージョンへの戻し方
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.6 GitHubアカウント作成とリモートリポジトリ連携
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.7 push・pullの基本：ローカルとリモートの同期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.8 GitHubの活用：Issue・README・ライセンスの理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.9 ブランチの基礎：機能開発の安全な分岐
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.10 実践演習：Pull Request体験とチーム開発フロー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07_SQL・DB設計
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    07_SQL・DB設計
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_SQL%E3%83%BBDB%E8%A8%AD%E8%A8%88/SQLDB_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 なぜデータベースが必要なのか：データ管理の課題と解決策
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_SQL%E3%83%BBDB%E8%A8%AD%E8%A8%88/SQLDB_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 MySQLとSQL基本概念：データベース・テーブル・フィールドの理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_SQL%E3%83%BBDB%E8%A8%AD%E8%A8%88/SQLDB_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 データ取得の基本：SELECT文によるデータ抽出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_SQL%E3%83%BBDB%E8%A8%AD%E8%A8%88/SQLDB_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4 データ操作の実践：INSERT・UPDATE・DELETEによるデータ管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_SQL%E3%83%BBDB%E8%A8%AD%E8%A8%88/SQLDB_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.5 実践演習：Week 5学生管理システムのデータベース化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_SQL%E3%83%BBDB%E8%A8%AD%E8%A8%88/SQLDB_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.6 結合とサブクエリ：複数テーブルの連携操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_SQL%E3%83%BBDB%E8%A8%AD%E8%A8%88/SQLDB_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.7 集約関数と分析：COUNT・SUM・AVG・GROUP BYによるデータ分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_SQL%E3%83%BBDB%E8%A8%AD%E8%A8%88/SQLDB_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.8 テーブル設計とER図：正規化・主キー・外部キーの理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_SQL%E3%83%BBDB%E8%A8%AD%E8%A8%88/SQLDB_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.9 実用的なDB設計：学生管理システム用データベースの完全設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_SQL%E3%83%BBDB%E8%A8%AD%E8%A8%88/SQLDB_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.10 Spring Boot連携のための最終セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08_SpringBoot：表示機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    08_SpringBoot：表示機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 なぜSpring Bootなのか：現代Web開発の課題と解決策
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 MVCアーキテクチャ：Webアプリケーションの全体像
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 Spring Bootプロジェクト作成：Week8.10準備の活用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4 データベース接続確認：MyBatis連携の動作テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.5 Student Entityクラス：JavaクラスとDBテーブルの完全対応
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.6 StudentMapper実装：MyBatis基礎とSQL自動実行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.7 StudentController作成：リクエスト処理の基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.8 学生一覧表示機能：データ取得から画面表示まで
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.9 Thymeleaf表示機能：条件分岐と動的スタイリング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09_SpringBoot：登録更新機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    09_SpringBoot：登録更新機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SB2_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1 StudentDataクラス設計：フォーム専用DTOの必要性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SB2_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2 新規登録画面作成：Thymeleafフォームの構築
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SB2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3 Bean Validation導入：入力チェックの自動化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.4 エラー処理・UX改善：ユーザビリティ重視の設計
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.4 エラー処理・UX改善：ユーザビリティ重視の設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 このレッスンの目標
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Week 9.3での成果を振り返ろう
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Week 9.3での成果を振り返ろう">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-93week-94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Week 9.3からWeek 9.4への技術発展
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        習得済みの技術基盤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.4での発展ポイント
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎨 なぜユーザビリティ改善が重要なのか？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 なぜユーザビリティ改善が重要なのか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ユーザー体験の重要性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 UXの重要性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uxux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        良いUXと悪いUXの違い
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ux_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エンタープライズ開発でのUX重要性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔀 条件分岐による親切な案内技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔀 条件分岐による親切な案内技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本概念：エラー状況に応じた表示制御
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 条件付き表示機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. エラー種別に応じた詳細案内
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 複数エラー時の優先順位表示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 状況に応じた動的メッセージ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💾 フォーム値保持技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💾 フォーム値保持技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本概念：エラー時でも入力データを維持
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 フォーム入力値の保持
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-thymeleaf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 基本的な値保持（Thymeleaf自動機能）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 条件付きプレースホルダー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 入力値に基づく動的案内
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 ユーザビリティ向上技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 ユーザビリティ向上技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 段階的入力支援
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 ユーザビリティ改善
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 視覚的フィードバック強化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. プログレッシブエンハンスメント
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ♿ アクセシビリティ配慮技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="♿ アクセシビリティ配慮技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本概念：すべてのユーザーに優しい設計
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 アクセシビリティ機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-aria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. aria属性による支援技術対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. キーボードナビゲーション対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. エラー状態の明確な伝達
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ux_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎮 実践演習：UX改善機能付きフォームの実装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎮 実践演習：UX改善機能付きフォームの実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 練習完了
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目標：プロフェッショナルレベルのユーザー体験を実現
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        段階的実装ガイド
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎉 実装完了後の確認ポイント
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-94_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Week 9.4完了時の技術習得状況
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Week 9.4完了時の技術習得状況">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 スキルの進捗
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏆 習得完了した技術スキル
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏆 習得完了した技術スキル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-91-dto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.1: DTOパターン基盤 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-92-thymeleaf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.2: Thymeleafフォーム構築 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-93-bean-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.3: Bean Validation導入 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-94-ux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.4: エラー処理・UX改善 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Week 9.5以降への準備完了
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 まとめ：ユーザビリティ向上技術の完全習得
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 まとめ：ユーザビリティ向上技術の完全習得">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-94_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.4で達成したこと
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 習得成果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 習得成果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 条件分岐による親切な案内技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. フォーム値保持技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ユーザビリティ向上技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. アクセシビリティ配慮技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実務での価値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-93_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.3技術との統合実感
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-95postmapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 次回予告：Week 9.5「新規登録処理：@PostMapping・データ保存の実装」
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 次回予告：Week 9.5「新規登録処理：@PostMapping・データ保存の実装」">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-95_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.5で実装する機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 準備完了
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 準備完了">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主要な学習内容
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-95_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.5への期待
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-94_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎉 Week 9.4学習完了おめでとうございます！
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎉 Week 9.4学習完了おめでとうございます！">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        達成した技術レベル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        次のステップへ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SB2_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.5 新規登録処理：@PostMapping・データ保存の実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SB2_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.6 編集機能実装：既存データの更新処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SB2_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.7 成功・失敗処理：適切なフィードバック設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SB2_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.8 Service層リファクタリング：ビジネスロジック分離
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10_SpringBoot：検索削除機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10_SpringBoot：検索削除機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.1 検索機能基盤：動的クエリとRepository拡張
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.2 検索画面作成：フォーム設計と条件入力UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.3 検索結果表示：ページネーションと結果一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.4 高度検索機能：複合条件と動的フィルタリング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.5 削除機能基盤：安全な削除処理とトランザクション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.6 一括削除機能：チェックボックスと複数選択処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.7 データエクスポート：CSV・Excel出力機能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.8 Ajax導入：非同期通信とリアルタイム検索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.9 パフォーマンス最適化：インデックスとクエリ効率化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.10 システム統合完成：総合テストと運用準備
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11_実務基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11_実務基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_%E5%AE%9F%E5%8B%99%E5%9F%BA%E7%A4%8E/Practical_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.1 実務基礎知識：要件定義・設計・ドキュメントの基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_%E5%AE%9F%E5%8B%99%E5%9F%BA%E7%A4%8E/Practical_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.2 開発現場の知識：プロジェクト管理・チーム開発・品質管理の基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_%E5%AE%9F%E5%8B%99%E5%9F%BA%E7%A4%8E/Practical_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.3 IT業界・キャリア基礎：業界知識・技術動向・キャリア開発の基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#初級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#初級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#とは何か？開発環境の準備
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    変数とデータ型の基礎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザー入力と対話的プログラム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    条件分岐（if文）でプログラムに判断力を
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ループ文で効率的な繰り返し処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    配列で複数のデータを効率管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メソッドでコードを整理・再利用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クラスとオブジェクト - オブジェクト指向の第一歩
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#上級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#上級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非同期プログラミング（async/await）の実践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LINQ高度活用とカスタム拡張メソッド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    デザインパターンの実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高度な例外処理の実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メモリ管理とパフォーマンス最適化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    リフレクションと動的プログラミング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    並行プログラミングの高度な技法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    統合プロジェクト構築：エンタープライズWebアプリケーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_15" id="__nav_2_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Office全般ツール
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Office全般ツール
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Office%E5%85%A8%E8%88%AC%E3%83%84%E3%83%BC%E3%83%AB/Office_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Excel超基礎 - セルに文字を入力してみよう
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Office%E5%85%A8%E8%88%AC%E3%83%84%E3%83%BC%E3%83%AB/Office_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Word超基礎 - 文字を入力してみよう
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Office%E5%85%A8%E8%88%AC%E3%83%84%E3%83%BC%E3%83%AB/Office_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerPoint超基礎 - スライドに文字を入力してみよう
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 このレッスンの目標
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Week 9.3での成果を振り返ろう
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Week 9.3での成果を振り返ろう">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-93week-94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Week 9.3からWeek 9.4への技術発展
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        習得済みの技術基盤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.4での発展ポイント
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎨 なぜユーザビリティ改善が重要なのか？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 なぜユーザビリティ改善が重要なのか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ユーザー体験の重要性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 UXの重要性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uxux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        良いUXと悪いUXの違い
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ux_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エンタープライズ開発でのUX重要性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔀 条件分岐による親切な案内技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔀 条件分岐による親切な案内技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本概念：エラー状況に応じた表示制御
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 条件付き表示機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. エラー種別に応じた詳細案内
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 複数エラー時の優先順位表示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 状況に応じた動的メッセージ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💾 フォーム値保持技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💾 フォーム値保持技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本概念：エラー時でも入力データを維持
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 フォーム入力値の保持
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-thymeleaf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 基本的な値保持（Thymeleaf自動機能）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 条件付きプレースホルダー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 入力値に基づく動的案内
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 ユーザビリティ向上技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 ユーザビリティ向上技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 段階的入力支援
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 ユーザビリティ改善
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 視覚的フィードバック強化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. プログレッシブエンハンスメント
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ♿ アクセシビリティ配慮技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="♿ アクセシビリティ配慮技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本概念：すべてのユーザーに優しい設計
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 アクセシビリティ機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-aria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. aria属性による支援技術対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. キーボードナビゲーション対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. エラー状態の明確な伝達
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ux_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎮 実践演習：UX改善機能付きフォームの実装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎮 実践演習：UX改善機能付きフォームの実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 練習完了
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目標：プロフェッショナルレベルのユーザー体験を実現
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        段階的実装ガイド
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎉 実装完了後の確認ポイント
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-94_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Week 9.4完了時の技術習得状況
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Week 9.4完了時の技術習得状況">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 スキルの進捗
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏆 習得完了した技術スキル
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏆 習得完了した技術スキル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-91-dto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.1: DTOパターン基盤 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-92-thymeleaf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.2: Thymeleafフォーム構築 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-93-bean-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.3: Bean Validation導入 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-94-ux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.4: エラー処理・UX改善 ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Week 9.5以降への準備完了
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 まとめ：ユーザビリティ向上技術の完全習得
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 まとめ：ユーザビリティ向上技術の完全習得">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-94_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.4で達成したこと
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 習得成果
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 習得成果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 条件分岐による親切な案内技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. フォーム値保持技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ユーザビリティ向上技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. アクセシビリティ配慮技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実務での価値
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-93_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.3技術との統合実感
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-95postmapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 次回予告：Week 9.5「新規登録処理：@PostMapping・データ保存の実装」
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 次回予告：Week 9.5「新規登録処理：@PostMapping・データ保存の実装」">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-95_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.5で実装する機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 準備完了
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 準備完了">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主要な学習内容
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-95_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 9.5への期待
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-94_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎉 Week 9.4学習完了おめでとうございます！
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎉 Week 9.4学習完了おめでとうございます！">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        達成した技術レベル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        次のステップへ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>9.4 エラー処理・UX改善：ユーザビリティ重視の設計</h1>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<p><lesson>
+  <type>text</type>
+  <description>Week 9.3でBean Validationによるバリデーション基盤を確立した学習者を対象に、エラー処理とユーザビリティ（UX）改善技術を習得させる。条件分岐による親切な案内表示、フォーム値保持技術、アクセシビリティ配慮などの高度なユーザー体験設計技術を段階的に学習し、Week 9.5以降のDB保存機能実装への技術基盤を確立する。</description>
+  <title>4.エラー処理・UX改善：ユーザビリティ重視の設計</title>
+  <content># 9.4 エラー処理・UX改善：ユーザビリティ重視の設計</p>
+<h2 id="_1">🎯 このレッスンの目標</h2>
+<p><strong>Week 9.3での Bean Validation 習得を基盤に、ユーザビリティを最優先とした高度なフォーム処理技術を身につけます！</strong></p>
+<ul>
+<li><strong>条件分岐による親切な案内</strong>: エラー状況に応じた適切なガイダンス表示</li>
+<li><strong>フォーム値保持技術</strong>: エラー時でも入力データを失わない仕組み</li>
+<li><strong>ユーザビリティ向上技術</strong>: より直感的で使いやすいフォーム設計</li>
+<li><strong>アクセシビリティ配慮</strong>: 障害のあるユーザーにも優しい設計</li>
+<li><strong>プロフェッショナルUX実装</strong>: エンタープライズレベルのユーザー体験設計</li>
+</ul>
+<p><strong>学習時間</strong>: 約50-60分</p>
+<hr />
+<h2 id="week-93">🔄 Week 9.3での成果を振り返ろう</h2>
+<p>Week 9.3では、Bean Validationによる強力なバリデーション基盤を確立しました：</p>
+<h3 id="week-93week-94">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_4_image1.html">Week 9.3からWeek 9.4への技術発展</a></h3>
+<h3 id="_2">習得済みの技術基盤</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Bean Validationによる自動エラー表示 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-3&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;name&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>名前<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> 
+           <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{name}&quot;</span> 
+           <span class="na">th:classappend</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;name&#39;)} ? &#39;is-invalid&#39; : &#39;&#39;&quot;</span>
+           <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> 
+           <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;例: 田中太郎&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;invalid-feedback&quot;</span> 
+         <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;name&#39;)}&quot;</span> 
+         <span class="na">th:errors</span><span class="o">=</span><span class="s">&quot;*{name}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- エラーサマリー表示 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasAnyErrors()}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-danger&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h6</span><span class="p">&gt;</span>入力エラーがあります<span class="p">&lt;/</span><span class="nt">h6</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-0&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">th:each</span><span class="o">=</span><span class="s">&quot;error : ${#fields.allErrors()}&quot;</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${error}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="week-94">Week 9.4での発展ポイント</h3>
+<p>Week 9.3の技術基盤を活用して、<strong>より親切で使いやすいユーザー体験</strong>を実現します：</p>
+<ul>
+<li>❌ <strong>従来</strong>: エラーメッセージを表示するだけ</li>
+<li>✅ <strong>Week 9.4</strong>: エラー状況に応じた親切な案内とサポート</li>
+</ul>
+<hr />
+<h2 id="_3">🎨 なぜユーザビリティ改善が重要なのか？</h2>
+<h3 id="_4">ユーザー体験の重要性</h3>
+<h3 id="ux">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_4_ux_importance.html">UXの重要性</a></h3>
+<p>実際の企業開発では、<strong>技術的に正しく動作する</strong>だけでは不十分です。
+ユーザーが「使いやすい」「親切だ」と感じるシステムこそが、真に価値のあるシステムです。</p>
+<h3 id="uxux">良いUXと悪いUXの違い</h3>
+<p><strong>悪いUX例</strong>：
+<div class="highlight"><pre><span></span><code>❌ エラー: メールアドレスの形式が正しくありません
+</code></pre></div>
+ユーザーは何が間違っているのか分からず、困惑してしまいます。</p>
+<p><strong>良いUX例</strong>：
+<div class="highlight"><pre><span></span><code>✅ メールアドレスについて
+正しい形式: 例）tanaka@example.com
+よくある間違い: @マークの忘れ、ドメイン名の誤り
+</code></pre></div>
+具体的な案内により、ユーザーは迷わず正しい入力ができます。</p>
+<h3 id="ux_1">エンタープライズ開発でのUX重要性</h3>
+<ul>
+<li><strong>ユーザー満足度向上</strong>: 使いやすいシステムは利用者から高評価</li>
+<li><strong>サポートコスト削減</strong>: 親切な案内により問い合わせが減少</li>
+<li><strong>業務効率向上</strong>: 迷わず操作できるシステムで作業効率アップ</li>
+<li><strong>競争優位性確保</strong>: UXの差が企業の競争力を決定</li>
+</ul>
+<hr />
+<h2 id="_5">🔀 条件分岐による親切な案内技術</h2>
+<h3 id="_6">基本概念：エラー状況に応じた表示制御</h3>
+<h3 id="_7">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_4_conditional_display.html">条件付き表示機能</a></h3>
+<p>Week 9.3のバリデーション技術を活用して、エラーの種類や状況に応じて最適な案内を表示します。</p>
+<h3 id="1">1. エラー種別に応じた詳細案内</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- メールアドレスエラー時の親切な案内 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-info mt-2&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-info-circle&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>メールアドレスについて<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    正しい形式: 例）tanaka@example.com<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    よくある間違い: @マークの忘れ、ドメイン名の誤り
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- パスワードエラー時の具体的な改善案内 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;password&#39;)}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-warning mt-2&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-shield-alt&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>パスワード設定のヒント<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    • 8文字以上で設定してください<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    • 英数字を組み合わせると安全です<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    • 記号（!@#$など）を含めるとより強固になります
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="2">2. 複数エラー時の優先順位表示</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 複数エラーが発生した場合の段階的案内 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasAnyErrors()}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-primary&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-list-ol&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>入力確認のお願い<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    以下の順番で確認してください：<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;name&#39;)}&quot;</span><span class="p">&gt;</span>
+        1. 名前を入力してください
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)}&quot;</span><span class="p">&gt;</span>
+        2. メールアドレスを確認してください
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;password&#39;)}&quot;</span><span class="p">&gt;</span>
+        3. パスワードの形式を確認してください
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="3">3. 状況に応じた動的メッセージ</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- エラー内容に応じて表示メッセージを変更 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-text&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${!#fields.hasErrors(&#39;email&#39;)}&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-lightbulb text-primary&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">small</span><span class="p">&gt;</span>受信可能なメールアドレスを入力してください<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-text&quot;</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)}&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-exclamation-triangle text-warning&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">small</span><span class="p">&gt;</span>メールアドレスの形式を確認して、再度入力してください<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="_8">💾 フォーム値保持技術</h2>
+<h3 id="_9">基本概念：エラー時でも入力データを維持</h3>
+<h3 id="_10">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_4_form_value_retention.html">フォーム入力値の保持</a></h3>
+<p>ユーザーがフォームでエラーになったとき、<strong>入力した内容がすべて消えてしまう</strong>のは最悪の体験です。
+Thymeleafの機能を活用して、エラー時でも入力値を保持します。</p>
+<h3 id="1-thymeleaf">1. 基本的な値保持（Thymeleaf自動機能）</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- th:fieldにより自動的に値が保持される --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> 
+       <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{name}&quot;</span> 
+       <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> 
+       <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;例: 田中太郎&quot;</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- エラー時でも入力した「田中太郎」が残る --&gt;</span>
+</code></pre></div>
+<p><strong>重要ポイント</strong>：
+- <code>th:field="*{name}"</code> により、フォーム送信後も値が保持される
+- ユーザーは正しい項目まで再入力する必要がない
+- <strong>ユーザー体験が大幅に改善される</strong></p>
+<h3 id="2_1">2. 条件付きプレースホルダー</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- エラー状況に応じてプレースホルダーを変更 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> 
+       <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{name}&quot;</span> 
+       <span class="na">th:placeholder</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;name&#39;)} ? &#39;正しい名前を入力してください&#39; : &#39;例: 田中太郎&#39;&quot;</span>
+       <span class="na">th:classappend</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;name&#39;)} ? &#39;is-invalid&#39; : &#39;&#39;&quot;</span>
+       <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- エラー時: placeholder=&quot;正しい名前を入力してください&quot; --&gt;</span>
+<span class="cm">&lt;!-- 正常時: placeholder=&quot;例: 田中太郎&quot; --&gt;</span>
+</code></pre></div>
+<h3 id="3_1">3. 入力値に基づく動的案内</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 入力済み項目に対する成功フィードバック --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${!#fields.hasErrors(&#39;email&#39;) and !#strings.isEmpty(studentData.email)}&quot;</span> 
+     <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-success alert-sm mt-2&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-check-circle&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> 
+    メールアドレスの形式が正しいです
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- 未入力項目に対する入力促進案内 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#strings.isEmpty(studentData.name) and !#fields.hasErrors(&#39;name&#39;)}&quot;</span> 
+     <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-text&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-edit text-muted&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">small</span><span class="p">&gt;</span>お名前を入力してください<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="_11">🎯 ユーザビリティ向上技術</h2>
+<h3 id="1_1">1. 段階的入力支援</h3>
+<h3 id="_12">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_4_usability_improvement.html">ユーザビリティ改善</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 入力前：基本的な案内 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-text&quot;</span> <span class="na">th:unless</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;password&#39;)}&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-lightbulb text-warning&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">small</span><span class="p">&gt;</span>パスワードは8文字以上で、英数字を組み合わせると安全です<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- 入力中：リアルタイムガイダンス --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-text&quot;</span> 
+     <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${!#strings.isEmpty(studentData.password) and !#fields.hasErrors(&#39;password&#39;)}&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-check text-success&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">small</span><span class="p">&gt;</span>適切なパスワードです<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- エラー時：具体的な改善案内 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;invalid-feedback&quot;</span> 
+     <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;password&#39;)}&quot;</span> 
+     <span class="na">th:errors</span><span class="o">=</span><span class="s">&quot;*{password}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="2_2">2. 視覚的フィードバック強化</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 入力状態に応じたアイコン表示 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;input-group&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;input-group-text&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">th:class</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)} ? &#39;fas fa-exclamation-triangle text-danger&#39; : </span>
+<span class="s">                     (!#strings.isEmpty(studentData.email) ? &#39;fas fa-check text-success&#39; : &#39;fas fa-envelope text-muted&#39;)&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> 
+           <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{email}&quot;</span> 
+           <span class="na">th:classappend</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)} ? &#39;is-invalid&#39; : </span>
+<span class="s">                           (!#strings.isEmpty(studentData.email) ? &#39;is-valid&#39; : &#39;&#39;)&quot;</span>
+           <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> 
+           <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;例: tanaka@example.com&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="3_2">3. プログレッシブエンハンスメント</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 入力完了項目数の表示 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card-header&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h5</span><span class="p">&gt;</span>学生登録フォーム<span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;progress mt-2&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height: 6px;&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;progress-bar&quot;</span> 
+             <span class="na">th:style</span><span class="o">=</span><span class="s">&quot;&#39;width: &#39; + </span>
+<span class="s">             (((!#strings.isEmpty(studentData.name) ? 1 : 0) + </span>
+<span class="s">               (!#strings.isEmpty(studentData.email) ? 1 : 0) + </span>
+<span class="s">               (!#strings.isEmpty(studentData.password) ? 1 : 0)) * 33) + &#39;%&#39;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">small</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-muted&quot;</span><span class="p">&gt;</span>
+        入力完了: 
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;((!#strings.isEmpty(studentData.name) ? 1 : 0) + </span>
+<span class="s">                       (!#strings.isEmpty(studentData.email) ? 1 : 0) + </span>
+<span class="s">                       (!#strings.isEmpty(studentData.password) ? 1 : 0))&quot;</span><span class="p">&gt;</span>0<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>/3項目
+    <span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="_13">♿ アクセシビリティ配慮技術</h2>
+<h3 id="_14">基本概念：すべてのユーザーに優しい設計</h3>
+<h3 id="_15">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_4_accessibility_features.html">アクセシビリティ機能</a></h3>
+<p>アクセシビリティとは、障害の有無に関わらず、すべてのユーザーが使いやすいシステムを作ることです。</p>
+<h3 id="1-aria">1. aria属性による支援技術対応</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- スクリーンリーダー対応のフォーム --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-3&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>メールアドレス<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> 
+           <span class="na">id</span><span class="o">=</span><span class="s">&quot;email&quot;</span>
+           <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{email}&quot;</span> 
+           <span class="na">aria-describedby</span><span class="o">=</span><span class="s">&quot;email-help email-error&quot;</span>
+           <span class="na">th:classappend</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)} ? &#39;is-invalid&#39; : &#39;&#39;&quot;</span>
+           <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> 
+           <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;例: tanaka@example.com&quot;</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- 通常時の説明 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;email-help&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-text&quot;</span><span class="p">&gt;</span>
+        メールアドレスを入力してください（例: tanaka@example.com）
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- エラー時の説明 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;email-error&quot;</span> 
+         <span class="na">class</span><span class="o">=</span><span class="s">&quot;invalid-feedback&quot;</span> 
+         <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)}&quot;</span> 
+         <span class="na">th:errors</span><span class="o">=</span><span class="s">&quot;*{email}&quot;</span>
+         <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="2_3">2. キーボードナビゲーション対応</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- tabindexによる適切な操作順序 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">th:object</span><span class="o">=</span><span class="s">&quot;${studentData}&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{name}&quot;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{email}&quot;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;password&quot;</span> <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{password}&quot;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">tabindex</span><span class="o">=</span><span class="s">&quot;4&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="p">&gt;</span>登録<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="3_3">3. エラー状態の明確な伝達</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- role=&quot;alert&quot;でエラー状態を明確に通知 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasAnyErrors()}&quot;</span> 
+     <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-danger&quot;</span> 
+     <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span>
+     <span class="na">aria-live</span><span class="o">=</span><span class="s">&quot;polite&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h6</span><span class="p">&gt;</span>入力エラーがあります<span class="p">&lt;/</span><span class="nt">h6</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>以下の項目を確認してください：<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-0&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">th:each</span><span class="o">=</span><span class="s">&quot;error : ${#fields.allErrors()}&quot;</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${error}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="ux_2">🎮 実践演習：UX改善機能付きフォームの実装</h2>
+<p>Week 9.1-9.3で学習した技術を活用して、ユーザビリティを最重視したフォームを実装してみましょう！</p>
+<h3 id="_16">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_4_practice_completion.html">練習完了</a></h3>
+<h3 id="_17">目標：プロフェッショナルレベルのユーザー体験を実現</h3>
+<p><strong>実装する機能</strong>：
+- エラー状況に応じた親切な案内表示
+- フォーム値の完全保持
+- 入力進捗の視覚的表示
+- アクセシビリティ完全対応
+- 段階的な成功フィードバック</p>
+<h3 id="_18">段階的実装ガイド</h3>
+<details>
+<summary><strong>ステップ1: 基本的な条件分岐表示を実装する</strong></summary>
+
+Week 9.3のフォームに、エラー種別に応じた親切な案内を追加してみましょう。
+
+**実装場所**: `src/main/resources/templates/students/form.html`
+
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- TODO: メールアドレスエラー時の詳細案内を追加 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-3&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>メールアドレス<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> 
+           <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{email}&quot;</span> 
+           <span class="na">th:classappend</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)} ? &#39;is-invalid&#39; : &#39;&#39;&quot;</span>
+           <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> 
+           <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;例: tanaka@example.com&quot;</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- 基本的なエラー表示（Week 9.3） --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;invalid-feedback&quot;</span> 
+         <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)}&quot;</span> 
+         <span class="na">th:errors</span><span class="o">=</span><span class="s">&quot;*{email}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- TODO: ここに親切な案内を追加 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-info mt-2&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-info-circle&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>メールアドレスについて<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        正しい形式: 例）tanaka@example.com<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+        よくある間違い: @マークの忘れ、ドメイン名の誤り
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+
+**確認方法**：
+1. 不正なメールアドレスを入力
+2. フォーム送信
+3. 親切な案内が表示されるか確認
+
+</details>
+
+<details>
+<summary><strong>ステップ2: 成功フィードバックを追加する</strong></summary>
+
+正しい入力時に成功メッセージを表示する機能を追加しましょう。
+
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- TODO: 成功フィードバックを追加 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-3&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>メールアドレス<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- アイコン付き入力フィールド --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;input-group&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;input-group-text&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">i</span> <span class="na">th:class</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)} ? &#39;fas fa-exclamation-triangle text-danger&#39; : </span>
+<span class="s">                         (!#strings.isEmpty(studentData.email) ? &#39;fas fa-check text-success&#39; : &#39;fas fa-envelope text-muted&#39;)&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> 
+               <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{email}&quot;</span> 
+               <span class="na">th:classappend</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)} ? &#39;is-invalid&#39; : </span>
+<span class="s">                               (!#strings.isEmpty(studentData.email) ? &#39;is-valid&#39; : &#39;&#39;)&quot;</span>
+               <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> 
+               <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;例: tanaka@example.com&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- エラー表示 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;invalid-feedback&quot;</span> 
+         <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)}&quot;</span> 
+         <span class="na">th:errors</span><span class="o">=</span><span class="s">&quot;*{email}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- 成功フィードバック --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${!#fields.hasErrors(&#39;email&#39;) and !#strings.isEmpty(studentData.email)}&quot;</span> 
+         <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-success alert-sm mt-2&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-check-circle&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> 
+        メールアドレスの形式が正しいです
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+
+</details>
+
+<details>
+<summary><strong>ステップ3: 入力進捗表示を実装する</strong></summary>
+
+ユーザーが現在の入力進捗を把握できるプログレスバーを追加しましょう。
+
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- TODO: フォームヘッダーに進捗表示を追加 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card-header&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h5</span><span class="p">&gt;</span>学生登録フォーム<span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;progress mt-2&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height: 6px;&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;progress-bar bg-success&quot;</span> 
+             <span class="na">th:style</span><span class="o">=</span><span class="s">&quot;&#39;width: &#39; + </span>
+<span class="s">             (((!#strings.isEmpty(studentData.name) ? 1 : 0) + </span>
+<span class="s">               (!#strings.isEmpty(studentData.email) ? 1 : 0) + </span>
+<span class="s">               (!#strings.isEmpty(studentData.password) ? 1 : 0)) * 33) + &#39;%&#39;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">small</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-muted&quot;</span><span class="p">&gt;</span>
+        入力完了: 
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;((!#strings.isEmpty(studentData.name) ? 1 : 0) + </span>
+<span class="s">                       (!#strings.isEmpty(studentData.email) ? 1 : 0) + </span>
+<span class="s">                       (!#strings.isEmpty(studentData.password) ? 1 : 0))&quot;</span><span class="p">&gt;</span>0<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>/3項目
+    <span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+
+**動作確認**：
+1. 各フィールドに順番に入力
+2. 進捗バーが段階的に伸びることを確認
+3. 入力完了数が正しく表示されることを確認
+
+</details>
+
+<details>
+<summary><strong>ステップ4: アクセシビリティ対応を強化する</strong></summary>
+
+支援技術対応のため、aria属性を追加しましょう。
+
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- TODO: アクセシビリティ対応を追加 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-3&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>メールアドレス<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> 
+           <span class="na">id</span><span class="o">=</span><span class="s">&quot;email&quot;</span>
+           <span class="na">th:field</span><span class="o">=</span><span class="s">&quot;*{email}&quot;</span> 
+           <span class="na">aria-describedby</span><span class="o">=</span><span class="s">&quot;email-help email-error&quot;</span>
+           <span class="na">th:classappend</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)} ? &#39;is-invalid&#39; : &#39;&#39;&quot;</span>
+           <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> 
+           <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;例: tanaka@example.com&quot;</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- 通常時の説明 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;email-help&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-text&quot;</span><span class="p">&gt;</span>
+        メールアドレスを入力してください
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- エラー時の説明 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;email-error&quot;</span> 
+         <span class="na">class</span><span class="o">=</span><span class="s">&quot;invalid-feedback&quot;</span> 
+         <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasErrors(&#39;email&#39;)}&quot;</span> 
+         <span class="na">th:errors</span><span class="o">=</span><span class="s">&quot;*{email}&quot;</span>
+         <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- TODO: エラーサマリーにrole=&quot;alert&quot;を追加 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">th:if</span><span class="o">=</span><span class="s">&quot;${#fields.hasAnyErrors()}&quot;</span> 
+     <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-danger&quot;</span> 
+     <span class="na">role</span><span class="o">=</span><span class="s">&quot;alert&quot;</span>
+     <span class="na">aria-live</span><span class="o">=</span><span class="s">&quot;polite&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h6</span><span class="p">&gt;</span>入力エラーがあります<span class="p">&lt;/</span><span class="nt">h6</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mb-0&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">th:each</span><span class="o">=</span><span class="s">&quot;error : ${#fields.allErrors()}&quot;</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&quot;${error}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+
+</details>
+
+<details>
+<summary><strong>ステップ5: 完成版の統合とテスト</strong></summary>
+
+すべての機能を統合した完成版フォームを作成しましょう。
+
+**最終確認項目**：
+- ✅ エラー時の親切な案内表示
+- ✅ 成功時のフィードバック表示
+- ✅ 入力進捗の視覚的表示
+- ✅ フォーム値の完全保持
+- ✅ アクセシビリティ対応
+
+**テストシナリオ**：
+1. **空白送信テスト**: すべて空白で送信し、親切な案内が表示されるか
+2. **部分入力テスト**: 一部だけ正しく入力し、進捗が正しく表示されるか
+3. **エラー修正テスト**: エラー修正時に成功フィードバックが表示されるか
+4. **キーボード操作テスト**: Tabキーでの移動が適切に機能するか
+5. **ブラウザ戻るテスト**: ブラウザの戻るボタンでも値が保持されるか
+
+</details>
+
+<h3 id="_19">🎉 実装完了後の確認ポイント</h3>
+<p>実装が完了したら、以下の点を確認してみましょう：</p>
+<ol>
+<li><strong>ユーザビリティの向上を実感</strong>: エラー時も親切で分かりやすい案内</li>
+<li><strong>技術的な成長を実感</strong>: Week 9.3の技術がUX改善に活用される</li>
+<li><strong>プロフェッショナル品質</strong>: エンタープライズレベルのフォーム設計</li>
+<li><strong>次のステップへの期待</strong>: Week 9.5でのDB保存機能実装への期待</li>
+</ol>
+<hr />
+<h2 id="week-94_1">📊 Week 9.4完了時の技術習得状況</h2>
+<h3 id="_20">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_4_skill_progress.html">スキルの進捗</a></h3>
+<h3 id="_21">🏆 習得完了した技術スキル</h3>
+<h4 id="week-91-dto">Week 9.1: DTOパターン基盤 ✅</h4>
+<ul>
+<li>フォーム専用DTOの設計技術</li>
+<li>Entity分離による保守性向上</li>
+<li>責務分離の実践的理解</li>
+</ul>
+<h4 id="week-92-thymeleaf">Week 9.2: Thymeleafフォーム構築 ✅</h4>
+<ul>
+<li>th:object・th:fieldによるフォームバインディング</li>
+<li>UI/UX設計技術の基礎</li>
+<li>Bootstrapを活用したモダンデザイン</li>
+</ul>
+<h4 id="week-93-bean-validation">Week 9.3: Bean Validation導入 ✅</h4>
+<ul>
+<li>@Valid・BindingResultによる自動バリデーション</li>
+<li>th:errorsによるエラー表示技術</li>
+<li>条件分岐表示の基礎技術</li>
+</ul>
+<h4 id="week-94-ux">Week 9.4: エラー処理・UX改善 ✅</h4>
+<ul>
+<li><strong>条件分岐による親切な案内技術</strong></li>
+<li><strong>フォーム値保持による優れたUX</strong></li>
+<li><strong>アクセシビリティ配慮技術</strong></li>
+<li><strong>プログレッシブエンハンスメント</strong></li>
+<li><strong>エンタープライズレベルのユーザー体験設計</strong></li>
+</ul>
+<h3 id="week-95">🚀 Week 9.5以降への準備完了</h3>
+<p>Week 9.4での学習により、以下の準備が完全に整いました：</p>
+<ul>
+<li><strong>高品質フォーム処理技術</strong>: ユーザビリティを重視したフォーム設計</li>
+<li><strong>バリデーション技術の実践活用</strong>: Week 9.3技術のUX改善での活用</li>
+<li><strong>プロフェッショナルUX実装力</strong>: エンタープライズレベルの設計技術</li>
+<li><strong>DB保存機能実装への技術基盤</strong>: Week 9.5での成功を確実にする基盤</li>
+</ul>
+<hr />
+<h2 id="_22">🎯 まとめ：ユーザビリティ向上技術の完全習得</h2>
+<h3 id="week-94_2">Week 9.4で達成したこと</h3>
+<h3 id="_23">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_4_mastery_achievement.html">習得成果</a></h3>
+<p>Week 9.4では、Week 9.3のバリデーション基盤を活用して、<strong>プロフェッショナルレベルのユーザー体験設計技術</strong>を完全に習得しました：</p>
+<h4 id="1_2">1. 条件分岐による親切な案内技術</h4>
+<ul>
+<li>エラー状況に応じた適切なガイダンス表示</li>
+<li>ユーザーが迷わず正しい入力ができる仕組み</li>
+<li>複数エラー時の優先順位付け案内</li>
+</ul>
+<h4 id="2_4">2. フォーム値保持技術</h4>
+<ul>
+<li>エラー時でも入力データを失わない仕組み</li>
+<li>条件付きプレースホルダーによる動的案内</li>
+<li>入力状況に応じた成功フィードバック</li>
+</ul>
+<h4 id="3_4">3. ユーザビリティ向上技術</h4>
+<ul>
+<li>段階的入力支援による使いやすさ向上</li>
+<li>視覚的フィードバックによる直感的操作</li>
+<li>プログレッシブエンハンスメントの実装</li>
+</ul>
+<h4 id="4">4. アクセシビリティ配慮技術</h4>
+<ul>
+<li>aria属性による支援技術対応</li>
+<li>キーボードナビゲーション対応</li>
+<li>すべてのユーザーに優しい設計</li>
+</ul>
+<h3 id="_24">実務での価値</h3>
+<p>今回習得した技術は、実際の企業開発で以下の価値を提供します：</p>
+<ul>
+<li><strong>ユーザー満足度向上</strong>: 親切で使いやすいシステム</li>
+<li><strong>サポートコスト削減</strong>: 迷わず操作できるインターフェース</li>
+<li><strong>業務効率向上</strong>: ストレスのない入力体験</li>
+<li><strong>競争優位性確保</strong>: UXの差による企業競争力向上</li>
+</ul>
+<h3 id="week-93_1">Week 9.3技術との統合実感</h3>
+<p>Week 9.3で学習したBean Validation技術が、Week 9.4のUX改善機能として実際に活用されることを実感できました：</p>
+<ul>
+<li><strong>バリデーション基盤</strong> → <strong>親切な案内システム</strong>への発展</li>
+<li><strong>エラー表示技術</strong> → <strong>ユーザビリティ向上機能</strong>への活用</li>
+<li><strong>技術の実用性</strong> → <strong>プロフェッショナル開発</strong>への確信</li>
+</ul>
+<hr />
+<h2 id="week-95postmapping">🚀 次回予告：Week 9.5「新規登録処理：@PostMapping・データ保存の実装」</h2>
+<h3 id="week-95_1">Week 9.5で実装する機能</h3>
+<h3 id="_25">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SpringBoot2_4_preparation_ready.html">準備完了</a></h3>
+<p>Week 9.4でユーザビリティを完璧に整えたフォームに、いよいよ<strong>データベース保存機能</strong>を実装します！</p>
+<h4 id="_26">主要な学習内容</h4>
+<ol>
+<li><strong>@PostMappingによるフォーム受信処理</strong></li>
+<li>HTTPメソッドの使い分けと実装</li>
+<li>
+<p>フォームデータの確実な受け取り技術</p>
+</li>
+<li>
+<p><strong>バリデーション実行とエラーハンドリング</strong></p>
+</li>
+<li>Week 9.3-9.4技術の統合活用</li>
+<li>
+<p>包括的なデータ検証処理</p>
+</li>
+<li>
+<p><strong>データベース保存機能の実装</strong></p>
+</li>
+<li>Studentエンティティへの変換処理</li>
+<li>
+<p>安全で確実なデータ永続化</p>
+</li>
+<li>
+<p><strong>成功・失敗時の適切な画面遷移</strong></p>
+</li>
+<li>PRG（Post-Redirect-Get）パターンの実装</li>
+<li>ユーザーフレンドリーなレスポンス設計</li>
+</ol>
+<h3 id="week-95_2">Week 9.5への期待</h3>
+<p>Week 9.1-9.4で確立した技術基盤により、Week 9.5での学習は以下の特徴を持ちます：</p>
+<ul>
+<li><strong>技術統合の感動</strong>: これまでの学習成果がDB保存機能として結実</li>
+<li><strong>実用性の実感</strong>: 実際にデータが保存される本格的なWebアプリケーション</li>
+<li><strong>自信の確立</strong>: CRUD操作の基本を完全に理解した開発者としての自信</li>
+<li><strong>高度機能への期待</strong>: Week 9.6以降での更新・削除機能への強い学習意欲</li>
+</ul>
+<hr />
+<h2 id="week-94_3">🎉 Week 9.4学習完了おめでとうございます！</h2>
+<p><strong>ユーザビリティ向上技術の完全習得、お疲れ様でした！</strong> 🎊</p>
+<p>Week 9.4では、Week 9.3のバリデーション基盤を活用して、<strong>エンタープライズレベルのユーザー体験設計技術</strong>を身につけることができました。</p>
+<h3 id="_27">達成した技術レベル</h3>
+<ul>
+<li>✅ <strong>条件分岐による親切な案内技術の習得</strong></li>
+<li>✅ <strong>フォーム値保持技術の完全理解</strong>  </li>
+<li>✅ <strong>プロフェッショナルUX実装力の確立</strong></li>
+<li>✅ <strong>アクセシビリティ配慮技術の実践</strong></li>
+<li>✅ <strong>Week 9.3技術の高度活用による統合実感</strong></li>
+</ul>
+<h3 id="_28">次のステップへ</h3>
+<p>Week 9.5では、今回確立したUX基盤に<strong>データベース保存機能</strong>を実装します。
+Week 9.1-9.4で学習した技術が統合され、本格的なWebアプリケーション機能として完成する、感動的な学習体験が待っています！</p>
+<p><strong>あなたは確実に、プロフェッショナルWebアプリケーション開発者への道を歩んでいます！</strong> 🚀</p>
+<hr />
+<p><em>次回 Week 9.5「新規登録処理：@PostMapping・データ保存の実装」で、データベース機能の実装によりWebアプリケーション開発者としての確信を確立しましょう！</em></content>
+</lesson></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

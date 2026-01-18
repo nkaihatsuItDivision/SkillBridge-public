@@ -1,0 +1,8213 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../SQLDB_3/">
+      
+      
+        <link rel="next" href="../SQLDB_5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/logo_tab.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>7.4 データ操作の実践：INSERT・UPDATE・DELETEによるデータ管理 - SKILBRIDGE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="SKILBRIDGE" class="md-header__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SKILBRIDGE
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7.4 データ操作の実践：INSERT・UPDATE・DELETEによるデータ管理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SKILBRIDGE" class="md-nav__button md-logo" aria-label="SKILBRIDGE" data-md-component="logo">
+      
+  <img src="../../assets/images/logo_tab.png" alt="logo">
+
+    </a>
+    SKILBRIDGE
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コース一覧
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    コース一覧
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00_PC基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00_PC基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC%E5%9F%BA%E7%A4%8E/PCBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.1 PC基本操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC%E5%9F%BA%E7%A4%8E/PCBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.2 ファイル・フォルダ操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC%E5%9F%BA%E7%A4%8E/PCBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.3 インターネット・ブラウザ活用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC%E5%9F%BA%E7%A4%8E/PCBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.4 タイピング練習
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00_PC%E5%9F%BA%E7%A4%8E/PCBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.5 次章への準備・心構え
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01_Web基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01_Web基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 Webページが表示される基本的な流れ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 HTTP/HTTPS - インターネットの共通言語
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 リクエストとレスポンス - データのやり取り
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 フォーム送信の仕組み
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5 Webページの仕組みとHTML/CSSの役割
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.6 HTMLの基本構造を理解する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.7 基本的なHTMLタグで文書を作る
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.8 リストとリンクで情報を整理する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.9 画像と表で内容を豊かにする
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.10 CSSの基本とスタイルの適用方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.11 レイアウトの基礎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.11 レイアウトの基礎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.13 実践：シンプルな自己紹介ページを作成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.14 フォームの基本構造を理解する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.15 様々な入力要素でフォームを充実させる
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.16 HTMLバリデーションでユーザビリティを向上させる
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.17 CSSでフォームを美しくスタイリングする
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Web%E5%9F%BA%E7%A4%8E/WebBasic_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.18 実践：お問い合わせフォームを完成させて送信体験
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02_Java入門
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02_Java入門
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 開発環境とJavaプログラムの基本構造
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 変数の基礎（int, String）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 基本的な演算（+, -, ==, !=）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 簡単な条件分岐（if, else）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 簡単な繰り返し（for文の基本）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6 メソッドとクラスの概念紹介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 8つの基本データ型完全マスター
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.8 文字列（String）と参照型の理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.9 型変換（キャスト）と注意点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.10 全演算子と優先順位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.11 実践演習：型と演算子の使い分け
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.11 実践演習：型と演算子の使い分け
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.13 Scanner の基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.14 入力データの検証とエラーハンドリング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.15 対話型プログラム・実用的入出力
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.16 設計から実装までの流れ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.17 実践課題1：電卓プログラム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.18 実践課題2：成績管理プログラム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Java%E5%85%A5%E9%96%80/JavaBasic_19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.19 Week4への準備（配列・ArrayListの予告）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03_Java基礎固め
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03_Java基礎固め
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 配列の詳細復習と制限の再確認
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 ArrayList入門：基本操作をマスター
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 ArrayListの高度な操作：検索・並び替え・変換
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 配列とArrayListの使い分け：実践的判断基準
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 実践演習：ToDoリスト管理システム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 クラスの豊富なメソッド完全ガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.7 文字列の検索・置換・分割の実践活用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.8 メソッドのオーバーロード：同名メソッドの使い分け
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.9 実践演習：文字列処理ツール作成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Java%E5%9F%BA%E7%A4%8E%E5%9B%BA%E3%82%81/Java2_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.10 Eclipse デバッグ機能：バグの効率的な発見と修正
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04_OOP基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04_OOP基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 オブジェクト指向とは何か：手続き型からOOPへの思考転換
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 クラスとインスタンス：設計図と実体の関係理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 初めてのクラス作成：Studentクラスの基本実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 フィールド：オブジェクトが持つデータの定義
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 コンストラクタ：オブジェクトの初期化処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 インスタンスメソッド：オブジェクトの動作定義
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7 カプセル化：private修飾子でデータを保護
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8 ゲッター・セッター：安全なデータアクセス方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.9 複数クラスの協調設計：StudentとGradeクラスの連携
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_OOP%E5%9F%BA%E7%A4%8E/OOPBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.10 実践演習：OOP版学生管理システム開発
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05_OOP応用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05_OOP応用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 継承とは何か：クラス間の親子関係を理解する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 メソッドのオーバーライド：子クラスでの動作カスタマイズ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 継承を活用した学生管理システムの拡張
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 ポリモーフィズム：同じインターフェースで異なる動作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 抽象クラス：具体化を強制する設計技術
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 インターフェース：契約による設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.7 例外処理の設計：try-catch-finallyの体系的活用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.8 堅牢なシステム設計：例外処理のベストプラクティス
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.9 Lombok導入：コード生成による開発効率化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_OOP%E5%BF%9C%E7%94%A8/OOP2_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.10 実践演習：OOP応用版学生管理システム完成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06_GitGitHub基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06_GitGitHub基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 なぜバージョン管理が必要なのか：開発現場の現実
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 Gitの基本概念：リポジトリ・コミット・履歴の理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 最初のコミット：システムをGit管理下に置く
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4 変更管理の実践：ファイル修正・追加・削除の管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.5 履歴管理と復元：過去のバージョンへの戻し方
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.6 GitHubアカウント作成とリモートリポジトリ連携
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.7 push・pullの基本：ローカルとリモートの同期
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.8 GitHubの活用：Issue・README・ライセンスの理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.9 ブランチの基礎：機能開発の安全な分岐
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_GitGitHub%E5%9F%BA%E7%A4%8E/GitBasic_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.10 実践演習：Pull Request体験とチーム開発フロー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07_SQL・DB設計
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    07_SQL・DB設計
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQLDB_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 なぜデータベースが必要なのか：データ管理の課題と解決策
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQLDB_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 MySQLとSQL基本概念：データベース・テーブル・フィールドの理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQLDB_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 データ取得の基本：SELECT文によるデータ抽出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4 データ操作の実践：INSERT・UPDATE・DELETEによるデータ管理
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4 データ操作の実践：INSERT・UPDATE・DELETEによるデータ管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 このレッスンの目標
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 これまでの学習成果の確認
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 これまでの学習成果の確認">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Week7進捗まとめ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 7.3完了時点での到達レベル
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Week 7.3完了時点での到達レベル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 7.3で習得済みの技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#student" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用中のstudentテーブル構造
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現在のデータ（5件）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-5javasql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💭 Week 5システムとの連携：Java操作→SQL操作への思考転換
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💭 Week 5システムとの連携：Java操作→SQL操作への思考転換">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javaweek-5sqlweek-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Java配列操作（Week 5）とSQL操作（Week 7）の対応関係
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Java配列操作（Week 5）とSQL操作（Week 7）の対応関係">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データ追加の比較
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データ更新の比較
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データ削除の比較
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. INSERT文の復習と応用技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. INSERT文の復習と応用技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#72insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 7.2での基本INSERT文を振り返る
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 7.4で学習する応用INSERT技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 7.4で学習する応用INSERT技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 複数レコードの一括挿入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        確認してみよう
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. INSERT文でのデフォルト値活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 実用的なINSERT応用パターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 実用的なINSERT応用パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-5sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システム→SQL変換例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. UPDATE文の実践活用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. UPDATE文の実践活用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 UPDATE文の基本構文
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 重要な安全性の注意
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 UPDATE文の安全対策
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 実践的なUPDATE操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 実践的なUPDATE操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 単一フィールドの更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 複数フィールドの同時更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 条件に基づく一括更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 更新結果の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Week 5システム連携：UPDATE操作の対応
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Week 5システム連携：UPDATE操作の対応">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#java-setter-sql-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Java Setterメソッド → SQL UPDATE文
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. DELETE文の安全な活用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. DELETE文の安全な活用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚨 DELETE文の危険性を理解する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 DELETE文の安全対策
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 DELETE文の安全対策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        絶対に避けるべき危険な操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 安全なDELETE操作のベストプラクティス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 安全なDELETE操作のベストプラクティス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 削除前の必須確認手順
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 単一レコードの削除
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 条件による複数レコード削除
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 削除結果の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Week 5システム連携：DELETE操作の対応
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Week 5システム連携：DELETE操作の対応">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#java-remove-sql-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Java removeメソッド → SQL DELETE文
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. トランザクション：データ整合性を保つ安全な操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. トランザクション：データ整合性を保つ安全な操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔒 トランザクションとは？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 トランザクションの概念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 トランザクションの概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        トランザクションの特徴（ACID特性）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 トランザクションの基本操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 実践的なトランザクション活用例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 実践的なトランザクション活用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例：学生の学部変更に伴う一連の操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エラー時のロールバック例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 トランザクションのメリット
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. CRUD操作の統合：完全なデータ管理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. CRUD操作の統合：完全なデータ管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 CRUD操作とは？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crud_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 CRUD処理の統合イメージ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crud_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 統合演習：学生管理システムの完全なCRUD操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 統合演習：学生管理システムの完全なCRUD操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Create：新しい学生の登録
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Read：登録した学生の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Update：学生情報の更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Delete：卒業生の削除
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 現在のデータベース状況確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-week-8spring-boot-mybatis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Week 8準備：Spring Boot + MyBatis連携パターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Week 8準備：Spring Boot + MyBatis連携パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-8sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Week 8で活用予定のSQL操作パターン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 SQL技術統合の全体像
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 SQL技術統合の全体像">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mybatis-mapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MyBatis @Mapperアノテーション対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controllerservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controller・Service連携イメージ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 実践演習：総合的なデータ操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 実践演習：総合的なデータ操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 演習課題：学生管理システムの実運用シミュレーション
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 演習課題：学生管理システムの実運用シミュレーション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        演習1：新年度の学生登録
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        演習2：進級処理（年齢と学年の更新）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        演習3：卒業処理と学籍管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        演習4：データ分析とレポート作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. セキュリティとベストプラクティス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. セキュリティとベストプラクティス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 SQL操作のセキュリティ原則
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 SQL操作のセキュリティ原則">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-where" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. WHERE句の必須化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. トランザクションの活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. バックアップの確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Week 8への準備チェックリスト
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Week 8への準備チェックリスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 習得完了技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Week 8準備完了項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. まとめ：レッスン7.4で習得した技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. まとめ：レッスン7.4で習得した技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏆 到達レベル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 習得技術一覧
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 習得技術一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insert_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INSERT文の応用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UPDATE文の実践
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE文の安全な活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        トランザクション
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crud_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CRUD操作の統合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 次回への準備
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 学習のポイント
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQLDB_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.5 実践演習：Week 5学生管理システムのデータベース化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQLDB_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.6 結合とサブクエリ：複数テーブルの連携操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQLDB_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.7 集約関数と分析：COUNT・SUM・AVG・GROUP BYによるデータ分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQLDB_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.8 テーブル設計とER図：正規化・主キー・外部キーの理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQLDB_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.9 実用的なDB設計：学生管理システム用データベースの完全設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQLDB_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.10 Spring Boot連携のための最終セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08_SpringBoot：表示機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    08_SpringBoot：表示機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 なぜSpring Bootなのか：現代Web開発の課題と解決策
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 MVCアーキテクチャ：Webアプリケーションの全体像
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 Spring Bootプロジェクト作成：Week8.10準備の活用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4 データベース接続確認：MyBatis連携の動作テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.5 Student Entityクラス：JavaクラスとDBテーブルの完全対応
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.6 StudentMapper実装：MyBatis基礎とSQL自動実行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.7 StudentController作成：リクエスト処理の基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.8 学生一覧表示機能：データ取得から画面表示まで
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_SpringBoot%EF%BC%9A%E8%A1%A8%E7%A4%BA%E6%A9%9F%E8%83%BD/SB1_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.9 Thymeleaf表示機能：条件分岐と動的スタイリング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09_SpringBoot：登録更新機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    09_SpringBoot：登録更新機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09_SpringBoot%EF%BC%9A%E7%99%BB%E9%8C%B2%E6%9B%B4%E6%96%B0%E6%A9%9F%E8%83%BD/SB2_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1 StudentDataクラス設計：フォーム専用DTOの必要性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09_SpringBoot%EF%BC%9A%E7%99%BB%E9%8C%B2%E6%9B%B4%E6%96%B0%E6%A9%9F%E8%83%BD/SB2_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2 新規登録画面作成：Thymeleafフォームの構築
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09_SpringBoot%EF%BC%9A%E7%99%BB%E9%8C%B2%E6%9B%B4%E6%96%B0%E6%A9%9F%E8%83%BD/SB2_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3 Bean Validation導入：入力チェックの自動化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09_SpringBoot%EF%BC%9A%E7%99%BB%E9%8C%B2%E6%9B%B4%E6%96%B0%E6%A9%9F%E8%83%BD/SB2_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.4 エラー処理・UX改善：ユーザビリティ重視の設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09_SpringBoot%EF%BC%9A%E7%99%BB%E9%8C%B2%E6%9B%B4%E6%96%B0%E6%A9%9F%E8%83%BD/SB2_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.5 新規登録処理：@PostMapping・データ保存の実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09_SpringBoot%EF%BC%9A%E7%99%BB%E9%8C%B2%E6%9B%B4%E6%96%B0%E6%A9%9F%E8%83%BD/SB2_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.6 編集機能実装：既存データの更新処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09_SpringBoot%EF%BC%9A%E7%99%BB%E9%8C%B2%E6%9B%B4%E6%96%B0%E6%A9%9F%E8%83%BD/SB2_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.7 成功・失敗処理：適切なフィードバック設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09_SpringBoot%EF%BC%9A%E7%99%BB%E9%8C%B2%E6%9B%B4%E6%96%B0%E6%A9%9F%E8%83%BD/SB2_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.8 Service層リファクタリング：ビジネスロジック分離
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10_SpringBoot：検索削除機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10_SpringBoot：検索削除機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.1 検索機能基盤：動的クエリとRepository拡張
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.2 検索画面作成：フォーム設計と条件入力UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.3 検索結果表示：ページネーションと結果一覧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.4 高度検索機能：複合条件と動的フィルタリング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.5 削除機能基盤：安全な削除処理とトランザクション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.6 一括削除機能：チェックボックスと複数選択処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.7 データエクスポート：CSV・Excel出力機能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.8 Ajax導入：非同期通信とリアルタイム検索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.9 パフォーマンス最適化：インデックスとクエリ効率化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_SpringBoot%EF%BC%9A%E6%A4%9C%E7%B4%A2%E5%89%8A%E9%99%A4%E6%A9%9F%E8%83%BD/SB3_10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.10 システム統合完成：総合テストと運用準備
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11_実務基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11_実務基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_%E5%AE%9F%E5%8B%99%E5%9F%BA%E7%A4%8E/Practical_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.1 実務基礎知識：要件定義・設計・ドキュメントの基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_%E5%AE%9F%E5%8B%99%E5%9F%BA%E7%A4%8E/Practical_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.2 開発現場の知識：プロジェクト管理・チーム開発・品質管理の基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_%E5%AE%9F%E5%8B%99%E5%9F%BA%E7%A4%8E/Practical_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.3 IT業界・キャリア基礎：業界知識・技術動向・キャリア開発の基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#初級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#初級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#とは何か？開発環境の準備
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    変数とデータ型の基礎
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザー入力と対話的プログラム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    条件分岐（if文）でプログラムに判断力を
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ループ文で効率的な繰り返し処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    配列で複数のデータを効率管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メソッドでコードを整理・再利用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E5%88%9D%E7%B4%9A/C%23Basic_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クラスとオブジェクト - オブジェクト指向の第一歩
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C#上級
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C#上級
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    非同期プログラミング（async/await）の実践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LINQ高度活用とカスタム拡張メソッド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    デザインパターンの実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高度な例外処理の実装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    メモリ管理とパフォーマンス最適化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    リフレクションと動的プログラミング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    並行プログラミングの高度な技法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%23%E4%B8%8A%E7%B4%9A/C%233_8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    統合プロジェクト構築：エンタープライズWebアプリケーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_15" id="__nav_2_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Office全般ツール
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Office全般ツール
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Office%E5%85%A8%E8%88%AC%E3%83%84%E3%83%BC%E3%83%AB/Office_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Excel超基礎 - セルに文字を入力してみよう
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Office%E5%85%A8%E8%88%AC%E3%83%84%E3%83%BC%E3%83%AB/Office_2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Word超基礎 - 文字を入力してみよう
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Office%E5%85%A8%E8%88%AC%E3%83%84%E3%83%BC%E3%83%AB/Office_3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerPoint超基礎 - スライドに文字を入力してみよう
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 このレッスンの目標
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 これまでの学習成果の確認
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 これまでの学習成果の確認">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 Week7進捗まとめ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 7.3完了時点での到達レベル
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Week 7.3完了時点での到達レベル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 7.3で習得済みの技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#student" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用中のstudentテーブル構造
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現在のデータ（5件）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#week-5javasql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💭 Week 5システムとの連携：Java操作→SQL操作への思考転換
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💭 Week 5システムとの連携：Java操作→SQL操作への思考転換">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javaweek-5sqlweek-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Java配列操作（Week 5）とSQL操作（Week 7）の対応関係
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Java配列操作（Week 5）とSQL操作（Week 7）の対応関係">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データ追加の比較
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データ更新の比較
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データ削除の比較
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. INSERT文の復習と応用技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. INSERT文の復習と応用技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#72insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 7.2での基本INSERT文を振り返る
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 7.4で学習する応用INSERT技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 7.4で学習する応用INSERT技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 複数レコードの一括挿入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        確認してみよう
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. INSERT文でのデフォルト値活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 実用的なINSERT応用パターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 実用的なINSERT応用パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-5sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Week 5システム→SQL変換例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. UPDATE文の実践活用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. UPDATE文の実践活用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 UPDATE文の基本構文
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 重要な安全性の注意
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 UPDATE文の安全対策
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 実践的なUPDATE操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 実践的なUPDATE操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 単一フィールドの更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 複数フィールドの同時更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 条件に基づく一括更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 更新結果の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Week 5システム連携：UPDATE操作の対応
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Week 5システム連携：UPDATE操作の対応">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#java-setter-sql-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Java Setterメソッド → SQL UPDATE文
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. DELETE文の安全な活用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. DELETE文の安全な活用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚨 DELETE文の危険性を理解する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 DELETE文の安全対策
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 DELETE文の安全対策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        絶対に避けるべき危険な操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 安全なDELETE操作のベストプラクティス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 安全なDELETE操作のベストプラクティス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 削除前の必須確認手順
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 単一レコードの削除
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 条件による複数レコード削除
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 削除結果の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-5delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Week 5システム連携：DELETE操作の対応
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Week 5システム連携：DELETE操作の対応">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#java-remove-sql-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Java removeメソッド → SQL DELETE文
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. トランザクション：データ整合性を保つ安全な操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. トランザクション：データ整合性を保つ安全な操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔒 トランザクションとは？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 トランザクションの概念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 トランザクションの概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        トランザクションの特徴（ACID特性）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 トランザクションの基本操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 実践的なトランザクション活用例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 実践的なトランザクション活用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例：学生の学部変更に伴う一連の操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エラー時のロールバック例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 トランザクションのメリット
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. CRUD操作の統合：完全なデータ管理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. CRUD操作の統合：完全なデータ管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 CRUD操作とは？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crud_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 CRUD処理の統合イメージ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crud_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 統合演習：学生管理システムの完全なCRUD操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 統合演習：学生管理システムの完全なCRUD操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Create：新しい学生の登録
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Read：登録した学生の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Update：学生情報の更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Delete：卒業生の削除
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 現在のデータベース状況確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-week-8spring-boot-mybatis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Week 8準備：Spring Boot + MyBatis連携パターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Week 8準備：Spring Boot + MyBatis連携パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#week-8sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Week 8で活用予定のSQL操作パターン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📘 SQL技術統合の全体像
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📘 SQL技術統合の全体像">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mybatis-mapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MyBatis @Mapperアノテーション対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controllerservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controller・Service連携イメージ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 実践演習：総合的なデータ操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 実践演習：総合的なデータ操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 演習課題：学生管理システムの実運用シミュレーション
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 演習課題：学生管理システムの実運用シミュレーション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        演習1：新年度の学生登録
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        演習2：進級処理（年齢と学年の更新）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        演習3：卒業処理と学籍管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        演習4：データ分析とレポート作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. セキュリティとベストプラクティス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. セキュリティとベストプラクティス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 SQL操作のセキュリティ原則
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 SQL操作のセキュリティ原則">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-where" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. WHERE句の必須化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. トランザクションの活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. バックアップの確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Week 8への準備チェックリスト
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Week 8への準備チェックリスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ 習得完了技術
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#week-8_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Week 8準備完了項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. まとめ：レッスン7.4で習得した技術
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. まとめ：レッスン7.4で習得した技術">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏆 到達レベル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 習得技術一覧
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 習得技術一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insert_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INSERT文の応用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UPDATE文の実践
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE文の安全な活用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        トランザクション
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crud_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CRUD操作の統合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 次回への準備
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 学習のポイント
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>7.4 データ操作の実践：INSERT・UPDATE・DELETEによるデータ管理</h1>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<p><lesson>
+  <type>text</type>
+  <description>レッスン7.3で習得した高度なデータ抽出技術を基盤として、INSERT・UPDATE・DELETEによる包括的なデータ操作技術を習得する。7.2の基本INSERT文を復習してから応用技術に進み、複数データの一括挿入、条件指定による安全な更新・削除処理、トランザクションによるデータ整合性確保を学習する。Week 5システムとの連携を強化し、Java配列操作からSQL操作への思考転換を完了させる。Week 8のSpring Boot + MyBatis連携で必要となるCRUD操作パターンの実践的基盤を構築する。</description>
+  <title>4.データ操作の実践：INSERT・UPDATE・DELETEによるデータ管理</title>
+  <content># データ操作の実践：INSERT・UPDATE・DELETEによるデータ管理</p>
+<h2 id="_1">🎯 このレッスンの目標</h2>
+<p>このレッスンを完了すると、以下ができるようになります：</p>
+<ul>
+<li><strong>INSERT文の応用技術</strong>を使って複数データの効率的な一括挿入ができる</li>
+<li><strong>UPDATE文の実践活用</strong>で条件指定による安全で正確な更新処理ができる</li>
+<li><strong>DELETE文の適切な使い方</strong>を理解し、危険性を回避した削除処理ができる</li>
+<li><strong>トランザクション</strong>の概念を理解し、データ整合性を保つ安全な操作ができる</li>
+<li><strong>CRUD操作の統合</strong>により、CREATE（INSERT）・READ（SELECT）・UPDATE・DELETEの総合的なデータ管理ができる</li>
+<li><strong>Week 5システム連携</strong>でJava配列操作をSQL操作に変換できる思考力を身につける</li>
+<li><strong>Week 8準備</strong>としてSpring Boot + MyBatis連携に必要なSQL操作パターンを習得する</li>
+</ul>
+<p><strong>学習時間</strong>: 約60-70分<br />
+<strong>前提知識</strong>: レッスン7.3（高度なSELECT文操作）完了</p>
+<hr />
+<h2 id="_2">📋 これまでの学習成果の確認</h2>
+<h3 id="week7">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_4_week7_progress.html">Week7進捗まとめ</a></h3>
+<h3 id="week-73"><strong>Week 7.3完了時点での到達レベル</strong></h3>
+<p><strong>高度なデータ抽出技術をマスターした実践的SQLエンジニア</strong></p>
+<h4 id="73"><strong>✅ 7.3で習得済みの技術</strong></h4>
+<ul>
+<li><strong>高度なSELECT文</strong>: WHERE句、比較演算子、論理演算子、LIKE演算子の完全習得</li>
+<li><strong>データ抽出技術</strong>: ORDER BY・LIMITによる並び替え・制限処理</li>
+<li><strong>複合条件検索</strong>: 実用的なデータ検索パターンの実践習得</li>
+<li><strong>studentテーブル活用</strong>: 5件のサンプルデータを使った現実的な操作体験</li>
+</ul>
+<h3 id="student"><strong>使用中のstudentテーブル構造</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">student_id</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">department</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="5"><strong>現在のデータ（5件）</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 既存データ</span>
+<span class="p">(</span><span class="s1">&#39;S001&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;田中太郎&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S002&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;佐藤花子&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;経済学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S003&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;鈴木次郎&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;文学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S004&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;高橋一郎&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;理学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S005&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;山田美咲&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;工学部&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>レッスン7.4では、このデータを活用してINSERT・UPDATE・DELETE操作を実践します！</strong></p>
+<hr />
+<h2 id="week-5javasql">💭 Week 5システムとの連携：Java操作→SQL操作への思考転換</h2>
+<h3 id="javaweek-5sqlweek-7"><strong>Java配列操作（Week 5）とSQL操作（Week 7）の対応関係</strong></h3>
+<p>レッスン7.4を始める前に、Week 5で学んだJava配列操作がSQLでどのように表現されるかを確認しましょう。</p>
+<h4 id="_3"><strong>データ追加の比較</strong></h4>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Java配列での操作（Week 5）</span>
+<span class="n">students</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="s">&quot;S006&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;新田花子&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;文学部&quot;</span><span class="p">));</span>
+</code></pre></div>
+↓
+<div class="highlight"><pre><span></span><code><span class="c1">-- SQLデータ操作（Week 7.4で学習）</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;S006&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;新田花子&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;文学部&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+<h4 id="_4"><strong>データ更新の比較</strong></h4>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Java配列での操作（Week 5）</span>
+<span class="n">student</span><span class="p">.</span><span class="na">setAge</span><span class="p">(</span><span class="mi">21</span><span class="p">);</span>
+<span class="n">student</span><span class="p">.</span><span class="na">setDepartment</span><span class="p">(</span><span class="s">&quot;情報工学部&quot;</span><span class="p">);</span>
+</code></pre></div>
+↓
+<div class="highlight"><pre><span></span><code><span class="c1">-- SQLデータ操作（Week 7.4で学習）</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S001&#39;</span><span class="p">;</span>
+</code></pre></div></p>
+<h4 id="_5"><strong>データ削除の比較</strong></h4>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Java配列での操作（Week 5）</span>
+<span class="n">students</span><span class="p">.</span><span class="na">removeIf</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span>
+</code></pre></div>
+↓
+<div class="highlight"><pre><span></span><code><span class="c1">-- SQLデータ操作（Week 7.4で学習）</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>レッスン7.4では、このJava思考→SQL思考への転換を完全に習得します！</strong></p>
+<hr />
+<h2 id="1-insert">1. INSERT文の復習と応用技術</h2>
+<h3 id="72insert"><strong>📚 7.2での基本INSERT文を振り返る</strong></h3>
+<p>レッスン7.2で学習した基本的なINSERT文を確認しましょう：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 基本的なINSERT文（7.2で学習済み）</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;S001&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;田中太郎&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="74insert"><strong>🔄 7.4で学習する応用INSERT技術</strong></h3>
+<h4 id="1"><strong>1. 複数レコードの一括挿入</strong></h4>
+<p><strong>7.2の問題点</strong>: 1件ずつしか挿入できない<br />
+<strong>7.4の解決策</strong>: VALUES句で複数行を一度に挿入</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 複数データの一括挿入</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">&#39;S006&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;新田花子&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;文学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S007&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;中村太郎&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;経済学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S008&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;伊藤美咲&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;理学部&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>実際に試してみましょう：</p>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+</code></pre></div></p>
+<h4 id="_6"><strong>確認してみよう</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 追加されたデータを確認</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>+----+------------+--------------+-----+----------------+
+| id | student_id | name         | age | department     |
++----+------------+--------------+-----+----------------+
+|  1 | S001       | 田中太郎     |  20 | 情報工学部     |
+|  2 | S002       | 佐藤花子     |  21 | 経済学部       |
+|  3 | S003       | 鈴木次郎     |  19 | 文学部         |
+|  4 | S004       | 高橋一郎     |  22 | 理学部         |
+|  5 | S005       | 山田美咲     |  20 | 工学部         |
+|  6 | S006       | 新田花子     |  19 | 文学部         |
+|  7 | S007       | 中村太郎     |  23 | 経済学部       |
+|  8 | S008       | 伊藤美咲     |  20 | 理学部         |
++----+------------+--------------+-----+----------------+
+8 rows in set (0.00 sec)
+</code></pre></div></p>
+<h4 id="2-insert"><strong>2. INSERT文でのデフォルト値活用</strong></h4>
+<p>AUTO_INCREMENTカラム（id）は値を指定せずに自動採番させることができます：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- idを省略した挿入（自動採番）</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;S009&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;佐々木健太&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;工学部&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="insert"><strong>💡 実用的なINSERT応用パターン</strong></h3>
+<h4 id="week-5sql"><strong>Week 5システム→SQL変換例</strong></h4>
+<p>Java配列で管理していた学生データをSQLで一括挿入：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Week 5のArrayListデータを一括でDBに移行</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">&#39;S010&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;木村恵子&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;文学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S011&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;松本裕太&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S012&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;橋本沙織&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;経済学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S013&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;小林直樹&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;理学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S014&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;斎藤真由美&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;工学部&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>効率性の違い</strong>：
+- <strong>1件ずつ挿入</strong>: 5回のSQL実行が必要
+- <strong>一括挿入</strong>: 1回のSQL実行で完了（<strong>約5倍高速</strong>）</p>
+<hr />
+<h2 id="2-update">2. UPDATE文の実践活用</h2>
+<h3 id="update"><strong>📝 UPDATE文の基本構文</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span>
+<span class="k">SET</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">値</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">値</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="err">条件</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="_7"><strong>⚠️ 重要な安全性の注意</strong></h3>
+<h3 id="update_1">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_4_update_safety.html">UPDATE文の安全対策</a></h3>
+<p><strong>UPDATE文の最重要ルール</strong>: <strong>WHERE句は必須</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- ❌ 危険：WHERE句なし（全レコードが更新される）</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span>
+
+<span class="c1">-- ✅ 安全：WHERE句あり（指定レコードのみ更新）</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S001&#39;</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="update_2"><strong>🔧 実践的なUPDATE操作</strong></h3>
+<h4 id="1_1"><strong>1. 単一フィールドの更新</strong></h4>
+<p>特定の学生の年齢を更新：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 田中太郎の年齢を21歳に更新</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S001&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+</code></pre></div></p>
+<h4 id="2"><strong>2. 複数フィールドの同時更新</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 佐藤花子の年齢と学部を同時に更新</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S002&#39;</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="3"><strong>3. 条件に基づく一括更新</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 文学部の全学生の年齢を1歳増加</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;文学部&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+</code></pre></div></p>
+<h4 id="4"><strong>4. 更新結果の確認</strong></h4>
+<p>更新した内容を確認してみましょう：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 更新されたデータを確認</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;S001&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;S002&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;文学部&#39;</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">student_id</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>+------------+--------------+-----+----------------+
+| student_id | name         | age | department     |
++------------+--------------+-----+----------------+
+| S001       | 田中太郎     |  21 | 情報工学部     |
+| S002       | 佐藤花子     |  22 | 情報工学部     |
+| S003       | 鈴木次郎     |  20 | 文学部         |
+| S006       | 新田花子     |  20 | 文学部         |
++------------+--------------+-----+----------------+
+4 rows in set (0.00 sec)
+</code></pre></div></p>
+<h3 id="week-5update"><strong>🎯 Week 5システム連携：UPDATE操作の対応</strong></h3>
+<h4 id="java-setter-sql-update"><strong>Java Setterメソッド → SQL UPDATE文</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 5でのJava操作</span>
+<span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findStudentById</span><span class="p">(</span><span class="s">&quot;S001&quot;</span><span class="p">);</span>
+<span class="n">student</span><span class="p">.</span><span class="na">setAge</span><span class="p">(</span><span class="mi">21</span><span class="p">);</span><span class="w">                    </span><span class="c1">// 年齢更新</span>
+<span class="n">student</span><span class="p">.</span><span class="na">setDepartment</span><span class="p">(</span><span class="s">&quot;情報工学部&quot;</span><span class="p">);</span><span class="w">   </span><span class="c1">// 学部更新</span>
+</code></pre></div>
+<p>↓ <strong>SQL変換</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Week 7でのSQL操作</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S001&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Week 8 Spring Boot準備</strong>: この操作パターンがMyBatis @Updateアノテーションで活用されます！</p>
+<hr />
+<h2 id="3-delete">3. DELETE文の安全な活用</h2>
+<h3 id="delete"><strong>🚨 DELETE文の危険性を理解する</strong></h3>
+<h3 id="delete_1">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_4_delete_safety.html">DELETE文の安全対策</a></h3>
+<p>DELETE文は<strong>データを完全に削除</strong>するため、<strong>最も慎重に扱う必要がある</strong>操作です。</p>
+<h4 id="_8"><strong>絶対に避けるべき危険な操作</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- ❌ 超危険：WHERE句なし（全データ削除）</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="p">;</span>
+
+<span class="c1">-- ❌ 結果：studentテーブルの全データが失われる</span>
+</code></pre></div>
+<p><strong>実際の企業では、この操作で数億円の損失が発生することもあります！</strong></p>
+<h3 id="delete_2"><strong>✅ 安全なDELETE操作のベストプラクティス</strong></h3>
+<h4 id="1_2"><strong>1. 削除前の必須確認手順</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- STEP 1: 削除対象を事前に確認</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span>
+
+<span class="c1">-- STEP 2: 削除件数を確認</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span>
+
+<span class="c1">-- STEP 3: 問題なければ削除実行</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="2_1"><strong>2. 単一レコードの削除</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 特定の学生を削除</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S008&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>Query OK, 1 row affected (0.01 sec)
+</code></pre></div></p>
+<h4 id="3_1"><strong>3. 条件による複数レコード削除</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 23歳以上の学生を削除</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">23</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="4_1"><strong>4. 削除結果の確認</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 削除後のデータを確認</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;残存学生数&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">student_id</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>+--------------+
+| 残存学生数   |
++--------------+
+|            6 |
++--------------+
+1 row in set (0.00 sec)
+
++----+------------+--------------+-----+----------------+
+| id | student_id | name         | age | department     |
++----+------------+--------------+-----+----------------+
+|  1 | S001       | 田中太郎     |  21 | 情報工学部     |
+|  2 | S002       | 佐藤花子     |  22 | 情報工学部     |
+|  3 | S003       | 鈴木次郎     |  20 | 文学部         |
+|  5 | S005       | 山田美咲     |  20 | 工学部         |
+|  6 | S006       | 新田花子     |  20 | 文学部         |
+|  9 | S009       | 佐々木健太   |  21 | 工学部         |
++----+------------+--------------+-----+----------------+
+6 rows in set (0.00 sec)
+</code></pre></div></p>
+<h3 id="week-5delete"><strong>🎯 Week 5システム連携：DELETE操作の対応</strong></h3>
+<h4 id="java-remove-sql-delete"><strong>Java removeメソッド → SQL DELETE文</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 5でのJava操作</span>
+<span class="n">students</span><span class="p">.</span><span class="na">removeIf</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span><span class="w">    </span><span class="c1">// 条件による削除</span>
+<span class="n">students</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w">                    </span><span class="c1">// インデックス指定削除</span>
+</code></pre></div>
+<p>↓ <strong>SQL変換</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Week 7でのSQL操作</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span><span class="w">           </span><span class="c1">-- 条件による削除</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S001&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 特定レコード削除</span>
+</code></pre></div>
+<hr />
+<h2 id="4_2">4. トランザクション：データ整合性を保つ安全な操作</h2>
+<h3 id="_9"><strong>🔒 トランザクションとは？</strong></h3>
+<h3 id="_10">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_4_transaction_concept.html">トランザクションの概念</a></h3>
+<p><strong>トランザクション</strong>とは、<strong>複数のSQL操作をひとまとまりとして扱う仕組み</strong>です。</p>
+<h4 id="acid"><strong>トランザクションの特徴（ACID特性）</strong></h4>
+<ul>
+<li><strong>A（Atomicity/原子性）</strong>: 全て成功するか、全て失敗するか</li>
+<li><strong>C（Consistency/一貫性）</strong>: データの整合性が保たれる</li>
+<li><strong>I（Isolation/分離性）</strong>: 他の操作と独立して実行される</li>
+<li><strong>D（Durability/永続性）</strong>: 確定した変更は永続化される</li>
+</ul>
+<h3 id="_11"><strong>📝 トランザクションの基本操作</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">-- トランザクション開始</span>
+<span class="k">BEGIN</span><span class="p">;</span>
+
+<span class="c1">-- 複数のSQL操作を実行</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;S015&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;田村花恵&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;経済学部&#39;</span><span class="p">);</span>
+
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S005&#39;</span><span class="p">;</span>
+
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S009&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 全て成功した場合：変更を確定</span>
+<span class="k">COMMIT</span><span class="p">;</span>
+
+<span class="c1">-- 問題があった場合：変更を取り消し</span>
+<span class="c1">-- ROLLBACK;</span>
+</code></pre></div>
+<h3 id="_12"><strong>🔧 実践的なトランザクション活用例</strong></h3>
+<h4 id="_13"><strong>例：学生の学部変更に伴う一連の操作</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- トランザクション開始</span>
+<span class="k">BEGIN</span><span class="p">;</span>
+
+<span class="c1">-- 学生の学部を変更</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">SET</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S003&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 関連する情報も同時に更新（実際のシステムでは関連テーブルも更新）</span>
+<span class="c1">-- この例では年齢も同時に調整</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S003&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 変更内容を確認</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S003&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 問題なければ確定</span>
+<span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>+------------+--------------+-----+----------------+
+| student_id | name         | age | department     |
++------------+--------------+-----+----------------+
+| S003       | 鈴木次郎     |  20 | 情報工学部     |
++------------+--------------+-----+----------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+</code></pre></div></p>
+<h4 id="_14"><strong>エラー時のロールバック例</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- トランザクション開始</span>
+<span class="k">BEGIN</span><span class="p">;</span>
+
+<span class="c1">-- 意図的にエラーを発生させる例</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;S001&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;重複テスト&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;テスト学部&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">-- S001は既存のため重複エラー</span>
+
+<span class="c1">-- エラーが発生した場合の処理</span>
+<span class="c1">-- ERROR 1062 (23000): Duplicate entry &#39;S001&#39; for key &#39;student_id&#39;</span>
+
+<span class="c1">-- エラーが発生したので変更を取り消し</span>
+<span class="k">ROLLBACK</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="_15"><strong>💡 トランザクションのメリット</strong></h3>
+<ol>
+<li><strong>データ整合性の確保</strong>: 途中でエラーが発生しても一部だけ更新される心配がない</li>
+<li><strong>安全性の向上</strong>: 問題があれば全体を取り消せる</li>
+<li><strong>複雑な操作の管理</strong>: 複数テーブルにまたがる操作も安全に実行</li>
+</ol>
+<hr />
+<h2 id="5-crud">5. CRUD操作の統合：完全なデータ管理</h2>
+<h3 id="crud"><strong>📋 CRUD操作とは？</strong></h3>
+<h3 id="crud_1">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_4_crud_integration.html">CRUD処理の統合イメージ</a></h3>
+<p><strong>CRUD</strong>は、データベース操作の基本となる4つの操作の頭文字です：</p>
+<ul>
+<li><strong>C（Create）</strong>: データ作成 → <strong>INSERT文</strong></li>
+<li><strong>R（Read）</strong>: データ読み取り → <strong>SELECT文</strong>（レッスン7.3で習得済み）</li>
+<li><strong>U（Update）</strong>: データ更新 → <strong>UPDATE文</strong></li>
+<li><strong>D（Delete）</strong>: データ削除 → <strong>DELETE文</strong></li>
+</ul>
+<h3 id="crud_2"><strong>🔧 統合演習：学生管理システムの完全なCRUD操作</strong></h3>
+<h4 id="1-create"><strong>1. Create：新しい学生の登録</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 新入生の一括登録</span>
+<span class="k">BEGIN</span><span class="p">;</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">&#39;S016&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;林真一&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S017&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;野村聖子&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;経済学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S018&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;岡田雄太&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;理学部&#39;</span><span class="p">);</span>
+
+<span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="2-read"><strong>2. Read：登録した学生の確認</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 新規登録した学生を確認（レッスン7.3の技術活用）</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;S016&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;S017&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;S018&#39;</span><span class="p">)</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>+------------+--------------+-----+----------------+
+| student_id | name         | age | department     |
++------------+--------------+-----+----------------+
+| S016       | 林真一       |  18 | 情報工学部     |
+| S018       | 岡田雄太     |  18 | 理学部         |
+| S017       | 野村聖子     |  19 | 経済学部       |
++------------+--------------+-----+----------------+
+3 rows in set (0.00 sec)
+</code></pre></div></p>
+<h4 id="3-update"><strong>3. Update：学生情報の更新</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 進級による年齢更新</span>
+<span class="k">BEGIN</span><span class="p">;</span>
+
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span>
+
+<span class="c1">-- 学部移動</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">SET</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S017&#39;</span><span class="p">;</span>
+
+<span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="4-delete"><strong>4. Delete：卒業生の削除</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 24歳以上の学生（卒業生）を削除</span>
+<span class="k">BEGIN</span><span class="p">;</span>
+
+<span class="c1">-- 削除対象の確認</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">24</span><span class="p">;</span>
+
+<span class="c1">-- 削除実行（この例では該当なし）</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">24</span><span class="p">;</span>
+
+<span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="_16"><strong>📊 現在のデータベース状況確認</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 全学生の状況を確認</span>
+<span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;総学生数&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;平均年齢&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;最年少&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;最年長&#39;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="p">;</span>
+
+<span class="c1">-- 学部別の人数</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;学部&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;人数&#39;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="w"> </span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果：</strong>
+<div class="highlight"><pre><span></span><code>+--------------+--------------+-----------+-----------+
+| 総学生数     | 平均年齢     | 最年少    | 最年長    |
++--------------+--------------+-----------+-----------+
+|            9 |      20.2222 |        19 |        22 |
++--------------+--------------+-----------+-----------+
+1 row in set (0.00 sec)
+
++----------------+--------+
+| 学部           | 人数   |
++----------------+--------+
+| 情報工学部     |      4 |
+| 理学部         |      2 |
+| 経済学部       |      2 |
+| 文学部         |      1 |
++----------------+--------+
+4 rows in set (0.00 sec)
+</code></pre></div></p>
+<hr />
+<h2 id="6-week-8spring-boot-mybatis">6. Week 8準備：Spring Boot + MyBatis連携パターン</h2>
+<h3 id="week-8sql"><strong>🚀 Week 8で活用予定のSQL操作パターン</strong></h3>
+<h3 id="sql">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_4_tech_integration.html">SQL技術統合の全体像</a></h3>
+<p>レッスン7.4で学習したCRUD操作は、Week 8のSpring Boot開発で以下のように活用されます：</p>
+<h4 id="mybatis-mapper"><strong>MyBatis @Mapperアノテーション対応</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 8で作成予定のStudentMapper.java</span>
+<span class="nd">@Mapper</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">StudentMapper</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// CREATE：レッスン7.4のINSERT文を活用</span>
+<span class="w">    </span><span class="nd">@Insert</span><span class="p">(</span><span class="s">&quot;INSERT INTO student (student_id, name, age, department) &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="s">&quot;VALUES (#{studentId}, #{name}, #{age}, #{department})&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">insertStudent</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// READ：レッスン7.3のSELECT文を活用</span>
+<span class="w">    </span><span class="nd">@Select</span><span class="p">(</span><span class="s">&quot;SELECT * FROM student WHERE student_id = #{studentId}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Student</span><span class="w"> </span><span class="nf">findByStudentId</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">studentId</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// UPDATE：レッスン7.4のUPDATE文を活用</span>
+<span class="w">    </span><span class="nd">@Update</span><span class="p">(</span><span class="s">&quot;UPDATE student SET age = #{age}, department = #{department} &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="s">&quot;WHERE student_id = #{studentId}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// DELETE：レッスン7.4のDELETE文を活用</span>
+<span class="w">    </span><span class="nd">@Delete</span><span class="p">(</span><span class="s">&quot;DELETE FROM student WHERE student_id = #{studentId}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteStudent</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">studentId</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="controllerservice"><strong>Controller・Service連携イメージ</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// Week 8で作成予定のStudentService.java</span>
+<span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StudentService</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// レッスン7.4のCRUD操作がJavaコードで実現される</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">createStudent</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// INSERT文の実行</span>
+<span class="w">        </span><span class="n">studentMapper</span><span class="p">.</span><span class="na">insertStudent</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateStudent</span><span class="p">(</span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// UPDATE文の実行（トランザクション付き）</span>
+<span class="w">        </span><span class="n">studentMapper</span><span class="p">.</span><span class="na">updateStudent</span><span class="p">(</span><span class="n">student</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteStudent</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">studentId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// DELETE文の実行（安全性チェック付き）</span>
+<span class="w">        </span><span class="n">studentMapper</span><span class="p">.</span><span class="na">deleteStudent</span><span class="p">(</span><span class="n">studentId</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>レッスン7.4で学習したSQL技術が、Week 8でそのまま実用システムに活用されます！</strong></p>
+<hr />
+<h2 id="7">7. 実践演習：総合的なデータ操作</h2>
+<h3 id="_17"><strong>🎯 演習課題：学生管理システムの実運用シミュレーション</strong></h3>
+<p>Week 5で作成したJavaシステムの操作をSQLで再現してみましょう。</p>
+<h4 id="1_3"><strong>演習1：新年度の学生登録</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 新年度の新入生を一括登録</span>
+<span class="c1">-- トランザクションを使って安全に実行</span>
+
+<span class="k">BEGIN</span><span class="p">;</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">&#39;S019&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;石川明子&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;文学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S020&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;村上健一&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;工学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S021&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;井上美穂&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;経済学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S022&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;清水大輔&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="s1">&#39;S023&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;山口恵美&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;理学部&#39;</span><span class="p">);</span>
+
+<span class="c1">-- 登録確認</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;新規登録数&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;S019&#39;</span><span class="p">;</span>
+
+<span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="2_2"><strong>演習2：進級処理（年齢と学年の更新）</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 全学生の進級処理</span>
+<span class="k">BEGIN</span><span class="p">;</span>
+
+<span class="c1">-- 1年間の経過をシミュレーション</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">-- 情報工学部の特定科目履修による学部内移動</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">SET</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;情報工学部（AI専攻）&#39;</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">21</span><span class="p">;</span>
+
+<span class="k">COMMIT</span><span class="p">;</span>
+
+<span class="c1">-- 更新結果の確認</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">department</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;人数&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;平均年齢&#39;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="w"> </span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="3_2"><strong>演習3：卒業処理と学籍管理</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 卒業生の処理（実際のシステムでは論理削除が一般的）</span>
+<span class="k">BEGIN</span><span class="p">;</span>
+
+<span class="c1">-- 卒業予定者の確認</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">24</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+
+<span class="c1">-- 卒業処理（物理削除ではなく、別テーブルへの移動をシミュレーション）</span>
+<span class="c1">-- 実際の演習では、年齢が高すぎる仮想的な学生がいた場合の削除</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span>
+
+<span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="4_3"><strong>演習4：データ分析とレポート作成</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 学生管理システムの統計レポート作成</span>
+<span class="c1">-- レッスン7.3の技術と7.4の技術を組み合わせ</span>
+
+<span class="c1">-- 基本統計</span>
+<span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;総学生数&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;学部数&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">age</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;平均年齢&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;最年少&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;最年長&#39;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="p">;</span>
+
+<span class="c1">-- 学部別詳細分析</span>
+<span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="n">department</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;学部&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;在籍数&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">age</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;平均年齢&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;最年少&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;最年長&#39;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department</span><span class="w"> </span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+
+<span class="c1">-- 年齢分布分析</span>
+<span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;年齢&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;人数&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;割合(%)&#39;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="w"> </span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>実行結果例：</strong>
+<div class="highlight"><pre><span></span><code>+--------------+----------+--------------+-----------+-----------+
+| 総学生数     | 学部数   | 平均年齢     | 最年少    | 最年長    |
++--------------+----------+--------------+-----------+-----------+
+|           14 |        6 |         19.9 |        19 |        23 |
++--------------+----------+--------------+-----------+-----------+
+1 row in set (0.00 sec)
+</code></pre></div></p>
+<hr />
+<h2 id="8">8. セキュリティとベストプラクティス</h2>
+<h3 id="sql_1"><strong>🔐 SQL操作のセキュリティ原則</strong></h3>
+<h4 id="1-where"><strong>1. WHERE句の必須化</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- ❌ 危険な操作</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w">          </span><span class="c1">-- 全レコード更新</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="p">;</span><span class="w">                  </span><span class="c1">-- 全レコード削除</span>
+
+<span class="c1">-- ✅ 安全な操作</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S001&#39;</span><span class="p">;</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;S001&#39;</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="2_3"><strong>2. トランザクションの活用</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 重要な操作は必ずトランザクション内で実行</span>
+<span class="k">BEGIN</span><span class="p">;</span>
+<span class="c1">-- 複数のSQL操作</span>
+<span class="k">COMMIT</span><span class="p">;</span><span class="w">  </span><span class="c1">-- または ROLLBACK;</span>
+</code></pre></div>
+<h4 id="3_3"><strong>3. バックアップの確認</strong></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 重要な削除・更新前は必ずデータを確認</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="err">削除・更新条件</span><span class="p">;</span>
+<span class="c1">-- ↓ </span>
+<span class="c1">-- 確認後に実際の操作を実行</span>
+</code></pre></div>
+<h3 id="week-8"><strong>📋 Week 8への準備チェックリスト</strong></h3>
+<h4 id="_18"><strong>✅ 習得完了技術</strong></h4>
+<ul>
+<li>[x] INSERT文の基本と応用（単一・複数レコード挿入）</li>
+<li>[x] UPDATE文の安全な活用（WHERE句必須の理解）</li>
+<li>[x] DELETE文の危険性理解と安全な実行手順</li>
+<li>[x] トランザクション（BEGIN・COMMIT・ROLLBACK）の基本</li>
+<li>[x] CRUD操作の統合（Create・Read・Update・Delete）</li>
+<li>[x] Week 5システムとの連携理解（Java思考→SQL思考）</li>
+</ul>
+<h4 id="week-8_1"><strong>✅ Week 8準備完了項目</strong></h4>
+<ul>
+<li>[x] MyBatis @Mapperアノテーション対応のSQL文作成能力</li>
+<li>[x] Spring Boot Serviceクラスで活用するCRUD操作パターン理解</li>
+<li>[x] データベース操作の安全性とベストプラクティス習得</li>
+<li>[x] トランザクション処理によるデータ整合性確保の理解</li>
+</ul>
+<hr />
+<h2 id="9-74">9. まとめ：レッスン7.4で習得した技術</h2>
+<h3 id="_19"><strong>🏆 到達レベル</strong></h3>
+<p><strong>CRUD操作を完全にマスターしたデータベース管理エキスパート</strong></p>
+<h3 id="_20"><strong>📚 習得技術一覧</strong></h3>
+<h4 id="insert_1"><strong>INSERT文の応用</strong></h4>
+<ul>
+<li>複数レコードの一括挿入によるパフォーマンス向上</li>
+<li>AUTO_INCREMENTとの連携によるIDの自動採番</li>
+<li>VALUES句の効率的な活用</li>
+</ul>
+<h4 id="update_3"><strong>UPDATE文の実践</strong></h4>
+<ul>
+<li>WHERE句による安全で正確な条件指定更新</li>
+<li>複数フィールドの同時更新技術</li>
+<li>計算式を使った値の更新（age = age + 1等）</li>
+</ul>
+<h4 id="delete_3"><strong>DELETE文の安全な活用</strong></h4>
+<ul>
+<li>危険性の理解と事前確認手順の習得</li>
+<li>条件指定による適切な部分削除</li>
+<li>全削除の危険性回避方法</li>
+</ul>
+<h4 id="_21"><strong>トランザクション</strong></h4>
+<ul>
+<li>BEGIN・COMMIT・ROLLBACKによるデータ整合性確保</li>
+<li>複数SQL操作の原子性保証</li>
+<li>エラー時の安全な復旧手順</li>
+</ul>
+<h4 id="crud_3"><strong>CRUD操作の統合</strong></h4>
+<ul>
+<li>Create（INSERT）・Read（SELECT）・Update・Deleteの総合活用</li>
+<li>実用的なデータ管理システムの操作パターン習得</li>
+<li>Week 5システムとの完全連携による思考転換完了</li>
+</ul>
+<h3 id="_22"><strong>🎯 次回への準備</strong></h3>
+<p><strong>レッスン7.5</strong>: 「実践演習：Week 5学生管理システムのデータベース化」
+- Week 5で作成したJavaシステムの完全データベース化
+- Java配列データの一括MySQL移行
+- CRUD操作の統合によるシステム完成</p>
+<p><strong>Week 8準備</strong>: Spring Boot + MyBatis連携の基盤完成
+- @Mapperアノテーションで活用するSQL文の実践的習得
+- トランザクション処理によるデータ整合性確保
+- 実用的なWebアプリケーション開発への橋渡し完了</p>
+<h3 id="_23"><strong>💡 学習のポイント</strong></h3>
+<ol>
+<li><strong>安全性最優先</strong>: WHERE句の必須化、事前確認の習慣化</li>
+<li><strong>効率性の追求</strong>: 一括操作、トランザクションの適切な活用</li>
+<li><strong>実用性重視</strong>: Week 5システムとの連携による現実的な技術習得</li>
+<li><strong>発展性確保</strong>: Week 8でのSpring Boot連携に必要な技術基盤完成</li>
+</ol>
+<p><strong>レッスン7.4の学習、本当にお疲れ様でした！</strong><br />
+<strong>CRUD操作をマスターし、データベース管理のエキスパートとして大きく成長しましたね！</strong></p>
+<p><strong>次のレッスン7.5では、Week 5システムの完全データベース化に挑戦しましょう！</strong> 🎯✨</content>
+</lesson></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
