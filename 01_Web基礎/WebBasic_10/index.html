@@ -1001,6 +1001,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#css_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 補足：CSSの優先順位について
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5992,6 +6003,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#css_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 補足：CSSの優先順位について
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6455,6 +6477,22 @@
 <li><strong>本格的なサイト</strong>：外部スタイルシート</li>
 <li><strong>特別な装飾</strong>：インラインスタイル（最小限で）</li>
 </ul>
+<h3 id="css_2">💡 補足：CSSの優先順位について</h3>
+<p>同じ要素に複数のスタイルが指定された場合、<strong>CSSの仕様上、以下の優先順位で適用されます</strong>：</p>
+<div class="highlight"><pre><span></span><code>インラインスタイル ＞ 内部スタイルシート ＞ 外部スタイルシート
+（最も優先される）                        （最も低い優先度）
+</code></pre></div>
+<p><strong>具体例：</strong>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 外部CSS（style.css）で h1 { color: blue; } と指定 --&gt;</span>
+<span class="cm">&lt;!-- 内部CSSで h1 { color: green; } と指定 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color: red;&quot;</span><span class="p">&gt;</span>この見出しは何色？<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</code></pre></div></p>
+<p><strong>結果</strong>：見出しは<strong>赤色</strong>になります（インラインスタイルが最優先されるため）</p>
+<p><strong>この優先順位を覚えておくと便利な場面：</strong>
+- 外部CSSで全体のスタイルを統一しつつ、特定の要素だけ別のスタイルにしたい場合
+- なぜ期待通りのスタイルが適用されないのかを調査する場合
+- フレームワーク（Bootstrapなど）のスタイルを部分的に上書きしたい場合</p>
+<p><strong>注意</strong>：インラインスタイルは優先度が高い分、後から変更しにくくなります。基本的には外部・内部スタイルシートを使用し、インラインスタイルは本当に必要な場合のみ使用しましょう。</p>
 <hr />
 <h2 id="4">4. 基本的なスタイリング実践</h2>
 <h3 id="_7">文字の装飾</h3>
