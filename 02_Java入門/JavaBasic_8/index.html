@@ -6870,6 +6870,22 @@ false
 <p><strong>💡 ヒント3: 両方ともnullでない場合</strong>
 <div class="highlight"><pre><span></span><code><span class="k">return</span><span class="w"> </span><span class="n">str1</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">str2</span><span class="p">);</span>
 </code></pre></div></p>
+<p><strong>🎯 期待される実行結果</strong>
+<div class="highlight"><pre><span></span><code>テスト結果:
+同じ文字列: true
+異なる文字列: false
+片方null: false
+両方null: true
+逆順null: false
+</code></pre></div></p>
+<p><strong>📝 結果の解説</strong>
+| テストケース | 引数1 | 引数2 | 結果 | 理由 |
+|-------------|-------|-------|------|------|
+| 同じ文字列 | "Hello" | "Hello" | true | 内容が同じ |
+| 異なる文字列 | "Hello" | "World" | false | 内容が異なる |
+| 片方null | "Hello" | null | false | 片方だけnull |
+| 両方null | null | null | true | 両方ともnull |
+| 逆順null | null | "Hello" | false | 片方だけnull |</p>
 <h4 id="_15">完成例</h4>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SafeStringComparison</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
