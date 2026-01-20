@@ -6865,13 +6865,13 @@
 | student_id | name         | department       |
 +------------+--------------+------------------+
 | S001       | 田中太郎     | 情報工学部       |
-| S002       | 佐藤花子     | 経営学部         |
-| S003       | 山田次郎     | 情報工学部       |
-| S004       | 鈴木美咲     | 文学部           |
+| S002       | 佐藤花子     | 情報工学部       |
+| S003       | 山田次郎     | 数学部           |
+| S004       | 田村美咲     | 物理学部         |
 | S005       | 高橋健太     | 情報工学部       |
-| S006       | 伊藤麻衣     | 経営学部         |
-| S007       | 渡辺博之     | 文学部           |
-| S008       | 中村優子     | 情報工学部       |
+| S006       | 伊藤麻衣     | 数学部           |
+| S007       | 渡辺翔太     | 物理学部         |
+| S008       | 中村彩香     | 情報工学部       |
 +------------+--------------+------------------+
 </code></pre></div></p>
 <h3 id="_4">今回の学習の位置づけ</h3>
@@ -6897,9 +6897,9 @@
 <div class="highlight"><pre><span></span><code>+--------------+-------+
 | subject_code | score |
 +--------------+-------+
-| CS101        |    88 |
-| BU201        |    92 |
-| LT301        |    85 |
+| CS101        |    85 |
+| MATH101      |    78 |
+| ENG101       |    82 |
 +--------------+-------+
 </code></pre></div></p>
 <h3 id="join_1">JOIN操作による問題解決</h3>
@@ -6931,14 +6931,30 @@
 <div class="highlight"><pre><span></span><code>+------------+--------------+--------------+-------+
 | student_id | name         | subject_code | score |
 +------------+--------------+--------------+-------+
-| S001       | 田中太郎     | BU201        |    92 |
-| S001       | 田中太郎     | CS101        |    88 |
-| S001       | 田中太郎     | LT301        |    85 |
-| S002       | 佐藤花子     | BU201        |    95 |
-| S002       | 佐藤花子     | CS101        |    82 |
-| S002       | 佐藤花子     | LT301        |    90 |
-| S003       | 山田次郎     | CS101        |    94 |
-| S003       | 山田次郎     | LT301        |    88 |
+| S001       | 田中太郎     | CS101        |    85 |
+| S001       | 田中太郎     | ENG101       |    82 |
+| S001       | 田中太郎     | MATH101      |    78 |
+| S002       | 佐藤花子     | CS101        |    92 |
+| S002       | 佐藤花子     | ENG101       |    95 |
+| S002       | 佐藤花子     | MATH101      |    88 |
+| S003       | 山田次郎     | ENG101       |    76 |
+| S003       | 山田次郎     | MATH101      |    95 |
+| S003       | 山田次郎     | MATH201      |    89 |
+| S004       | 田村美咲     | ENG101       |    79 |
+| S004       | 田村美咲     | MATH101      |    84 |
+| S004       | 田村美咲     | PHY101       |    91 |
+| S005       | 高橋健太     | CS102        |    87 |
+| S005       | 高橋健太     | CS201        |    93 |
+| S005       | 高橋健太     | ENG201       |    85 |
+| S006       | 伊藤麻衣     | ENG101       |    83 |
+| S006       | 伊藤麻衣     | MATH101      |    90 |
+| S006       | 伊藤麻衣     | MATH201      |    86 |
+| S007       | 渡辺翔太     | ENG101       |    77 |
+| S007       | 渡辺翔太     | MATH101      |    81 |
+| S007       | 渡辺翔太     | PHY101       |    88 |
+| S008       | 中村彩香     | CS102        |    94 |
+| S008       | 中村彩香     | CS201        |    89 |
+| S008       | 中村彩香     | ENG201       |    92 |
 +------------+--------------+--------------+-------+
 </code></pre></div></p>
 <h3 id="23">💡 実践2：3テーブル結合（学生・成績・科目）</h3>
@@ -6956,16 +6972,19 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">sub</span><span class="p">.</span><span class="n">subject_name</span><span class="p">;</span>
 </code></pre></div>
 <p><strong>実行結果：</strong>
-<div class="highlight"><pre><span></span><code>+------------+--------------+------------------+-------+--------------+
-| student_id | name         | subject_name     | score | grade_letter |
-+------------+--------------+------------------+-------+--------------+
-| S001       | 田中太郎     | ビジネス基礎     |    92 | A            |
-| S001       | 田中太郎     | プログラミング   |    88 | B            |
-| S001       | 田中太郎     | 文学概論         |    85 | B            |
-| S002       | 佐藤花子     | ビジネス基礎     |    95 | A            |
-| S002       | 佐藤花子     | プログラミング   |    82 | B            |
-| S002       | 佐藤花子     | 文学概論         |    90 | A            |
-+------------+--------------+------------------+-------+--------------+
+<div class="highlight"><pre><span></span><code>+------------+--------------+--------------------------+-------+--------------+
+| student_id | name         | subject_name             | score | grade_letter |
++------------+--------------+--------------------------+-------+--------------+
+| S001       | 田中太郎     | プログラミング基礎       |    85 | B            |
+| S001       | 田中太郎     | 微分積分学               |    78 | C            |
+| S001       | 田中太郎     | 英語コミュニケーション   |    82 | B            |
+| S002       | 佐藤花子     | プログラミング基礎       |    92 | A            |
+| S002       | 佐藤花子     | 微分積分学               |    88 | B            |
+| S002       | 佐藤花子     | 英語コミュニケーション   |    95 | A            |
+| S003       | 山田次郎     | 微分積分学               |    95 | A            |
+| S003       | 山田次郎     | 線形代数学               |    89 | B            |
+| S003       | 山田次郎     | 英語コミュニケーション   |    76 | C            |
++------------+--------------+--------------------------+-------+--------------+
 </code></pre></div></p>
 <h3 id="_8">💭 考えるポイント</h3>
 <p>INNER JOINの特徴を理解しましょう：
@@ -7007,14 +7026,14 @@
 <div class="highlight"><pre><span></span><code>+------------+--------------+------------------+---------------+---------------+
 | student_id | name         | department       | subject_count | average_score |
 +------------+--------------+------------------+---------------+---------------+
-| S001       | 田中太郎     | 情報工学部       |             3 |          88.3 |
-| S002       | 佐藤花子     | 経営学部         |             3 |          89.0 |
-| S003       | 山田次郎     | 情報工学部       |             2 |          91.0 |
-| S004       | 鈴木美咲     | 文学部           |             0 |          NULL |
-| S005       | 高橋健太     | 情報工学部       |             3 |          86.7 |
-| S006       | 伊藤麻衣     | 経営学部         |             2 |          87.5 |
-| S007       | 渡辺博之     | 文学部           |             1 |          78.0 |
-| S008       | 中村優子     | 情報工学部       |             3 |          91.7 |
+| S001       | 田中太郎     | 情報工学部       |             3 |          81.7 |
+| S002       | 佐藤花子     | 情報工学部       |             3 |          91.7 |
+| S003       | 山田次郎     | 数学部           |             3 |          86.7 |
+| S004       | 田村美咲     | 物理学部         |             3 |          84.7 |
+| S005       | 高橋健太     | 情報工学部       |             3 |          88.3 |
+| S006       | 伊藤麻衣     | 数学部           |             3 |          86.3 |
+| S007       | 渡辺翔太     | 物理学部         |             3 |          82.0 |
+| S008       | 中村彩香     | 情報工学部       |             3 |          91.7 |
 +------------+--------------+------------------+---------------+---------------+
 </code></pre></div></p>
 <h3 id="4">💡 実践4：学部別成績統計</h3>
@@ -7037,9 +7056,9 @@
 <div class="highlight"><pre><span></span><code>+------------------+----------------+---------------+-----------+-----------+-----------+
 | department       | total_students | total_scores  | avg_score | max_score | min_score |
 +------------------+----------------+---------------+-----------+-----------+-----------+
-| 情報工学部       |              4 |            11 |      89.1 |        96 |        78 |
-| 経営学部         |              2 |             5 |      88.2 |        95 |        80 |
-| 文学部           |              2 |             1 |      78.0 |        78 |        78 |
+| 情報工学部       |              4 |            12 |      88.3 |        95 |        78 |
+| 数学部           |              2 |             6 |      86.5 |        95 |        76 |
+| 物理学部         |              2 |             6 |      83.3 |        91 |        77 |
 +------------------+----------------+---------------+-----------+-----------+-----------+
 </code></pre></div></p>
 <h3 id="_10">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_6_image_3.html">リレーション設計図（後半）</a></h3>
@@ -7061,7 +7080,7 @@
 <div class="highlight"><pre><span></span><code>+------------+
 | AVG(score) |
 +------------+
-|    87.5455 |
+|    86.0833 |
 +------------+
 </code></pre></div></p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 平均点以上の成績を持つ学生（サブクエリ使用）</span>
@@ -7076,17 +7095,24 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <p><strong>実行結果：</strong>
-<div class="highlight"><pre><span></span><code>+--------------+------------------+-------+
-| name         | subject_name     | score |
-+--------------+------------------+-------+
-| 中村優子     | プログラミング   |    96 |
-| 佐藤花子     | ビジネス基礎     |    95 |
-| 山田次郎     | プログラミング   |    94 |
-| 田中太郎     | ビジネス基礎     | 92    |
-| 高橋健太     | 文学概論         |    91 |
-| 山田次郎     | 文学概論         |    88 |
-| 田中太郎     | プログラミング   |    88 |
-+--------------+------------------+-------+
+<div class="highlight"><pre><span></span><code>+--------------+--------------------------+-------+
+| name         | subject_name             | score |
++--------------+--------------------------+-------+
+| 山田次郎     | 微分積分学               |    95 |
+| 佐藤花子     | 英語コミュニケーション   |    95 |
+| 中村彩香     | データ構造とアルゴリズム |    94 |
+| 高橋健太     | データベース設計         |    93 |
+| 佐藤花子     | プログラミング基礎       |    92 |
+| 中村彩香     | 技術英語                 |    92 |
+| 田村美咲     | 物理学基礎               |    91 |
+| 伊藤麻衣     | 微分積分学               |    90 |
+| 山田次郎     | 線形代数学               |    89 |
+| 中村彩香     | データベース設計         |    89 |
+| 渡辺翔太     | 物理学基礎               |    88 |
+| 佐藤花子     | 微分積分学               |    88 |
+| 高橋健太     | データ構造とアルゴリズム |    87 |
+| 伊藤麻衣     | 線形代数学               |    86 |
++--------------+--------------------------+-------+
 </code></pre></div></p>
 <h3 id="6">💡 実践6：学部内トップの学生</h3>
 <p>各学部で最高平均点を持つ学生を抽出しましょう：</p>
@@ -7109,8 +7135,8 @@
 | department       | max_avg_score  |
 +------------------+----------------+
 | 情報工学部       |        91.6667 |
-| 経営学部         |        89.0000 |
-| 文学部           |        78.0000 |
+| 数学部           |        86.6667 |
+| 物理学部         |        84.6667 |
 +------------------+----------------+
 </code></pre></div></p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 学部内でトップの学生を抽出（相関サブクエリ）</span>
@@ -7137,9 +7163,10 @@
 <div class="highlight"><pre><span></span><code>+--------------+------------------+-----------+
 | name         | department       | avg_score |
 +--------------+------------------+-----------+
-| 中村優子     | 情報工学部       |      91.7 |
-| 佐藤花子     | 経営学部         |      89.0 |
-| 渡辺博之     | 文学部           |      78.0 |
+| 佐藤花子     | 情報工学部       |      91.7 |
+| 中村彩香     | 情報工学部       |      91.7 |
+| 山田次郎     | 数学部           |      86.7 |
+| 田村美咲     | 物理学部         |      84.7 |
 +--------------+------------------+-----------+
 </code></pre></div></p>
 <h3 id="_14">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_6_image_4.html">後半テーブルの構造図</a></h3>
@@ -7174,14 +7201,14 @@
 <div class="highlight"><pre><span></span><code>+------------+--------------+------------------+----------------+-----------+---------------+--------------+------------------+--------------+------------------+
 | student_id | name         | department       | subjects_taken | avg_score | highest_score | lowest_score | excellent_count  | failed_count | performance_level|
 +------------+--------------+------------------+----------------+-----------+---------------+--------------+------------------+--------------+------------------+
-| S008       | 中村優子     | 情報工学部       |              3 |      91.7 |            96 |           88 |                2 |            0 | 優秀             |
-| S003       | 山田次郎     | 情報工学部       |              2 |      91.0 |            94 |           88 |                1 |            0 | 優秀             |
-| S002       | 佐藤花子     | 経営学部         |              3 |      89.0 |            95 |           82 |                1 |            0 | 良好             |
-| S001       | 田中太郎     | 情報工学部       |              3 |      88.3 |            92 |           85 |                0 |            0 | 良好             |
-| S006       | 伊藤麻衣     | 経営学部         |              2 |      87.5 |            90 |           85 |                0 |            0 | 良好             |
-| S005       | 高橋健太     | 情報工学部       |              3 |      86.7 |            91 |           80 |                0 |            0 | 良好             |
-| S007       | 渡辺博之     | 文学部           |              1 |      78.0 |            78 |           78 |                0 |            0 | 普通             |
-| S004       | 鈴木美咲     | 文学部           |              0 |      NULL |          NULL |         NULL |                0 |            0 | NULL             |
+| S002       | 佐藤花子     | 情報工学部       |              3 |      91.7 |            95 |           88 |                2 |            0 | 優秀             |
+| S008       | 中村彩香     | 情報工学部       |              3 |      91.7 |            94 |           89 |                2 |            0 | 優秀             |
+| S005       | 高橋健太     | 情報工学部       |              3 |      88.3 |            93 |           85 |                1 |            0 | 良好             |
+| S003       | 山田次郎     | 数学部           |              3 |      86.7 |            95 |           76 |                1 |            0 | 良好             |
+| S006       | 伊藤麻衣     | 数学部           |              3 |      86.3 |            90 |           83 |                1 |            0 | 良好             |
+| S004       | 田村美咲     | 物理学部         |              3 |      84.7 |            91 |           79 |                1 |            0 | 良好             |
+| S007       | 渡辺翔太     | 物理学部         |              3 |      82.0 |            88 |           77 |                0 |            0 | 良好             |
+| S001       | 田中太郎     | 情報工学部       |              3 |      81.7 |            85 |           78 |                0 |            0 | 良好             |
 +------------+--------------+------------------+----------------+-----------+---------------+--------------+------------------+--------------+------------------+
 </code></pre></div></p>
 <h3 id="8">💡 実践8：科目別詳細分析</h3>
@@ -7195,10 +7222,10 @@
 <span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">max_score</span><span class="p">,</span>
 <span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">min_score</span><span class="p">,</span>
 <span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="n">STDDEV</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">score_stddev</span><span class="p">,</span>
-<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">grade_letter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">grade_a_count</span><span class="p">,</span>
-<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">grade_letter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">grade_b_count</span><span class="p">,</span>
-<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">grade_letter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;C&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">grade_c_count</span><span class="p">,</span>
-<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">grade_letter</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;F&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">fail_count</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">grade_a_count</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">grade_b_count</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">grade_c_count</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">fail_count</span><span class="p">,</span>
 <span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">pass_rate</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">subject</span><span class="w"> </span><span class="n">sub</span>
 <span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="n">sc</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">sub</span><span class="p">.</span><span class="n">subject_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">subject_code</span>
@@ -7206,13 +7233,18 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">avg_score</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <p><strong>実行結果：</strong>
-<div class="highlight"><pre><span></span><code>+------------------+---------+-------------------+-----------+-----------+-----------+--------------+----------------+----------------+----------------+------------+-----------+
-| subject_name     | credits | students_enrolled | avg_score | max_score | min_score | score_stddev | grade_a_count  | grade_b_count  | grade_c_count  | fail_count | pass_rate |
-+------------------+---------+-------------------+-----------+-----------+-----------+--------------+----------------+----------------+----------------+------------+-----------+
-| プログラミング   |       3 |                 8 |      89.1 |        96 |        78 |          5.8 |              2 |              6 |              0 |          0 |     100.0 |
-| ビジネス基礎     |       2 |                 5 |      88.8 |        95 |        80 |          5.6 |              2 |              3 |              0 |          0 |     100.0 |
-| 文学概論         |       2 |                 6 |      86.8 |        91 |        78 |          4.8 |              0 |              6 |              0 |          0 |     100.0 |
-+------------------+---------+-------------------+-----------+-----------+-----------+--------------+----------------+----------------+----------------+------------+-----------+
+<div class="highlight"><pre><span></span><code>+--------------------------+---------+-------------------+-----------+-----------+-----------+--------------+---------------+---------------+---------------+------------+-----------+
+| subject_name             | credits | students_enrolled | avg_score | max_score | min_score | score_stddev | grade_a_count | grade_b_count | grade_c_count | fail_count | pass_rate |
++--------------------------+---------+-------------------+-----------+-----------+-----------+--------------+---------------+---------------+---------------+------------+-----------+
+| データベース設計         |       3 |                 2 |      91.0 |        93 |        89 |          2.8 |             1 |             1 |             0 |          0 |     100.0 |
+| データ構造とアルゴリズム |       3 |                 2 |      90.5 |        94 |        87 |          4.9 |             1 |             1 |             0 |          0 |     100.0 |
+| 物理学基礎               |       3 |                 2 |      89.5 |        91 |        88 |          2.1 |             1 |             1 |             0 |          0 |     100.0 |
+| プログラミング基礎       |       3 |                 2 |      88.5 |        92 |        85 |          4.9 |             1 |             1 |             0 |          0 |     100.0 |
+| 技術英語                 |       2 |                 2 |      88.5 |        92 |        85 |          4.9 |             1 |             1 |             0 |          0 |     100.0 |
+| 線形代数学               |       4 |                 2 |      87.5 |        89 |        86 |          2.1 |             0 |             2 |             0 |          0 |     100.0 |
+| 微分積分学               |       4 |                 6 |      85.7 |        95 |        78 |          6.0 |             2 |             3 |             1 |          0 |     100.0 |
+| 英語コミュニケーション   |       2 |                 6 |      82.0 |        95 |        76 |          7.2 |             1 |             3 |             2 |          0 |     100.0 |
++--------------------------+---------+-------------------+-----------+-----------+-----------+--------------+---------------+---------------+---------------+------------+-----------+
 </code></pre></div></p>
 <h3 id="_16">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_6_image_5.html">後半リレーション設計補足図</a></h3>
 <hr />
@@ -7230,30 +7262,25 @@
 <span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
 <span class="w">    </span><span class="n">sc</span><span class="p">.</span><span class="n">semester</span><span class="p">,</span>
 <span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">subjects_count</span><span class="p">,</span>
-<span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">semester_avg</span><span class="p">,</span>
-<span class="w">    </span><span class="n">LAG</span><span class="p">(</span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span>
-<span class="w">        </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">student_id</span><span class="w"> </span>
-<span class="w">        </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">semester</span>
-<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">previous_avg</span><span class="p">,</span>
-<span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">LAG</span><span class="p">(</span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span>
-<span class="w">        </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">student_id</span><span class="w"> </span>
-<span class="w">        </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">semester</span>
-<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">improvement</span>
+<span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">semester_avg</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="n">s</span>
 <span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="n">sc</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">student_id</span>
 <span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">semester</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">semester</span><span class="p">;</span>
 </code></pre></div>
 <p><strong>実行結果：</strong>
-<div class="highlight"><pre><span></span><code>+--------------+-----------+----------------+--------------+--------------+-------------+
-| name         | semester  | subjects_count | semester_avg | previous_avg | improvement |
-+--------------+-----------+----------------+--------------+--------------+-------------+
-| 佐藤花子     | 2024前期  |              2 |         88.5 |         NULL |        NULL |
-| 佐藤花子     | 2024後期  |              1 |         95.0 |         88.5 |         6.5 |
-| 田中太郎     | 2024前期  |              3 |         88.3 |         NULL |        NULL |
-| 山田次郎     | 2024前期  |              1 |         94.0 |         NULL |        NULL |
-| 山田次郎     | 2024後期  |              1 |         88.0 |         94.0 |        -6.0 |
-+--------------+-----------+----------------+--------------+--------------+-------------+
+<div class="highlight"><pre><span></span><code>+--------------+-----------+----------------+--------------+
+| name         | semester  | subjects_count | semester_avg |
++--------------+-----------+----------------+--------------+
+| 伊藤麻衣     | 2024前期  |              3 |         86.3 |
+| 佐藤花子     | 2024前期  |              3 |         91.7 |
+| 山田次郎     | 2024前期  |              3 |         86.7 |
+| 田中太郎     | 2024前期  |              3 |         81.7 |
+| 田村美咲     | 2024前期  |              3 |         84.7 |
+| 中村彩香     | 2024前期  |              3 |         91.7 |
+| 渡辺翔太     | 2024前期  |              3 |         82.0 |
+| 高橋健太     | 2024前期  |              3 |         88.3 |
++--------------+-----------+----------------+--------------+
 </code></pre></div></p>
 <hr />
 <h2 id="week-8spring-boot">🚀 Week 8への準備：Spring Boot連携を意識したクエリ</h2>
@@ -7284,7 +7311,7 @@
 <div class="highlight"><pre><span></span><code>+------------+--------------+------------------+---------------------------+------------------------------------------------------------------+
 | student_id | name         | department       | email                     | score_details                                                    |
 +------------+--------------+------------------+---------------------------+------------------------------------------------------------------+
-| S001       | 田中太郎     | 情報工学部       | tanaka@example.com        | [{&quot;subject_name&quot;:&quot;ビジネス基礎&quot;,&quot;score&quot;:92,&quot;grade&quot;:&quot;A&quot;,&quot;semester&quot;:&quot;2024前期&quot;},...] |
+| S001       | 田中太郎     | 情報工学部       | tanaka.taro@example.com   | [{&quot;subject_name&quot;:&quot;プログラミング基礎&quot;,&quot;score&quot;:85,&quot;grade&quot;:&quot;B&quot;,&quot;semester&quot;:&quot;2024前期&quot;},...] |
 +------------+--------------+------------------+---------------------------+------------------------------------------------------------------+
 </code></pre></div></p>
 <h3 id="10">💡 実践10：検索・フィルタリング用クエリ</h3>
@@ -7299,18 +7326,18 @@
 <span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="n">s</span>
 <span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="n">sc</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">student_id</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;active&#39;</span>
-<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">department</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">)</span>
-<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%田%&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">)</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span>
 <span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">department</span>
-<span class="k">HAVING</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">85</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">85</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">avg_score</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
 </code></pre></div>
 <p><strong>実行結果：</strong>
 <div class="highlight"><pre><span></span><code>+------------+--------------+------------------+---------------+-----------+-----------+
 | student_id | name         | department       | subject_count | avg_score | max_score |
 +------------+--------------+------------------+---------------+-----------+-----------+
-| S001       | 田中太郎     | 情報工学部       |             3 |      88.3 |        92 |
-| S005       | 高橋健太     | 情報工学部       |             3 |      86.7 |        91 |
+| S002       | 佐藤花子     | 情報工学部       |             3 |      91.7 |        95 |
+| S008       | 中村彩香     | 情報工学部       |             3 |      91.7 |        94 |
+| S005       | 高橋健太     | 情報工学部       |             3 |      88.3 |        93 |
 +------------+--------------+------------------+---------------+-----------+-----------+
 </code></pre></div></p>
 <h3 id="_20">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/SQL_6_image_6.html">後半設計の最終構造図</a></h3>
@@ -7365,8 +7392,8 @@
 <span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">student_id</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">student_count</span><span class="p">,</span>
 <span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">dept_avg_score</span><span class="p">,</span>
 <span class="w">    </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">subject_count</span><span class="p">.</span><span class="k">count</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_subjects_per_student</span><span class="p">,</span>
-<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">grade_letter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_a_grades</span><span class="p">,</span>
-<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">grade_letter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_b_grades</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_a_grades</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total_b_grades</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="n">s</span>
 <span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="n">sc</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="n">student_id</span>
 <span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="p">(</span>
@@ -7405,7 +7432,7 @@
 <p><strong>Week 7.5完了時:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 単一テーブルでの基本操作</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;情報工学部&#39;</span><span class="p">;</span>
-<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;S001&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CS101&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">88</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2024前期&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;S001&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CS101&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2024前期&#39;</span><span class="p">);</span>
 </code></pre></div></p>
 <p><strong>Week 7.6完了時:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 複数テーブル連携による高度な分析</span>
