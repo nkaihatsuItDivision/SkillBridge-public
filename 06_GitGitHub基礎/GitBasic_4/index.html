@@ -6744,8 +6744,8 @@ nothing to commit, working tree clean
 - 修正前後の差分を確認する方法はあるのでしょうか？
 - 複数ファイルを同時に修正した場合、どのように管理するのでしょうか？</p>
 <h3 id="1-1">ステップ1-1: 既存ファイルの改良</h3>
-<p><strong>Student.javaファイルに新しいメソッドを追加してみましょう。</strong></p>
-<p>Student.javaファイルを開いて、以下のメソッドを追加してください：</p>
+<p><strong>Student.java（抽象クラス）に新しいメソッドを追加してみましょう。</strong></p>
+<p>Week 5で作成したStudent抽象クラスを開いて、以下のメソッドを追加してください：</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * 学生の詳細情報を文字列で返すメソッド</span>
 <span class="cm"> * Week 6レッスン4で追加：変更管理の実践用</span>
@@ -6753,11 +6753,12 @@ nothing to commit, working tree clean
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDetailedInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">StringBuilder</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span>
 <span class="w">    </span><span class="n">info</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;=== 学生詳細情報 ===\n&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">info</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;学生ID: &quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">getId</span><span class="p">()).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">info</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;氏名: &quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">getName</span><span class="p">()).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">info</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;学生ID: &quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">info</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;氏名: &quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="n">info</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;年齢: &quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">getAge</span><span class="p">()).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;歳\n&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">info</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;メールアドレス: &quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">getEmail</span><span class="p">()).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">info</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;専攻: &quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">getMajor</span><span class="p">()).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">info</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;メールアドレス: &quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">email</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">info</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;専攻: &quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">major</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">info</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;学生タイプ: &quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">getStudentType</span><span class="p">()).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="n">info</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;====================&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
 <span class="p">}</span>
@@ -6767,11 +6768,12 @@ nothing to commit, working tree clean
 <span class="cm"> * Week 6レッスン4で追加：Git変更追跡の体験用</span>
 <span class="cm"> */</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getAgeCategory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getAge</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;10代&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;20代前半&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">getAge</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;20代後半&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;30代以上&quot;</span><span class="p">;</span>
@@ -6779,6 +6781,9 @@ nothing to commit, working tree clean
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>ファイルを保存してください。</strong></p>
+<blockquote>
+<p>💡 <strong>補足</strong>: <code>getAge()</code> メソッドはPersonクラスで定義されており、birthDateから現在の年齢を計算します。また、<code>getStudentType()</code> は抽象メソッドとして定義されており、UndergraduateStudentでは「学部生」、GraduateStudentでは「大学院生」を返します。</p>
+</blockquote>
 <h3 id="1-2-git">ステップ1-2: Gitでの変更検出</h3>
 <p><strong>変更を検出してみましょう：</strong></p>
 <div class="highlight"><pre><span></span><code>git status
@@ -6807,9 +6812,10 @@ no changes added to commit (use &quot;git add&quot; to tell Git what to commit)
 index a1b2c3d..e4f5g6h 100644
 --- a/Student.java
 +++ b/Student.java
-@@ -25,4 +25,30 @@ public class Student extends Person {
-     public void setMajor(String major) {
-         this.major = major;
+@@ -85,4 +85,35 @@ public abstract class Student extends Person
+     public String generateSummary() {
+         return String.format(&quot;%s（%s）- GPA: %.2f, 成績レベル: %s&quot;, 
+                            name, getStudentType(), gpa, getGradeLevel());
      }
 +
 +    /**
@@ -6819,11 +6825,12 @@ index a1b2c3d..e4f5g6h 100644
 +    public String getDetailedInfo() {
 +        StringBuilder info = new StringBuilder();
 +        info.append(&quot;=== 学生詳細情報 ===\n&quot;);
-+        info.append(&quot;学生ID: &quot;).append(getId()).append(&quot;\n&quot;);
-+        info.append(&quot;氏名: &quot;).append(getName()).append(&quot;\n&quot;);
++        info.append(&quot;学生ID: &quot;).append(id).append(&quot;\n&quot;);
++        info.append(&quot;氏名: &quot;).append(name).append(&quot;\n&quot;);
 +        info.append(&quot;年齢: &quot;).append(getAge()).append(&quot;歳\n&quot;);
-+        info.append(&quot;メールアドレス: &quot;).append(getEmail()).append(&quot;\n&quot;);
-+        info.append(&quot;専攻: &quot;).append(getMajor()).append(&quot;\n&quot;);
++        info.append(&quot;メールアドレス: &quot;).append(email).append(&quot;\n&quot;);
++        info.append(&quot;専攻: &quot;).append(major).append(&quot;\n&quot;);
++        info.append(&quot;学生タイプ: &quot;).append(getStudentType()).append(&quot;\n&quot;);
 +        info.append(&quot;====================&quot;);
 +        return info.toString();
 +    }
@@ -6833,7 +6840,8 @@ index a1b2c3d..e4f5g6h 100644
 +     * Week 6レッスン4で追加：Git変更追跡の体験用
 +     */
 +    public String getAgeCategory() {
-+        if (getAge() &lt; 20) {
++        int age = getAge();
++        if (age &lt; 20) {
 +            return &quot;10代&quot;;
 </code></pre></div></p>
 <p><strong>git diffの読み方：</strong>
@@ -6880,11 +6888,17 @@ Changes to be committed:
 <h3 id="2-1">ステップ2-1: 新しいクラスファイルの作成</h3>
 <p><strong>AuditStudent.java（聴講生クラス）を作成しましょう。</strong></p>
 <p>プロジェクトフォルダに新しいファイル <code>AuditStudent.java</code> を作成して、以下のコードを記述してください：</p>
-<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<blockquote>
+<p>💡 <strong>補足</strong>: AuditStudentはWeek 5で作成したPersonクラスを継承します。Personクラスでは年齢を<code>birthDate</code>（生年月日）から計算する設計になっていることを思い出してください。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+
+<span class="cm">/**</span>
 <span class="cm"> * 聴講生クラス</span>
 <span class="cm"> * Week 6レッスン4で新規追加：新規ファイル管理の実践用</span>
 <span class="cm"> * </span>
 <span class="cm"> * 正規の学生とは異なり、単位取得はできないが講義を聴講できる学生</span>
+<span class="cm"> * Week 5で作成したPersonクラスを継承</span>
 <span class="cm"> */</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AuditStudent</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
 
@@ -6893,23 +6907,20 @@ Changes to be committed:
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isActive</span><span class="p">;</span><span class="w">     </span><span class="c1">// 聴講継続中かどうか</span>
 
 <span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * デフォルトコンストラクタ</span>
+<span class="cm">     * 全パラメータコンストラクタ（Personクラスの構造に合わせてbirthDateを使用）</span>
 <span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">AuditStudent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">super</span><span class="p">();</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">isActive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">  </span><span class="c1">// デフォルトで聴講継続中</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">attendanceCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * 全パラメータコンストラクタ</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">AuditStudent</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">AuditStudent</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">birthDate</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                       </span><span class="n">String</span><span class="w"> </span><span class="n">auditCourse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">birthDate</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">);</span>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">auditCourse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">auditCourse</span><span class="p">;</span>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">attendanceCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">isActive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Personクラスの抽象メソッドを実装</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">introduce</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">&quot;聴講生の%sです。%sを聴講しています。&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">auditCourse</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="cm">/**</span>
@@ -7028,7 +7039,9 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 - 修正されたファイルとは異なる扱いになります</p>
 <h3 id="2-3">ステップ2-3: 新規ファイル追加のテストプログラム作成</h3>
 <p><strong>AuditStudentTest.java（テストプログラム）も作成しましょう：</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+
+<span class="cm">/**</span>
 <span class="cm"> * AuditStudentクラスのテストプログラム</span>
 <span class="cm"> * Week 6レッスン4で新規追加：複数新規ファイル管理の体験用</span>
 <span class="cm"> */</span>
@@ -7038,22 +7051,33 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 <span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=== AuditStudent（聴講生）テストプログラム ===&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Week 6レッスン4：新規ファイル追加の実践\n&quot;</span><span class="p">);</span>
 
-<span class="w">        </span><span class="c1">// 聴講生の作成</span>
+<span class="w">        </span><span class="c1">// 聴講生の作成（birthDateを使用 - Week 5のPersonクラスに合わせた設計）</span>
 <span class="w">        </span><span class="n">AuditStudent</span><span class="w"> </span><span class="n">student1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AuditStudent</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;AUD001&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;田中聴子&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tanaka@audit.example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Java基礎講座&quot;</span>
+<span class="w">            </span><span class="s">&quot;AUD001&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">&quot;田中聴子&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">1996</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">),</span><span class="w">  </span><span class="c1">// 生年月日</span>
+<span class="w">            </span><span class="s">&quot;tanaka@audit.example.com&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">&quot;Java基礎講座&quot;</span>
 <span class="w">        </span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">AuditStudent</span><span class="w"> </span><span class="n">student2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AuditStudent</span><span class="p">();</span>
-<span class="w">        </span><span class="n">student2</span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="s">&quot;AUD002&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">student2</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;佐藤聴太&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">student2</span><span class="p">.</span><span class="na">setAge</span><span class="p">(</span><span class="mi">35</span><span class="p">);</span>
-<span class="w">        </span><span class="n">student2</span><span class="p">.</span><span class="na">setEmail</span><span class="p">(</span><span class="s">&quot;sato@audit.example.com&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">student2</span><span class="p">.</span><span class="na">setAuditCourse</span><span class="p">(</span><span class="s">&quot;Spring Boot実践講座&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">AuditStudent</span><span class="w"> </span><span class="n">student2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AuditStudent</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;AUD002&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">&quot;佐藤聴太&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">1989</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">),</span><span class="w">  </span><span class="c1">// 生年月日</span>
+<span class="w">            </span><span class="s">&quot;sato@audit.example.com&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">&quot;Spring Boot実践講座&quot;</span>
+<span class="w">        </span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// 基本情報の表示</span>
 <span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;1. 聴講生基本情報&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">student1</span><span class="p">);</span>
 <span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">student2</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// 自己紹介（Personの抽象メソッド実装の確認）</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;1.5 自己紹介（ポリモーフィズム）&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">student1</span><span class="p">.</span><span class="na">introduce</span><span class="p">());</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">student2</span><span class="p">.</span><span class="na">introduce</span><span class="p">());</span>
 <span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
 
 <span class="w">        </span><span class="c1">// 出席のシミュレーション</span>
@@ -7084,6 +7108,9 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>ファイルを保存してください。</strong></p>
+<blockquote>
+<p>💡 <strong>ポイント</strong>: Week 5で作成したPersonクラスでは年齢を<code>birthDate</code>から計算する設計になっています。そのため、AuditStudentのコンストラクタでも<code>birthDate</code>（LocalDate型）を受け取り、<code>getAge()</code>メソッドで現在の年齢を取得します。</p>
+</blockquote>
 <h3 id="2-4">ステップ2-4: 複数新規ファイルの確認</h3>
 <p><strong>現在の状態を確認：</strong></p>
 <div class="highlight"><pre><span></span><code>git status
@@ -7599,14 +7626,14 @@ git commit -m &quot;検索機能実装: 基本検索機能を追加
 Week 6レッスン4実践演習: 開発フロー体験（第1段階）&quot;
 </code></pre></div>
 <p><strong>第2段階: 既存クラスの拡張</strong></p>
-<p><strong>Student.javaに検索支援メソッドを追加：</strong></p>
+<p><strong>Student.java（抽象クラス）に検索支援メソッドを追加：</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * 検索用の統合情報を取得</span>
 <span class="cm"> * Week 6レッスン4実践演習で追加：検索機能拡張用</span>
 <span class="cm"> */</span>
 <span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSearchableInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">&quot;%s %s %s %d&quot;</span><span class="p">,</span><span class="w"> </span>
-<span class="w">                        </span><span class="n">getName</span><span class="p">(),</span><span class="w"> </span><span class="n">getId</span><span class="p">(),</span><span class="w"> </span><span class="n">getMajor</span><span class="p">(),</span><span class="w"> </span><span class="n">getAge</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">&quot;%s %s %s %d %s&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                        </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">major</span><span class="p">,</span><span class="w"> </span><span class="n">getAge</span><span class="p">(),</span><span class="w"> </span><span class="n">getStudentType</span><span class="p">());</span>
 <span class="p">}</span>
 
 <span class="cm">/**</span>
@@ -7636,9 +7663,9 @@ Week 6レッスン4実践演習: 開発フロー体験（第2段階）&quot;
 </code></pre></div>
 <p><strong>第3段階: デモプログラムの作成</strong></p>
 <p><strong>SearchDemo.javaを作成：</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span>
 
 <span class="cm">/**</span>
 <span class="cm"> * 学生検索機能のデモンストレーション</span>
@@ -7650,7 +7677,7 @@ Week 6レッスン4実践演習: 開発フロー体験（第2段階）&quot;
 <span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=== 学生検索システム デモンストレーション ===&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Week 6レッスン4実践演習: 開発フロー体験\n&quot;</span><span class="p">);</span>
 
-<span class="w">        </span><span class="c1">// サンプル学生データの作成</span>
+<span class="w">        </span><span class="c1">// サンプル学生データの作成（UndergraduateStudentを使用）</span>
 <span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createSampleStudents</span><span class="p">();</span>
 
 <span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;1. 全学生データ&quot;</span><span class="p">);</span>
@@ -7666,31 +7693,68 @@ Week 6レッスン4実践演習: 開発フロー体験（第2段階）&quot;
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * サンプル学生データの作成</span>
+<span class="cm">     * サンプル学生データの作成（UndergraduateStudentのBuilderパターンを使用）</span>
 <span class="cm">     */</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createSampleStudents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 
-<span class="w">        </span><span class="n">students</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">createStudent</span><span class="p">(</span><span class="s">&quot;STU001&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;田中太郎&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tanaka@example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;情報工学&quot;</span><span class="p">));</span>
-<span class="w">        </span><span class="n">students</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">createStudent</span><span class="p">(</span><span class="s">&quot;STU002&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;佐藤花子&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sato@example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;コンピュータサイエンス&quot;</span><span class="p">));</span>
-<span class="w">        </span><span class="n">students</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">createStudent</span><span class="p">(</span><span class="s">&quot;STU003&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;山田一郎&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;yamada@example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;情報工学&quot;</span><span class="p">));</span>
-<span class="w">        </span><span class="n">students</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">createStudent</span><span class="p">(</span><span class="s">&quot;STU004&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;鈴木美咲&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;suzuki@example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ソフトウェア工学&quot;</span><span class="p">));</span>
-<span class="w">        </span><span class="n">students</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">createStudent</span><span class="p">(</span><span class="s">&quot;STU005&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;高橋健太&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;takahashi@example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;コンピュータサイエンス&quot;</span><span class="p">));</span>
+<span class="w">        </span><span class="c1">// Week 5で学んだBuilderパターンを活用</span>
+<span class="w">        </span><span class="n">students</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">UndergraduateStudent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;STU001&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;田中太郎&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">birthDate</span><span class="p">(</span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2002</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="na">email</span><span class="p">(</span><span class="s">&quot;tanaka@example.com&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">major</span><span class="p">(</span><span class="s">&quot;情報工学&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">enrollmentYear</span><span class="p">(</span><span class="mi">2021</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">currentYear</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">club</span><span class="p">(</span><span class="s">&quot;プログラミング研究会&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">());</span>
+
+<span class="w">        </span><span class="n">students</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">UndergraduateStudent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;STU002&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;佐藤花子&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">birthDate</span><span class="p">(</span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2003</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="na">email</span><span class="p">(</span><span class="s">&quot;sato@example.com&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">major</span><span class="p">(</span><span class="s">&quot;コンピュータサイエンス&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">enrollmentYear</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">currentYear</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">club</span><span class="p">(</span><span class="s">&quot;数学研究会&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">());</span>
+
+<span class="w">        </span><span class="n">students</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">UndergraduateStudent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;STU003&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;山田一郎&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">birthDate</span><span class="p">(</span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2001</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="na">email</span><span class="p">(</span><span class="s">&quot;yamada@example.com&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">major</span><span class="p">(</span><span class="s">&quot;情報工学&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">enrollmentYear</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">currentYear</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">club</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">());</span>
+
+<span class="w">        </span><span class="n">students</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">UndergraduateStudent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;STU004&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;鈴木美咲&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">birthDate</span><span class="p">(</span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2004</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="na">email</span><span class="p">(</span><span class="s">&quot;suzuki@example.com&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">major</span><span class="p">(</span><span class="s">&quot;ソフトウェア工学&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">enrollmentYear</span><span class="p">(</span><span class="mi">2023</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">currentYear</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">club</span><span class="p">(</span><span class="s">&quot;テニス部&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">());</span>
+
+<span class="w">        </span><span class="n">students</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">UndergraduateStudent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">id</span><span class="p">(</span><span class="s">&quot;STU005&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;高橋健太&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">birthDate</span><span class="p">(</span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="na">email</span><span class="p">(</span><span class="s">&quot;takahashi@example.com&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">major</span><span class="p">(</span><span class="s">&quot;コンピュータサイエンス&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">enrollmentYear</span><span class="p">(</span><span class="mi">2019</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">currentYear</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">club</span><span class="p">(</span><span class="s">&quot;サッカー部&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">());</span>
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">students</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * 学生インスタンスの作成ヘルパー</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="nf">createStudent</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">major</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Student</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">();</span>
-<span class="w">        </span><span class="n">student</span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-<span class="w">        </span><span class="n">student</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
-<span class="w">        </span><span class="n">student</span><span class="p">.</span><span class="na">setAge</span><span class="p">(</span><span class="n">age</span><span class="p">);</span>
-<span class="w">        </span><span class="n">student</span><span class="p">.</span><span class="na">setEmail</span><span class="p">(</span><span class="n">email</span><span class="p">);</span>
-<span class="w">        </span><span class="n">student</span><span class="p">.</span><span class="na">setMajor</span><span class="p">(</span><span class="n">major</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">student</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="cm">/**</span>
@@ -7749,6 +7813,9 @@ Week 6レッスン4実践演習: 開発フロー体験（第2段階）&quot;
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<p>💡 <strong>ポイント</strong>: Week 5で学んだBuilderパターンを活用しています。<code>new Student()</code> ではなく <code>UndergraduateStudent.builder()</code> を使用することで、Student抽象クラスの制約を守りつつ、読みやすいコードでインスタンスを作成しています。</p>
+</blockquote>
 <p><strong>第3段階をコミット：</strong></p>
 <div class="highlight"><pre><span></span><code>git add SearchDemo.java
 git commit -m &quot;検索機能完成: デモプログラムを追加
