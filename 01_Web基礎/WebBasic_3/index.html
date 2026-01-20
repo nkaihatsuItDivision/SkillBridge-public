@@ -954,7 +954,7 @@
   <a href="#4xx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4xx系：クライアントエラー（お客さんの問題）
+        4xx系：クライアントエラー（リクエスト側の問題）
       
     </span>
   </a>
@@ -965,7 +965,7 @@
   <a href="#5xx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5xx系：サーバーエラー（お店の問題）
+        5xx系：サーバーエラー（サーバー側の問題）
       
     </span>
   </a>
@@ -1182,6 +1182,17 @@
     <span class="md-ellipsis">
       
         📘 POSTでのForm Data確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. その他のHTTPメソッド（参考）
       
     </span>
   </a>
@@ -6563,7 +6574,7 @@
   <a href="#4xx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4xx系：クライアントエラー（お客さんの問題）
+        4xx系：クライアントエラー（リクエスト側の問題）
       
     </span>
   </a>
@@ -6574,7 +6585,7 @@
   <a href="#5xx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5xx系：サーバーエラー（お店の問題）
+        5xx系：サーバーエラー（サーバー側の問題）
       
     </span>
   </a>
@@ -6791,6 +6802,17 @@
     <span class="md-ellipsis">
       
         📘 POSTでのForm Data確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. その他のHTTPメソッド（参考）
       
     </span>
   </a>
@@ -7284,29 +7306,51 @@ Date: Wed, 29 Jul 2025 10:30:00 GMT
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 <h3 id="2_3">2. ステータスコードを理解しよう</h3>
-<p>ステータスコードは「処理結果の番号」です。レストランでの応答と比較してみましょう：</p>
+<p>ステータスコードは「処理結果の番号」です。実際の意味と、レストランでの応答を比較して覚えましょう：</p>
 <h4 id="2xx">2xx系：成功</h4>
 <ul>
-<li><strong>200 OK</strong>「注文の料理をお持ちしました」</li>
-<li><strong>201 Created</strong>「新しい料理を作成しました」</li>
+<li><strong>200 OK</strong></li>
+<li><strong>実際の意味</strong>：リクエストが正常に処理され、要求したデータが返された</li>
+<li><strong>例え</strong>：「注文の料理をお持ちしました」</li>
+<li><strong>201 Created</strong></li>
+<li><strong>実際の意味</strong>：リクエストが成功し、新しいリソース（データ）が作成された</li>
+<li><strong>例え</strong>：「新しい料理を作成しました」</li>
 </ul>
 <h4 id="3xx">3xx系：リダイレクト</h4>
 <ul>
-<li><strong>301 Moved Permanently</strong>「その料理は別のメニューに移りました」</li>
-<li><strong>302 Found</strong>「一時的に別の場所で提供中です」</li>
+<li><strong>301 Moved Permanently</strong></li>
+<li><strong>実際の意味</strong>：要求したページが別のURLに永久に移動した</li>
+<li><strong>例え</strong>：「その料理は別のメニューに移りました」</li>
+<li><strong>302 Found</strong></li>
+<li><strong>実際の意味</strong>：要求したページが一時的に別のURLにある</li>
+<li><strong>例え</strong>：「一時的に別の場所で提供中です」</li>
 </ul>
-<h4 id="4xx">4xx系：クライアントエラー（お客さんの問題）</h4>
+<h4 id="4xx">4xx系：クライアントエラー（リクエスト側の問題）</h4>
 <ul>
-<li><strong>400 Bad Request</strong>「注文内容が理解できません」</li>
-<li><strong>401 Unauthorized</strong>「会員登録が必要です」</li>
-<li><strong>403 Forbidden</strong>「そのメニューは注文できません」</li>
-<li><strong>404 Not Found</strong>「そのメニューは存在しません」</li>
+<li><strong>400 Bad Request</strong></li>
+<li><strong>実際の意味</strong>：リクエストの形式が正しくない、サーバーが理解できない</li>
+<li><strong>例え</strong>：「注文内容が理解できません」</li>
+<li><strong>401 Unauthorized</strong></li>
+<li><strong>実際の意味</strong>：認証が必要。ログインしていない、または認証情報が無効</li>
+<li><strong>例え</strong>：「会員登録が必要です」</li>
+<li><strong>403 Forbidden</strong></li>
+<li><strong>実際の意味</strong>：アクセス権限がない。認証されていても閲覧が許可されていない</li>
+<li><strong>例え</strong>：「そのメニューは注文できません」</li>
+<li><strong>404 Not Found</strong></li>
+<li><strong>実際の意味</strong>：要求したページやファイルがサーバー上に存在しない</li>
+<li><strong>例え</strong>：「そのメニューは存在しません」</li>
 </ul>
-<h4 id="5xx">5xx系：サーバーエラー（お店の問題）</h4>
+<h4 id="5xx">5xx系：サーバーエラー（サーバー側の問題）</h4>
 <ul>
-<li><strong>500 Internal Server Error</strong>「キッチンで問題が発生しました」</li>
-<li><strong>502 Bad Gateway</strong>「配達業者と連絡が取れません」</li>
-<li><strong>503 Service Unavailable</strong>「一時的に営業停止中です」</li>
+<li><strong>500 Internal Server Error</strong></li>
+<li><strong>実際の意味</strong>：サーバー内部でエラーが発生した（プログラムのバグなど）</li>
+<li><strong>例え</strong>：「キッチンで問題が発生しました」</li>
+<li><strong>502 Bad Gateway</strong></li>
+<li><strong>実際の意味</strong>：サーバーが別のサーバーから無効な応答を受け取った</li>
+<li><strong>例え</strong>：「配達業者と連絡が取れません」</li>
+<li><strong>503 Service Unavailable</strong></li>
+<li><strong>実際の意味</strong>：サーバーが一時的に利用できない（メンテナンス中、過負荷など）</li>
+<li><strong>例え</strong>：「一時的に営業停止中です」</li>
 </ul>
 <h3 id="3_1">3. よく見るエラーの意味</h3>
 <p><strong>404 Not Found</strong>
@@ -7487,6 +7531,38 @@ hl: ja
 2. NetworkタブでPOSTリクエストをクリック
 3.「Headers」タブ → 「Form Data」<strong>または</strong>「Request Payload」で確認</p>
 <h3 id="postform-data">📘 <a href="https://nkaihatsuItDivision.github.io/CodeLingoPicture/WebBasic_3_post_form_data.html">POSTでのForm Data確認</a></h3>
+<h3 id="4-http">4. その他のHTTPメソッド（参考）</h3>
+<p>GETとPOST以外にも、HTTPにはいくつかのメソッドがあります。実務で使われることがあるので、名前だけ覚えておきましょう：</p>
+<table>
+<thead>
+<tr>
+<th>メソッド</th>
+<th>目的</th>
+<th>簡単な説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PUT</strong></td>
+<td>データの更新</td>
+<td>指定したリソース（データ）を新しい内容で置き換える</td>
+</tr>
+<tr>
+<td><strong>DELETE</strong></td>
+<td>データの削除</td>
+<td>指定したリソース（データ）を削除する</td>
+</tr>
+<tr>
+<td><strong>PATCH</strong></td>
+<td>データの部分更新</td>
+<td>リソースの一部だけを更新する</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ポイント：</strong>
+- 現段階ではGETとPOSTをしっかり理解していればOKです
+- PUT/DELETEは、後の学習（Spring BootでのWeb API開発など）で詳しく学びます
+- 興味がある方は「REST API HTTPメソッド」で検索してみてください</p>
 <h2 id="_10">エラーの実際の確認方法</h2>
 <h3 id="4404">演習4：404エラーを実際に見てみよう</h3>
 <p><strong>手順：</strong>
