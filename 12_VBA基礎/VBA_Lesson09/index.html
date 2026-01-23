@@ -6091,6 +6091,18 @@ End Sub
 
     MsgBox &quot;バックアップを作成しました&quot;
 End Sub
+
+&#39; シート存在確認関数（課題1の関数を使用）
+Function SheetExists(ByVal sheetName As String) As Boolean
+    Dim ws As Worksheet
+    SheetExists = False
+    For Each ws In ThisWorkbook.Worksheets
+        If ws.Name = sheetName Then
+            SheetExists = True
+            Exit Function
+        End If
+    Next ws
+End Function
 </code></pre></div>
 
 </details>
